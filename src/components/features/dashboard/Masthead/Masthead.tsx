@@ -29,7 +29,7 @@ export function Masthead() {
         <div className={styles.topStrip}>
           <div className={styles.branding}>
             <h1 className={styles.logo}>RTI TRANSPARENCY DASHBOARD</h1>
-            <p className={styles.tagline}>"Tracking information, not rumours."</p>
+            <p className={styles.tagline}>&ldquo;Tracking information, not rumours.&rdquo;</p>
           </div>
         </div>
 

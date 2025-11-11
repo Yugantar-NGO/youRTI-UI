@@ -179,7 +179,7 @@ function ServiceCard({ icon, label, count }: { icon: string; label: string; coun
 function QuestionItem({ title, dept, date }: { title: string; dept: string; date: string }) {
   return (
     <div style={{ padding: 'var(--space-sm) 0', borderBottom: '1px solid var(--color-border-tertiary)' }}>
-      <div style={{ fontSize: 'var(--font-size-sm)', marginBottom: 'var(--space-xs)' }}>• "{title}"</div>
+      <div style={{ fontSize: 'var(--font-size-sm)', marginBottom: 'var(--space-xs)' }}>• &ldquo;{title}&rdquo;</div>
       <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-tertiary)' }}>
         Dept: {dept} | Filed: {date}
       </div>
@@ -190,7 +190,7 @@ function QuestionItem({ title, dept, date }: { title: string; dept: string; date
 function AnswerItem({ title, summary, filed, answered }: { title: string; summary: string; filed: string; answered: string }) {
   return (
     <div style={{ padding: 'var(--space-sm) 0', borderBottom: '1px solid var(--color-border-tertiary)' }}>
-      <div style={{ fontSize: 'var(--font-size-sm)', fontWeight: 500, marginBottom: 'var(--space-xs)' }}>• "{title}"</div>
+      <div style={{ fontSize: 'var(--font-size-sm)', fontWeight: 500, marginBottom: 'var(--space-xs)' }}>• &ldquo;{title}&rdquo;</div>
       <div style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-secondary)', marginBottom: 'var(--space-xs)' }}>
         Answer (summary): {summary}
       </div>

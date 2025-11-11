@@ -22,9 +22,9 @@ export function DashboardHero() {
       <div className={styles.content}>
         <div className={styles.header}>
           <h1 className={styles.title}>RTI Transparency Dashboard</h1>
-          <p className={styles.subtitle}>India's Right to Information – at a glance</p>
+          <p className={styles.subtitle}>India&apos;s Right to Information – at a glance</p>
           <p className={styles.tagline}>
-            "See what citizens are asking, how government responds, and what it means for you."
+            &ldquo;See what citizens are asking, how government responds, and what it means for you.&rdquo;
           </p>
         </div>
 
