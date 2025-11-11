@@ -1,0 +1,67 @@
+.trendIndicator {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.value {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-tight);
+}
+
+.change {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.change.increase {
+  color: var(--color-success-green);
+}
+
+.change.decrease {
+  color: var(--color-alert-red);
+}
+
+.change.neutral {
+  color: var(--color-medium-gray);
+}
+
+.percentage {
+  font-size: var(--font-size-small);
+}
+
+.period {
+  font-family: var(--font-body);
+  font-size: var(--font-size-tiny);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Compact trend arrow */
+.trendArrow {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+}
+
+.trendArrow.increase {
+  color: var(--color-success-green);
+}
+
+.trendArrow.decrease {
+  color: var(--color-alert-red);
+}
+
+.trendArrow.neutral {
+  color: var(--color-medium-gray);
+}
