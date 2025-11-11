@@ -1,0 +1,60 @@
+/**
+ * Newspaper Theme
+ *
+ * Classic investigative journalism aesthetic with high contrast,
+ * sharp edges, and authoritative typography.
+ */
+
+:root[data-theme="newspaper"],
+:root {
+  /* Colors - High Contrast Black & White */
+  --color-text-primary: #000000;
+  --color-text-secondary: #1F2937;
+  --color-text-tertiary: #6B7280;
+  --color-text-inverse: #FFFFFF;
+  --color-text-link: #2563EB;
+  --color-text-link-hover: #1E40AF;
+
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F5F5F5;
+  --color-bg-tertiary: #F9FAFB;
+  --color-bg-inverse: #000000;
+  --color-bg-elevated: #FFFFFF;
+
+  --color-border-primary: #000000;
+  --color-border-secondary: #E5E7EB;
+  --color-border-tertiary: #F3F4F6;
+
+  --color-status-success: #16A34A;
+  --color-status-error: #DC2626;
+  --color-status-warning: #D97706;
+  --color-status-info: #2563EB;
+  --color-status-neutral: #6B7280;
+
+  --color-hover-bg: #F9FAFB;
+  --color-active-bg: #F3F4F6;
+  --color-focus-ring: #2563EB;
+
+  /* Typography - Serif Headlines */
+  --font-family-heading: var(--font-playfair);
+  --font-family-body: var(--font-inter);
+  --font-family-mono: var(--font-ibm-plex-mono);
+
+  /* Borders - Sharp, No Radius */
+  --border-radius-none: 0;
+  --border-radius-sm: 0;
+  --border-radius-md: 2px;
+  --border-radius-lg: 2px;
+
+  /* Shadows - Newspaper Stacking Effect */
+  --shadow-card: 4px 4px 0 0 rgba(0, 0, 0, 0.1);
+  --shadow-card-hover: 6px 6px 0 0 rgba(0, 0, 0, 0.15);
+  --shadow-sm: 2px 2px 0 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 4px 4px 0 0 rgba(0, 0, 0, 0.1);
+  --shadow-lg: 6px 6px 0 0 rgba(0, 0, 0, 0.12);
+
+  /* Component Styles */
+  --card-border-width: var(--border-width-thin);
+  --badge-border-radius: var(--border-radius-none);
+  --button-border-radius: var(--border-radius-none);
+}

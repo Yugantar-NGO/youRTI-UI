@@ -1,0 +1,59 @@
+/**
+ * Modern Theme
+ *
+ * Clean, minimal aesthetic with softer colors, rounded corners,
+ * and smooth shadows for a contemporary dashboard feel.
+ */
+
+:root[data-theme="modern"] {
+  /* Colors - Softer, Warmer Palette */
+  --color-text-primary: #111827;
+  --color-text-secondary: #374151;
+  --color-text-tertiary: #6B7280;
+  --color-text-inverse: #FFFFFF;
+  --color-text-link: #3B82F6;
+  --color-text-link-hover: #2563EB;
+
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F9FAFB;
+  --color-bg-tertiary: #F3F4F6;
+  --color-bg-inverse: #111827;
+  --color-bg-elevated: #FFFFFF;
+
+  --color-border-primary: #D1D5DB;
+  --color-border-secondary: #E5E7EB;
+  --color-border-tertiary: #F3F4F6;
+
+  --color-status-success: #10B981;
+  --color-status-error: #EF4444;
+  --color-status-warning: #F59E0B;
+  --color-status-info: #3B82F6;
+  --color-status-neutral: #6B7280;
+
+  --color-hover-bg: #F9FAFB;
+  --color-active-bg: #F3F4F6;
+  --color-focus-ring: #3B82F6;
+
+  /* Typography - Sans-Serif Throughout */
+  --font-family-heading: var(--font-inter);
+  --font-family-body: var(--font-inter);
+  --font-family-mono: var(--font-ibm-plex-mono);
+
+  /* Borders - Rounded Corners */
+  --border-radius-none: 0;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+
+  /* Shadows - Smooth, Realistic */
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+
+  /* Component Styles */
+  --card-border-width: var(--border-width-thin);
+  --badge-border-radius: var(--border-radius-full);
+  --button-border-radius: var(--border-radius-md);
+}
