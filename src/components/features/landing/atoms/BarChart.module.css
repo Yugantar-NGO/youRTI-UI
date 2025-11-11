@@ -30,6 +30,8 @@
   align-items: center;
   justify-content: flex-end;
   padding-right: var(--spacing-sm);
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
 .barValue {
