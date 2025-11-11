@@ -1,0 +1,70 @@
+/* HeroSection Organism - Using Semantic Tokens */
+
+.heroSection {
+  background: linear-gradient(
+    135deg,
+    var(--color-accent),
+    color-mix(in srgb, var(--color-accent) 85%, var(--color-black)),
+    color-mix(in srgb, var(--color-accent) 70%, var(--color-black))
+  );
+  color: var(--color-text-inverse);
+  padding: var(--spacing-12) var(--spacing-6);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+}
+
+.title {
+  margin: 0 0 var(--spacing-3) 0;
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-heading);
+  line-height: var(--line-height-tight);
+}
+
+.subtitle {
+  margin: 0 0 var(--spacing-2) 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  opacity: 0.95;
+}
+
+.tagline {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  opacity: 0.85;
+}
+
+.statsGrid {
+  margin-bottom: var(--spacing-6);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .heroSection {
+    padding: var(--spacing-8) var(--spacing-4);
+  }
+
+  .header {
+    margin-bottom: var(--spacing-6);
+  }
+
+  .title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-lg);
+  }
+
+  .tagline {
+    font-size: var(--font-size-base);
+  }
+}

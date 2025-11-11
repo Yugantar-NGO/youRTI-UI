@@ -1,0 +1,58 @@
+/* MainContentSection Organism - Using Semantic Tokens */
+
+.mainContentSection {
+  background-color: var(--color-bg-muted);
+  padding: var(--spacing-12) var(--spacing-6);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.twoColumnLayout {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-6);
+  margin-bottom: var(--spacing-8);
+}
+
+.activitySpotlightLayout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spacing-6);
+}
+
+.activityColumn {
+  /* Activity feed column */
+}
+
+.spotlightColumn {
+  /* Spotlight column */
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .twoColumnLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .activitySpotlightLayout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContentSection {
+    padding: var(--spacing-8) var(--spacing-4);
+  }
+
+  .twoColumnLayout {
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-6);
+  }
+
+  .activitySpotlightLayout {
+    gap: var(--spacing-4);
+  }
+}
