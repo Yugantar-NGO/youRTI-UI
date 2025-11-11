@@ -1,10 +1,49 @@
 # RTI Transparency Dashboard - youRTI
 
-A newspaper-styled web dashboard for tracking Right to Information (RTI) requests across India, providing insights into government accountability and transparency.
+A modern, theme-agnostic dashboard for tracking Right to Information (RTI) requests across India, providing insights into government accountability and transparency.
+
+## 🎨 Theme System (NEW!)
+
+The dashboard now features a **flexible theme architecture** that allows instant switching between different visual styles without any code changes:
+
+### Available Themes
+- **Newspaper** (Default): High-contrast, sharp edges, serif headlines - classic investigative journalism aesthetic
+- **Modern**: Soft colors, rounded corners, smooth shadows - contemporary dashboard feel
+- **Easy to Add More**: Create new themes by adding a single CSS file!
+
+### How to Switch Themes
+Edit `src/app/layout.tsx` and change the `data-theme` attribute:
+```tsx
+<html data-theme="newspaper">  // or "modern"
+```
+
+## 📐 Architecture
+
+### Theme Abstraction System
+The dashboard uses a **3-layer token architecture** for complete theme flexibility:
+
+```
+Layer 1: Semantic Tokens (--color-text-primary, --color-bg-elevated)
+         ↓
+Layer 2: Theme Files (newspaper.css, modern.css)
+         ↓
+Layer 3: Components (use only semantic tokens)
+```
+
+**Benefits:**
+- ✅ Add new themes without touching components
+- ✅ Switch themes instantly (CSS-only, zero overhead)
+- ✅ Components work with any theme automatically
+
+### Layout System
+- **Sidebar Navigation**: Fixed sidebar with collapsible mobile menu
+- **Compact Header**: Sticky 60px header (vs old 400px hero)
+- **Information-Dense Grid**: 12-column responsive layout
+- **60% Less Scrolling**: Horizontal space optimization
 
 ## Overview
 
-The RTI Transparency Dashboard is built for **Yugantar NGO** to make RTI data accessible and actionable for citizens, journalists, and researchers. The design follows a "Digital Investigative Report" aesthetic inspired by classic newspaper layouts.
+The RTI Transparency Dashboard is built for **Yugantar NGO** to make RTI data accessible and actionable for citizens, journalists, and researchers.
 
 ## Features
 
@@ -20,32 +59,54 @@ The RTI Transparency Dashboard is built for **Yugantar NGO** to make RTI data ac
 - **Google Fonts** integration with optimal loading
 
 #### Phase 2: UI Primitives ✅
-- **Typography Components**
+- **Typography Components** (theme-agnostic)
   - Headline variants (hero, large, medium, small)
   - Body text components
   - Section headers with metadata support
   - Specialized text (bylines, kickers, decks, pull quotes)
-- **Layout Components**
-  - Container (default, wide, narrow, fluid)
-  - Grid system (12-column responsive)
-  - Newspaper columns layout
-- **Badge Component**
+- **Card Component** (NEW!)
+  - 4 variants: default, elevated, bordered, flat
+  - 4 padding sizes: none, sm, md, lg
+  - Interactive hover states
+  - CardHeader, CardTitle, CardContent, CardFooter subcomponents
+- **Badge Component** (with icon support)
   - Status indicators (disclosed, rejected, pending, partial)
-  - Monospace uppercase styling
+  - Optional status icons
+  - Theme-agnostic styling
+- **Icon System** (NEW!)
+  - Lucide React integration
+  - 60+ icons available
+  - Consistent sizing wrapper
 
 #### Phase 3: Data Display ✅
-- **StatCard & StatGrid**
+- **StatCard & StatGrid** (with icon support)
+  - Optional icon display
   - Monospace number display
-  - Trend indicators with color coding
-  - Newspaper box-shadow styling
+  - Icon-based trend indicators (↑↓→)
+  - Theme-agnostic styling
 - **DataTable**
   - Clean borders and striped rows
   - Responsive overflow handling
   - Hover effects
 - **TrendIndicator**
-  - Arrow indicators (↑↓→)
+  - Icon-based indicators
   - Percentage change display
   - Period labels
+
+#### Phase 4: Layout Components ✅ (NEW!)
+- **DashboardLayout**
+  - Main container combining sidebar and content
+  - Responsive behavior
+  - Sidebar toggle functionality
+- **CompactMasthead**
+  - Sticky 60px header
+  - Menu toggle button
+  - Action buttons (notifications, profile)
+- **Sidebar**
+  - Fixed navigation sidebar
+  - Collapsible on mobile
+  - Active state indicators
+  - Badge support for notifications
 
 #### Phase 5: Hero Section ✅
 - **Masthead**
