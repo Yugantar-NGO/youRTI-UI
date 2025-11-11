@@ -355,15 +355,5 @@ export const MOCK_DEPARTMENT_SUMMARY = {
 }
 
 // ============================================
-// Export All
+// All exports are declared inline above
 // ============================================
-
-export {
-  MOCK_NATIONAL_STATS,
-  MOCK_TIMELINESS_DATA,
-  MOCK_HIGH_IMPACT_FILINGS,
-  MOCK_APPEALS_DATA,
-  MOCK_SYSTEM_ANALYTICS,
-  MOCK_DEPARTMENT_METRICS,
-  MOCK_DEPARTMENT_SUMMARY,
-}

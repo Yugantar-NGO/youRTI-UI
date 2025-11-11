@@ -337,7 +337,5 @@ export const MOCK_INSIGHTS_TRENDS: InsightTrend[] = [
 ]
 
 // ============================================
-// Export All
+// All exports are declared inline above
 // ============================================
-
-export { MOCK_TIMELINE_ACTIVITIES, MOCK_INSIGHTS_TRENDS }

@@ -770,11 +770,5 @@ export const MOCK_URGENT_CASE: UrgentUnanswered = {
 }
 
 // ============================================
-// Data Export
+// All exports are declared inline above
 // ============================================
-
-export {
-  MOCK_WIN_STORIES,
-  MOCK_PENDING_CASES,
-  MOCK_RECENT_QUESTIONS,
-}
