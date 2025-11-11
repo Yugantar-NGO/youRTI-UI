@@ -2,5 +2,27 @@
 
 .page {
   min-height: 100vh;
-  background-color: var(--bg-page);  /* #F3F4F6 per TODO spec */
+  background-color: var(--color-bg-page-dark); /* #050816 - dark theme for redesign */
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* 48px - consistent section spacing per Task 6 */
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .mainContent {
+    gap: 2rem; /* 32px on mobile for tighter spacing */
+  }
+}
+
+@media (max-width: 480px) {
+  .mainContent {
+    gap: 1.5rem; /* 24px on small mobile */
+  }
 }

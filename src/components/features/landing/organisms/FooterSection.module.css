@@ -1,8 +1,8 @@
 /* FooterSection Organism - Using Semantic Tokens */
 
 .footerSection {
-  background-color: var(--color-bg-elevated);
-  border-top: var(--border-width-thin) solid var(--color-border-primary);
+  background-color: var(--color-bg-surface-dark); /* #020617 - dark theme per Task 6 */
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
   padding: var(--spacing-8) var(--spacing-6);
 }
 
@@ -24,18 +24,18 @@
 .link {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  color: var(--color-text-primary);
+  color: var(--color-text-on-dark-secondary); /* Use text-on-dark for dark background */
   text-decoration: none;
   transition: color var(--transition-fast);
 }
 
 .link:hover {
-  color: var(--color-accent);
+  color: var(--color-text-on-dark-primary);
   text-decoration: underline;
 }
 
 .separator {
-  color: var(--color-border-primary);
+  color: var(--color-text-on-dark-muted);
   font-size: var(--font-size-sm);
 }
 
@@ -47,7 +47,7 @@
 .text {
   margin: 0 0 var(--spacing-3) 0;
   font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
+  color: var(--color-text-on-dark-tertiary); /* Use text-on-dark for dark background */
   line-height: var(--line-height-relaxed);
 }
 
@@ -56,14 +56,14 @@
 }
 
 .dashboardLink {
-  color: var(--color-accent);
+  color: var(--color-text-on-dark-secondary);
   text-decoration: none;
   font-weight: var(--font-weight-semibold);
   transition: color var(--transition-fast);
 }
 
 .dashboardLink:hover {
-  color: var(--color-text-primary);
+  color: var(--color-text-on-dark-primary);
   text-decoration: underline;
 }
 
