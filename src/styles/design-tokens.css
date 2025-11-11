@@ -1,0 +1,200 @@
+/**
+ * RTI Dashboard - Semantic Design Tokens
+ *
+ * These are intent-based tokens that components use.
+ * Themes override these tokens to change the visual appearance.
+ * Components should ONLY reference these semantic tokens.
+ */
+
+:root {
+  /* =================================
+     SEMANTIC COLOR TOKENS
+     ================================= */
+
+  /* Text Colors */
+  --color-text-primary: #000000;
+  --color-text-secondary: #1F2937;
+  --color-text-tertiary: #6B7280;
+  --color-text-inverse: #FFFFFF;
+  --color-text-link: #2563EB;
+  --color-text-link-hover: #1E40AF;
+
+  /* Background Colors */
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F5F5F5;
+  --color-bg-tertiary: #F9FAFB;
+  --color-bg-inverse: #000000;
+  --color-bg-elevated: #FFFFFF;
+
+  /* Border Colors */
+  --color-border-primary: #000000;
+  --color-border-secondary: #E5E7EB;
+  --color-border-tertiary: #F3F4F6;
+
+  /* Status Colors */
+  --color-status-success: #16A34A;
+  --color-status-error: #DC2626;
+  --color-status-warning: #D97706;
+  --color-status-info: #2563EB;
+  --color-status-neutral: #6B7280;
+
+  /* Interactive States */
+  --color-hover-bg: #F9FAFB;
+  --color-active-bg: #F3F4F6;
+  --color-focus-ring: #2563EB;
+
+  /* =================================
+     SEMANTIC TYPOGRAPHY TOKENS
+     ================================= */
+
+  /* Font Families */
+  --font-family-heading: var(--font-playfair);
+  --font-family-body: var(--font-inter);
+  --font-family-mono: var(--font-ibm-plex-mono);
+
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 2rem;      /* 32px */
+  --font-size-4xl: 3rem;      /* 48px */
+
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.6;
+  --line-height-loose: 1.8;
+
+  /* =================================
+     SEMANTIC SPACING TOKENS
+     ================================= */
+
+  --spacing-xs: 0.25rem;    /* 4px */
+  --spacing-sm: 0.5rem;     /* 8px */
+  --spacing-md: 1rem;       /* 16px */
+  --spacing-lg: 1.5rem;     /* 24px */
+  --spacing-xl: 2rem;       /* 32px */
+  --spacing-2xl: 2.5rem;    /* 40px */
+  --spacing-3xl: 3rem;      /* 48px */
+  --spacing-4xl: 4rem;      /* 64px */
+
+  /* Component Spacing */
+  --spacing-section: 3rem;
+  --spacing-card: 1.5rem;
+  --spacing-inline: 1rem;
+
+  /* =================================
+     SEMANTIC BORDER TOKENS
+     ================================= */
+
+  --border-width-thin: 1px;
+  --border-width-medium: 2px;
+  --border-width-thick: 3px;
+
+  --border-radius-none: 0;
+  --border-radius-sm: 2px;
+  --border-radius-md: 4px;
+  --border-radius-lg: 8px;
+  --border-radius-full: 9999px;
+
+  /* =================================
+     SEMANTIC SHADOW TOKENS
+     ================================= */
+
+  --shadow-none: none;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-card: 4px 4px 0 0 rgba(0, 0, 0, 0.1);
+  --shadow-card-hover: 6px 6px 0 0 rgba(0, 0, 0, 0.15);
+
+  /* =================================
+     SEMANTIC LAYOUT TOKENS
+     ================================= */
+
+  /* Container Widths */
+  --container-max-width: 1200px;
+  --container-wide: 1400px;
+  --container-narrow: 800px;
+
+  /* Sidebar */
+  --sidebar-width: 250px;
+  --sidebar-collapsed-width: 64px;
+
+  /* Header */
+  --header-height: 60px;
+
+  /* Grid Gaps */
+  --grid-gap-sm: 1rem;
+  --grid-gap-md: 1.5rem;
+  --grid-gap-lg: 2rem;
+
+  /* =================================
+     SEMANTIC Z-INDEX TOKENS
+     ================================= */
+
+  --z-base: 0;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-header: 30;
+  --z-sidebar: 25;
+  --z-modal: 40;
+  --z-popover: 50;
+  --z-tooltip: 60;
+
+  /* =================================
+     SEMANTIC TRANSITION TOKENS
+     ================================= */
+
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+
+  /* =================================
+     COMPONENT-SPECIFIC TOKENS
+     ================================= */
+
+  /* Badge */
+  --badge-padding-x: 0.75rem;
+  --badge-padding-y: 0.25rem;
+  --badge-font-size: var(--font-size-xs);
+  --badge-border-radius: var(--border-radius-sm);
+
+  /* Card */
+  --card-padding: var(--spacing-lg);
+  --card-border-width: var(--border-width-thin);
+  --card-border-radius: var(--border-radius-sm);
+  --card-shadow: var(--shadow-card);
+
+  /* Button */
+  --button-padding-x: 1rem;
+  --button-padding-y: 0.5rem;
+  --button-font-size: var(--font-size-base);
+  --button-border-radius: var(--border-radius-sm);
+
+  /* Icon Sizes */
+  --icon-size-xs: 12px;
+  --icon-size-sm: 16px;
+  --icon-size-base: 20px;
+  --icon-size-lg: 24px;
+  --icon-size-xl: 32px;
+  --icon-size-2xl: 48px;
+
+  /* =================================
+     RESPONSIVE BREAKPOINTS
+     ================================= */
+
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+}
