@@ -1,0 +1,140 @@
+/* CompactMasthead - Using Semantic Tokens */
+.masthead {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background-color: var(--color-bg-elevated);
+  border-bottom: var(--border-width-thin) solid var(--color-border-secondary);
+  box-shadow: var(--shadow-sm);
+  height: var(--header-height);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 var(--spacing-lg);
+  max-width: 100%;
+}
+
+/* Left Section */
+.left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex: 1;
+  min-width: 0; /* Allow text truncation */
+}
+
+.menuButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.menuButton:hover {
+  background-color: var(--color-hover-bg);
+  color: var(--color-text-primary);
+}
+
+.menuButton:active {
+  background-color: var(--color-active-bg);
+}
+
+.titleSection {
+  min-width: 0; /* Allow text truncation */
+}
+
+.title {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.subtitle {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  margin: var(--spacing-xs) 0 0 0;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Right Section */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.actionButton:hover {
+  background-color: var(--color-hover-bg);
+  color: var(--color-text-primary);
+}
+
+.actionButton:active {
+  background-color: var(--color-active-bg);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .content {
+    padding: 0 var(--spacing-md);
+  }
+
+  .title {
+    font-size: var(--font-size-lg);
+  }
+
+  .subtitle {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .menuButton {
+    width: 36px;
+    height: 36px;
+  }
+
+  .actionButton {
+    width: 36px;
+    height: 36px;
+  }
+
+  .title {
+    font-size: var(--font-size-base);
+  }
+}
