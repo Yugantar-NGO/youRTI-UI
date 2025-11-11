@@ -1,0 +1,63 @@
+.tableWrapper {
+  overflow-x: auto;
+  border: var(--border-thin) solid var(--color-black);
+  background-color: var(--color-white);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+}
+
+.th {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-primary);
+  background-color: var(--color-newsprint);
+  border-bottom: var(--border-medium) solid var(--color-black);
+}
+
+.td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: var(--border-thin) solid var(--color-border-secondary);
+  color: var(--color-text-primary);
+}
+
+.table tbody tr:last-child .td {
+  border-bottom: none;
+}
+
+/* Striped rows */
+.striped tbody tr:nth-child(even) {
+  background-color: var(--color-subtle-gray);
+}
+
+.striped tbody tr:nth-child(odd) {
+  background-color: var(--color-white);
+}
+
+/* Hover effect */
+.table tbody tr:hover {
+  background-color: var(--color-newsprint);
+}
+
+/* Monospace for numbers */
+.table tbody .td:has(> span[data-type="number"]) {
+  font-family: var(--font-mono);
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .th,
+  .td {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-small);
+  }
+}
