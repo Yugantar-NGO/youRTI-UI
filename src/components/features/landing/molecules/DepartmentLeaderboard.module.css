@@ -1,0 +1,115 @@
+/* DepartmentLeaderboard Component - Using Semantic Tokens */
+
+.leaderboard {
+  margin-bottom: var(--spacing-8);
+  background-color: #fff;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+
+.table thead {
+  background-color: #f9fafb;
+  border-bottom: var(--border-width-medium) solid var(--color-border-primary);
+}
+
+.table th {
+  padding: var(--spacing-3) var(--spacing-4);
+  text-align: left;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.table tbody tr {
+  border-bottom: var(--border-width-thin) solid var(--color-border-secondary);
+  transition: background-color var(--transition-fast);
+}
+
+.table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.table td {
+  padding: var(--spacing-4);
+}
+
+.rankCol {
+  width: 80px;
+}
+
+.nameCol {
+  width: auto;
+  min-width: 200px;
+}
+
+.metricCol {
+  width: 120px;
+  text-align: right;
+}
+
+.rankCell {
+  font-size: var(--font-size-lg);
+  text-align: center;
+  font-weight: var(--font-weight-bold);
+}
+
+.nameCell {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.metricCell {
+  text-align: right;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+}
+
+/* Color variants for metrics */
+.good {
+  color: #059669;
+  font-weight: var(--font-weight-semibold);
+}
+
+.moderate {
+  color: #d97706;
+  font-weight: var(--font-weight-semibold);
+}
+
+.poor {
+  color: #dc2626;
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .table {
+    font-size: var(--font-size-xs);
+  }
+
+  .table th,
+  .table td {
+    padding: var(--spacing-2) var(--spacing-3);
+  }
+
+  .nameCol {
+    min-width: 150px;
+  }
+
+  .metricCol {
+    width: 90px;
+  }
+}

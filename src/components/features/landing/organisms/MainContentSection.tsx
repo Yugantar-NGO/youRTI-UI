@@ -1,5 +1,6 @@
 import { MainContentData } from '@/types'
 import { KeyMetricsSection } from '../molecules/KeyMetricsSection'
+import { DepartmentLeaderboard } from '../molecules/DepartmentLeaderboard'
 import { InsightsTrends } from '../molecules/InsightsTrends'
 import { BrowseByTopic } from '../molecules/BrowseByTopic'
 import { ActivityFeed } from '../molecules/ActivityFeed'
@@ -21,10 +22,22 @@ interface MainContentSectionProps {
  * <MainContentSection data={mainContentData} />
  */
 export function MainContentSection({ data, className = '' }: MainContentSectionProps) {
+  // Transform data for DepartmentLeaderboard
+  const departments = data.departmentLeaderboard.map((dept) => ({
+    rank: dept.rank,
+    name: dept.name,
+    fulfillment: dept.fulfillmentRate,
+    avgResponse: dept.avgResponseDays,
+    transfers: dept.transferRate,
+    rtisHandled: dept.totalRTIs,
+  }))
+
   return (
     <section className={`${styles.mainContentSection} ${className}`}>
       <div className={styles.container}>
         <KeyMetricsSection metrics={data.keyMetrics} />
+
+        <DepartmentLeaderboard departments={departments} />
 
         <div className={styles.twoColumnLayout}>
           <InsightsTrends insights={data.insights} />
