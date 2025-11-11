@@ -1,0 +1,102 @@
+/**
+ * YourAreaToday Styles
+ */
+
+.location {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border-tertiary);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.statLabel {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+}
+
+.statValue {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-mono);
+  color: var(--color-text-primary);
+}
+
+.topIssues {
+  margin-bottom: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border-tertiary);
+}
+
+.issuesTitle {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-sm);
+}
+
+.issuesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.issueItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-xs);
+  font-size: var(--font-size-sm);
+}
+
+.issueItem::before {
+  content: "•";
+  margin-right: var(--space-sm);
+  color: var(--color-text-tertiary);
+}
+
+.issueCount {
+  color: var(--color-text-tertiary);
+  font-family: var(--font-family-mono);
+}
+
+.viewAll {
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border-tertiary);
+}
+
+.viewAllLink {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-link);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+}
+
+.viewAllLink:hover {
+  color: var(--color-text-link-hover);
+  text-decoration: underline;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+}
