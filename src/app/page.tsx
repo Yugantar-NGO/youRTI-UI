@@ -5,7 +5,7 @@ import { DataTable } from '@/components/data/DataTable'
 import { Badge } from '@/components/ui/Badge'
 import { TrendArrow } from '@/components/data/TrendIndicator'
 import { FileText, CheckCircle2, XCircle, Clock, TrendingUp, MapPin, Building2 } from '@/lib/icons'
-import styles from './page-new.module.css'
+import styles from './page.module.css'
 
 export default function Home() {
   // Quick Stats Data
