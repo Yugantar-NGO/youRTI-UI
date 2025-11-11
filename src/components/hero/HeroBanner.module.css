@@ -1,0 +1,20 @@
+.heroBanner {
+  background-color: var(--color-white);
+}
+
+.divider {
+  height: var(--border-thin);
+  background-color: var(--color-black);
+  margin: 0;
+}
+
+.statsSection {
+  padding: var(--space-10) 0;
+  background-color: var(--color-newsprint);
+}
+
+@media (max-width: 768px) {
+  .statsSection {
+    padding: var(--space-8) 0;
+  }
+}
