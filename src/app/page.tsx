@@ -1,228 +1,232 @@
-import { DashboardLayout } from '@/components/layout/DashboardLayout'
+/**
+ * RTI Transparency Dashboard - Main Page
+ *
+ * Newspaper-style layout with comprehensive RTI information
+ */
+
+import { Masthead } from '@/components/features/dashboard/Masthead/Masthead'
+import { DashboardHero } from '@/components/features/dashboard/DashboardHero/DashboardHero'
+import { NewspaperLayout } from '@/components/layout/NewspaperLayout'
+import { YourAreaTodayCard } from '@/components/features/dashboard/YourAreaToday/YourAreaTodayCard'
+import { LatestActivityTimeline } from '@/components/features/dashboard/LatestActivity/LatestActivityTimeline'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card'
-import { StatCard } from '@/components/data/StatCard'
-import { DataTable } from '@/components/data/DataTable'
-import { Badge } from '@/components/ui/Badge'
-import { TrendArrow } from '@/components/data/TrendIndicator'
-import { FileText, CheckCircle2, XCircle, Clock, TrendingUp, MapPin, Building2 } from '@/lib/icons'
-import styles from './page.module.css'
 
 export default function Home() {
-  // Quick Stats Data
-  const quickStats = [
-    { label: 'Total Filed', value: 24567, change: 12, changeType: 'increase' as const },
-    { label: 'Disclosed', value: 18943, change: 8, changeType: 'increase' as const },
-    { label: 'Rejected', value: 2314, change: 3, changeType: 'decrease' as const },
-    { label: 'Pending', value: 3310, change: 5, changeType: 'neutral' as const },
-  ]
-
-  // Recent Filed RTIs
-  const recentFiled = [
-    {
-      title: 'Hospital Licensing Records',
-      department: 'Health Dept, Mumbai',
-      date: 'Nov 11, 2025',
-      status: <Badge variant="pending" showIcon>PENDING</Badge>
-    },
-    {
-      title: 'Road Construction Contracts',
-      department: 'PWD, Delhi',
-      date: 'Nov 10, 2025',
-      status: <Badge variant="pending" showIcon>PENDING</Badge>
-    },
-    {
-      title: 'School Infrastructure Funds',
-      department: 'Education, Karnataka',
-      date: 'Nov 10, 2025',
-      status: <Badge variant="pending" showIcon>PENDING</Badge>
-    },
-  ]
-
-  // Recent Responses
-  const recentResponses = [
-    {
-      title: 'Police Complaint Records',
-      department: 'Home Affairs, UP',
-      date: 'Nov 9, 2025',
-      status: <Badge variant="rejected" showIcon>REJECTED</Badge>
-    },
-    {
-      title: 'Municipal Tax Collection',
-      department: 'BMC, Mumbai',
-      date: 'Nov 9, 2025',
-      status: <Badge variant="disclosed" showIcon>DISCLOSED</Badge>
-    },
-    {
-      title: 'Public Transport Budget',
-      department: 'Transport, Delhi',
-      date: 'Nov 8, 2025',
-      status: <Badge variant="disclosed" showIcon>DISCLOSED</Badge>
-    },
-  ]
-
-  // Regional Performance
-  const regionalData = [
-    { state: 'Maharashtra', filed: '3,245', rate: '89%', trend: <TrendArrow changeType="increase" change={12} /> },
-    { state: 'Delhi', filed: '2,987', rate: '85%', trend: <TrendArrow changeType="increase" change={8} /> },
-    { state: 'Karnataka', filed: '2,456', rate: '81%', trend: <TrendArrow changeType="neutral" change={2} /> },
-    { state: 'Tamil Nadu', filed: '2,134', rate: '83%', trend: <TrendArrow changeType="increase" change={5} /> },
-  ]
-
-  // Trending Topics
-  const trendingTopics = [
-    { topic: 'Healthcare', count: 2456, change: '+23%' },
-    { topic: 'Infrastructure', count: 1892, change: '+15%' },
-    { topic: 'Education', count: 1543, change: '+8%' },
-    { topic: 'Environment', count: 1234, change: '+12%' },
-  ]
-
   return (
-    <DashboardLayout>
-      {/* Quick Stats Grid */}
-      <div className={styles.statsGrid}>
-        <StatCard icon={FileText} stat={quickStats[0]} />
-        <StatCard icon={CheckCircle2} stat={quickStats[1]} />
-        <StatCard icon={XCircle} stat={quickStats[2]} />
-        <StatCard icon={Clock} stat={quickStats[3]} />
-      </div>
+    <div>
+      {/* Masthead with edition selectors and search */}
+      <Masthead />
 
-      {/* Main Dashboard Grid */}
-      <div className={styles.dashboardGrid}>
-        {/* Featured/Impactful RTI - Large Card */}
-        <div className={styles.featured}>
-          <Card variant="elevated" padding="lg">
-            <CardHeader>
-              <CardTitle>🔥 Most Impactful RTI This Week</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className={styles.impactfulRTI}>
-                <h3 className="headline-medium">47 Unlicensed Hospitals Discovered in Delhi NCR</h3>
-                <p className="body-text mt-4">
-                  A comprehensive RTI investigation revealed that 47 hospitals across Delhi NCR have been
-                  operating without proper licensing, treating over 2,300 patients between June-September 2025.
-                </p>
-                <div className={styles.impactMeta}>
-                  <Badge variant="disclosed" showIcon>DISCLOSED</Badge>
-                  <span className="metadata">Health Department • Nov 5, 2025</span>
-                  <span className="metadata">1,247 reactions • 89 shares</span>
+      {/* Main container */}
+      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 1rem' }}>
+        {/* Hero Section */}
+        <DashboardHero />
+
+        {/* Three-Column Newspaper Layout */}
+        <NewspaperLayout>
+          {/* LEFT COLUMN - Your Area & Services */}
+          <NewspaperLayout.Left>
+            <YourAreaTodayCard />
+
+            <Card variant="default" padding="md">
+              <CardHeader>
+                <CardTitle>🏥 Everyday Services Watch</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-md)' }}>
+                  <ServiceCard icon="🧾" label="Ration / PDS" count={234} />
+                  <ServiceCard icon="🧑‍⚕️" label="Health" count={156} />
+                  <ServiceCard icon="🎓" label="Education" count={189} />
+                  <ServiceCard icon="💡" label="Power Supply" count={97} />
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+              </CardContent>
+            </Card>
+          </NewspaperLayout.Left>
 
-        {/* Recent Activity Sidebar */}
-        <div className={styles.activitySidebar}>
-          {/* Recently Filed */}
-          <Card variant="bordered" padding="md">
-            <CardHeader>
-              <CardTitle>Recently Filed</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className={styles.activityList}>
-                {recentFiled.map((item, idx) => (
-                  <div key={idx} className={styles.activityItem}>
-                    <div className={styles.activityTitle}>{item.title}</div>
-                    <div className={styles.activityMeta}>{item.department}</div>
-                    <div className={styles.activityFooter}>
-                      <span className="metadata">{item.date}</span>
-                      {item.status}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+          {/* CENTER COLUMN - Live Activity & Performance */}
+          <NewspaperLayout.Center>
+            <LatestActivityTimeline />
 
-          {/* Recently Responded */}
-          <Card variant="bordered" padding="md">
-            <CardHeader>
-              <CardTitle>Recent Responses</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className={styles.activityList}>
-                {recentResponses.map((item, idx) => (
-                  <div key={idx} className={styles.activityItem}>
-                    <div className={styles.activityTitle}>{item.title}</div>
-                    <div className={styles.activityMeta}>{item.department}</div>
-                    <div className={styles.activityFooter}>
-                      <span className="metadata">{item.date}</span>
-                      {item.status}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+            <Card variant="default" padding="md">
+              <CardHeader>
+                <CardTitle>📝 What People Are Asking (Last 7 days)</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <QuestionItem
+                  title="Delay in pension payments for widows in XYZ block"
+                  dept="Social Welfare"
+                  date="Nov 10, 2025"
+                />
+                <QuestionItem
+                  title="Status of road repair work on Main Bazaar Road"
+                  dept="PWD"
+                  date="Nov 09, 2025"
+                />
+                <QuestionItem
+                  title="List of beneficiaries under ABC housing scheme in Ward 14"
+                  dept="Urban Development"
+                  date="Nov 08, 2025"
+                />
+              </CardContent>
+            </Card>
 
-        {/* Regional Performance */}
-        <div className={styles.regionalSection}>
-          <Card variant="default" padding="md">
-            <CardHeader>
-              <CardTitle>Regional Performance</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <DataTable
-                headers={['State', 'Filed', 'Rate', 'Trend']}
-                rows={regionalData}
-                striped
-              />
-            </CardContent>
-          </Card>
-        </div>
+            <Card variant="default" padding="md">
+              <CardHeader>
+                <CardTitle>✅ Fresh Answers (Last 7 days)</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <AnswerItem
+                  title="Medicine stock in PHCs, Ward 12"
+                  summary="Stockout confirmed, fresh supply ordered; stock details shared for each PHC."
+                  filed="Nov 02"
+                  answered="Nov 10"
+                />
+                <AnswerItem
+                  title="Mid-day meal menu & expenses for Govt School XYZ"
+                  summary="Expenditure details shared; menu update ordered on school notice board."
+                  filed="Oct 28"
+                  answered="Nov 09"
+                />
+              </CardContent>
+            </Card>
+          </NewspaperLayout.Center>
 
-        {/* Trending Topics */}
-        <div className={styles.trendingSection}>
-          <Card variant="default" padding="md">
-            <CardHeader>
-              <CardTitle>Trending Topics</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className={styles.trendingList}>
-                {trendingTopics.map((topic, idx) => (
-                  <div key={idx} className={styles.trendingItem}>
-                    <div className={styles.trendingTopic}>{topic.topic}</div>
-                    <div className={styles.trendingStats}>
-                      <span className={styles.trendingCount}>{topic.count.toLocaleString()}</span>
-                      <span className={styles.trendingChange}>{topic.change}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+          {/* RIGHT COLUMN - Insights, Rights, & Stories */}
+          <NewspaperLayout.Right>
+            <Card variant="default" padding="md">
+              <CardHeader>
+                <CardTitle>💡 Insights & Trends</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <InsightItem
+                  icon="📊"
+                  text="62% of RTIs in your state are about local services (roads, water, PDS)."
+                />
+                <InsightItem
+                  icon="📊"
+                  text="Median response time improved by 5 days compared to last year."
+                />
+                <InsightItem
+                  icon="📊"
+                  text="1 in 20 RTIs goes to appeal, showing where follow-up is needed."
+                />
+              </CardContent>
+            </Card>
 
-        {/* Quick Actions */}
-        <div className={styles.quickActions}>
-          <Card variant="bordered" padding="md">
-            <CardHeader>
-              <CardTitle>Quick Actions</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className={styles.actionButtons}>
-                <button className={styles.actionButton}>
-                  <FileText size={20} />
-                  <span>File New RTI</span>
-                </button>
-                <button className={styles.actionButton}>
-                  <TrendingUp size={20} />
-                  <span>View Analytics</span>
-                </button>
-                <button className={styles.actionButton}>
-                  <MapPin size={20} />
-                  <span>Regional Map</span>
-                </button>
-                <button className={styles.actionButton}>
-                  <Building2 size={20} />
-                  <span>Departments</span>
-                </button>
-              </div>
-            </CardContent>
-          </Card>
+            <Card variant="default" padding="md">
+              <CardHeader>
+                <CardTitle>📜 Know Your RTI Rights</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <RightItem text="Any citizen of India can file an RTI." />
+                <RightItem text="Public authorities must reply within 30 days in most cases." />
+                <RightItem text="If the matter affects life or liberty, information should be given within 48 hours." />
+                <RightItem text="If information is delayed/denied without good reason, you can file an appeal." />
+              </CardContent>
+            </Card>
+
+            <Card variant="default" padding="md">
+              <CardHeader>
+                <CardTitle>🧰 Citizen Toolkit</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ToolkitItem text="RTI sample formats for common issues (ration, pensions, land records, fees)" />
+                <ToolkitItem text="How to identify the right department" />
+                <ToolkitItem text="What to do if you get no reply" />
+              </CardContent>
+            </Card>
+          </NewspaperLayout.Right>
+        </NewspaperLayout>
+
+        {/* Full-Width Footer Note */}
+        <div style={{
+          marginTop: 'var(--space-2xl)',
+          padding: 'var(--space-xl)',
+          background: 'var(--color-bg-tertiary)',
+          borderRadius: 'var(--border-radius)',
+          textAlign: 'center'
+        }}>
+          <p style={{ margin: '0 0 var(--space-sm) 0', color: 'var(--color-text-secondary)' }}>
+            Community-sourced data from YouRTI & public records.
+          </p>
+          <p style={{ margin: 0, color: 'var(--color-text-tertiary)', fontSize: 'var(--font-size-sm)' }}>
+            Built to help citizens use the Right to Information Act to demand transparency and better services.
+          </p>
         </div>
       </div>
-    </DashboardLayout>
+    </div>
+  )
+}
+
+// Helper Components
+function ServiceCard({ icon, label, count }: { icon: string; label: string; count: number }) {
+  return (
+    <div style={{
+      padding: 'var(--space-md)',
+      border: '1px solid var(--color-border-secondary)',
+      borderRadius: 'var(--border-radius)',
+      textAlign: 'center'
+    }}>
+      <div style={{ fontSize: 'var(--font-size-2xl)', marginBottom: 'var(--space-xs)' }}>{icon}</div>
+      <div style={{ fontSize: 'var(--font-size-sm)', fontWeight: 500, marginBottom: 'var(--space-xs)' }}>{label}</div>
+      <div style={{ fontSize: 'var(--font-size-base)', fontFamily: 'var(--font-family-mono)', color: 'var(--color-text-tertiary)' }}>
+        {count} RTIs
+      </div>
+    </div>
+  )
+}
+
+function QuestionItem({ title, dept, date }: { title: string; dept: string; date: string }) {
+  return (
+    <div style={{ padding: 'var(--space-sm) 0', borderBottom: '1px solid var(--color-border-tertiary)' }}>
+      <div style={{ fontSize: 'var(--font-size-sm)', marginBottom: 'var(--space-xs)' }}>• "{title}"</div>
+      <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-tertiary)' }}>
+        Dept: {dept} | Filed: {date}
+      </div>
+    </div>
+  )
+}
+
+function AnswerItem({ title, summary, filed, answered }: { title: string; summary: string; filed: string; answered: string }) {
+  return (
+    <div style={{ padding: 'var(--space-sm) 0', borderBottom: '1px solid var(--color-border-tertiary)' }}>
+      <div style={{ fontSize: 'var(--font-size-sm)', fontWeight: 500, marginBottom: 'var(--space-xs)' }}>• "{title}"</div>
+      <div style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-secondary)', marginBottom: 'var(--space-xs)' }}>
+        Answer (summary): {summary}
+      </div>
+      <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-tertiary)' }}>
+        Filed: {filed} | Answered: {answered}
+      </div>
+    </div>
+  )
+}
+
+function InsightItem({ icon, text }: { icon: string; text: string }) {
+  return (
+    <div style={{
+      padding: 'var(--space-md)',
+      marginBottom: 'var(--space-sm)',
+      background: 'var(--color-bg-tertiary)',
+      borderRadius: 'var(--border-radius)'
+    }}>
+      <span style={{ marginRight: 'var(--space-sm)' }}>{icon}</span>
+      <span style={{ fontSize: 'var(--font-size-sm)' }}>{text}</span>
+    </div>
+  )
+}
+
+function RightItem({ text }: { text: string }) {
+  return (
+    <div style={{ padding: 'var(--space-xs) 0', fontSize: 'var(--font-size-sm)' }}>
+      • {text}
+    </div>
+  )
+}
+
+function ToolkitItem({ text }: { text: string }) {
+  return (
+    <div style={{ padding: 'var(--space-xs) 0', fontSize: 'var(--font-size-sm)' }}>
+      • {text}
+    </div>
   )
 }
