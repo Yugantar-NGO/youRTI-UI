@@ -1,0 +1,43 @@
+.badge {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-tiny);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: var(--border-thin) solid var(--color-black);
+  border-radius: var(--radius-none);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.disclosed {
+  background-color: var(--color-success-green);
+  border-color: var(--color-success-green);
+  color: var(--color-white);
+}
+
+.rejected {
+  background-color: var(--color-alert-red);
+  border-color: var(--color-alert-red);
+  color: var(--color-white);
+}
+
+.pending {
+  background-color: var(--color-warning-amber);
+  border-color: var(--color-warning-amber);
+  color: var(--color-white);
+}
+
+.partial {
+  background-color: var(--color-warning-amber);
+  border-color: var(--color-warning-amber);
+  color: var(--color-white);
+}
+
+.default {
+  background-color: var(--color-white);
+  border-color: var(--color-black);
+  color: var(--color-black);
+}
