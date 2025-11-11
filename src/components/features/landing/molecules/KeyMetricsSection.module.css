@@ -1,0 +1,36 @@
+/* KeyMetricsSection Component - Using Semantic Tokens */
+
+.keyMetricsSection {
+  margin-bottom: var(--spacing-8);
+}
+
+.title {
+  margin: 0 0 var(--spacing-6) 0;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-heading);
+  color: var(--color-text-primary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-6);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .keyMetricsSection {
+    margin-bottom: var(--spacing-6);
+  }
+
+  .title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-4);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+  }
+}

@@ -1,0 +1,11 @@
+/* InsightsTrends Component - Using Semantic Tokens */
+
+.insightsTrends {
+  height: 100%;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}

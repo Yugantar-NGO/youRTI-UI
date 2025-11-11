@@ -1,0 +1,28 @@
+/* ActivityFeed Component - Using Semantic Tokens */
+
+.activityFeed {
+  height: 100%;
+}
+
+.timeline {
+  /* Activity items have their own spacing */
+}
+
+.footer {
+  text-align: center;
+}
+
+.viewAllLink {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.viewAllLink:hover {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+}

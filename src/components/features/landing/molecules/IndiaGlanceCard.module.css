@@ -1,0 +1,54 @@
+/* IndiaGlanceCard Component - Using Semantic Tokens */
+
+.indiaGlanceCard {
+  margin-bottom: var(--spacing-6);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-6);
+}
+
+.statItem {
+  text-align: center;
+}
+
+.percentage {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-mono);
+  line-height: 1;
+  margin-bottom: var(--spacing-2);
+}
+
+.label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Color variants */
+.success {
+  color: var(--color-status-success);
+}
+
+.warning {
+  color: var(--color-status-warning);
+}
+
+.neutral {
+  color: var(--color-text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+  }
+
+  .percentage {
+    font-size: var(--font-size-2xl);
+  }
+}
