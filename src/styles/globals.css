@@ -10,6 +10,7 @@
 
   /* Font Families */
   --font-headline: var(--font-playfair);
+  --font-headline-redesign: var(--font-dm-serif);
   --font-body: var(--font-inter);
   --font-mono: var(--font-ibm-plex-mono);
 

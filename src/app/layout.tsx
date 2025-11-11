@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, Inter, IBM_Plex_Mono } from 'next/font/google'
+import { Playfair_Display, Inter, IBM_Plex_Mono, DM_Serif_Display } from 'next/font/google'
 import { EditionProvider } from '@/context/EditionContext'
 import '@/styles/design-tokens.css'
 import '@/styles/themes/newspaper.css'
@@ -13,6 +13,13 @@ const playfair = Playfair_Display({
   subsets: ['latin'],
   weight: ['400', '700'],
   variable: '--font-playfair',
+  display: 'swap',
+})
+
+const dmSerifDisplay = DM_Serif_Display({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-dm-serif',
   display: 'swap',
 })
 
@@ -51,7 +58,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-theme="newspaper"
-      className={`${playfair.variable} ${inter.variable} ${ibmPlexMono.variable}`}
+      className={`${playfair.variable} ${dmSerifDisplay.variable} ${inter.variable} ${ibmPlexMono.variable}`}
     >
       <body>
         <EditionProvider>
