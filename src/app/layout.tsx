@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
 import { Playfair_Display, Inter, IBM_Plex_Mono } from 'next/font/google'
+import '@/styles/design-tokens.css'
+import '@/styles/themes/newspaper.css'
+import '@/styles/themes/modern.css'
 import '@/styles/globals.css'
 import '@/styles/typography.css'
 import '@/styles/layout.css'
@@ -46,6 +49,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-theme="newspaper"
       className={`${playfair.variable} ${inter.variable} ${ibmPlexMono.variable}`}
     >
       <body>{children}</body>
