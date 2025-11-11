@@ -1,0 +1,40 @@
+/* FreshAnswers Component - Using Semantic Tokens */
+
+.freshAnswers {
+  margin-bottom: var(--spacing-8);
+}
+
+.icon {
+  font-size: var(--font-size-xl);
+  margin-right: var(--spacing-2);
+}
+
+.content {
+  padding: 0;
+}
+
+.list {
+  /* List container - items have their own padding */
+}
+
+.viewAllLink {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.viewAllLink:hover {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .freshAnswers {
+    margin-bottom: var(--spacing-6);
+  }
+}

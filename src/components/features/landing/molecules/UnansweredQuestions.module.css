@@ -1,0 +1,22 @@
+/* UnansweredQuestions Component - Using Semantic Tokens */
+
+.unansweredQuestions {
+  margin-bottom: var(--spacing-8);
+  border-left: var(--border-width-medium) solid var(--color-status-warning);
+}
+
+.icon {
+  font-size: var(--font-size-xl);
+  margin-right: var(--spacing-2);
+}
+
+.list {
+  /* List container - items have their own styling */
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .unansweredQuestions {
+    margin-bottom: var(--spacing-6);
+  }
+}

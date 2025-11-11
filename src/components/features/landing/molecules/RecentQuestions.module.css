@@ -1,0 +1,40 @@
+/* RecentQuestions Component - Using Semantic Tokens */
+
+.recentQuestions {
+  margin-bottom: var(--spacing-8);
+}
+
+.icon {
+  font-size: var(--font-size-xl);
+  margin-right: var(--spacing-2);
+}
+
+.content {
+  padding: 0;
+}
+
+.list {
+  /* List container - items have their own padding */
+}
+
+.browseLink {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.browseLink:hover {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .recentQuestions {
+    margin-bottom: var(--spacing-6);
+  }
+}
