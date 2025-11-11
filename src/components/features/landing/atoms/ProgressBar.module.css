@@ -1,0 +1,55 @@
+/* ProgressBar Component - Using Semantic Tokens */
+
+.progressBar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  width: 100%;
+}
+
+.label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  min-width: 120px;
+}
+
+.track {
+  flex: 1;
+  height: 8px;
+  background-color: var(--color-bg-muted);
+  border-radius: var(--border-radius-full);
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  border-radius: var(--border-radius-full);
+  transition: width var(--transition-base);
+}
+
+.percentage {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family-mono);
+  color: var(--color-text-secondary);
+  min-width: 48px;
+  text-align: right;
+}
+
+/* Color variants */
+.success {
+  background-color: var(--color-status-success);
+}
+
+.warning {
+  background-color: var(--color-status-warning);
+}
+
+.error {
+  background-color: var(--color-status-error);
+}
+
+.neutral {
+  background-color: var(--color-accent);
+}

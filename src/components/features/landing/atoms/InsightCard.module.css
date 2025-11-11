@@ -1,0 +1,46 @@
+/* InsightCard Component - Using Semantic Tokens */
+
+.insightCard {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  background-color: var(--color-status-info);
+  background-image: linear-gradient(
+    to bottom right,
+    var(--color-status-info),
+    color-mix(in srgb, var(--color-status-info) 90%, var(--color-black))
+  );
+  border-left: var(--border-width-medium) solid var(--color-status-info);
+  border-radius: var(--border-radius-sm);
+  transition: transform var(--transition-fast);
+}
+
+.insightCard:hover {
+  transform: translateX(2px);
+}
+
+.icon {
+  flex-shrink: 0;
+  color: var(--color-text-inverse);
+}
+
+.text {
+  margin: 0;
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Category variants */
+.trend {
+  border-left-color: var(--color-status-success);
+}
+
+.insight {
+  border-left-color: var(--color-status-info);
+}
+
+.fact {
+  border-left-color: var(--color-accent);
+}

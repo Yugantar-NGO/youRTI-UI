@@ -1,0 +1,56 @@
+/* TopicCard Component - Using Semantic Tokens */
+
+.topicCard {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  background-color: var(--color-bg-elevated);
+  border: var(--border-width-thin) solid var(--color-border-primary);
+  border-radius: var(--border-radius-md);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  color: inherit;
+}
+
+.interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-accent);
+}
+
+.iconWrapper {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-status-info);
+  background-image: linear-gradient(
+    to bottom right,
+    var(--color-status-info),
+    color-mix(in srgb, var(--color-status-info) 80%, var(--color-black))
+  );
+  border-radius: var(--border-radius-sm);
+  color: var(--color-text-inverse);
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.name {
+  margin: 0 0 var(--spacing-1) 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.count {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-mono);
+}
