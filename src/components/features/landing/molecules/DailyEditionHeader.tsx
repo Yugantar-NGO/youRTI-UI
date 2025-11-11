@@ -26,7 +26,7 @@ export function DailyEditionHeader({ editionDate, className = '' }: DailyEdition
       <div className={styles.content}>
         <h1 className={styles.title}>RTI Transparency Dashboard</h1>
         <p className={styles.tagline}>
-          "See what citizens asked, what government answered, and what changed."
+          &ldquo;See what citizens asked, what government answered, and what changed.&rdquo;
         </p>
         <div className={styles.edition}>
           <span className={styles.editionLabel}>Edition:</span>

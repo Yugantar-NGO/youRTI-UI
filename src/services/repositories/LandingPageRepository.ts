@@ -461,7 +461,7 @@ class LandingPageRepositoryImpl {
         fulfillmentRate: 76,
         avgResponseDays: 25,
         transferRate: 6,
-        trend: 'neutral',
+        trend: 'stable',
       },
       {
         id: 'dept-003',
@@ -501,7 +501,7 @@ class LandingPageRepositoryImpl {
         fulfillmentRate: 62,
         avgResponseDays: 35,
         transferRate: 14,
-        trend: 'neutral',
+        trend: 'stable',
       },
       {
         id: 'dept-007',
