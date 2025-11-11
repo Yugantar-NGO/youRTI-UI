@@ -380,14 +380,14 @@ export default function Home() {
       <section className="section">
         <Container size="narrow">
           <div className="card-breaking p-6">
-            <Kicker style={{ color: 'var(--color-alert-red)' }}>
+            <Kicker className="text-error">
               💥 BREAKING
             </Kicker>
             <Subheadline className="mt-3 mb-4">
               Supreme Court Ruling on RTI Amendment
             </Subheadline>
             <Body>
-              The Supreme Court has upheld citizens' rights to seek information under RTI Act,
+              The Supreme Court has upheld citizens&apos; rights to seek information under RTI Act,
               striking down certain restrictive amendments proposed in 2023.
             </Body>
             <Metadata className="mt-4">
