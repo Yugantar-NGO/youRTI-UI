@@ -8,8 +8,15 @@ export interface BaseProps {
   children?: React.ReactNode
 }
 
-// RTI Request Status
-export type RTIStatus = 'disclosed' | 'rejected' | 'pending' | 'partial'
+// RTI Request Status (extended for landing page)
+export type RTIStatus =
+  | 'disclosed'
+  | 'rejected'
+  | 'pending'
+  | 'partial'
+  | 'filed'
+  | 'appealed'
+  | 'answered'
 
 // RTI Request interface
 export interface RTIRequest {
@@ -73,8 +80,19 @@ export type TypographyVariant =
   | 'byline'
   | 'metadata'
 
-// Badge variants
-export type BadgeVariant = 'disclosed' | 'rejected' | 'pending' | 'partial' | 'default'
+// Badge variants (extended for landing page)
+export type BadgeVariant =
+  | 'disclosed'
+  | 'rejected'
+  | 'pending'
+  | 'partial'
+  | 'default'
+  | 'filed'
+  | 'answered'
+  | 'appealed'
 
 // Size variants
 export type Size = 'small' | 'medium' | 'large'
+
+// Export all dashboard-specific types
+export * from './dashboard'

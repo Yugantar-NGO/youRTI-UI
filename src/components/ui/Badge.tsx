@@ -1,6 +1,6 @@
 import { BaseProps, BadgeVariant } from '@/types'
 import { Icon } from './Icon'
-import { CheckCircle2, XCircle, Clock, AlertCircle } from '@/lib/icons'
+import { CheckCircle2, XCircle, Clock, AlertCircle, FileText, MessageSquare, AlertTriangle } from '@/lib/icons'
 import styles from './Badge.module.css'
 
 interface BadgeProps extends BaseProps {
@@ -29,11 +29,14 @@ export function Badge({
   const content = text || children
 
   // Icon mapping for each variant
-  const iconMap = {
+  const iconMap: Record<BadgeVariant, typeof CheckCircle2 | null> = {
     disclosed: CheckCircle2,
     rejected: XCircle,
     pending: Clock,
     partial: AlertCircle,
+    filed: FileText,
+    answered: MessageSquare,
+    appealed: AlertTriangle,
     default: null,
   }
 
@@ -60,6 +63,9 @@ export function StatusBadge({
     rejected: 'REJECTED',
     pending: 'PENDING',
     partial: 'PARTIAL',
+    filed: 'FILED',
+    answered: 'ANSWERED',
+    appealed: 'IN APPEAL',
     default: 'STATUS',
   }
 

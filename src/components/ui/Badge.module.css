@@ -40,6 +40,24 @@
   color: var(--color-text-inverse);
 }
 
+.filed {
+  background-color: var(--color-status-info);
+  border-color: var(--color-status-info);
+  color: var(--color-text-inverse);
+}
+
+.answered {
+  background-color: var(--color-status-success);
+  border-color: var(--color-status-success);
+  color: var(--color-text-inverse);
+}
+
+.appealed {
+  background-color: var(--color-status-warning);
+  border-color: var(--color-status-warning);
+  color: var(--color-text-inverse);
+}
+
 .default {
   background-color: var(--color-bg-elevated);
   border-color: var(--color-border-primary);
