@@ -1,76 +1,93 @@
+/* StatCard Component - Using Semantic Tokens */
 .statCard {
-  background-color: var(--color-white);
-  border: var(--border-thin) solid var(--color-black);
-  padding: var(--space-5);
+  background-color: var(--color-bg-elevated);
+  border: var(--card-border-width) solid var(--color-border-secondary);
+  border-radius: var(--card-border-radius);
+  padding: var(--spacing-lg);
   box-shadow: var(--shadow-card);
   text-align: center;
-  transition: all var(--transition-normal);
+  transition: all var(--transition-base);
 }
 
 .statCard:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-card-hover);
+  border-color: var(--color-border-primary);
+}
+
+.iconWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--border-radius-md);
+  background-color: var(--color-bg-tertiary);
+  margin-bottom: var(--spacing-md);
 }
 
 .value {
-  font-family: var(--font-mono);
-  font-size: var(--font-size-h1);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-tight);
   color: var(--color-text-primary);
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--spacing-sm);
   letter-spacing: -0.02em;
 }
 
 .unit {
-  font-size: var(--font-size-body);
-  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
   color: var(--color-text-tertiary);
-  margin-left: var(--space-1);
+  margin-left: var(--spacing-xs);
 }
 
 .label {
-  font-family: var(--font-body);
-  font-size: var(--font-size-small);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   color: var(--color-text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--spacing-sm);
 }
 
 .change {
-  font-family: var(--font-mono);
-  font-size: var(--font-size-small);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
 }
 
 .change.increase {
-  color: var(--color-success-green);
+  color: var(--color-status-success);
 }
 
 .change.decrease {
-  color: var(--color-alert-red);
+  color: var(--color-status-error);
 }
 
 .change.neutral {
-  color: var(--color-medium-gray);
+  color: var(--color-status-neutral);
 }
 
 .statGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-6);
+  gap: var(--grid-gap-md);
 }
 
 @media (max-width: 768px) {
   .statGrid {
     grid-template-columns: 1fr;
-    gap: var(--space-4);
+    gap: var(--grid-gap-sm);
   }
 
   .value {
-    font-size: var(--font-size-h2);
+    font-size: var(--font-size-2xl);
   }
 }
