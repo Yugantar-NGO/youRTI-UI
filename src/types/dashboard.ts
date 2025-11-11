@@ -86,13 +86,14 @@ export interface HighImpactRTI extends RTIRequest {
 // Activity item for timeline
 export interface ActivityItem {
   id: string
-  rtiId: string
+  rtiId?: string
   title: string
   department: string
-  status: RTIStatus
+  status?: RTIStatus
   date: string
-  ageInDays: number
-  type: 'filed' | 'responded' | 'pending' | 'denied'
+  ageInDays?: number
+  type: 'filed' | 'responded' | 'pending' | 'denied' | 'answered' | 'appealed'
+  link?: string
 }
 
 // Recently filed RTI (simplified view)
