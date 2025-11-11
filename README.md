@@ -117,6 +117,50 @@ The RTI Transparency Dashboard is built for **Yugantar NGO** to make RTI data ac
   - Combined masthead and statistics
   - Above-the-fold hero section
 
+#### Phase 6: Story-First Landing Page ✅ (NEW!)
+A comprehensive landing page built using **Atomic Design Methodology** that puts RTI impact stories front and center.
+
+**Architecture**:
+- **Repository Pattern**: LandingPageRepository with comprehensive mock data
+- **Type-Safe**: 22 new TypeScript interfaces in `src/types/dashboard.ts`
+- **Component Hierarchy**: 30 components following Atoms → Molecules → Organisms → Page
+
+**Atoms** (10 components):
+- InsightCard - Key insights with icons
+- TopicCard - Browse by topic cards
+- NavigationCard - Hero navigation items
+- ProgressBar - Visual metric progress
+- QuestionListItem - Recent RTI questions
+- AnswerListItem - Fresh RTI answers
+- UnansweredListItem - Pending RTI items
+- ActivityItemComponent - Activity timeline
+- StoryCard - RTI impact stories (lead/secondary)
+- MetricCard - Key metrics with trends
+
+**Molecules** (13 components):
+- DailyEditionHeader - Edition date and title
+- ImpactStory - Lead story wrapper
+- SecondaryStories - Story grid
+- FreshAnswers - Recent answers list
+- UnansweredQuestions - Pending RTIs list
+- RecentQuestions - What people ask
+- NavigationBar - Navigation card grid
+- IndiaGlanceCard - Performance breakdown
+- KeyMetricsSection - 3-column metrics
+- InsightsTrends - Insights list
+- BrowseByTopic - Topic grid
+- ActivityFeed - Timeline view
+- TransparencySpotlight - Featured story
+
+**Organisms** (4 components):
+- DailyEditionSection - Complete daily edition with stories, answers, and questions
+- HeroSection - Hero banner with navigation, stats, and India at a Glance
+- MainContentSection - Main metrics, insights, topics, activity, and spotlight
+- FooterSection - Footer with links and attribution
+
+**Page Component**:
+- RTIDashboardPage - Server component that fetches data and composes all sections
+
 ### Design Principles
 
 1. **High Contrast**: Pure black (#000000) and white (#FFFFFF) base
@@ -177,28 +221,45 @@ youRTI-UI/
 ├── src/
 │   ├── app/                    # Next.js App Router
 │   │   ├── layout.tsx          # Root layout with fonts
-│   │   └── page.tsx            # Homepage
+│   │   └── page.tsx            # Homepage (RTIDashboardPage)
 │   ├── components/
 │   │   ├── ui/                 # UI primitives
 │   │   │   ├── Typography.tsx
 │   │   │   ├── Badge.tsx
-│   │   │   └── Badge.module.css
+│   │   │   ├── Card.tsx
+│   │   │   └── Icon.tsx
 │   │   ├── layout/             # Layout components
 │   │   │   ├── Container.tsx
-│   │   │   └── Grid.tsx
+│   │   │   ├── Grid.tsx
+│   │   │   ├── DashboardLayout.tsx
+│   │   │   ├── Sidebar.tsx
+│   │   │   └── CompactMasthead.tsx
 │   │   ├── data/               # Data display
 │   │   │   ├── StatCard.tsx
 │   │   │   ├── DataTable.tsx
 │   │   │   └── TrendIndicator.tsx
-│   │   └── hero/               # Hero section
-│   │       ├── Masthead.tsx
-│   │       └── HeroBanner.tsx
+│   │   ├── hero/               # Hero section
+│   │   │   ├── Masthead.tsx
+│   │   │   └── HeroBanner.tsx
+│   │   └── features/
+│   │       └── landing/        # Landing page feature
+│   │           ├── RTIDashboardPage.tsx          # Main page component
+│   │           ├── atoms/                        # 10 atom components
+│   │           ├── molecules/                    # 13 molecule components
+│   │           └── organisms/                    # 4 organism components
+│   ├── services/
+│   │   └── repositories/
+│   │       └── LandingPageRepository.ts          # Data layer
 │   ├── styles/
 │   │   ├── globals.css         # Design tokens & global styles
 │   │   ├── typography.css      # Typography system
-│   │   └── layout.css          # Layout utilities
+│   │   ├── layout.css          # Layout utilities
+│   │   └── themes/             # Theme files
+│   │       ├── newspaper.css
+│   │       └── modern.css
 │   └── types/
-│       └── index.ts            # TypeScript definitions
+│       ├── index.ts            # Core TypeScript definitions
+│       └── dashboard.ts        # Landing page type definitions
 ├── public/                     # Static assets
 ├── .claude/                    # Claude Code configuration
 ├── LLD_DOCUMENT.md            # Low-Level Design Document
@@ -273,13 +334,15 @@ Examples:
 - [x] Layout system (grid, containers)
 - [x] Data display components
 - [x] Hero section components
-- [x] Example dashboard page
+- [x] Theme system (newspaper/modern themes)
+- [x] Story-first landing page with atomic design (30 components)
+- [x] Repository pattern for data layer
+- [x] Complete type definitions (dashboard.ts)
 
 ### Planned 📋
 - [ ] Chart components (Recharts integration)
-- [ ] Card components (RTICard, RevelationCard, StoryCard)
 - [ ] Interactive filtering and search
-- [ ] Data fetching and API integration
+- [ ] Real data fetching and API integration
 - [ ] Individual RTI detail pages
 - [ ] Department and regional breakdown pages
 - [ ] Appeals tracker
