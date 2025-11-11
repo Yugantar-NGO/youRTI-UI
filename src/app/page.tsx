@@ -18,7 +18,7 @@ export default function Home() {
       <Masthead />
 
       {/* Main container */}
-      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 1rem' }}>
+      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 2rem 3rem 2rem' }}>
         {/* Hero Section */}
         <DashboardHero />
 
@@ -62,31 +62,11 @@ export default function Home() {
                   dept="PWD"
                   date="Nov 09, 2025"
                 />
-                <QuestionItem
-                  title="List of beneficiaries under ABC housing scheme in Ward 14"
-                  dept="Urban Development"
-                  date="Nov 08, 2025"
-                />
-              </CardContent>
-            </Card>
-
-            <Card variant="default" padding="md">
-              <CardHeader>
-                <CardTitle>✅ Fresh Answers (Last 7 days)</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <AnswerItem
-                  title="Medicine stock in PHCs, Ward 12"
-                  summary="Stockout confirmed, fresh supply ordered; stock details shared for each PHC."
-                  filed="Nov 02"
-                  answered="Nov 10"
-                />
-                <AnswerItem
-                  title="Mid-day meal menu & expenses for Govt School XYZ"
-                  summary="Expenditure details shared; menu update ordered on school notice board."
-                  filed="Oct 28"
-                  answered="Nov 09"
-                />
+                <div style={{ paddingTop: 'var(--space-md)', borderTop: '1px solid var(--color-border-tertiary)' }}>
+                  <a href="#" style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-link)', textDecoration: 'none', fontWeight: 500 }}>
+                    Browse all newly filed RTIs →
+                  </a>
+                </div>
               </CardContent>
             </Card>
           </CenterColumn>
@@ -122,6 +102,36 @@ export default function Home() {
                 <RightItem text="Public authorities must reply within 30 days in most cases." />
                 <RightItem text="If the matter affects life or liberty, information should be given within 48 hours." />
                 <RightItem text="If information is delayed/denied without good reason, you can file an appeal." />
+              </CardContent>
+            </Card>
+
+            <Card variant="default" padding="md">
+              <CardHeader>
+                <CardTitle>🔍 High Impact RTIs</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div style={{ paddingBottom: 'var(--space-md)', borderBottom: '1px solid var(--color-border-tertiary)', marginBottom: 'var(--space-md)' }}>
+                  <div style={{ fontSize: 'var(--font-size-sm)', fontWeight: 500, marginBottom: 'var(--space-xs)' }}>
+                    1) &ldquo;Illegal sand mining in XYZ river&rdquo;
+                  </div>
+                  <div style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-secondary)', marginBottom: 'var(--space-xs)' }}>
+                    Outcome: Missing permits exposed; inspection ordered by district admin.
+                  </div>
+                  <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-tertiary)' }}>
+                    Status: Closed | Topic: Environment
+                  </div>
+                </div>
+                <div>
+                  <div style={{ fontSize: 'var(--font-size-sm)', fontWeight: 500, marginBottom: 'var(--space-xs)' }}>
+                    2) &ldquo;Waiting list for govt housing scheme&rdquo;
+                  </div>
+                  <div style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-secondary)', marginBottom: 'var(--space-xs)' }}>
+                    Outcome: Data showed 2-year backlog; triggered local media coverage.
+                  </div>
+                  <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-tertiary)' }}>
+                    Status: Answered | Topic: Housing
+                  </div>
+                </div>
               </CardContent>
             </Card>
 

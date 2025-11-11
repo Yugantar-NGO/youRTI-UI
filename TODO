@@ -1,0 +1,442 @@
+# RTI Transparency Dashboard – Final Wireframe (Newspaper Style)
+
+## 0. Page Structure Overview
+
+* **Layout:** Full-width background; central `max-w-7xl` container
+* **Background:** `gray-50`
+* **Grid (lg):** 12-col
+
+  * Left column: 4 cols (Local & services)
+  * Center column: 4 cols (Live activity & rankings)
+  * Right column: 4 cols (Insights, rights, stories)
+* **Mobile:** All sections stack, 1 column; order: Hero → Your Area → Recent Activity → Fresh Answers → What People Are Asking → Departments → Insights → High Impact → Rights → Toolkit → Spotlight → Browse by Topic → Footer.
+
+---
+
+## 1. Masthead & Edition Bar
+
+### 1.1 Masthead (Top Strip)
+
+**Style:** White background, bottom border (`border-b`), subtle shadow
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│ RTI TRANSPARENCY DASHBOARD                     [RTI Logo]    │
+│ “Tracking information, not rumours.”                         │
+│                                                              │
+│ Edition: [ National ▼ ]  [ State ▼ ]  [ District ▼ ]        │
+│                                                              │
+│ 🔍 [ Search RTIs, topics, departments...            (input) ]│
+└──────────────────────────────────────────────────────────────┘
+```
+
+* **Edition selectors** control the default context (India / State / District).
+* **Global search** is prominent for common users: can search RTI titles, topics, departments.
+
+### 1.2 Section Navigation Strip
+
+**Style:** Light `gray-100` background, horizontal pills/links, bottom border.
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│ 🏠 Overview  │ 🗺 By Region │ 🏢 Departments │ 📂 Topics      │
+│ 📚 How to File RTI │ 🔍 Advanced Search                      │
+└──────────────────────────────────────────────────────────────┘
+```
+
+* No politicians, no budget.
+* Works like “sections” in a newspaper (Overview, By Region, etc.).
+
+---
+
+## 2. Hero: Front-Page Headline + Key Numbers
+
+**Style:** Gradient background (blue-600 → blue-700 → indigo-800), white text, rounded-xl.
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│ RTI Transparency Dashboard                                   │
+│ India’s Right to Information – at a glance                  │
+│ “See what citizens are asking, how government responds,     │
+│  and what it means for you.”                               │
+│                                                              │
+│ ┌──────────────────────────────────────────────────────────┐ │
+│ │ RTIs Filed (this year)  │ Responses Within 30 Days │Pending│
+│ │      2,847              │      1,960 (≈69%)        │  691  │
+│ │                         │ Avg. response: 24 days   │Oldest │
+│ │                         │                          │pending│
+│ │                         │                          │210 days│
+│ └──────────────────────────────────────────────────────────┘ │
+│                                                              │
+│ ┌────────┬─────────┬────────────┬──────────────┬───────────┐ │
+│ │ 🏠     │ 🗺      │ 🏢         │ 📂           │ 📚        │ │
+│ │ Your  │ Your    │ Departments│ Topics       │ How to   │ │
+│ │ Area  │ State   │ Overview   │ (Issues)     │ File RTI │ │
+│ └────────┴─────────┴────────────┴──────────────┴───────────┘ │
+└──────────────────────────────────────────────────────────────┘
+```
+
+* Short, bold headline + one-line explainer.
+* **Key badges**: filed / responded within 30 days / pending + oldest pending RTI (to show backlog).
+* Quick-access buttons are citizen-oriented, not institution-oriented.
+
+---
+
+## 3. Main Content – Newspaper 3-column Layout
+
+**Desktop grid:** `grid-cols-12 gap-6 mt-8`
+
+* Col-span: Left (1–4), Center (5–8), Right (9–12).
+
+---
+
+## 3.1 LEFT COLUMN – “Your Area & Everyday Services”
+
+### 3.1.1 Card: “Your Area Today”
+
+```
+┌──────────────────────────────────────────────┐
+│ 📍 Your Area Today                          │
+│ [ State ▼ ]  [ District ▼ ]                 │
+│                                              │
+│ RTIs filed this month:          128         │
+│ Responses received:             94          │
+│ Pending beyond 30 days:         21          │
+│ Avg. response time:             19 days     │
+│                                              │
+│ Top issues people are asking about:         │
+│ • PDS / Ration cards (34 RTIs)              │
+│ • Local roads & drainage (22 RTIs)          │
+│ • Scholarships & pensions (18 RTIs)         │
+│                                              │
+│   View all RTIs from your district →        │
+└──────────────────────────────────────────────┘
+```
+
+* Replaces budget panel; hyper-local, very relatable.
+* Uses the statutory 30-day timeline as a key benchmark.
+
+### 3.1.2 Card: “Everyday Services Watch”
+
+```
+┌──────────────────────────────────────────────┐
+│ 🏥 Everyday Services Watch                  │
+│                                              │
+│ ┌────────────┬────────────┐                  │
+│ │ 🧾 Ration  │ 🧑‍⚕️ Health │                  │
+│ │  234 RTIs  │  156 RTIs  │                  │
+│ ├────────────┼────────────┤                  │
+│ │ 🎓 Educa-  │ 💡 Power   │                  │
+│ │  tion      │  Supply    │                  │
+│ │  189 RTIs  │  97 RTIs   │                  │
+│ └────────────┴────────────┘                  │
+│                                              │
+│   Browse RTIs on essential services →        │
+└──────────────────────────────────────────────┘
+```
+
+* A quick thematic lens: what everyday services are people struggling with?
+
+---
+
+## 3.2 CENTER COLUMN – “Live Activity & Performance”
+
+### 3.2.1 Card: “Latest RTI Activity” (Timeline)
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ 📡 Latest RTI Activity                                 │
+│ “What changed in the last 7 days”                      │
+│                                                         │
+│ ┌─────────────────────────────────────────────────────┐ │
+│ │ ✅ [Health Dept] Responded – “Medicine stock in    │ │
+│ │    PHCs of Ward 12”                                │ │
+│ │    10 Nov 2025 | 8 days to respond                 │ │
+│ ├─────────────────────────────────────────────────────┤ │
+│ │ ⏳ [PWD] Pending – “Road repairs status on ABC     │ │
+│ │    Road, Sector 5”                                 │ │
+│ │    Filed: 20 Oct 2025 | 22 days old                │ │
+│ ├─────────────────────────────────────────────────────┤ │
+│ │ ❌ [Urban Local Body] Denied – “Building plan      │ │
+│ │    approvals list, Ward 14”                        │ │
+│ │    05 Nov 2025 | Appeal suggested                  │ │
+│ └─────────────────────────────────────────────────────┘ │
+│                                                         │
+│   View all RTIs →    Filter: [ All | Your district ▼ ] │
+└─────────────────────────────────────────────────────────┘
+```
+
+* Short, newsy titles + status icons.
+* Shows **age**, not just status.
+
+### 3.2.2 Card: “What People Are Asking” (Recently Filed)
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ 📝 What People Are Asking (Last 7 days)                │
+│                                                         │
+│ • “Delay in pension payments for widows in XYZ block”  │
+│   Dept: Social Welfare | Filed: 10 Nov 2025            │
+│                                                         │
+│ • “Status of road repair work on Main Bazaar Road”     │
+│   Dept: PWD | Filed: 09 Nov 2025                       │
+│                                                         │
+│ • “List of beneficiaries under ABC housing scheme      │
+│   in Ward 14”                                          │
+│   Dept: Urban Development | Filed: 08 Nov 2025         │
+│                                                         │
+│   Browse all newly filed RTIs →                        │
+└─────────────────────────────────────────────────────────┘
+```
+
+* Purely *questions* – helps users learn what a good RTI looks like.
+
+### 3.2.3 Card: “Fresh Answers” (Recently Responded – Q + Outcome)
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ ✅ Fresh Answers (Last 7 days)                         │
+│                                                         │
+│ • “Medicine stock in PHCs, Ward 12”                    │
+│   Answer (summary): Stockout confirmed, fresh supply   │
+│   ordered; stock details shared for each PHC.          │
+│   Filed: 02 Nov  | Answered: 10 Nov                    │
+│                                                         │
+│ • “Mid-day meal menu & expenses for Govt School XYZ”   │
+│   Answer (summary): Expenditure details shared; menu   │
+│   update ordered on school notice board.               │
+│   Filed: 28 Oct | Answered: 09 Nov                     │
+│                                                         │
+│   View more answered RTIs →                            │
+└─────────────────────────────────────────────────────────┘
+```
+
+* 1–2 line anonymised answer summaries; truncation + “Read more →” in UI.
+
+### 3.2.4 Card: “Who Replies Fastest? – Department Scoreboard”
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ 🏆 Who Replies Fastest? – Department Scoreboard        │
+│                                                         │
+│ ┌──────┬────────────┬────────┬────────┬────────┬─────┐ │
+│ │ Rank │ Department │ Fulfil │ Avg    │ Transfers│RTIs│ │
+│ │      │            │ -ment  │Response│ (↓better)│   │ │
+│ ├──────┼────────────┼────────┼────────┼────────┼─────┤ │
+│ │ 🥇 1 │ Health     │  85%   │ 12 days│  5%    │1234 │ │
+│ │ 🥈 2 │ Education  │  82%   │ 15 days│  8%    │ 987 │ │
+│ │ 🥉 3 │ PWD        │  78%   │ 18 days│ 12%    │ 756 │ │
+│ │   4  │ Urban Dev. │  75%   │ 20 days│ 15%    │ 654 │ │
+│ │   5  │ Revenue    │  72%   │ 22 days│ 18%    │ 543 │ │
+│ └──────┴────────────┴────────┴────────┴────────┴─────┘ │
+│                                                         │
+│ Legend: Green = very responsive, Yellow = average,     │
+│ Red = slow / many transfers.                           │
+└─────────────────────────────────────────────────────────┘
+```
+
+* Pure performance metrics, but framed in plain language.
+
+---
+
+## 3.3 RIGHT COLUMN – “Insights, Rights, & Stories”
+
+### 3.3.1 Card: “Insights & Trends”
+
+```
+┌──────────────────────────────────────────────┐
+│ 💡 Insights & Trends                        │
+│ “Patterns across your edition”             │
+│                                              │
+│ ┌──────────────────────────────────────────┐ │
+│ │ 📊 62% of RTIs in your state are about   │ │
+│ │    local services (roads, water, PDS).   │ │
+│ └──────────────────────────────────────────┘ │
+│ ┌──────────────────────────────────────────┐ │
+│ │ 📊 Median response time improved by 5    │ │
+│ │    days compared to last year.          │ │
+│ └──────────────────────────────────────────┘ │
+│ ┌──────────────────────────────────────────┐ │
+│ │ 📊 1 in 20 RTIs goes to appeal, showing  │ │
+│ │    where follow-up is needed.           │ │
+│ └──────────────────────────────────────────┘ │
+└──────────────────────────────────────────────┘
+```
+
+* Small data “articles” rather than just numbers.
+
+### 3.3.2 Card: “High Impact RTIs”
+
+```
+┌──────────────────────────────────────────────┐
+│ 🔍 High Impact RTIs                         │
+│                                              │
+│ 1) “Illegal sand mining in XYZ river”       │
+│    Outcome: Missing permits exposed;       │
+│    inspection ordered by district admin.   │
+│    Status: Closed | Topic: Environment     │
+│                                              │
+│ 2) “Waiting list for govt housing scheme”   │
+│    Outcome: Data showed 2-year backlog;    │
+│    triggered local media coverage.         │
+│    Status: Answered | Topic: Housing       │
+│                                              │
+│   See all impact stories →                 │
+└──────────────────────────────────────────────┘
+```
+
+* Safer than labelling “controversial”; focuses on outcome & impact.
+
+### 3.3.3 Card: “Know Your RTI Rights”
+
+```
+┌──────────────────────────────────────────────┐
+│ 📜 Know Your RTI Rights                     │
+│                                              │
+│ • Any citizen of India can file an RTI.      │
+│ • You can ask any public authority for       │
+│   information – in most cases they must      │
+│   reply within 30 days.                      │
+│ • If the matter affects life or liberty,     │
+│   information should be given within 48 hrs. │
+│ • If information is delayed/denied without   │
+│   good reason, you can file an appeal.       │
+│                                              │
+│   Learn step-by-step: How to file an RTI →   │
+└──────────────────────────────────────────────┘
+```
+
+* Simple, law-backed bullets in common language.
+
+### 3.3.4 Card: “Citizen Toolkit”
+
+```
+┌──────────────────────────────────────────────┐
+│ 🧰 Citizen Toolkit                           │
+│                                              │
+│ • RTI sample formats for common issues       │
+│   (ration, pensions, land records, fees)     │
+│ • How to identify the right department       │
+│ • What to do if you get no reply             │
+│                                              │
+│   Open toolkit →                             │
+└──────────────────────────────────────────────┘
+```
+
+* Highly actionable – nudges users from “reading” to “doing”.
+
+---
+
+## 4. Full-width Sections (Below Columns)
+
+### 4.1 Transparency Spotlight – Feature Story
+
+**Style:** Amber / orange gradient background, white/near-white text; rounded-xl.
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ ✨ Transparency Spotlight                               │
+│                                                         │
+│ RTI on Village School Repairs Exposes Misuse of Funds   │
+│                                                         │
+│ A short explainer on what was uncovered, what changed,  │
+│ and how it affected people in that village.             │
+│                                                         │
+│ ┌─────────────────────────────────────────────────────┐ │
+│ │ Impact:                                             │ │
+│ │ • School repaired; safer classrooms                 │ │
+│ │ • Local body now publishes repair details           │ │
+│ │   online every quarter.                             │ │
+│ └─────────────────────────────────────────────────────┘ │
+│                                                         │
+│ RTI: #12345    Date: 03 Aug 2025                      │
+│                                                         │
+│ ┌─────────────────────────────────────────────────────┐ │
+│ │   Read Full Story →                                │ │
+│ └─────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────┘
+```
+
+* Feels like the “lead feature” on a newspaper front page.
+
+### 4.2 Browse by Topic – Section Teasers
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ 🗂 Browse by Topic                                      │
+│ “Jump straight to what you care about”                 │
+│                                                         │
+│ ┌────────────┬────────────┬────────────┐                │
+│ │ 🧾 Ration  │ 💧 Water   │ 🚧 Roads   │                │
+│ │ 234 RTIs   │ 145 RTIs   │ 312 RTIs   │                │
+│ ├────────────┼────────────┼────────────┤                │
+│ │ 🎓 Educa-  │ 🧑‍⚕️ Health│ 🏠 Housing │                │
+│ │ tion       │ 267 RTIs   │ 198 RTIs   │                │
+│ └────────────┴────────────┴────────────┘                │
+│                                                         │
+│   View all topics →                                     │
+└─────────────────────────────────────────────────────────┘
+```
+
+* Acts like a section index (like “Politics / Sports / Business” strips on news sites).
+
+---
+
+## 5. Footer
+
+### 5.1 Footer Links
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ About  │ Data Sources │ How to File RTI │ FAQs │ Contact│
+└─────────────────────────────────────────────────────────┘
+```
+
+### 5.2 Footer Text
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Community-sourced data from YouRTI & public records.    │
+│ Built to help citizens use the Right to Information     │
+│ Act to demand transparency and better services.         │
+│                                                         │
+│ Learn more about the RTI Act →                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 6. Design System Summary (for your team)
+
+* **Colors**
+
+  * Primary: `blue-600`, `blue-700`, `indigo-800`
+  * Success: green (metrics, good performance)
+  * Warning: yellow (pending, borderline)
+  * Danger: red (poor performance, many transfers)
+  * Background: `gray-50` page, white cards, `gray-100` nav strips
+* **Typography**
+
+  * Masthead title: uppercase, 4xl, bold, tracking-wide
+  * Hero title: 3xl–4xl, bold
+  * Section titles: 2xl, bold
+  * Story titles: `lg`–`xl`, semibold
+  * Body: `text-base`, relaxed line-height
+* **Components**
+
+  * Cards: white, `rounded-xl`, shadow-sm, light border
+  * Tables: zebra rows, row hover, clear column labels
+  * Badges / Status pills: colour-coded (green/yellow/red)
+  * Progress: could be used later (e.g., % answered, appeals)
+* **Spacing**
+
+  * Page padding: `px-4 sm:px-6 lg:px-8`
+  * Vertical gaps: `py-8` between big sections
+  * Grid gaps: `gap-6` on desktop
+  * Card padding: `p-5` or `p-6`
+* **Responsiveness**
+
+  * Mobile: single column, important cards first in logical narrative:
+    Hero → Your Area → What People Are Asking → Fresh Answers → Latest Activity → Departments → Rights → Toolkit → others.
+  * Tablet: 2 columns; some full-width blocks (Spotlight, Browse by Topic).
+  * Desktop: full 3-column “newspaper” layout.
