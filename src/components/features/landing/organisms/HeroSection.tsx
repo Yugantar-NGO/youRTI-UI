@@ -1,54 +1,95 @@
-import { HeroSectionData } from '@/types'
-import { StatGrid, StatCard } from '@/components/data/StatCard'
-import { NavigationBar } from '../molecules/NavigationBar'
-import { IndiaGlanceCard } from '../molecules/IndiaGlanceCard'
+import { BigWinCard } from '../molecules/BigWinCard'
+import { UrgentUnansweredCard } from '../molecules/UrgentUnansweredCard'
 import styles from './HeroSection.module.css'
 
 interface HeroSectionProps {
-  data: HeroSectionData
   className?: string
 }
 
 /**
  * HeroSection Organism
  *
- * Composes the hero banner with title, navigation, stats, and India at a Glance.
- * Gradient background with white text.
+ * Task 2 Redesign: 3-column grid layout with Big Win of the Week,
+ * Most Urgent Unanswered RTI, and page context with India statistics.
+ * Dark gradient background with centered content.
  *
  * @example
- * <HeroSection data={heroData} />
+ * <HeroSection />
  */
-export function HeroSection({ data, className = '' }: HeroSectionProps) {
+export function HeroSection({ className = '' }: HeroSectionProps) {
   return (
     <section className={`${styles.heroSection} ${className}`}>
       <div className={styles.container}>
-        <div className={styles.header}>
-          <h1 className={styles.title}>{data.title}</h1>
-          <p className={styles.subtitle}>{data.subtitle}</p>
-          <p className={styles.tagline}>{data.tagline}</p>
+        {/* Page Context Header */}
+        <div className={styles.contextHeader}>
+          <h1 className={styles.pageTitle}>RTI Transparency Dashboard</h1>
+          <p className={styles.pageDescription}>
+            Real-time tracking of Right to Information requests across India
+          </p>
+          <div className={styles.statsStrip}>
+            <span className={styles.statItem}>
+              <strong>8,450</strong> Active RTIs
+            </span>
+            <span className={styles.statSeparator}>•</span>
+            <span className={styles.statItem}>
+              <strong>68%</strong> On-time responses
+            </span>
+            <span className={styles.statSeparator}>•</span>
+            <span className={styles.statItem}>
+              <strong>350+</strong> Departments
+            </span>
+          </div>
         </div>
 
-        <NavigationBar items={data.navigationItems} />
+        {/* 3-Column Grid: Big Win, Urgent Case, Context */}
+        <div className={styles.heroGrid}>
+          {/* Column 1: Big Win of the Week */}
+          <BigWinCard
+            title="School Meal Budget Data Released"
+            department="Education Dept"
+            location="Bihar"
+            impact={[
+              '₹450 Cr budget data revealed',
+              '45 districts affected',
+              'Led to policy review',
+            ]}
+            date="3 days ago"
+          />
 
-        <StatGrid
-          stats={[
-            {
-              label: 'RTIs Filed (last 12 months)',
-              value: data.stats.rtisFiled,
-            },
-            {
-              label: 'Responses Received (within time)',
-              value: data.stats.responsesReceived,
-            },
-            {
-              label: 'Pending (today)',
-              value: data.stats.pending,
-            },
-          ]}
-          className={styles.statsGrid}
-        />
+          {/* Column 2: Most Urgent Unanswered RTI */}
+          <UrgentUnansweredCard
+            title="COVID Fund Utilization Details"
+            department="Health Ministry"
+            location="Maharashtra"
+            daysOverdue={47}
+            filedDate="Aug 15"
+            deadline="Sep 15"
+          />
 
-        <IndiaGlanceCard stats={data.indiaGlance} />
+          {/* Column 3: India Health Stats Context */}
+          <div className={styles.contextCard}>
+            <h3 className={styles.contextTitle}>India at a Glance</h3>
+            <div className={styles.contextStats}>
+              <div className={styles.contextStat}>
+                <div className={styles.contextValue}>28</div>
+                <div className={styles.contextLabel}>States</div>
+              </div>
+              <div className={styles.contextStat}>
+                <div className={styles.contextValue}>8 UT</div>
+                <div className={styles.contextLabel}>Union Territories</div>
+              </div>
+              <div className={styles.contextStat}>
+                <div className={styles.contextValue}>1.4B</div>
+                <div className={styles.contextLabel}>Population</div>
+              </div>
+            </div>
+            <div className={styles.contextFooter}>
+              <p className={styles.contextNote}>
+                Tracking transparency across all administrative levels
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )
