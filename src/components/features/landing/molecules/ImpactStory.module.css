@@ -1,0 +1,40 @@
+/* ImpactStory Component - Using Semantic Tokens */
+
+.impactStory {
+  margin-bottom: var(--spacing-8);
+}
+
+.header {
+  margin-bottom: var(--spacing-4);
+}
+
+.badge {
+  display: inline-block;
+  padding: var(--spacing-2) var(--spacing-4);
+  background-color: var(--color-accent);
+  background-image: linear-gradient(
+    to right,
+    var(--color-accent),
+    color-mix(in srgb, var(--color-accent) 85%, var(--color-black))
+  );
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .impactStory {
+    margin-bottom: var(--spacing-6);
+  }
+
+  .badge {
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-1) var(--spacing-3);
+  }
+}
