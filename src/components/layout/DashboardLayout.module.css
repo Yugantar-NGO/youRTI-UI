@@ -1,0 +1,80 @@
+/* DashboardLayout - Using Semantic Tokens */
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--color-bg-secondary);
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin-left: var(--sidebar-width);
+  transition: margin-left var(--transition-base);
+}
+
+.content {
+  flex: 1;
+  padding: var(--spacing-xl);
+  overflow-x: hidden;
+}
+
+/* Grid Layout Utilities for Dashboard Content */
+.dashboardGrid {
+  display: grid;
+  gap: var(--grid-gap-md);
+  grid-template-columns: repeat(12, 1fr);
+}
+
+/* Common Grid Patterns */
+.mainContent {
+  grid-column: span 8;
+}
+
+.sidebar {
+  grid-column: span 4;
+}
+
+.fullWidth {
+  grid-column: span 12;
+}
+
+.halfWidth {
+  grid-column: span 6;
+}
+
+.oneThird {
+  grid-column: span 4;
+}
+
+.twoThirds {
+  grid-column: span 8;
+}
+
+/* Responsive Behavior */
+@media (max-width: 1024px) {
+  .mainContent,
+  .sidebar,
+  .halfWidth,
+  .oneThird,
+  .twoThirds {
+    grid-column: span 12;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    margin-left: 0;
+  }
+
+  .content {
+    padding: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: var(--spacing-sm);
+  }
+}
