@@ -1,0 +1,48 @@
+/* StackedBar Component Styles */
+
+.stackedBar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+.barGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.barLabel {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.barWrapper {
+  display: flex;
+  width: 100%;
+  height: 32px;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  background-color: #F3F4F6;
+}
+
+.segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--transition-fast);
+}
+
+.segment:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.segmentValue {
+  color: white;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family-mono);
+}

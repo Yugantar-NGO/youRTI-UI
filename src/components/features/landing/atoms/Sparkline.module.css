@@ -1,0 +1,30 @@
+/* Sparkline Component Styles */
+
+.container {
+  position: relative;
+  display: inline-block;
+}
+
+.sparkline {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.dataPoint {
+  cursor: pointer;
+  transition: fill var(--transition-fast);
+}
+
+.tooltip {
+  position: absolute;
+  background-color: var(--color-text-primary);
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: var(--z-tooltip);
+  font-family: var(--font-family-mono);
+}

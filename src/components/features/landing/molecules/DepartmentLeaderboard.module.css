@@ -1,8 +1,15 @@
-/* DepartmentLeaderboard Component - Using Semantic Tokens */
+/* DepartmentLeaderboard Component - Per TODO Spec Section 7 - Redesign Task 4 */
 
 .leaderboard {
-  margin-bottom: var(--spacing-8);
-  background-color: #fff;
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-card-redesign);
+  border: var(--border-width-thin) solid var(--border-color);
+  transition: all var(--transition-base);
+}
+
+.leaderboard:hover {
+  box-shadow: var(--shadow-card-redesign-hover);
 }
 
 .tableWrapper {
@@ -16,14 +23,13 @@
 }
 
 .table thead {
-  background-color: #f9fafb;
-  border-bottom: var(--border-width-medium) solid var(--color-border-primary);
+  background-color: #F9FAFB;
 }
 
 .table th {
-  padding: var(--spacing-3) var(--spacing-4);
+  padding: var(--spacing-md) var(--spacing-card);
   text-align: left;
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
   color: var(--color-text-secondary);
   font-size: var(--font-size-xs);
   text-transform: uppercase;
@@ -32,11 +38,36 @@
 
 .table tbody tr {
   border-bottom: var(--border-width-thin) solid var(--color-border-secondary);
-  transition: background-color var(--transition-fast);
+  transition: all var(--transition-fast);
+}
+
+/* Zebra striping */
+.table tbody tr:nth-child(even) {
+  background-color: #F9FAFB;
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: #FFFFFF;
+}
+
+/* Top 3 highlighting - Gold, Silver, Bronze */
+.table tbody tr:nth-child(1) {
+  background-color: #FEF3C7;  /* Light gold */
+}
+
+.table tbody tr:nth-child(2) {
+  background-color: #E5E7EB;  /* Light silver */
+}
+
+.table tbody tr:nth-child(3) {
+  background-color: #FED7AA;  /* Light bronze */
 }
 
 .table tbody tr:hover {
-  background-color: #f9fafb;
+  background-color: var(--color-hover-bg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transform: scale(1.01);
+  cursor: pointer;
 }
 
 .table tbody tr:last-child {
@@ -44,7 +75,7 @@
 }
 
 .table td {
-  padding: var(--spacing-4);
+  padding: var(--spacing-md) var(--spacing-card);
 }
 
 .rankCol {
