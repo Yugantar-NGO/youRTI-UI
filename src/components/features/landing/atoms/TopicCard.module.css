@@ -54,3 +54,64 @@
   color: var(--color-text-secondary);
   font-family: var(--font-family-mono);
 }
+
+/* Color Variants - Subtle pastel backgrounds */
+.colorFinance {
+  background-color: #d4f4dd;
+  border-color: #a8e6c1;
+}
+
+.colorFinance .iconWrapper {
+  background-color: #10b981;
+  background-image: linear-gradient(to bottom right, #10b981, #059669);
+}
+
+.colorInfrastructure {
+  background-color: #fff;
+  border-color: #d1d5db;
+}
+
+.colorInfrastructure .iconWrapper {
+  background-color: #6b7280;
+  background-image: linear-gradient(to bottom right, #6b7280, #4b5563);
+}
+
+.colorEducation {
+  background-color: #dbeafe;
+  border-color: #93c5fd;
+}
+
+.colorEducation .iconWrapper {
+  background-color: #3b82f6;
+  background-image: linear-gradient(to bottom right, #3b82f6, #2563eb);
+}
+
+.colorHealth {
+  background-color: #fecaca;
+  border-color: #fca5a5;
+}
+
+.colorHealth .iconWrapper {
+  background-color: #ef4444;
+  background-image: linear-gradient(to bottom right, #ef4444, #dc2626);
+}
+
+.colorEmployment {
+  background-color: #e9d5ff;
+  border-color: #d8b4fe;
+}
+
+.colorEmployment .iconWrapper {
+  background-color: #a855f7;
+  background-image: linear-gradient(to bottom right, #a855f7, #9333ea);
+}
+
+.colorEnvironment {
+  background-color: #d1fae5;
+  border-color: #a7f3d0;
+}
+
+.colorEnvironment .iconWrapper {
+  background-color: #10b981;
+  background-image: linear-gradient(to bottom right, #10b981, #059669);
+}

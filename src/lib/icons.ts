@@ -84,4 +84,17 @@ export {
   Bookmark,
   Flag,
   RefreshCw,
+
+  // Topic Icons
+  GraduationCap,
+  BookOpen,
+  Briefcase,
+  DollarSign,
+  Coins,
+  ShoppingCart,
+  TreePine,
+  Leaf,
+  Construction,
+  Utensils,
+  Stethoscope,
 } from 'lucide-react'

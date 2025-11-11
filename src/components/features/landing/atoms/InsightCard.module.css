@@ -5,29 +5,26 @@
   align-items: flex-start;
   gap: var(--spacing-3);
   padding: var(--spacing-4);
-  background-color: var(--color-status-info);
-  background-image: linear-gradient(
-    to bottom right,
-    var(--color-status-info),
-    color-mix(in srgb, var(--color-status-info) 90%, var(--color-black))
-  );
+  background-color: #f5f5f4;
+  border: var(--border-width-thin) solid #e7e5e4;
   border-left: var(--border-width-medium) solid var(--color-status-info);
   border-radius: var(--border-radius-sm);
-  transition: transform var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .insightCard:hover {
   transform: translateX(2px);
+  background-color: #fafaf9;
 }
 
 .icon {
   flex-shrink: 0;
-  color: var(--color-text-inverse);
+  color: var(--color-status-info);
 }
 
 .text {
   margin: 0;
-  color: var(--color-text-inverse);
+  color: var(--color-text-primary);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-relaxed);
 }
@@ -37,10 +34,22 @@
   border-left-color: var(--color-status-success);
 }
 
+.trend .icon {
+  color: var(--color-status-success);
+}
+
 .insight {
   border-left-color: var(--color-status-info);
 }
 
+.insight .icon {
+  color: var(--color-status-info);
+}
+
 .fact {
   border-left-color: var(--color-accent);
+}
+
+.fact .icon {
+  color: var(--color-accent);
 }
