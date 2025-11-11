@@ -362,3 +362,57 @@ export interface LandingPageData {
   hero: HeroSectionData
   mainContent: MainContentData
 }
+
+// ============================================
+// Task 3: Impact Stories and Pending Cases Types
+// ============================================
+
+/**
+ * Win Story Type
+ */
+export type WinType = 'data_released' | 'money_sanctioned' | 'services_fixed' | 'policy_changed'
+
+/**
+ * Impact Metric
+ */
+export interface ImpactMetric {
+  icon: string
+  value: string
+  label: string
+}
+
+/**
+ * Win Story
+ * Represents a successful RTI outcome story
+ */
+export interface WinStory {
+  id: string
+  title: string
+  hookLine: string
+  topic: string
+  topicColor: string
+  topicIcon: string
+  winType: WinType
+  impactMetrics: ImpactMetric[]
+  department: string
+  state: string
+  date: string
+  link: string
+}
+
+/**
+ * Pending Case
+ * Represents a critical pending RTI case
+ */
+export interface PendingCase {
+  id: string
+  title: string
+  question: string
+  whyItMatters: string[]
+  status: 'pending' | 'first_appeal' | 'second_appeal'
+  daysElapsed: number
+  daysOverdue: number
+  department: string
+  state: string
+  link: string
+}

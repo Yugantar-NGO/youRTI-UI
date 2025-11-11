@@ -1,0 +1,14 @@
+.topicTile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--border-radius-md);
+  flex-shrink: 0;
+}
+
+.icon {
+  font-size: var(--icon-size-lg);
+  line-height: 1;
+}

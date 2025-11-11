@@ -1,0 +1,28 @@
+.filterPill {
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-on-dark-secondary);
+  background: transparent;
+  border: var(--border-width-thin) solid var(--color-text-on-dark-muted);
+  border-radius: var(--border-radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.filterPill:hover {
+  color: var(--color-text-on-dark-primary);
+  border-color: var(--color-text-on-dark-secondary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.filterPill.active {
+  color: var(--color-bg-surface-dark);
+  background: var(--color-text-on-dark-primary);
+  border-color: var(--color-text-on-dark-primary);
+}
+
+.filterPill.active:hover {
+  background: var(--color-text-on-dark-secondary);
+}
