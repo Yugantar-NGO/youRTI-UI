@@ -160,6 +160,48 @@
   --transition-slow: 350ms ease-in-out;
 
   /* =================================
+     RTI DASHBOARD-SPECIFIC TOKENS
+     ================================= */
+
+  /* RTI Brand Colors */
+  --color-rti-blue: #2563EB;          /* blue-600 */
+  --color-rti-blue-dark: #1E40AF;     /* blue-700 */
+  --color-rti-indigo: #1E3A8A;        /* indigo-800 */
+
+  /* Dashboard Status Colors (Light Backgrounds) */
+  --bg-success-light: #DCFCE7;        /* green-100 */
+  --bg-warning-light: #FEF3C7;        /* yellow-100 */
+  --bg-error-light: #FEE2E2;          /* red-100 */
+
+  /* Success/Warning/Error Aliases */
+  --color-success: var(--color-status-success);
+  --color-warning: var(--color-status-warning);
+  --color-error: var(--color-status-error);
+  --color-neutral: var(--color-status-neutral);
+
+  /* Gradient Backgrounds */
+  --bg-gradient-hero: linear-gradient(135deg, #1E40AF 0%, #1E3A8A 100%);
+  --bg-gradient-spotlight: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+
+  /* Page Backgrounds */
+  --bg-page: #F9FAFB;                 /* gray-50 */
+  --bg-card: #FFFFFF;
+
+  /* Border */
+  --border-color: #E5E7EB;            /* gray-200 */
+  --border-width: 1px;
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+
+  /* Spacing Scale (aliases for consistency) */
+  --space-xs: var(--spacing-xs);
+  --space-sm: var(--spacing-sm);
+  --space-md: var(--spacing-md);
+  --space-lg: var(--spacing-lg);
+  --space-xl: var(--spacing-xl);
+  --space-2xl: var(--spacing-2xl);
+
+  /* =================================
      COMPONENT-SPECIFIC TOKENS
      ================================= */
 
