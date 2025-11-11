@@ -5,19 +5,7 @@
  * - Mobile: Single column (stacked vertically)
  * - Tablet: Two columns
  * - Desktop: Three columns
- *
- * Pattern: Compound Components for semantic API
- *
- * @example
- * <NewspaperLayout>
- *   <NewspaperLayout.Left>Left column content</NewspaperLayout.Left>
- *   <NewspaperLayout.Center>Center column content</NewspaperLayout.Center>
- *   <NewspaperLayout.Right>Right column content</NewspaperLayout.Right>
- *   <NewspaperLayout.FullWidth>Full-width content</NewspaperLayout.FullWidth>
- * </NewspaperLayout>
  */
-
-'use client'
 
 import { ReactNode } from 'react'
 import styles from './NewspaperLayout.module.css'
@@ -40,19 +28,18 @@ export function NewspaperLayout({ children, className = '' }: NewspaperLayoutPro
   )
 }
 
-// Compound components for semantic API
-NewspaperLayout.Left = function LeftColumn({ children, className = '' }: ColumnProps) {
+export function LeftColumn({ children, className = '' }: ColumnProps) {
   return <div className={`${styles.leftColumn} ${className}`}>{children}</div>
 }
 
-NewspaperLayout.Center = function CenterColumn({ children, className = '' }: ColumnProps) {
+export function CenterColumn({ children, className = '' }: ColumnProps) {
   return <div className={`${styles.centerColumn} ${className}`}>{children}</div>
 }
 
-NewspaperLayout.Right = function RightColumn({ children, className = '' }: ColumnProps) {
+export function RightColumn({ children, className = '' }: ColumnProps) {
   return <div className={`${styles.rightColumn} ${className}`}>{children}</div>
 }
 
-NewspaperLayout.FullWidth = function FullWidthSection({ children, className = '' }: ColumnProps) {
+export function FullWidthSection({ children, className = '' }: ColumnProps) {
   return <div className={`${styles.fullWidth} ${className}`}>{children}</div>
 }

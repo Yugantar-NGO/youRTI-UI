@@ -6,7 +6,7 @@
 
 import { Masthead } from '@/components/features/dashboard/Masthead/Masthead'
 import { DashboardHero } from '@/components/features/dashboard/DashboardHero/DashboardHero'
-import { NewspaperLayout } from '@/components/layout/NewspaperLayout'
+import { NewspaperLayout, LeftColumn, CenterColumn, RightColumn } from '@/components/layout/NewspaperLayout'
 import { YourAreaTodayCard } from '@/components/features/dashboard/YourAreaToday/YourAreaTodayCard'
 import { LatestActivityTimeline } from '@/components/features/dashboard/LatestActivity/LatestActivityTimeline'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card'
@@ -25,7 +25,7 @@ export default function Home() {
         {/* Three-Column Newspaper Layout */}
         <NewspaperLayout>
           {/* LEFT COLUMN - Your Area & Services */}
-          <NewspaperLayout.Left>
+          <LeftColumn>
             <YourAreaTodayCard />
 
             <Card variant="default" padding="md">
@@ -41,10 +41,10 @@ export default function Home() {
                 </div>
               </CardContent>
             </Card>
-          </NewspaperLayout.Left>
+          </LeftColumn>
 
           {/* CENTER COLUMN - Live Activity & Performance */}
-          <NewspaperLayout.Center>
+          <CenterColumn>
             <LatestActivityTimeline />
 
             <Card variant="default" padding="md">
@@ -89,10 +89,10 @@ export default function Home() {
                 />
               </CardContent>
             </Card>
-          </NewspaperLayout.Center>
+          </CenterColumn>
 
           {/* RIGHT COLUMN - Insights, Rights, & Stories */}
-          <NewspaperLayout.Right>
+          <RightColumn>
             <Card variant="default" padding="md">
               <CardHeader>
                 <CardTitle>💡 Insights & Trends</CardTitle>
@@ -135,7 +135,7 @@ export default function Home() {
                 <ToolkitItem text="What to do if you get no reply" />
               </CardContent>
             </Card>
-          </NewspaperLayout.Right>
+          </RightColumn>
         </NewspaperLayout>
 
         {/* Full-Width Footer Note */}
