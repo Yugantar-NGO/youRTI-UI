@@ -1,0 +1,82 @@
+/**
+ * NewspaperLayout Styles
+ * Responsive three-column grid layout
+ */
+
+.newspaperLayout {
+  display: grid;
+  gap: var(--space-lg);
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Mobile: Single column (default) */
+.newspaperLayout {
+  grid-template-columns: 1fr;
+}
+
+.leftColumn,
+.centerColumn,
+.rightColumn,
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
+/* Tablet: Two columns (769px - 1199px) */
+@media (min-width: 769px) and (max-width: 1199px) {
+  .newspaperLayout {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .leftColumn {
+    grid-column: 1;
+  }
+
+  .centerColumn {
+    grid-column: 2;
+  }
+
+  .rightColumn {
+    grid-column: 1 / -1;
+  }
+
+  .fullWidth {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Desktop: Three columns (1200px+) */
+@media (min-width: 1200px) {
+  .newspaperLayout {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .leftColumn {
+    grid-column: 1;
+  }
+
+  .centerColumn {
+    grid-column: 2;
+  }
+
+  .rightColumn {
+    grid-column: 3;
+  }
+
+  .fullWidth {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Column spacing */
+.leftColumn,
+.centerColumn,
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.fullWidth {
+  margin-top: var(--space-lg);
+}
