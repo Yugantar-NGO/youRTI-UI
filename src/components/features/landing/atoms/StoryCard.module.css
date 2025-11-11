@@ -9,19 +9,76 @@
 
 .storyCard:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-card-hover);
 }
 
+/* Lead variant - transparent background for gradient parent */
 .lead {
-  border-left: var(--border-width-thick) solid var(--color-accent);
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: var(--color-text-inverse);
+  position: relative;
+  z-index: 1;
+}
+
+.lead .title {
+  color: var(--color-text-inverse) !important;
+}
+
+.lead .summary {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.lead .label {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.lead .metadata {
+  color: rgba(255, 255, 255, 0.85) !important;
+  border-top-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.lead .metadataRow {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.lead .metadataRow span {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.lead .separator {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Override Card subcomponent styles for lead variant */
+.lead :global(.cardHeader) {
+  border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.lead :global(.cardFooter) {
+  border-top-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.lead :global(.cardTitle) {
+  color: var(--color-text-inverse) !important;
+}
+
+.lead :global(.cardContent) {
+  color: rgba(255, 255, 255, 0.95) !important;
 }
 
 .secondary {
-  /* Default styling from Card */
+  border-left: var(--border-width-medium) solid var(--color-accent);
 }
 
 .topic {
   margin-bottom: var(--spacing-2);
+}
+
+.lead .topic {
+  position: relative;
+  z-index: 2;
 }
 
 .title {
@@ -80,12 +137,31 @@
   font-weight: var(--font-weight-semibold);
   color: var(--color-accent);
   text-decoration: none;
-  transition: color var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .viewLink:hover {
   color: var(--color-text-primary);
   text-decoration: underline;
+}
+
+/* Primary button style for lead variant */
+.lead .viewLink {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background: var(--color-bg-primary);
+  color: var(--color-accent);
+  border-radius: var(--border-radius-md);
+  font-weight: var(--font-weight-semibold);
+  transition: all var(--transition-base);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.lead .viewLink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
 }
 
 /* Responsive */

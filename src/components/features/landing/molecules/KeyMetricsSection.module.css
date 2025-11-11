@@ -1,36 +1,39 @@
 /* KeyMetricsSection Component - Using Semantic Tokens */
 
 .keyMetricsSection {
-  margin-bottom: var(--spacing-8);
+  /* No wrapper styling - just a section */
 }
 
 .title {
-  margin: 0 0 var(--spacing-6) 0;
+  margin: 0 0 var(--spacing-lg) 0;
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
   font-family: var(--font-family-heading);
   color: var(--color-text-primary);
+  line-height: var(--line-height-tight);
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--spacing-6);
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-section);
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .keyMetricsSection {
-    margin-bottom: var(--spacing-6);
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
   }
+}
 
+@media (max-width: 768px) {
   .title {
     font-size: var(--font-size-xl);
-    margin-bottom: var(--spacing-4);
+    margin-bottom: var(--spacing-md);
   }
 
   .grid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-4);
+    gap: var(--spacing-lg);
   }
 }

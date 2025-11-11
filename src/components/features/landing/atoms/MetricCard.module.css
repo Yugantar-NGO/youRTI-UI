@@ -26,11 +26,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-accent);
+  background-color: var(--icon-color, var(--color-accent));
   background-image: linear-gradient(
     to bottom right,
-    var(--color-accent),
-    color-mix(in srgb, var(--color-accent) 80%, var(--color-black))
+    var(--icon-color, var(--color-accent)),
+    color-mix(in srgb, var(--icon-color, var(--color-accent)) 80%, var(--color-black))
   );
   border-radius: var(--border-radius-sm);
   color: var(--color-text-inverse);

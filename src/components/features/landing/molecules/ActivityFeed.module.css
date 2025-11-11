@@ -1,11 +1,22 @@
-/* ActivityFeed Component - Using Semantic Tokens */
+/* ActivityFeed Component - Task 5 Enhanced Vertical Timeline */
 
 .activityFeed {
   height: 100%;
+  background: white;
+  padding: var(--spacing-card);
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-card-redesign);
+  transition: box-shadow var(--transition-base);
+}
+
+.activityFeed:hover {
+  box-shadow: var(--shadow-card-redesign-hover);
 }
 
 .timeline {
-  /* Activity items have their own spacing */
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .footer {

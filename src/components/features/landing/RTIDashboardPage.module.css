@@ -2,5 +2,5 @@
 
 .page {
   min-height: 100vh;
-  background-color: var(--color-bg-primary);
+  background-color: var(--bg-page);  /* #F3F4F6 per TODO spec */
 }

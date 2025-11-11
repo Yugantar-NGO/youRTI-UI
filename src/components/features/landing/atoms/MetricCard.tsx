@@ -9,6 +9,7 @@ import styles from './MetricCard.module.css'
 interface MetricCardProps {
   metric: KeyMetric
   className?: string
+  iconColor?: string
 }
 
 /**
@@ -20,7 +21,7 @@ interface MetricCardProps {
  * @example
  * <MetricCard metric={{ icon: 'FileText', title: 'RTIs this year', value: '2,847', trend: {...} }} />
  */
-export function MetricCard({ metric, className = '' }: MetricCardProps) {
+export function MetricCard({ metric, className = '', iconColor }: MetricCardProps) {
   const IconComponent = Icons[metric.icon as keyof typeof Icons] as LucideIcon
 
   return (
@@ -28,7 +29,10 @@ export function MetricCard({ metric, className = '' }: MetricCardProps) {
       <CardContent>
         <div className={styles.header}>
           {IconComponent && (
-            <div className={styles.iconWrapper}>
+            <div
+              className={styles.iconWrapper}
+              style={iconColor ? { '--icon-color': iconColor } as React.CSSProperties : undefined}
+            >
               <Icon icon={IconComponent} size="lg" />
             </div>
           )}

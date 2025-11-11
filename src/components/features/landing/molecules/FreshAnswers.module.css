@@ -1,7 +1,12 @@
-/* FreshAnswers Component - Using Semantic Tokens */
+/* FreshAnswers Component - Card Grid Layout */
 
 .freshAnswers {
   margin-bottom: var(--spacing-8);
+  border-left: 4px solid #059669;
+  background: linear-gradient(to right, rgba(5, 150, 105, 0.05), transparent);
+  padding: var(--spacing-6);
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .icon {
@@ -14,7 +19,13 @@
 }
 
 .list {
-  /* List container - items have their own padding */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 500px), 1fr));
+  gap: var(--spacing-4);
+}
+
+.list > * {
+  margin-bottom: 0 !important;
 }
 
 .viewAllLink {
@@ -33,8 +44,15 @@
 }
 
 /* Responsive */
+@media (max-width: 1200px) {
+  .list {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 640px) {
   .freshAnswers {
     margin-bottom: var(--spacing-6);
+    padding: var(--spacing-4);
   }
 }

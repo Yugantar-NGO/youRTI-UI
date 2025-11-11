@@ -1,0 +1,111 @@
+/* PeopleAreAsking Component (Task 5) */
+
+.peopleAreAsking {
+  padding: var(--spacing-3xl) 0;
+}
+
+/* Header */
+.header {
+  margin-bottom: var(--spacing-2xl);
+  text-align: left;
+}
+
+.title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-sm) 0;
+  line-height: var(--line-height-tight);
+}
+
+.subtitle {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Grid - 2x3 on desktop, collapses to 1 column on mobile */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Footer with View All link */
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-2xl);
+}
+
+.viewAllLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-xl);
+  background-color: var(--color-accent);
+  color: white;
+  text-decoration: none;
+  border-radius: var(--border-radius-lg);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  transition: all var(--transition-base);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
+}
+
+.viewAllLink:hover {
+  background-color: var(--color-accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(14, 165, 233, 0.3);
+}
+
+.arrowIcon {
+  transition: transform var(--transition-fast);
+}
+
+.viewAllLink:hover .arrowIcon {
+  transform: translateX(4px);
+}
+
+/* Responsive Design */
+
+/* Tablet - 2 columns */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile - 1 column */
+@media (max-width: 768px) {
+  .peopleAreAsking {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-sm);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .footer {
+    margin-top: var(--spacing-xl);
+  }
+
+  .viewAllLink {
+    width: 100%;
+    justify-content: center;
+  }
+}

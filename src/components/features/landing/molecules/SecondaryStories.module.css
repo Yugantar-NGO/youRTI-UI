@@ -11,6 +11,14 @@
   font-family: var(--font-family-heading);
   color: var(--color-text-primary);
   line-height: var(--line-height-tight);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.title::before {
+  content: '📰';
+  font-size: var(--font-size-2xl);
 }
 
 .grid {

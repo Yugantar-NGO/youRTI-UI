@@ -1,40 +1,55 @@
-/* RecentQuestions Component - Using Semantic Tokens */
+/* RecentQuestions Component - Per TODO Spec Section 5 */
 
 .recentQuestions {
-  margin-bottom: var(--spacing-8);
+  /* No wrapper styling */
 }
 
-.icon {
-  font-size: var(--font-size-xl);
-  margin-right: var(--spacing-2);
+.header {
+  margin-bottom: var(--spacing-lg);
 }
 
-.content {
-  padding: 0;
+.title {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-heading);
+  line-height: var(--line-height-tight);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.scrollContainer {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
 }
 
 .list {
-  /* List container - items have their own padding */
-}
-
-.browseLink {
-  display: inline-flex;
-  align-items: center;
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-accent);
-  text-decoration: none;
-  transition: color var(--transition-fast);
-}
-
-.browseLink:hover {
-  color: var(--color-text-primary);
-  text-decoration: underline;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  gap: var(--spacing-section);
 }
 
 /* Responsive */
-@media (max-width: 640px) {
-  .recentQuestions {
-    margin-bottom: var(--spacing-6);
+@media (max-width: 1024px) {
+  .list {
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: var(--font-size-xl);
+  }
+
+  .list {
+    grid-template-columns: 1fr;
+  }
+
+  .scrollContainer {
+    overflow-x: visible;
   }
 }

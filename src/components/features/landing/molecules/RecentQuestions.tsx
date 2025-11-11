@@ -1,6 +1,5 @@
 import { RecentQuestion } from '@/types'
 import { QuestionListItem } from '../atoms/QuestionListItem'
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/Card'
 import styles from './RecentQuestions.module.css'
 
 interface RecentQuestionsProps {
@@ -12,15 +11,15 @@ interface RecentQuestionsProps {
 /**
  * RecentQuestions Component
  *
- * Displays "What People Are Asking" section.
- * Shows recently filed RTI questions with status.
+ * Displays "What People Are Asking" section per TODO Spec Section 5.
+ * Horizontal scroll carousel of recently filed RTI questions.
  *
  * @example
  * <RecentQuestions questions={[...]} maxDisplay={4} />
  */
 export function RecentQuestions({
   questions,
-  maxDisplay = 6,
+  maxDisplay = 4,
   className = '',
 }: RecentQuestionsProps) {
   const displayedQuestions = questions.slice(0, maxDisplay)
@@ -30,28 +29,20 @@ export function RecentQuestions({
   }
 
   return (
-    <Card variant="bordered" className={`${styles.recentQuestions} ${className}`}>
-      <CardHeader>
-        <CardTitle>
-          <span className={styles.icon}>📝</span> What People Are Asking (this week)
-        </CardTitle>
-      </CardHeader>
+    <div className={`${styles.recentQuestions} ${className}`}>
+      <div className={styles.header}>
+        <h2 className={styles.title}>
+          📝 What People Are Asking (this week)
+        </h2>
+      </div>
 
-      <CardContent className={styles.content}>
+      <div className={styles.scrollContainer}>
         <div className={styles.list}>
           {displayedQuestions.map((question) => (
             <QuestionListItem key={question.id} question={question} />
           ))}
         </div>
-      </CardContent>
-
-      {questions.length > maxDisplay && (
-        <CardFooter>
-          <a href="/all-questions" className={styles.browseLink}>
-            Browse all RTI questions →
-          </a>
-        </CardFooter>
-      )}
-    </Card>
+      </div>
+    </div>
   )
 }

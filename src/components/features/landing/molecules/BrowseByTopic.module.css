@@ -1,13 +1,22 @@
-/* BrowseByTopic Component - Using Semantic Tokens */
+/* BrowseByTopic Component - Task 5 Enhanced Hover States */
 
 .browseByTopic {
   height: 100%;
+  background: white;
+  padding: var(--spacing-card);
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-card-redesign);
+  transition: box-shadow var(--transition-base);
+}
+
+.browseByTopic:hover {
+  box-shadow: var(--shadow-card-redesign-hover);
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--spacing-4);
+  gap: var(--spacing-md);
 }
 
 .viewAllLink {

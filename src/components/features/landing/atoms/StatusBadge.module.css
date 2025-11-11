@@ -1,0 +1,31 @@
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  transition: background-color var(--transition-fast);
+}
+
+.filed {
+  background-color: #EFF6FF; /* blue-50 */
+  color: #1E40AF; /* blue-800 */
+}
+
+.answered {
+  background-color: #DCFCE7; /* green-100 */
+  color: #15803D; /* green-700 */
+}
+
+.pending {
+  background-color: #FEF3C7; /* yellow-100 */
+  color: #A16207; /* yellow-700 */
+}
+
+.time_running_out {
+  background-color: #FEE2E2; /* red-100 */
+  color: #B91C1C; /* red-700 */
+}
