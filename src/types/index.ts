@@ -18,6 +18,8 @@ export interface RTIRequest {
   description: string
   department: string
   location: string
+  state: string
+  district?: string
   status: RTIStatus
   filedDate: string
   responseDate?: string
