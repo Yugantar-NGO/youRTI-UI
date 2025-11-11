@@ -1,0 +1,105 @@
+/**
+ * Shared CSS utility classes
+ * These can be composed with component-specific styles
+ */
+
+/* Spacing utilities */
+.mt4 { margin-top: var(--space-sm); }
+.mt8 { margin-top: var(--space-md); }
+.mt12 { margin-top: var(--space-lg); }
+.mt16 { margin-top: var(--space-xl); }
+
+.mb4 { margin-bottom: var(--space-sm); }
+.mb8 { margin-bottom: var(--space-md); }
+.mb12 { margin-bottom: var(--space-lg); }
+.mb16 { margin-bottom: var(--space-xl); }
+
+.gap4 { gap: var(--space-sm); }
+.gap8 { gap: var(--space-md); }
+.gap12 { gap: var(--space-lg); }
+.gap16 { gap: var(--space-xl); }
+
+/* Flexbox utilities */
+.flex { display: flex; }
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+.flexRow {
+  display: flex;
+  flex-direction: row;
+}
+.justifyBetween { justify-content: space-between; }
+.justifyCenter { justify-content: center; }
+.alignCenter { align-items: center; }
+.alignStart { align-items: flex-start; }
+.alignEnd { align-items: flex-end; }
+
+/* Card spacing patterns */
+.cardStack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.cardStackLarge {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* Status colors */
+.statusPending { color: var(--color-warning); }
+.statusDisclosed { color: var(--color-success); }
+.statusRejected { color: var(--color-error); }
+.statusPartial { color: var(--color-neutral); }
+
+/* Background colors */
+.bgPending { background-color: var(--bg-warning-light); }
+.bgDisclosed { background-color: var(--bg-success-light); }
+.bgRejected { background-color: var(--bg-error-light); }
+
+/* Text utilities */
+.textCenter { text-align: center; }
+.textLeft { text-align: left; }
+.textRight { text-align: right; }
+
+.textBold { font-weight: 600; }
+.textSemibold { font-weight: 500; }
+.textNormal { font-weight: 400; }
+
+.textSm { font-size: 0.875rem; }
+.textBase { font-size: 1rem; }
+.textLg { font-size: 1.125rem; }
+.textXl { font-size: 1.25rem; }
+
+/* Border utilities */
+.borderBottom { border-bottom: var(--border-width) solid var(--border-color); }
+.borderTop { border-top: var(--border-width) solid var(--border-color); }
+.rounded { border-radius: var(--border-radius); }
+.roundedLg { border-radius: var(--border-radius-lg); }
+
+/* Width utilities */
+.wFull { width: 100%; }
+.hFull { height: 100%; }
+
+/* Visibility utilities */
+.hiddenMobile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hiddenMobile {
+    display: block;
+  }
+}
+
+.hiddenDesktop {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .hiddenDesktop {
+    display: none;
+  }
+}
