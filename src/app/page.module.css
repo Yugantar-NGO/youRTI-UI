@@ -1,0 +1,207 @@
+/* Dashboard Page - Information-Dense Layout */
+
+/* Quick Stats at Top */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--grid-gap-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Main Dashboard Grid */
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--grid-gap-md);
+}
+
+/* Featured RTI - Takes up 8 columns */
+.featured {
+  grid-column: span 8;
+}
+
+/* Activity Sidebar - Takes up 4 columns */
+.activitySidebar {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  gap: var(--grid-gap-md);
+}
+
+/* Regional Performance - 7 columns */
+.regionalSection {
+  grid-column: span 7;
+}
+
+/* Trending Topics - 5 columns */
+.trendingSection {
+  grid-column: span 5;
+}
+
+/* Quick Actions - Full width */
+.quickActions {
+  grid-column: span 12;
+}
+
+/* Featured RTI Styling */
+.impactfulRTI {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.impactMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: var(--border-width-thin) solid var(--color-border-secondary);
+}
+
+/* Activity List Styling */
+.activityList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.activityItem {
+  padding-bottom: var(--spacing-md);
+  border-bottom: var(--border-width-thin) solid var(--color-border-secondary);
+}
+
+.activityItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.activityTitle {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+  line-height: var(--line-height-normal);
+}
+
+.activityMeta {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.activityFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+}
+
+/* Trending List Styling */
+.trendingList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.trendingItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius-md);
+  transition: background-color var(--transition-fast);
+}
+
+.trendingItem:hover {
+  background-color: var(--color-hover-bg);
+}
+
+.trendingTopic {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.trendingStats {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.trendingCount {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.trendingChange {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-status-success);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Quick Actions Styling */
+.actionButtons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-md);
+}
+
+.actionButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg);
+  background-color: var(--color-bg-elevated);
+  border: var(--border-width-thin) solid var(--color-border-secondary);
+  border-radius: var(--border-radius-md);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.actionButton:hover {
+  background-color: var(--color-hover-bg);
+  border-color: var(--color-border-primary);
+  color: var(--color-text-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .featured,
+  .activitySidebar,
+  .regionalSection,
+  .trendingSection {
+    grid-column: span 12;
+  }
+
+  .actionButtons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .actionButtons {
+    grid-template-columns: 1fr;
+  }
+}
