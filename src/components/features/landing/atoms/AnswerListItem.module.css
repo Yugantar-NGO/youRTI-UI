@@ -1,0 +1,108 @@
+/* AnswerListItem Component - Using Semantic Tokens */
+
+.answerItem {
+  padding: var(--spacing-4);
+  border-bottom: var(--border-width-thin) solid var(--color-border-secondary);
+  transition: background-color var(--transition-fast);
+}
+
+.answerItem:hover {
+  background-color: var(--color-bg-muted);
+}
+
+.answerItem:last-child {
+  border-bottom: none;
+}
+
+.header {
+  margin-bottom: var(--spacing-3);
+}
+
+.question {
+  margin: 0 0 var(--spacing-2) 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-relaxed);
+}
+
+.metadata {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  flex-wrap: wrap;
+  font-size: var(--font-size-xs);
+  font-family: var(--font-family-mono);
+  color: var(--color-text-secondary);
+}
+
+.separator {
+  color: var(--color-border-primary);
+}
+
+.department,
+.state,
+.dates {
+  /* Inherits from metadata */
+}
+
+.answer {
+  margin-bottom: var(--spacing-3);
+  padding: var(--spacing-3);
+  background-color: var(--color-bg-elevated);
+  border-left: var(--border-width-medium) solid var(--color-status-success);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-primary);
+}
+
+.label {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-status-success);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  flex-wrap: wrap;
+}
+
+.responseDays {
+  font-size: var(--font-size-xs);
+  font-family: var(--font-family-mono);
+  color: var(--color-text-secondary);
+}
+
+.viewLink {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.viewLink:hover {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .metadata {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-1);
+  }
+
+  .separator {
+    display: none;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
