@@ -1,3 +1,4 @@
+import { ICON_SIZES } from '@/constants/dashboard.constants'
 import styles from './BigWinCard.module.css'
 
 interface BigWinCardProps {
@@ -43,14 +44,14 @@ export function BigWinCard({
 
       <div className={styles.metadata}>
         <span className={styles.metaItem}>
-          <svg className={styles.metaIcon} width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <svg className={styles.metaIcon} width={ICON_SIZES.BASE} height={ICON_SIZES.BASE} viewBox="0 0 16 16" fill="none">
             <path d="M8 1L10.163 5.377L15 6.107L11.5 9.528L12.326 14.343L8 12.077L3.674 14.343L4.5 9.528L1 6.107L5.837 5.377L8 1Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
           {department}
         </span>
         <span className={styles.separator}>•</span>
         <span className={styles.metaItem}>
-          <svg className={styles.metaIcon} width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <svg className={styles.metaIcon} width={ICON_SIZES.BASE} height={ICON_SIZES.BASE} viewBox="0 0 16 16" fill="none">
             <path d="M8 14C11.3137 14 14 11.3137 14 8C14 4.68629 11.3137 2 8 2C4.68629 2 2 4.68629 2 8C2 11.3137 4.68629 14 8 14Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M8 4V8L10.5 9.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
@@ -61,8 +62,8 @@ export function BigWinCard({
       <div className={styles.impactSection}>
         <div className={styles.impactLabel}>Impact:</div>
         <ul className={styles.impactList}>
-          {impact.map((item, index) => (
-            <li key={index} className={styles.impactItem}>
+          {impact.map((item) => (
+            <li key={item} className={styles.impactItem}>
               {item}
             </li>
           ))}
