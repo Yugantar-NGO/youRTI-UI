@@ -20,6 +20,7 @@ import {
 } from '@/types/dashboard'
 import { RTIRepository } from './RTIRepository'
 import { daysBetween, calculatePercentageChange } from '@/lib/utils'
+import { RESPONSE_THRESHOLDS } from '@/constants/dashboard.constants'
 
 class DashboardDataRepositoryImpl {
   private currentFilter?: EditionFilter
@@ -41,7 +42,7 @@ class DashboardDataRepositoryImpl {
     const responsesWithin30Days = rtisThisYear.filter(rti => {
       if (!rti.responseDate) return false
       const days = daysBetween(rti.filedDate, rti.responseDate)
-      return days <= 30
+      return days <= RESPONSE_THRESHOLDS.STANDARD_RESPONSE_DAYS
     }).length
 
     const pending = filteredRepo.getByStatus('pending')
@@ -86,7 +87,7 @@ class DashboardDataRepositoryImpl {
     const pendingBeyond30Days = rtisThisMonth.filter(rti => {
       if (rti.responseDate) return false
       const days = daysBetween(rti.filedDate)
-      return days > 30
+      return days > RESPONSE_THRESHOLDS.STANDARD_RESPONSE_DAYS
     }).length
 
     const respondedThisMonth = rtisThisMonth.filter(rti => rti.responseDate)
@@ -126,7 +127,14 @@ class DashboardDataRepositoryImpl {
     const allRTIs = filteredRepo.getAll()
 
     // Group by department
-    const deptMap: { [key: string]: any } = {}
+    interface DepartmentData {
+      totalRTIs: number
+      fulfilled: number
+      totalResponseDays: number
+      respondedCount: number
+      transfers: number
+    }
+    const deptMap: { [key: string]: DepartmentData } = {}
     allRTIs.forEach(rti => {
       if (!deptMap[rti.department]) {
         deptMap[rti.department] = {
