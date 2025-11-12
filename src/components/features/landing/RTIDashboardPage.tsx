@@ -6,8 +6,6 @@ import { CitizensWaiting } from './organisms/CitizensWaiting'
 import { SystemPulse } from './organisms/SystemPulse'
 import { ImpactMeterSection } from './organisms/ImpactMeterSection'
 import { PeopleAreAsking } from './organisms/PeopleAreAsking'
-import { DailyEditionSection } from './organisms/DailyEditionSection'
-import { MainContentSection } from './organisms/MainContentSection'
 import { FooterSection } from './organisms/FooterSection'
 import {
   mockWinStories,
@@ -31,9 +29,7 @@ import styles from './RTIDashboardPage.module.css'
  * 5. SystemPulse (Task 4) - Analytics tiles
  * 6. ImpactMeterSection (Task 4) - Meter and key metrics
  * 7. PeopleAreAsking (Task 5) - Question feed
- * 8. DailyEditionSection (legacy) - Kept for compatibility
- * 9. MainContentSection (legacy) - Kept for compatibility
- * 10. FooterSection (Task 6) - Dark footer with links
+ * 8. FooterSection (Task 6) - Dark footer with links
  *
  * @example
  * <RTIDashboardPage />
@@ -58,10 +54,6 @@ export async function RTIDashboardPage() {
         <SystemPulse />
         <ImpactMeterSection healthScore={78} />
         <PeopleAreAsking questions={questionsWithHooks} />
-
-        {/* Legacy sections - kept for compatibility */}
-        <DailyEditionSection data={data.dailyEdition} />
-        <MainContentSection data={data.mainContent} />
       </div>
 
       <FooterSection />
