@@ -4,6 +4,7 @@ import { AnalyticsTile } from '../molecules/AnalyticsTile'
 import { Sparkline } from '../atoms/Sparkline'
 import { BarChart } from '../atoms/BarChart'
 import { StackedBar } from '../atoms/StackedBar'
+import { useSystemAnalytics } from '@/hooks/useSystemAnalytics'
 import styles from './SystemPulse.module.css'
 
 interface SystemPulseProps {
@@ -22,36 +23,8 @@ interface SystemPulseProps {
  * <SystemPulse />
  */
 export function SystemPulse({ className = '' }: SystemPulseProps) {
-  // Mock data for Answer Timeliness (last 30 days)
-  const timelinessData = [18, 19, 17, 16, 18, 20, 19, 18, 17, 16, 15, 17, 18, 19, 18.5]
-
-  // Mock data for High-Impact Filings
-  const highImpactData = [
-    { label: 'Health', value: 45 },
-    { label: 'Education', value: 32 },
-    { label: 'Public Works', value: 28 },
-    { label: 'Finance', value: 21 }
-  ]
-
-  // Mock data for Appeals & Escalations
-  const appealsData = [
-    {
-      label: 'Appeals Filed',
-      segments: [
-        { label: 'Approved', value: 35, color: '#16A34A' },
-        { label: 'Pending', value: 42, color: '#FACC15' },
-        { label: 'Rejected', value: 18, color: '#EF4444' }
-      ]
-    },
-    {
-      label: 'Escalations',
-      segments: [
-        { label: 'Resolved', value: 28, color: '#16A34A' },
-        { label: 'In Progress', value: 45, color: '#FACC15' },
-        { label: 'Stalled', value: 12, color: '#EF4444' }
-      ]
-    }
-  ]
+  // Get memoized analytics data from custom hook
+  const { timelinessData, highImpactData, appealsData } = useSystemAnalytics()
 
   return (
     <section className={`${styles.systemPulse} ${className}`}>
