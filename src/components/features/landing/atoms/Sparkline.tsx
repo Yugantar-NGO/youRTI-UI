@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import styles from './Sparkline.module.css'
 
 interface SparklineProps {
@@ -29,22 +29,28 @@ export function Sparkline({
 }: SparklineProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
+  const min = useMemo(() => data.length > 0 ? Math.min(...data) : 0, [data])
+  const max = useMemo(() => data.length > 0 ? Math.max(...data) : 0, [data])
+  const range = useMemo(() => max - min || 1, [max, min]) // Avoid division by zero
+
+  // Calculate points for the polyline (memoized to avoid recalculation on every render)
+  const pointsData = useMemo(() =>
+    data.map((value, index) => {
+      const x = (index / (data.length - 1)) * width
+      const y = height - ((value - min) / range) * height
+      return { x, y, value }
+    }),
+    [data, width, height, min, range]
+  )
+
+  const points = useMemo(() =>
+    pointsData.map(p => `${p.x},${p.y}`).join(' '),
+    [pointsData]
+  )
+
   if (!data || data.length === 0) {
     return null
   }
-
-  const min = Math.min(...data)
-  const max = Math.max(...data)
-  const range = max - min || 1 // Avoid division by zero
-
-  // Calculate points for the polyline
-  const pointsData = data.map((value, index) => {
-    const x = (index / (data.length - 1)) * width
-    const y = height - ((value - min) / range) * height
-    return { x, y, value }
-  })
-
-  const points = pointsData.map(p => `${p.x},${p.y}`).join(' ')
 
   return (
     <div className={styles.container}>
@@ -64,7 +70,7 @@ export function Sparkline({
         />
         {pointsData.map((point, index) => (
           <circle
-            key={index}
+            key={`${point.x}-${point.y}`}
             cx={point.x}
             cy={point.y}
             r="4"
