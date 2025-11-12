@@ -1,5 +1,6 @@
 import { BigWinCard } from '../molecules/BigWinCard'
 import { UrgentUnansweredCard } from '../molecules/UrgentUnansweredCard'
+import { DASHBOARD_STATS, INDIA_STATS } from '@/constants/dashboard.constants'
 import styles from './HeroSection.module.css'
 
 interface HeroSectionProps {
@@ -28,15 +29,15 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
           </p>
           <div className={styles.statsStrip}>
             <span className={styles.statItem}>
-              <strong>8,450</strong> Active RTIs
+              <strong>{DASHBOARD_STATS.ACTIVE_RTIS.toLocaleString()}</strong> Active RTIs
             </span>
             <span className={styles.statSeparator}>•</span>
             <span className={styles.statItem}>
-              <strong>68%</strong> On-time responses
+              <strong>{DASHBOARD_STATS.ON_TIME_RESPONSE_RATE}%</strong> On-time responses
             </span>
             <span className={styles.statSeparator}>•</span>
             <span className={styles.statItem}>
-              <strong>350+</strong> Departments
+              <strong>{DASHBOARD_STATS.DEPARTMENT_COUNT}+</strong> Departments
             </span>
           </div>
         </div>
@@ -71,15 +72,15 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
             <h3 className={styles.contextTitle}>India at a Glance</h3>
             <div className={styles.contextStats}>
               <div className={styles.contextStat}>
-                <div className={styles.contextValue}>28</div>
+                <div className={styles.contextValue}>{INDIA_STATS.STATES}</div>
                 <div className={styles.contextLabel}>States</div>
               </div>
               <div className={styles.contextStat}>
-                <div className={styles.contextValue}>8 UT</div>
+                <div className={styles.contextValue}>{INDIA_STATS.UNION_TERRITORIES} UT</div>
                 <div className={styles.contextLabel}>Union Territories</div>
               </div>
               <div className={styles.contextStat}>
-                <div className={styles.contextValue}>1.4B</div>
+                <div className={styles.contextValue}>{INDIA_STATS.POPULATION}</div>
                 <div className={styles.contextLabel}>Population</div>
               </div>
             </div>
