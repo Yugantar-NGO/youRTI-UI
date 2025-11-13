@@ -1,0 +1,131 @@
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  text-align: center;
+  background-color: var(--color-background-secondary, #f9f9f9);
+  border: 1px dashed var(--color-border, #d0d0d0);
+  border-radius: 8px;
+  min-height: 200px;
+}
+
+.errorIcon {
+  color: var(--color-warning, #f57c00);
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.errorTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text-primary, #1a1a1a);
+  margin: 0 0 0.5rem 0;
+}
+
+.errorDescription {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary, #666666);
+  margin: 0 0 1.5rem 0;
+  max-width: 400px;
+}
+
+.retryButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-primary, #1976d2);
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.retryButton:hover {
+  background-color: var(--color-primary-dark, #1565c0);
+}
+
+.retryButton:active {
+  transform: translateY(1px);
+}
+
+.retryButton svg {
+  flex-shrink: 0;
+}
+
+.errorDetails {
+  margin-top: 1.5rem;
+  text-align: left;
+  width: 100%;
+  max-width: 500px;
+}
+
+.errorDetails summary {
+  cursor: pointer;
+  color: var(--color-primary, #1976d2);
+  font-size: 0.875rem;
+  font-weight: 500;
+  user-select: none;
+  padding: 0.5rem;
+}
+
+.errorDetails summary:hover {
+  color: var(--color-primary-dark, #1565c0);
+}
+
+.errorStack {
+  margin-top: 0.5rem;
+  padding: 1rem;
+  background: #ffffff;
+  border: 1px solid var(--color-border, #e0e0e0);
+  border-radius: 4px;
+  overflow-x: auto;
+  font-family: var(--font-ibm-plex-mono, monospace);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--color-text-primary, #333);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Compact variant for smaller widgets */
+.errorContainer.compact {
+  min-height: 120px;
+  padding: 1.5rem 1rem;
+}
+
+.errorContainer.compact .errorIcon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.errorContainer.compact .errorTitle {
+  font-size: 1rem;
+}
+
+.errorContainer.compact .errorDescription {
+  font-size: 0.8125rem;
+  margin-bottom: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .errorContainer {
+    padding: 1.5rem 1rem;
+    min-height: 160px;
+  }
+
+  .errorTitle {
+    font-size: 1rem;
+  }
+
+  .errorDescription {
+    font-size: 0.8125rem;
+  }
+}
