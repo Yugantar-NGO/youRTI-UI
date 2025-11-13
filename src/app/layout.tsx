@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Playfair_Display, Inter, IBM_Plex_Mono, DM_Serif_Display } from 'next/font/google'
 import { EditionProvider } from '@/context/EditionContext'
+import { ErrorBoundary } from '@/components/error'
 import '@/styles/design-tokens.css'
 import '@/styles/themes/newspaper.css'
 import '@/styles/themes/modern.css'
@@ -61,9 +62,11 @@ export default function RootLayout({
       className={`${playfair.variable} ${dmSerifDisplay.variable} ${inter.variable} ${ibmPlexMono.variable}`}
     >
       <body>
-        <EditionProvider>
-          {children}
-        </EditionProvider>
+        <ErrorBoundary context="App">
+          <EditionProvider>
+            {children}
+          </EditionProvider>
+        </ErrorBoundary>
       </body>
     </html>
   )
