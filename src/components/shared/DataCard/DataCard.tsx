@@ -47,7 +47,7 @@ export interface DataCardProps {
  * </DataCard>
  * ```
  */
-export const DataCard = memo(({ children, variant = 'default', className = '' }: DataCardProps) => {
+const DataCardRoot = ({ children, variant = 'default', className = '' }: DataCardProps) => {
   const contextValue = { variant }
 
   return (
@@ -57,9 +57,9 @@ export const DataCard = memo(({ children, variant = 'default', className = '' }:
       </div>
     </DataCardContext.Provider>
   )
-})
+}
 
-DataCard.displayName = 'DataCard'
+DataCardRoot.displayName = 'DataCard'
 
 /**
  * DataCard Header
@@ -188,15 +188,17 @@ const Actions = memo(({ children, className = '' }: { children: ReactNode; class
 
 Actions.displayName = 'DataCard.Actions'
 
-// Attach subcomponents to DataCard
-DataCard.Header = Header
-DataCard.Title = Title
-DataCard.Subtitle = Subtitle
-DataCard.Badge = Badge
-DataCard.Content = Content
-DataCard.Footer = Footer
-DataCard.Meta = Meta
-DataCard.MetaItem = MetaItem
-DataCard.Stats = Stats
-DataCard.StatItem = StatItem
-DataCard.Actions = Actions
+// Compose the DataCard with all subcomponents
+export const DataCard = Object.assign(memo(DataCardRoot), {
+  Header,
+  Title,
+  Subtitle,
+  Badge,
+  Content,
+  Footer,
+  Meta,
+  MetaItem,
+  Stats,
+  StatItem,
+  Actions,
+})
