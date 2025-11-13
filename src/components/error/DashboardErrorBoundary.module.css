@@ -1,0 +1,164 @@
+.errorContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 2rem;
+  background-color: var(--color-background, #fafafa);
+}
+
+.errorContent {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e0e0e0);
+  border-radius: 8px;
+  padding: 3rem 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.errorIcon {
+  color: var(--color-error, #d32f2f);
+  margin-bottom: 1.5rem;
+  display: inline-block;
+}
+
+.errorTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-text-primary, #1a1a1a);
+  margin: 0 0 1rem 0;
+  font-family: var(--font-playfair, serif);
+}
+
+.errorMessage {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary, #666666);
+  margin: 0 0 1.5rem 0;
+}
+
+.errorDetails {
+  margin: 1.5rem 0;
+}
+
+.errorDetails details {
+  text-align: left;
+  background: var(--color-background, #f5f5f5);
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+}
+
+.errorDetails summary {
+  cursor: pointer;
+  color: var(--color-primary, #1976d2);
+  font-weight: 500;
+  user-select: none;
+  padding: 0.5rem 0;
+}
+
+.errorDetails summary:hover {
+  color: var(--color-primary-dark, #1565c0);
+}
+
+.errorStack {
+  margin: 1rem 0 0.5rem 0;
+  padding: 1rem;
+  background: #ffffff;
+  border: 1px solid var(--color-border, #e0e0e0);
+  border-radius: 4px;
+  overflow-x: auto;
+  font-family: var(--font-ibm-plex-mono, monospace);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-text-primary, #333);
+}
+
+.errorActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.primaryButton {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-primary, #1976d2);
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.primaryButton:hover {
+  background-color: var(--color-primary-dark, #1565c0);
+}
+
+.primaryButton:active {
+  transform: translateY(1px);
+}
+
+.secondaryButton {
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  color: var(--color-primary, #1976d2);
+  border: 1px solid var(--color-primary, #1976d2);
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.secondaryButton:hover {
+  background-color: var(--color-primary-light, #e3f2fd);
+}
+
+.secondaryButton:active {
+  transform: translateY(1px);
+}
+
+.supportText {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary, #666666);
+  margin: 0;
+}
+
+.supportLink {
+  color: var(--color-primary, #1976d2);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.supportLink:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .errorContainer {
+    padding: 1rem;
+  }
+
+  .errorContent {
+    padding: 2rem 1.5rem;
+  }
+
+  .errorTitle {
+    font-size: 1.5rem;
+  }
+
+  .errorActions {
+    flex-direction: column;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+  }
+}
