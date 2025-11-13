@@ -494,35 +494,444 @@ src/
 
 ---
 
-## Next Steps (Not Yet Implemented)
+## TODO: Remaining Tasks
 
-### Phase 4: Performance Optimization (Recommended)
-- [ ] Add React.memo to presentational components
+### Immediate (Phase 3 Completion)
+**Priority: HIGH**
+
+#### Testing
+- [ ] Add tests for DashboardContext (`src/context/__tests__/DashboardContext.test.tsx`)
+  - Test context provider
+  - Test useDashboardContext hook
+  - Test useDashboardData hook
+  - Test error when used outside provider
+
+- [ ] Add tests for DataCard component (`src/components/shared/DataCard/__tests__/DataCard.test.tsx`)
+  - Test all subcomponents render correctly
+  - Test variant styles
+  - Test compound component composition
+  - Snapshot tests for UI consistency
+
+- [ ] Add tests for withDataFetching HOC (`src/hoc/__tests__/withDataFetching.test.tsx`)
+  - Test loading state rendering
+  - Test error state handling
+  - Test successful data passing
+  - Test refetch functionality
+  - Test error boundary integration
+
+- [ ] Add tests for IconFactory (`src/components/icons/__tests__/IconFactory.test.tsx`)
+  - Test all icons render
+  - Test icon props (size, color)
+  - Test memoization
+  - Test dynamic Icon component
+
+- [ ] Add tests for transformation strategies (`src/services/repositories/strategies/__tests__/`)
+  - Test DashboardDataTransformationStrategy
+  - Test validation logic
+  - Test hook line generation
+
+- [ ] Add tests for CacheStrategy (`src/services/repositories/base/__tests__/CacheStrategy.test.ts`)
+  - Test MemoryCacheStrategy
+  - Test LocalStorageCacheStrategy
+  - Test cache expiration
+  - Test CompositeCacheStrategy
+
+#### Component Size Validation
+- [ ] Split IconFactory into multiple files (currently 256 lines)
+  - Extract individual icons to separate files
+  - Keep factory in main file
+  - Update exports
+
+- [ ] Optimize DataCard if needed (currently 202 lines, just over limit)
+  - Consider splitting subcomponents
+  - Or accept as compound component exception
+
+#### Documentation
+- [ ] Update README.md with new architecture
+  - Document Container/Presentation pattern usage
+  - Add examples for new hooks
+  - Document error handling patterns
+  - Add DataCard usage examples
+
+---
+
+### Phase 4: Performance Optimization
+**Priority: MEDIUM**
+**Estimated Time: 1 week**
+
+#### Component Optimization
+- [ ] Add React.memo to all presentational components
+  - HeroSection
+  - StoriesThatChanged
+  - CitizensWaiting
+  - SystemPulse
+  - ImpactMeterSection
+  - PeopleAreAsking
+  - FooterSection
+  - All atoms and molecules
+
 - [ ] Implement useMemo for expensive calculations
+  - Impact metrics calculation
+  - Data transformation operations
+  - Filtered/sorted lists
+
 - [ ] Add useCallback for event handlers
-- [ ] Integrate react-window for virtualization
-- [ ] Replace img tags with Next.js Image
-- [ ] Implement dynamic imports for code splitting
-- [ ] Add bundle analyzer
+  - All onClick handlers
+  - All form handlers
+  - Callbacks passed to children
 
-### Phase 5: Testing Infrastructure (Recommended)
-- [ ] Set up Vitest configuration
-- [ ] Add component tests for DataCard
-- [ ] Add tests for IconFactory
-- [ ] Add tests for DashboardContext
-- [ ] Add tests for withDataFetching
-- [ ] Integration tests with MSW
-- [ ] E2E tests with Playwright
+#### List Optimization
+- [ ] Integrate react-window for virtualizing long lists
+  - PeopleAreAsking questions list
+  - Any lists with >50 items
 
-### Phase 6: State Management Evolution (Optional)
-- [ ] Evaluate need for Zustand/Jotai
-- [ ] Implement if complex state emerges
+#### Image Optimization
+- [ ] Replace all img tags with Next.js Image component
+  - Automatic optimization
+  - Lazy loading
+  - Responsive images
+  - WebP support
 
-### Phase 7: Developer Experience (Optional)
-- [ ] Set up Storybook
-- [ ] Add component documentation
-- [ ] Create development guidelines
-- [ ] Set up pre-commit hooks
+#### Code Splitting
+- [ ] Implement dynamic imports for below-the-fold sections
+  - StoriesThatChanged
+  - CitizensWaiting
+  - SystemPulse
+  - ImpactMeterSection
+
+- [ ] Create loading components for dynamic imports
+
+#### Bundle Analysis
+- [ ] Install and configure @next/bundle-analyzer
+- [ ] Analyze bundle size
+- [ ] Identify large dependencies
+- [ ] Implement tree shaking where possible
+- [ ] Target <200KB initial load
+
+#### Performance Monitoring
+- [ ] Implement Web Vitals tracking
+  - LCP (Largest Contentful Paint) < 2.5s
+  - FID (First Input Delay) < 100ms
+  - CLS (Cumulative Layout Shift) < 0.1
+
+- [ ] Add performance monitoring utilities
+- [ ] Create performance dashboard
+
+---
+
+### Phase 5: Testing Infrastructure
+**Priority: HIGH**
+**Estimated Time: 1-2 weeks**
+
+#### Test Setup
+- [ ] Install SWR for better data fetching hooks
+  ```bash
+  npm install swr
+  ```
+
+- [ ] Set up Vitest configuration (`vitest.config.ts`)
+  - Configure coverage reporting
+  - Set up test environment
+  - Configure path aliases
+
+- [ ] Configure MSW (Mock Service Worker)
+  - Create API mocks (`src/test/mocks/handlers.ts`)
+  - Set up MSW server (`src/test/mocks/server.ts`)
+  - Mock all API endpoints
+
+- [ ] Create test utilities
+  - Custom render function with providers (`src/test/utils/render.tsx`)
+  - Test data factories (`src/test/factories/`)
+  - Custom matchers (`src/test/utils/matchers.ts`)
+
+#### Unit Tests (Target: 80% coverage)
+- [ ] Test all custom hooks
+  - useRTIDashboardData
+  - useLandingPageData
+  - useRepository variations
+
+- [ ] Test all utility functions
+  - Error logging
+  - Retry logic (already done ✅)
+  - Transformation strategies
+  - Cache strategies
+
+- [ ] Test all repositories
+  - BaseRepository (already done ✅)
+  - LandingPageRepository
+  - Test with mocked data
+
+#### Component Tests
+- [ ] Test all UI components
+  - Error components (ErrorBoundary done ✅)
+  - Loading components
+  - Icon components
+  - Shared components (DataCard)
+  - Feature components
+
+- [ ] Test component interactions
+  - User events
+  - State updates
+  - Prop changes
+
+#### Integration Tests
+- [ ] Test data flows
+  - Repository → Hook → Component
+  - Error propagation
+  - Loading states
+
+- [ ] Test context integration
+  - DashboardContext with consumers
+  - EditionContext usage
+
+#### E2E Tests
+- [ ] Set up Playwright (`playwright.config.ts`)
+
+- [ ] Write critical user journey tests
+  - Landing page load
+  - Dashboard data display
+  - Error recovery flows
+  - Navigation
+
+- [ ] Set up CI/CD integration
+  - Run tests on PR
+  - Coverage reports
+  - E2E tests on staging
+
+---
+
+### Phase 6: State Management Evolution
+**Priority: LOW (Only if needed)**
+**Estimated Time: 3-4 days**
+
+#### Evaluation
+- [ ] Assess current state complexity
+- [ ] Identify pain points with Context API
+- [ ] Evaluate if Zustand/Jotai is needed
+
+#### Implementation (if needed)
+- [ ] Install Zustand
+  ```bash
+  npm install zustand
+  ```
+
+- [ ] Create store structure
+  - Dashboard store slice
+  - Filter store slice
+  - UI state slice
+
+- [ ] Add Redux DevTools integration
+
+- [ ] Implement store persistence
+
+- [ ] Create typed store hooks
+
+- [ ] Migrate from Context gradually
+
+- [ ] Test store implementation
+
+---
+
+### Phase 7: Developer Experience
+**Priority: MEDIUM**
+**Estimated Time: 1 week**
+
+#### Storybook Setup
+- [ ] Install Storybook
+  ```bash
+  npx storybook@latest init
+  ```
+
+- [ ] Configure for Next.js
+
+- [ ] Create stories for all UI components
+  - DataCard with all variants
+  - All icons
+  - Loading skeletons
+  - Error displays
+
+- [ ] Add Storybook addons
+  - @storybook/addon-a11y (accessibility)
+  - @storybook/addon-interactions
+  - storybook-dark-mode
+
+#### Documentation
+- [ ] Create component documentation
+  - Usage guidelines
+  - Props documentation
+  - Examples for each component
+
+- [ ] Create architecture documentation
+  - Repository pattern guide
+  - Hook creation guide
+  - Error handling guide
+  - Testing guide
+
+- [ ] Create ADRs (Architecture Decision Records)
+  - Why Container/Presentation?
+  - Why Repository pattern?
+  - Why these specific strategies?
+
+#### Code Quality Tools
+- [ ] Set up Husky for git hooks
+  ```bash
+  npm install --save-dev husky
+  npx husky install
+  ```
+
+- [ ] Configure pre-commit hooks
+  - Run linter
+  - Run type check
+  - Run tests on changed files
+
+- [ ] Configure ESLint with strict rules
+  - No unused variables
+  - No console.log
+  - Enforce hook dependencies
+
+- [ ] Set up Prettier for consistent formatting
+
+- [ ] Configure import sorting
+
+#### Development Guidelines
+- [ ] Create CONTRIBUTING.md
+  - Code style guide
+  - Component creation guide
+  - Testing requirements
+  - PR process
+
+- [ ] Create development setup guide
+
+- [ ] Create debugging guide
+
+---
+
+### Phase 8: Additional Improvements (Nice to Have)
+**Priority: LOW**
+
+#### Icon Refactoring
+- [ ] Replace inline SVGs in existing components with IconFactory
+  - Update BigWinCard
+  - Update UrgentUnansweredCard
+  - Update QuestionListItem
+  - Update other components with inline SVGs
+
+#### Compound Component Refactoring
+- [ ] Refactor HeroSection to compound components
+  - HeroSection.Title
+  - HeroSection.Stats
+  - HeroSection.BigWin
+  - HeroSection.Urgent
+
+- [ ] Refactor other complex components
+  - StoriesThatChanged
+  - CitizensWaiting
+  - SystemPulse
+
+#### API Integration
+- [ ] Replace mock data with real API calls
+  - Set up API base URL
+  - Create API client
+  - Update repositories
+  - Add authentication
+
+#### Monitoring & Observability
+- [ ] Set up Sentry for error tracking
+  - Install Sentry
+  - Configure error logging
+  - Set up source maps
+
+- [ ] Set up LogRocket for session replay
+  - Install LogRocket
+  - Configure recording
+  - Link with error tracking
+
+- [ ] Add analytics
+  - Track user interactions
+  - Monitor performance
+  - Track feature usage
+
+#### Accessibility
+- [ ] Run accessibility audit
+- [ ] Add ARIA labels where needed
+- [ ] Test with screen readers
+- [ ] Ensure keyboard navigation
+- [ ] Check color contrast
+- [ ] Target WCAG AA compliance
+
+#### Internationalization (i18n)
+- [ ] Set up next-i18next (if needed)
+- [ ] Extract hardcoded strings
+- [ ] Create translation files
+- [ ] Add language switcher
+
+---
+
+## Task Prioritization
+
+### Sprint 1 (This Week) - Critical
+1. ✅ Complete Phase 3 testing
+   - DashboardContext tests
+   - DataCard tests
+   - withDataFetching tests
+   - IconFactory tests
+2. Fix component sizes over 200 lines
+3. Update README.md
+
+### Sprint 2 (Next Week) - High Priority
+1. Phase 5: Set up testing infrastructure
+2. Add missing unit tests
+3. Component tests for all new components
+4. Achieve 80% test coverage
+
+### Sprint 3 (Week 3) - Performance
+1. Phase 4: Performance optimization
+2. Add React.memo to components
+3. Implement code splitting
+4. Bundle analysis and optimization
+
+### Sprint 4 (Week 4) - Developer Experience
+1. Phase 7: Set up Storybook
+2. Add pre-commit hooks
+3. Create documentation
+4. Development guidelines
+
+### Ongoing
+- Replace inline SVGs gradually
+- Refactor complex components
+- Monitor performance
+- Update documentation
+
+---
+
+## Success Metrics
+
+### Code Quality
+- [ ] 80% test coverage achieved
+- [ ] All components under 200 lines
+- [ ] Zero TypeScript errors
+- [ ] Zero ESLint warnings
+- [ ] All functions documented
+
+### Performance
+- [ ] Lighthouse score 95+
+- [ ] LCP < 2.5s
+- [ ] FID < 100ms
+- [ ] CLS < 0.1
+- [ ] Bundle size < 200KB
+
+### Developer Experience
+- [ ] All components in Storybook
+- [ ] 100% API documentation
+- [ ] Contributing guide complete
+- [ ] Pre-commit hooks working
+- [ ] CI/CD pipeline green
+
+### User Experience
+- [ ] 95% error recovery rate
+- [ ] All async operations show loading state
+- [ ] WCAG AA compliance
+- [ ] Cross-browser tested
 
 ---
 
