@@ -2,30 +2,71 @@
  * Landing Page Data Repository
  * Provides mock data for the RTI Dashboard Landing Page
  * In production, this would fetch from an API
+ *
+ * Extends BaseRepository to leverage error handling, retry logic, and caching.
  */
 
 import { RecentQuestion } from '@/types/dashboard'
+import { BaseRepository } from './base/BaseRepository'
 
-interface LandingPageData {
+export interface LandingPageData {
   dailyEdition: {
     recentQuestions: RecentQuestion[]
   }
 }
 
-class LandingPageRepositoryImpl {
+/**
+ * Landing Page Repository implementation
+ *
+ * Provides data for the landing page with proper error handling,
+ * retry logic, and caching support through BaseRepository.
+ */
+class LandingPageRepositoryImpl extends BaseRepository<LandingPageData> {
+  protected readonly repositoryName = 'LandingPageRepository'
+
   /**
-   * Get landing page data (simplified to only return recent questions)
+   * Get landing page data with error handling and retry support
+   *
+   * @returns Promise resolving to landing page data
    */
   async getLandingPageData(): Promise<LandingPageData> {
-    return {
-      dailyEdition: {
-        recentQuestions: this.getRecentQuestions(),
+    return this.withErrorHandling(
+      async () => {
+        // Simulate API delay
+        await new Promise((resolve) => setTimeout(resolve, 100))
+
+        const data: LandingPageData = {
+          dailyEdition: {
+            recentQuestions: this.getRecentQuestions(),
+          },
+        }
+
+        // Validate data before returning
+        this.validate(
+          data,
+          (d) => Array.isArray(d.dailyEdition.recentQuestions),
+          'Invalid landing page data: recentQuestions must be an array'
+        )
+
+        this.logInfo('Successfully fetched landing page data', {
+          questionCount: data.dailyEdition.recentQuestions.length,
+        })
+
+        return data
       },
-    }
+      'getLandingPageData',
+      {
+        retry: true,
+        retryAttempts: 2,
+      }
+    )
   }
 
   /**
    * Get recent questions data
+   *
+   * In production, this would fetch from an API endpoint.
+   * Currently returns mock data for development.
    */
   private getRecentQuestions(): RecentQuestion[] {
     return [
