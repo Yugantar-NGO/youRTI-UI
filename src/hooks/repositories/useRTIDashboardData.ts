@@ -50,6 +50,10 @@ export interface UseRTIDashboardDataReturn {
    * Success state
    */
   isSuccess: boolean
+  /**
+   * Idle state (before data fetch begins)
+   */
+  isIdle: boolean
 }
 
 // Singleton transformation strategy instance
@@ -96,6 +100,7 @@ export function useRTIDashboardData(
     error,
     execute,
     isSuccess,
+    isIdle,
   } = useAsyncState(
     async () => {
       // Fetch raw data from repository
@@ -116,5 +121,6 @@ export function useRTIDashboardData(
     error,
     refetch: execute,
     isSuccess,
+    isIdle,
   }
 }
