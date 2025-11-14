@@ -36,10 +36,10 @@ import { CardSkeleton } from '@/components/loading/skeletons'
  */
 export function RTIDashboardContainer(): JSX.Element {
   const dashboardState = useRTIDashboardData({ immediate: true })
-  const { data, isLoading, isError, error } = dashboardState
+  const { data, isLoading, isError, error, isIdle } = dashboardState
 
-  // Loading state
-  if (isLoading) {
+  // Loading state (includes idle state before data fetch begins)
+  if (isLoading || isIdle) {
     return (
       <div style={{ padding: '2rem' }}>
         <CardSkeleton showImage lines={3} />
