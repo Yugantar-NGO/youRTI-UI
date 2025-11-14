@@ -88,8 +88,23 @@ export function useAsyncState<T>(
     error: null,
   })
 
+  // Store asyncFunction in a ref to avoid recreation of execute callback
+  const asyncFunctionRef = useRef(asyncFunction)
+
+  // Update ref when asyncFunction changes
+  useEffect(() => {
+    asyncFunctionRef.current = asyncFunction
+  }, [asyncFunction])
+
   // Track if component is mounted to prevent state updates after unmount
   const isMountedRef = useRef(true)
+
+  useEffect(() => {
+    isMountedRef.current = true
+    return () => {
+      isMountedRef.current = false
+    }
+  }, [])
 
   // Execute the async function
   const execute = useCallback(
@@ -101,7 +116,7 @@ export function useAsyncState<T>(
       })
 
       try {
-        const data = await asyncFunction(...args)
+        const data = await asyncFunctionRef.current(...args)
 
         // Only update state if component is still mounted
         if (isMountedRef.current) {
@@ -128,7 +143,7 @@ export function useAsyncState<T>(
         return null
       }
     },
-    [asyncFunction]
+    []
   )
 
   // Reset to idle state
@@ -145,14 +160,7 @@ export function useAsyncState<T>(
     if (immediate) {
       execute()
     }
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
-
-  // Cleanup on unmount
-  useEffect(() => {
-    return () => {
-      isMountedRef.current = false
-    }
-  }, [])
+  }, [immediate, execute])
 
   return {
     state,
