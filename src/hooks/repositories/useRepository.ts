@@ -6,7 +6,7 @@
  */
 
 import { useAsyncState } from '../useAsyncState'
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 
 /**
  * Options for repository hooks
@@ -138,9 +138,13 @@ export function createRepositoryHook<TData, TArgs extends any[] = []>(
     } = useAsyncState(asyncFunction, false)
 
     // Execute immediately if requested
-    if (immediate && isIdle) {
-      execute(...initialArgs)
-    }
+    useEffect(() => {
+      if (immediate && isIdle) {
+        // @ts-expect-error - TArgs spread type issue
+        execute(...initialArgs)
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [immediate, isIdle])
 
     return {
       data,
