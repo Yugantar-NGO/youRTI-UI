@@ -112,8 +112,8 @@ export function SystemPulse({ className = '' }: SystemPulseProps) {
 
       {/* Compare All Button */}
       <div className={styles.compareSection}>
-        <a href="/departments" className={styles.compareButton}>
-          Compare All 350 Departments →
+        <a href="/analytics" className={styles.compareButton}>
+          View Full Analytics →
         </a>
       </div>
 
