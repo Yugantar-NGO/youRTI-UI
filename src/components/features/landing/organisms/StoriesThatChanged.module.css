@@ -1,5 +1,5 @@
 .storiesSection {
-  background: var(--bg-page-alt-redesign);
+  background: #ffffff;
   padding: var(--spacing-section) 0;
 }
 
@@ -27,13 +27,13 @@
   font-family: var(--font-family-heading-redesign);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
-  color: var(--color-text-on-dark-primary);
+  color: var(--color-text-primary);
   margin: 0;
 }
 
 .subtitle {
   font-size: var(--font-size-lg);
-  color: var(--color-text-on-dark-secondary);
+  color: var(--color-text-secondary);
   margin: 0;
 }
 
@@ -52,7 +52,7 @@
 .emptyState {
   text-align: center;
   padding: var(--spacing-4xl) var(--spacing-xl);
-  color: var(--color-text-on-dark-secondary);
+  color: var(--color-text-secondary);
   font-size: var(--font-size-lg);
 }
 
