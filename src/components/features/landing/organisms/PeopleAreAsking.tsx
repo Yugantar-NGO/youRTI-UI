@@ -18,8 +18,8 @@ interface PeopleAreAskingProps {
  * <PeopleAreAsking topics={[...]} />
  */
 export function PeopleAreAsking({ topics, className = '' }: PeopleAreAskingProps) {
-  // Display up to 8 topics in 2x4 grid
-  const displayedTopics = topics.slice(0, 8)
+  // Display up to 9 topics in 3x3 grid
+  const displayedTopics = topics.slice(0, 9)
 
   if (!topics || topics.length === 0) {
     return null
