@@ -412,6 +412,7 @@ export function StatusBadge({ status }: { status: RTIStatus }) {
 
 ### Pattern 4: Color Coding by Threshold
 
+{% raw %}
 ```tsx
 function getPerformanceColor(percentage: number): string {
   if (percentage >= 80) return 'var(--color-status-success)'
@@ -431,6 +432,7 @@ export function ProgressBar({ percentage }: { percentage: number }) {
   )
 }
 ```
+{% endraw %}
 
 ### Pattern 5: Extract Method Refactoring
 
