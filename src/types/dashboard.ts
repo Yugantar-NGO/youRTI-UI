@@ -434,6 +434,7 @@ export interface TopicStatistics {
   latestQuestion: string
   latestQuestionLocation: string
   latestQuestionAge: string
+  answeredCount: number
   pendingCount: number
   overdueCount: number
   link: string
