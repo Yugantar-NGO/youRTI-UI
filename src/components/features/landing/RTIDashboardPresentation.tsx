@@ -10,7 +10,6 @@ import { TopNavigation } from './organisms/TopNavigation'
 import { HeroSection } from './organisms/HeroSection'
 import { StoriesThatChanged } from './organisms/StoriesThatChanged'
 import { SystemPulse } from './organisms/SystemPulse'
-import { ImpactMeterSection } from './organisms/ImpactMeterSection'
 import { PeopleAreAsking } from './organisms/PeopleAreAsking'
 import { FooterSection } from './organisms/FooterSection'
 import { DashboardData } from '@/services/repositories/strategies/DashboardDataTransformer'
@@ -40,9 +39,8 @@ export interface RTIDashboardPresentationProps {
  * 2. HeroSection - Big Win, Urgent RTI, Stats
  * 3. StoriesThatChanged - Impact stories grid
  * 4. PeopleAreAsking - What India Is Asking About (topic statistics)
- * 5. SystemPulse - Analytics tiles
- * 6. ImpactMeterSection - Meter and key metrics
- * 7. FooterSection - Dark footer with links
+ * 5. SystemPulse - The Accountability Gap
+ * 6. FooterSection - Dark footer with links
  *
  * @param props - Component props
  * @returns Dashboard UI
@@ -64,7 +62,6 @@ export function RTIDashboardPresentation({
         <StoriesThatChanged stories={mockWinStories} />
         <PeopleAreAsking topics={data.topicStatistics} />
         <SystemPulse />
-        <ImpactMeterSection healthScore={78} />
       </div>
 
       <FooterSection />
