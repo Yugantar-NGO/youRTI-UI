@@ -252,6 +252,23 @@ class LandingPageRepositoryImpl extends BaseRepository<LandingPageData> {
         overdueCount: 67,
         link: '/topics/revenue',
       },
+      {
+        id: 'topic-009',
+        icon: '🌳',
+        name: 'Environment',
+        count: 498,
+        countChange: 7,
+        responseRate: 45,
+        avgResponseDays: 29,
+        topDepartment: 'Environment Maharashtra',
+        topDepartmentCode: 'Env MH',
+        latestQuestion: 'Tree cutting permissions...',
+        latestQuestionLocation: 'Mum',
+        latestQuestionAge: '5h ago',
+        pendingCount: 234,
+        overdueCount: 112,
+        link: '/topics/environment',
+      },
     ]
   }
 }
