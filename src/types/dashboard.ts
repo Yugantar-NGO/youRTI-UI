@@ -416,3 +416,25 @@ export interface PendingCase {
   state: string
   link: string
 }
+
+/**
+ * Topic Statistics
+ * Represents aggregated statistics for a specific RTI topic/category
+ */
+export interface TopicStatistics {
+  id: string
+  icon: string
+  name: string
+  count: number
+  countChange: number // percentage change (e.g., +12, -3)
+  responseRate: number // percentage (0-100)
+  avgResponseDays: number
+  topDepartment: string
+  topDepartmentCode: string
+  latestQuestion: string
+  latestQuestionLocation: string
+  latestQuestionAge: string
+  pendingCount: number
+  overdueCount: number
+  link: string
+}
