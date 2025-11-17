@@ -40,18 +40,21 @@ export function TopicCard({ topic, className = '' }: TopicCardProps) {
 
       {/* Response rate */}
       <div className={styles.stat}>
+        <span className={styles.statIcon}>✓</span>
         <div className={styles.statLabel}>Response:</div>
         <div className={styles.statValue}>{topic.responseRate}%</div>
       </div>
 
       {/* Average response time */}
       <div className={styles.stat}>
+        <span className={styles.statIcon}>⏱</span>
         <div className={styles.statLabel}>Avg time:</div>
         <div className={styles.statValue}>{topic.avgResponseDays} days</div>
       </div>
 
       {/* Top department */}
       <div className={styles.stat}>
+        <span className={styles.statIcon}>🏛</span>
         <div className={styles.statLabel}>Top dept:</div>
         <div className={styles.statValue}>{topic.topDepartmentCode}</div>
       </div>
@@ -73,12 +76,15 @@ export function TopicCard({ topic, className = '' }: TopicCardProps) {
         />
       </div>
 
-      {/* Pending/Overdue counts */}
+      {/* Answered/Pending/Overdue counts */}
       <div className={styles.badges}>
-        <div className={styles.badge}>
+        <div className={`${styles.badge} ${styles.answeredBadge}`}>
+          <span className={styles.badgeCount}>{topic.answeredCount}</span> Answered
+        </div>
+        <div className={`${styles.badge} ${styles.pendingBadge}`}>
           <span className={styles.badgeCount}>{topic.pendingCount}</span> Pending
         </div>
-        <div className={styles.badge}>
+        <div className={`${styles.badge} ${styles.overdueBadge}`}>
           <span className={styles.badgeCount}>{topic.overdueCount}</span> Overdue
         </div>
       </div>
