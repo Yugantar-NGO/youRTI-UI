@@ -45,7 +45,7 @@ export function SystemPulse({ className = '' }: SystemPulseProps) {
       <div className={styles.header}>
         <h2 className={styles.title}>The Accountability Gap</h2>
         <p className={styles.subtitle}>
-          Which departments respond? Which don't? Compare.
+          Which departments respond? Which don&apos;t? Compare.
         </p>
       </div>
 
