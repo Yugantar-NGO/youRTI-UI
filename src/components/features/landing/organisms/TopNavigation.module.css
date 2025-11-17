@@ -51,19 +51,13 @@
   white-space: nowrap;
 }
 
-/* Center: Navigation + Filters */
-.centerSection {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-2xl);
-  flex: 1;
-  justify-content: center;
-}
-
+/* Center: Navigation */
 .navLinks {
   display: flex;
   align-items: center;
   gap: var(--spacing-lg);
+  flex: 1;
+  justify-content: center;
 }
 
 .navLink {
@@ -83,48 +77,6 @@
 }
 
 .navLink:focus {
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: 2px;
-}
-
-.filters {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-lg);
-}
-
-.filterGroup {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-}
-
-.filterLabel {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-on-dark-secondary);
-  font-weight: var(--font-weight-medium);
-}
-
-.filterChip {
-  padding: var(--spacing-xs) var(--spacing-md);
-  background: transparent;
-  border: var(--border-width-thin) solid rgba(255, 255, 255, 0.25);
-  border-radius: var(--border-radius-full);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-on-dark-primary);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  appearance: none;
-  outline: none;
-}
-
-.filterChip:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.4);
-}
-
-.filterChip:focus {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
@@ -201,14 +153,6 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .centerSection {
-    gap: var(--spacing-lg);
-  }
-
-  .filters {
-    display: none;
-  }
-
   .navLinks {
     gap: var(--spacing-md);
   }
