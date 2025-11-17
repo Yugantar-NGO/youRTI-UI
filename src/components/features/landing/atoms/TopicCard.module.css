@@ -6,7 +6,7 @@
   padding: var(--spacing-lg);
   background: white;
   border: 1px solid #e5e7eb;
-  border-radius: var(--border-radius-lg);
+  border-radius: var(--border-radius-xl);
   color: inherit;
   transition: all var(--transition-base);
   position: relative;
