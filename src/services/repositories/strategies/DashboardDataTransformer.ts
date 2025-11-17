@@ -7,7 +7,7 @@
 
 import { DataTransformationStrategy } from './DataTransformationStrategy'
 import { LandingPageData } from '../LandingPageRepository'
-import { RecentQuestion } from '@/types/dashboard'
+import { RecentQuestion, TopicStatistics } from '@/types/dashboard'
 
 /**
  * Enriched question with hook line for display
@@ -17,12 +17,13 @@ export interface EnrichedQuestion extends RecentQuestion {
 }
 
 /**
- * Dashboard data with enriched questions
+ * Dashboard data with enriched questions and topic statistics
  */
 export interface DashboardData {
   dailyEdition: {
     recentQuestions: EnrichedQuestion[]
   }
+  topicStatistics: TopicStatistics[]
 }
 
 /**
@@ -47,6 +48,7 @@ export class DashboardDataTransformationStrategy
           this.enrichQuestion(question)
         ),
       },
+      topicStatistics: data.topicStatistics,
     }
   }
 
@@ -61,7 +63,8 @@ export class DashboardDataTransformationStrategy
       data &&
       data.dailyEdition &&
       Array.isArray(data.dailyEdition.recentQuestions) &&
-      data.dailyEdition.recentQuestions.every(this.isValidQuestion)
+      data.dailyEdition.recentQuestions.every(this.isValidQuestion) &&
+      Array.isArray(data.topicStatistics)
     )
   }
 
