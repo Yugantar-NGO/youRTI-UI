@@ -9,6 +9,18 @@ const nextConfig = {
   // Performance optimizations
   swcMinify: true,
 
+  // Static export for GitHub Pages
+  output: 'export',
+
+  // GitHub Pages deployment settings
+  basePath: process.env.NODE_ENV === 'production' ? '/youRTI-UI' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/youRTI-UI/' : '',
+
+  // Disable image optimization for static export
+  images: {
+    unoptimized: true,
+  },
+
   // Experimental features
   experimental: {
     optimizePackageImports: ['recharts'],
