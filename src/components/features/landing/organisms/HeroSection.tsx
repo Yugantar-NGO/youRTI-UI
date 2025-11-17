@@ -67,27 +67,46 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
             deadline="Sep 15"
           />
 
-          {/* Column 3: India Health Stats Context */}
+          {/* Column 3: Live Activity */}
           <div className={styles.contextCard}>
-            <h3 className={styles.contextTitle}>India at a Glance</h3>
-            <div className={styles.contextStats}>
-              <div className={styles.contextStat}>
-                <div className={styles.contextValue}>{INDIA_STATS.STATES}</div>
-                <div className={styles.contextLabel}>States</div>
+            <div className={styles.liveHeader}>
+              <span className={styles.liveIndicator}>🔴</span>
+              <h3 className={styles.contextTitle}>Live Activity</h3>
+            </div>
+
+            <div className={styles.liveMetrics}>
+              <div className={styles.liveMetric}>
+                <div className={styles.metricValue}>126</div>
+                <div className={styles.metricLabel}>RTIs filed</div>
+                <div className={styles.metricTrend}>↑18% this month</div>
               </div>
-              <div className={styles.contextStat}>
-                <div className={styles.contextValue}>{INDIA_STATS.UNION_TERRITORIES} UT</div>
-                <div className={styles.contextLabel}>Union Territories</div>
+
+              <div className={styles.liveMetric}>
+                <div className={styles.metricValue}>18.5 days</div>
+                <div className={styles.metricLabel}>avg response</div>
+                <div className={styles.metricTrend}>↓12%</div>
               </div>
-              <div className={styles.contextStat}>
-                <div className={styles.contextValue}>{INDIA_STATS.POPULATION}</div>
-                <div className={styles.contextLabel}>Population</div>
+
+              <div className={styles.liveMetric}>
+                <div className={styles.metricValue}>234</div>
+                <div className={styles.metricLabel}>cases overdue</div>
+                <div className={styles.metricTrend}>↓6%</div>
               </div>
             </div>
+
+            <div className={styles.recentActivity}>
+              <div className={styles.activityHeader}>RECENT ACTIVITY:</div>
+              <div className={styles.activityList}>
+                <div className={styles.activityItem}>• 2m ago: MCD overdue (47d)</div>
+                <div className={styles.activityItem}>• 8m ago: New RTI filed (BLR)</div>
+                <div className={styles.activityItem}>• 15m ago: Response received (TN)</div>
+              </div>
+            </div>
+
             <div className={styles.contextFooter}>
-              <p className={styles.contextNote}>
-                Tracking transparency across all administrative levels
-              </p>
+              <a href="/analytics" className={styles.viewDashboardLink}>
+                View Dashboard →
+              </a>
             </div>
           </div>
         </div>
