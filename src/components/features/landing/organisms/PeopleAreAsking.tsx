@@ -1,62 +1,48 @@
-import { RecentQuestion } from '@/types'
-import { QuestionListItem } from '../atoms/QuestionListItem'
+import { TopicStatistics } from '@/types/dashboard'
+import { TopicCard } from '../atoms/TopicCard'
 import styles from './PeopleAreAsking.module.css'
 
 interface PeopleAreAskingProps {
-  questions: (RecentQuestion & { hookLine?: string })[]
+  topics: TopicStatistics[]
   className?: string
 }
 
 /**
- * PeopleAreAsking Component (Task 5)
+ * PeopleAreAsking Component (What India Is Asking About)
  *
- * Displays "People Are Asking This Week" section with 2x3 grid of question cards.
- * Each card shows an RTI question with topic pill, status badge, and LLM-generated hook line.
+ * Displays "What India Is Asking About" section with a grid of topic cards.
+ * Each card shows aggregated statistics for a specific RTI topic category,
+ * including response rates, average response times, and latest questions.
  *
  * @example
- * <PeopleAreAsking questions={[...]} />
+ * <PeopleAreAsking topics={[...]} />
  */
-export function PeopleAreAsking({ questions, className = '' }: PeopleAreAskingProps) {
-  // Display up to 6 questions in 2x3 grid
-  const displayedQuestions = questions.slice(0, 6)
+export function PeopleAreAsking({ topics, className = '' }: PeopleAreAskingProps) {
+  // Display up to 8 topics in 2x4 grid
+  const displayedTopics = topics.slice(0, 8)
 
-  if (!questions || questions.length === 0) {
+  if (!topics || topics.length === 0) {
     return null
   }
 
   return (
     <section className={`${styles.peopleAreAsking} ${className}`}>
       <div className={styles.header}>
-        <h2 className={styles.title}>People Are Asking This Week</h2>
+        <h2 className={styles.title}>What India Is Asking About</h2>
         <p className={styles.subtitle}>
-          Recent RTI questions filed by citizens across India
+          Real questions from citizens, tracked across {topics.length.toLocaleString()} RTIs
         </p>
       </div>
 
       <div className={styles.grid}>
-        {displayedQuestions.map((question) => (
-          <QuestionListItem key={question.id} question={question} />
+        {displayedTopics.map((topic) => (
+          <TopicCard key={topic.id} topic={topic} />
         ))}
       </div>
 
       <div className={styles.footer}>
-        <a href="/questions" className={styles.viewAllLink}>
-          View All Questions
-          <svg
-            className={styles.arrowIcon}
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-          >
-            <path
-              d="M6 12L10 8L6 4"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+        <a href="/topics" className={styles.viewAllLink}>
+          View All 24 Topics →
         </a>
       </div>
     </section>
