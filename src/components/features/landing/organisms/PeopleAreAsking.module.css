@@ -28,10 +28,10 @@
   margin: 0;
 }
 
-/* Grid - 4 columns on desktop (2x4 layout for 8 cards) */
+/* Grid - 3 columns on desktop (3x3 layout for 9 cards) */
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--spacing-xl);
   margin-bottom: var(--spacing-xl);
 }
@@ -64,13 +64,6 @@
 }
 
 /* Responsive Design */
-
-/* Large tablets - 3 columns */
-@media (max-width: 1280px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
 
 /* Tablet - 2 columns */
 @media (max-width: 1024px) {
