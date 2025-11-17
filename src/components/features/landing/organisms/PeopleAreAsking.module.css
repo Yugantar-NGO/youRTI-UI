@@ -2,7 +2,7 @@
 
 .peopleAreAsking {
   padding: var(--spacing-3xl) var(--spacing-lg);
-  background-color: #f9fafb;
+  background-color: #1a1f2e;
   width: 100%;
   max-width: var(--container-max-width);
   margin: 0 auto;
@@ -17,14 +17,14 @@
 .title {
   font-size: var(--font-size-4xl);
   font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
+  color: var(--color-text-on-dark-primary);
   margin: 0 0 var(--spacing-sm) 0;
   line-height: var(--line-height-tight);
 }
 
 .subtitle {
   font-size: var(--font-size-lg);
-  color: var(--color-text-secondary);
+  color: var(--color-text-on-dark-secondary);
   margin: 0;
 }
 

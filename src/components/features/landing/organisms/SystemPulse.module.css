@@ -5,7 +5,7 @@
   max-width: var(--container-max-width);
   margin: 0 auto;
   padding: var(--spacing-3xl) var(--spacing-lg);
-  background-color: var(--bg-card);
+  background-color: #1a1f2e;
 }
 
 .header {
@@ -16,7 +16,7 @@
 .title {
   font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
+  color: var(--color-text-on-dark-primary);
   margin: 0 0 var(--spacing-sm) 0;
   font-family: var(--font-family-heading-redesign);
   line-height: var(--line-height-tight);
@@ -24,7 +24,7 @@
 
 .subtitle {
   font-size: var(--font-size-base);
-  color: var(--color-text-secondary);
+  color: var(--color-text-on-dark-secondary);
   margin: 0;
 }
 
