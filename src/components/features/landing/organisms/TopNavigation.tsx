@@ -30,32 +30,51 @@ export function TopNavigation({ className = '' }: TopNavigationProps) {
           <span className={styles.wordmark}>RTI Transparency Dashboard</span>
         </div>
 
-        {/* Center: Global Filters */}
-        <div className={styles.filters}>
-          <div className={styles.filterGroup}>
-            <label className={styles.filterLabel}>Time range:</label>
-            <select
-              value={timeRange}
-              onChange={(e) => setTimeRange(e.target.value)}
-              className={styles.filterChip}
-            >
-              <option value="This week">This week</option>
-              <option value="30 days">30 days</option>
-              <option value="12 months">12 months</option>
-            </select>
-          </div>
+        {/* Center: Navigation Links + Global Filters */}
+        <div className={styles.centerSection}>
+          {/* Navigation Links */}
+          <nav className={styles.navLinks}>
+            <a href="/browse" className={styles.navLink}>
+              Browse
+            </a>
+            <a href="/analytics" className={styles.navLink}>
+              Analytics
+            </a>
+            <a href="/file-rti" className={styles.navLink}>
+              File RTI
+            </a>
+            <a href="/about" className={styles.navLink}>
+              About
+            </a>
+          </nav>
 
-          <div className={styles.filterGroup}>
-            <label className={styles.filterLabel}>Region:</label>
-            <select
-              value={region}
-              onChange={(e) => setRegion(e.target.value)}
-              className={styles.filterChip}
-            >
-              <option value="India">India</option>
-              <option value="State">State</option>
-              <option value="District">District</option>
-            </select>
+          {/* Filters */}
+          <div className={styles.filters}>
+            <div className={styles.filterGroup}>
+              <label className={styles.filterLabel}>Time range:</label>
+              <select
+                value={timeRange}
+                onChange={(e) => setTimeRange(e.target.value)}
+                className={styles.filterChip}
+              >
+                <option value="This week">This week</option>
+                <option value="30 days">30 days</option>
+                <option value="12 months">12 months</option>
+              </select>
+            </div>
+
+            <div className={styles.filterGroup}>
+              <label className={styles.filterLabel}>Region:</label>
+              <select
+                value={region}
+                onChange={(e) => setRegion(e.target.value)}
+                className={styles.filterChip}
+              >
+                <option value="India">India</option>
+                <option value="State">State</option>
+                <option value="District">District</option>
+              </select>
+            </div>
           </div>
         </div>
 
