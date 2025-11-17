@@ -76,21 +76,27 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
 
             <div className={styles.liveMetrics}>
               <div className={styles.liveMetric}>
-                <div className={styles.metricValue}>126</div>
+                <div className={styles.metricRow}>
+                  <div className={styles.metricValue}>126</div>
+                  <div className={styles.metricTrend}>↑18% this month</div>
+                </div>
                 <div className={styles.metricLabel}>RTIs filed</div>
-                <div className={styles.metricTrend}>↑18% this month</div>
               </div>
 
               <div className={styles.liveMetric}>
-                <div className={styles.metricValue}>18.5 days</div>
+                <div className={styles.metricRow}>
+                  <div className={styles.metricValue}>18.5 days</div>
+                  <div className={styles.metricTrend}>↓12%</div>
+                </div>
                 <div className={styles.metricLabel}>avg response</div>
-                <div className={styles.metricTrend}>↓12%</div>
               </div>
 
               <div className={styles.liveMetric}>
-                <div className={styles.metricValue}>234</div>
+                <div className={styles.metricRow}>
+                  <div className={styles.metricValue}>234</div>
+                  <div className={styles.metricTrend}>↓6%</div>
+                </div>
                 <div className={styles.metricLabel}>cases overdue</div>
-                <div className={styles.metricTrend}>↓6%</div>
               </div>
             </div>
 
