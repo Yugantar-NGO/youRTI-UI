@@ -19,6 +19,12 @@ export function TopicCard({ topic, className = '' }: TopicCardProps) {
   const changeIcon = topic.countChange >= 0 ? '↑' : '↓'
   const changeClass = topic.countChange >= 0 ? styles.positive : styles.negative
 
+  // Calculate normalized percentages for progress bar
+  const total = topic.answeredCount + topic.pendingCount + topic.overdueCount
+  const answeredPercentage = total > 0 ? (topic.answeredCount / total) * 100 : 0
+  const pendingPercentage = total > 0 ? (topic.pendingCount / total) * 100 : 0
+  const overduePercentage = total > 0 ? (topic.overdueCount / total) * 100 : 0
+
   return (
     <div className={`${styles.card} ${className}`}>
       {/* Header with icon and topic name */}
@@ -68,11 +74,19 @@ export function TopicCard({ topic, className = '' }: TopicCardProps) {
         </div>
       </div>
 
-      {/* Progress bar for response rate */}
+      {/* Progress bar with three segments: answered (green), pending (orange), overdue (red) */}
       <div className={styles.progressBar}>
         <div
-          className={styles.progressFill}
-          style={{ width: `${topic.responseRate}%` }}
+          className={styles.progressAnswered}
+          style={{ width: `${answeredPercentage}%` }}
+        />
+        <div
+          className={styles.progressPending}
+          style={{ width: `${pendingPercentage}%` }}
+        />
+        <div
+          className={styles.progressOverdue}
+          style={{ width: `${overduePercentage}%` }}
         />
       </div>
 
