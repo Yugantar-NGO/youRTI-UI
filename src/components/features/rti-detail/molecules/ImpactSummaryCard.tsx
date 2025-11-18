@@ -1,3 +1,5 @@
+'use client'
+
 import { BaseProps } from '@/types'
 import { ImpactMetricData } from '@/data/rtiDetailData'
 import { Card } from '@/components/ui/Card'

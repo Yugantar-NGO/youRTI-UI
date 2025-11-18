@@ -1,3 +1,5 @@
+'use client'
+
 import { BaseProps, RTIStatus } from '@/types'
 import { StatusBadge } from '@/components/ui/Badge'
 import { Typography } from '@/components/ui/Typography'

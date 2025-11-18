@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { BaseProps } from '@/types'
 import { RTIResultItem } from '@/types/dashboard'
