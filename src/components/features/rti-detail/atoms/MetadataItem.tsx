@@ -39,8 +39,8 @@ export function MetadataItem({
     if (typeof icon === 'string') {
       // Emoji or text icon
       return <span className={styles.emojiIcon}>{icon}</span>
-    } else if (typeof icon === 'function') {
-      // Lucide icon component
+    } else if (typeof icon === 'function' || (typeof icon === 'object' && icon !== null && '$$typeof' in icon)) {
+      // Lucide icon component (handles both function components and forwardRef components)
       return <Icon icon={icon as LucideIcon} size="sm" className={styles.icon} />
     } else {
       // ReactNode
