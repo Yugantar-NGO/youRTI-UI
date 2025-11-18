@@ -35,9 +35,13 @@ export function Badge({
     pending: Clock,
     partial: AlertCircle,
     filed: FileText,
-    answered: MessageSquare,
+    answered: CheckCircle2,
     appealed: AlertTriangle,
     overdue: AlertTriangle,
+    transferred: MessageSquare,
+    'not-available': XCircle,
+    'public-domain': FileText,
+    'third-party': Clock,
     default: null,
   }
 
@@ -68,6 +72,10 @@ export function StatusBadge({
     answered: 'ANSWERED',
     appealed: 'IN APPEAL',
     overdue: 'OVERDUE',
+    transferred: 'TRANSFERRED',
+    'not-available': 'NOT AVAILABLE',
+    'public-domain': 'PUBLIC DOMAIN',
+    'third-party': 'THIRD PARTY',
     default: 'STATUS',
   }
 
