@@ -2,6 +2,10 @@
 
 .section {
   width: 100%;
+  background: var(--color-bg-primary);
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-card-redesign);
 }
 
 /* Header Row */
@@ -623,7 +627,17 @@
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .section {
+    padding: var(--spacing-lg);
+  }
+}
+
 @media (max-width: 768px) {
+  .section {
+    padding: var(--spacing-md);
+  }
+
   .transferFlow {
     flex-direction: column;
   }
