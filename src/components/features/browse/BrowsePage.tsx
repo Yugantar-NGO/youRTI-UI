@@ -86,6 +86,18 @@ export function BrowsePage() {
     filterId: string,
     category: 'topics' | 'states' | 'cities' | 'departments' | 'status' | 'dateRange'
   ) => {
+    // Map singular to plural for state keys
+    const categoryMap: Record<string, keyof ActiveFilters> = {
+      topic: 'topics',
+      state: 'states',
+      city: 'cities',
+      department: 'departments',
+      status: 'status',
+      dateRange: 'dateRange',
+    }
+
+    const stateKey = categoryMap[category]
+
     if (category === 'status') {
       setActiveFilters((prev) => ({ ...prev, status: 'all' }))
     } else if (category === 'dateRange') {
@@ -93,7 +105,7 @@ export function BrowsePage() {
     } else {
       setActiveFilters((prev) => ({
         ...prev,
-        [category]: prev[category].filter((id: string) => id !== filterId),
+        [stateKey]: (prev[stateKey] as string[]).filter((id: string) => id !== filterId),
       }))
     }
   }
