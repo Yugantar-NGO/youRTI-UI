@@ -439,3 +439,78 @@ export interface TopicStatistics {
   overdueCount: number
   link: string
 }
+
+// ============================================
+// Browse/Filter Page Types
+// ============================================
+
+/**
+ * RTI Result Item
+ * Represents a single RTI in the browse/filter results
+ */
+export interface RTIResultItem {
+  id: string
+  title: string
+  status: RTIStatus
+  department: string
+  location: string // e.g., "Mumbai"
+  state: string // e.g., "Maharashtra"
+  filedDate: string
+  respondedDate?: string
+  responseDays?: number // days to respond (if answered)
+  daysOverdue?: number // days overdue (if pending/overdue)
+  topic: string
+  teaserText?: string // Optional hook/teaser
+  viewCount?: number
+  link: string
+}
+
+/**
+ * Filter Options
+ * Available options for each filter category
+ */
+export interface FilterOptions {
+  topics: Array<{ id: string; name: string; count: number }>
+  states: Array<{ id: string; name: string; count: number }>
+  cities: Array<{ id: string; name: string; count: number; stateId: string }>
+  departments: Array<{ id: string; name: string; code: string; count: number }>
+  statuses: Array<{ id: RTIStatus; label: string; count: number }>
+}
+
+/**
+ * Active Filters
+ * Currently applied filter values
+ */
+export interface ActiveFilters {
+  topics: string[]
+  states: string[]
+  cities: string[]
+  departments: string[]
+  status: RTIStatus | 'all'
+  dateRange: 'all' | 'last-7-days' | 'last-30-days' | 'last-90-days' | 'last-year'
+  searchQuery?: string
+}
+
+/**
+ * Sort Options
+ */
+export type SortOption =
+  | 'most-recent'
+  | 'oldest-first'
+  | 'response-time-fast'
+  | 'response-time-slow'
+  | 'alphabetical'
+  | 'most-viewed'
+
+/**
+ * Browse Page Data
+ * Complete data structure for the browse/filter page
+ */
+export interface BrowsePageData {
+  results: RTIResultItem[]
+  filterOptions: FilterOptions
+  totalCount: number
+  currentPage: number
+  totalPages: number
+  resultsPerPage: number
+}
