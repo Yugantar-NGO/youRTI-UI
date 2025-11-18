@@ -6,6 +6,10 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
+  background: var(--color-bg-primary);
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-card-redesign);
 }
 
 /* Top Row: Status Badge + Action Buttons */
@@ -26,7 +30,7 @@
 /* Title */
 .title {
   margin: 0;
-  font-family: var(--font-family-heading);
+  font-family: var(--font-family-heading-redesign);
   font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
@@ -38,12 +42,16 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-lg);
-  padding-top: var(--spacing-sm);
+  padding-top: var(--spacing-md);
   border-top: var(--border-width-thin) solid var(--color-border-secondary);
 }
 
 /* Responsive styles */
 @media (max-width: 1024px) {
+  .header {
+    padding: var(--spacing-lg);
+  }
+
   .title {
     font-size: var(--font-size-2xl);
   }
@@ -55,6 +63,7 @@
 
 @media (max-width: 768px) {
   .header {
+    padding: var(--spacing-md);
     gap: var(--spacing-md);
   }
 
