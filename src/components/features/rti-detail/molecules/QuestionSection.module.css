@@ -6,6 +6,10 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
+  background: var(--color-bg-primary);
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-card-redesign);
 }
 
 /* Section Header */
@@ -84,6 +88,10 @@
 
 /* Responsive styles */
 @media (max-width: 1024px) {
+  .section {
+    padding: var(--spacing-lg);
+  }
+
   .attachmentsList {
     grid-template-columns: 1fr;
   }
@@ -91,6 +99,7 @@
 
 @media (max-width: 768px) {
   .section {
+    padding: var(--spacing-md);
     gap: var(--spacing-md);
   }
 
