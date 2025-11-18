@@ -145,32 +145,48 @@
   border-radius: 3px;
   overflow: hidden;
   margin: var(--spacing-md) 0;
+  display: flex;
 }
 
-.progressFill {
+.progressAnswered {
   height: 100%;
-  background: linear-gradient(90deg, #0ea5e9 0%, #06b6d4 100%);
+  background-color: #10b981; /* Green for answered */
+  transition: width var(--transition-base);
+}
+
+.progressPending {
+  height: 100%;
+  background-color: #f59e0b; /* Orange for pending */
+  transition: width var(--transition-base);
+}
+
+.progressOverdue {
+  height: 100%;
+  background-color: #ef4444; /* Red for overdue */
   transition: width var(--transition-base);
 }
 
 /* Badges */
 .badges {
   display: flex;
-  gap: var(--spacing-sm);
+  gap: 6px;
   margin-bottom: var(--spacing-md);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 4px 10px;
+  gap: 3px;
+  padding: 4px 8px;
   background-color: #f3f4f6;
   border-radius: var(--border-radius-full);
   font-size: var(--font-size-xs);
   color: var(--color-text-secondary);
   border: 1px solid #e5e7eb;
+  white-space: nowrap;
+  flex-shrink: 1;
+  min-width: 0;
 }
 
 .badgeCount {
