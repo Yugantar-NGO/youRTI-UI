@@ -1,0 +1,85 @@
+/* ============================================
+   COMPONENT: RTIDetailHeader
+   ============================================ */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* Top Row: Status Badge + Action Buttons */
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+/* Action Buttons */
+.actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+/* Title */
+.title {
+  margin: 0;
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+
+/* Metadata Row */
+.metadata {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+  padding-top: var(--spacing-sm);
+  border-top: var(--border-width-thin) solid var(--color-border-secondary);
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .metadata {
+    gap: var(--spacing-md);
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    gap: var(--spacing-md);
+  }
+
+  .topRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+
+  .actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .actions > * {
+    width: 100%;
+  }
+
+  .title {
+    font-size: var(--font-size-xl);
+  }
+
+  .metadata {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
+  }
+}

@@ -1,0 +1,166 @@
+/* ============================================
+   COMPONENT: ImpactSummaryCard
+   ============================================ */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+/* One-liner */
+.oneLiner {
+  margin: 0;
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}
+
+/* Metrics Grid */
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+
+.metricCard {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--border-radius);
+  transition: background-color var(--transition-base);
+}
+
+.metricCard:hover {
+  background-color: var(--color-hover-bg);
+}
+
+.metricIcon {
+  font-size: 32px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.metricContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xs);
+  min-width: 0;
+}
+
+.metricValue {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+
+.metricLabel {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Badges Row with Horizontal Scroll */
+.badgesWrapper {
+  position: relative;
+  margin: 0 calc(-1 * var(--spacing-lg));
+  padding: 0 var(--spacing-lg);
+}
+
+.badges {
+  display: flex;
+  gap: var(--spacing-sm);
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: var(--spacing-xs);
+}
+
+.badges::-webkit-scrollbar {
+  display: none;
+}
+
+.badge {
+  flex-shrink: 0;
+  font-size: var(--font-size-xs);
+}
+
+/* Fade gradient on edges for mobile scroll */
+@media (max-width: 768px) {
+  .badgesWrapper::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    background: linear-gradient(to right, transparent, var(--color-bg-primary));
+    pointer-events: none;
+  }
+}
+
+/* View Count */
+.viewCount {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  justify-content: flex-end;
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
+}
+
+.viewCountText {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .card {
+    gap: var(--spacing-lg);
+  }
+
+  .oneLiner {
+    font-size: var(--font-size-lg);
+  }
+
+  .metricsGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+
+  .metricCard {
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+  }
+
+  .metricIcon {
+    font-size: 24px;
+  }
+
+  .metricValue {
+    font-size: var(--font-size-lg);
+  }
+
+  .metricLabel {
+    font-size: 10px;
+  }
+
+  .viewCount {
+    justify-content: flex-start;
+  }
+
+  .viewCountText {
+    font-size: var(--font-size-xs);
+  }
+}

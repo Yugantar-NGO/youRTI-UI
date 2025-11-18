@@ -1,0 +1,122 @@
+/* ============================================
+   COMPONENT: QuestionSection
+   ============================================ */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* Section Header */
+.header {
+  margin: 0;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-bottom: var(--spacing-sm);
+  border-bottom: var(--border-width-medium) solid var(--color-border-primary);
+}
+
+/* Content */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.questionText {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  color: var(--color-text-primary);
+}
+
+/* Numbered Points List */
+.pointsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin: 0;
+  padding-left: var(--spacing-xl);
+  list-style-type: decimal;
+}
+
+.point {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  padding-left: var(--spacing-xs);
+}
+
+.point::marker {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent);
+}
+
+/* Attachments Section */
+.attachments {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: var(--border-width-thin) solid var(--color-border-secondary);
+}
+
+.attachmentsLabel {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.attachmentsList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .attachmentsList {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    gap: var(--spacing-md);
+  }
+
+  .header {
+    font-size: var(--font-size-xs);
+  }
+
+  .questionText {
+    font-size: var(--font-size-sm);
+  }
+
+  .pointsList {
+    padding-left: var(--spacing-lg);
+    gap: var(--spacing-xs);
+  }
+
+  .point {
+    font-size: var(--font-size-sm);
+  }
+
+  .attachments {
+    gap: var(--spacing-sm);
+  }
+
+  .attachmentsList {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+}
