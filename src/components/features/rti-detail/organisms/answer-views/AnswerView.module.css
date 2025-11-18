@@ -1,0 +1,647 @@
+/* AnswerView Shared Styles */
+
+.section {
+  width: 100%;
+}
+
+/* Header Row */
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.header {
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* Status Badges */
+.statusBadge {
+  flex-shrink: 0;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badgeSuccess {
+  background-color: var(--color-success-light);
+  color: var(--color-success-dark);
+}
+
+.badgePending {
+  background-color: var(--color-warning-light);
+  color: var(--color-warning-dark);
+}
+
+.badgeOverdue {
+  background-color: var(--color-error-light);
+  color: var(--color-error-dark);
+}
+
+.badgeTransfer {
+  background-color: var(--color-info-light);
+  color: var(--color-info-dark);
+}
+
+.badgePartial {
+  background-color: var(--color-warning-light);
+  color: var(--color-warning-dark);
+}
+
+.badgeNotAvailable {
+  background-color: var(--color-neutral-200);
+  color: var(--color-neutral-700);
+}
+
+.badgePublic {
+  background-color: var(--color-info-light);
+  color: var(--color-info-dark);
+}
+
+.badgeThirdParty {
+  background-color: var(--color-neutral-200);
+  color: var(--color-neutral-700);
+}
+
+/* Content */
+.content {
+  margin-bottom: var(--spacing-lg);
+}
+
+.responseText {
+  color: var(--color-text-primary);
+  line-height: 1.7;
+}
+
+.paragraph {
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.paragraph:last-child {
+  margin-bottom: 0;
+}
+
+/* Status Content (for status views) */
+.statusContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  background-color: var(--color-background-secondary);
+  border-radius: var(--border-radius-lg);
+}
+
+.statusIcon {
+  font-size: 48px;
+}
+
+.iconDanger {
+  filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.3));
+}
+
+.statusMessage {
+  text-align: center;
+}
+
+.statusTitle {
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.statusDescription {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Info Grid */
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--color-background-secondary);
+  border-radius: var(--border-radius-md);
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.infoLabel {
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  font-size: var(--font-size-xs);
+}
+
+.infoValue {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Alert Box */
+.alertBox {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--color-error-light);
+  border: 1px solid var(--color-error);
+  border-radius: var(--border-radius-md);
+}
+
+.alertIcon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.alertContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.alertLabel {
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  font-size: var(--font-size-xs);
+}
+
+.alertValue {
+  color: var(--color-error-dark);
+  margin: 0;
+}
+
+.alertNote {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+/* Info Box */
+.infoBox {
+  padding: var(--spacing-md);
+  background-color: var(--color-background-secondary);
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--border-radius-sm);
+}
+
+.infoBoxLabel {
+  display: block;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  font-size: var(--font-size-xs);
+  margin-bottom: var(--spacing-xs);
+}
+
+.infoBoxText {
+  color: var(--color-text-primary);
+  line-height: 1.6;
+}
+
+/* Info Note */
+.infoNote {
+  padding: var(--spacing-md);
+  background-color: var(--color-info-light);
+  border-radius: var(--border-radius-md);
+}
+
+.noteText {
+  color: var(--color-info-dark);
+  line-height: 1.5;
+}
+
+/* Action Section */
+.actionSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.actionSectionLabel {
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+}
+
+.actionList {
+  margin: 0;
+  padding-left: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.actionListItem {
+  color: var(--color-text-primary);
+  line-height: 1.6;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+/* Transfer Flow */
+.transferFlow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background-color: var(--color-background-secondary);
+  border-radius: var(--border-radius-md);
+  overflow-x: auto;
+}
+
+.transferStep {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.transferLabel {
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  font-size: var(--font-size-xs);
+}
+
+.transferBox {
+  padding: var(--spacing-md);
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  text-align: center;
+}
+
+.transferBoxActive {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary);
+}
+
+.transferDept {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.transferArrow {
+  font-size: 24px;
+  color: var(--color-text-tertiary);
+  flex-shrink: 0;
+}
+
+/* Items Section (Provided/Denied) */
+.itemsSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.itemsHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.itemsIcon {
+  font-size: 20px;
+}
+
+.itemsLabel {
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+}
+
+.itemsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.providedItem,
+.deniedItem,
+.notAvailableItem {
+  padding: var(--spacing-md);
+  background-color: var(--color-background-secondary);
+  border-radius: var(--border-radius-md);
+  border-left: 4px solid var(--color-border);
+}
+
+.providedItem {
+  border-left-color: var(--color-success);
+}
+
+.deniedItem {
+  border-left-color: var(--color-error);
+}
+
+.notAvailableItem {
+  border-left-color: var(--color-neutral-400);
+}
+
+.itemTitle {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-xs);
+}
+
+.itemSummary {
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.denialReason {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-xs);
+}
+
+.denialSection {
+  display: inline-block;
+  padding: 2px var(--spacing-xs);
+  background-color: var(--color-error-light);
+  color: var(--color-error-dark);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.denialText {
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* Attachments */
+.attachments {
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--spacing-lg);
+}
+
+.attachmentsLabel {
+  display: block;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-md);
+}
+
+.attachmentsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+/* Appeal Section */
+.appealSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--spacing-lg);
+}
+
+.appealBox {
+  padding: var(--spacing-md);
+  background-color: var(--color-info-light);
+  border-radius: var(--border-radius-md);
+}
+
+.appealText {
+  color: var(--color-info-dark);
+  line-height: 1.5;
+}
+
+/* Signature */
+.signature {
+  padding-top: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+.signatureLine {
+  width: 200px;
+  height: 1px;
+  background-color: var(--color-border);
+  margin-bottom: var(--spacing-sm);
+}
+
+.signatureDetails {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.signatoryName {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.signatoryDesignation {
+  color: var(--color-text-secondary);
+}
+
+.signatureDate {
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
+}
+
+/* Third Party Specific */
+.thirdPartyBox {
+  padding: var(--spacing-md);
+  background-color: var(--color-background-secondary);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--border-radius-md);
+}
+
+.thirdPartyHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.thirdPartyIcon {
+  font-size: 20px;
+}
+
+.thirdPartyLabel {
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  font-size: var(--font-size-xs);
+}
+
+.thirdPartyName {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Process Section */
+.processSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.processSectionLabel {
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+}
+
+.processList {
+  margin: 0;
+  padding-left: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.processStep {
+  color: var(--color-text-primary);
+  line-height: 1.6;
+}
+
+/* Public Domain Links */
+.linksSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.linksHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.linksIcon {
+  font-size: 20px;
+}
+
+.linksLabel {
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+}
+
+.linksList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.linkItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--color-background-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.linkItem:hover {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary);
+  transform: translateX(4px);
+}
+
+.linkContent {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex: 1;
+}
+
+.linkIcon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.linkDetails {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.linkDescription {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.linkUrl {
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family-mono);
+}
+
+.linkArrow {
+  color: var(--color-text-tertiary);
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .transferFlow {
+    flex-direction: column;
+  }
+
+  .transferArrow {
+    transform: rotate(90deg);
+  }
+
+  .alertBox {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .actions > * {
+    width: 100%;
+  }
+}
