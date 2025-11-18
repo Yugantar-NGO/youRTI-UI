@@ -41,8 +41,8 @@ export function PeopleAreAsking({ topics, className = '' }: PeopleAreAskingProps
       </div>
 
       <div className={styles.footer}>
-        <a href="/topics" className={styles.viewAllLink}>
-          View All 24 Topics →
+        <a href="/browse" className={styles.viewAllLink}>
+          View All RTIs →
         </a>
       </div>
     </section>
