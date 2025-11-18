@@ -75,9 +75,17 @@ export default function RTIDetailPage({ params }: RTIDetailPageProps) {
   ]
 
   return (
-    <div>
+    <div style={{
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, #020617 0%, #0F172A 100%)',
+      paddingBottom: 'var(--spacing-3xl)'
+    }}>
       {/* Breadcrumb Navigation */}
-      <div style={{ padding: 'var(--spacing-md) var(--spacing-lg)' }}>
+      <div style={{
+        padding: 'var(--spacing-lg) var(--spacing-lg)',
+        maxWidth: '1400px',
+        margin: '0 auto'
+      }}>
         <Breadcrumb items={breadcrumbItems} />
       </div>
 
