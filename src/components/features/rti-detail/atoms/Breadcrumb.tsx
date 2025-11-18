@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { BaseProps } from '@/types'
 import { ChevronRight } from '@/lib/icons'
@@ -41,7 +43,7 @@ export function Breadcrumb({ items, className = '' }: BreadcrumbProps) {
           return (
             <li key={`${item.label}-${index}`} className={styles.item}>
               {isClickable ? (
-                <Link href={item.href} className={styles.link}>
+                <Link href={item.href!} className={styles.link}>
                   {item.label}
                 </Link>
               ) : (

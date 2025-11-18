@@ -1,3 +1,5 @@
+'use client'
+
 import { ReactNode } from 'react'
 import { BaseProps } from '@/types'
 import { Icon } from '@/components/ui/Icon'

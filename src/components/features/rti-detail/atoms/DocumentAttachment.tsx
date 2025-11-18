@@ -1,3 +1,5 @@
+'use client'
+
 import { BaseProps } from '@/types'
 import { RTIDocument } from '@/data/rtiDetailData'
 import { FileText, File, Download } from '@/lib/icons'
