@@ -132,7 +132,7 @@ class LandingPageRepositoryImpl extends BaseRepository<LandingPageData> {
         answeredCount: 552,
         pendingCount: 247,
         overdueCount: 89,
-        link: '/topics/road-construction',
+        link: '/browse?topic=road-construction',
       },
       {
         id: 'topic-002',
@@ -150,7 +150,7 @@ class LandingPageRepositoryImpl extends BaseRepository<LandingPageData> {
         answeredCount: 666,
         pendingCount: 612,
         overdueCount: 234,
-        link: '/topics/healthcare',
+        link: '/browse?topic=healthcare',
       },
       {
         id: 'topic-003',
@@ -168,7 +168,7 @@ class LandingPageRepositoryImpl extends BaseRepository<LandingPageData> {
         answeredCount: 612,
         pendingCount: 423,
         overdueCount: 156,
-        link: '/topics/education',
+        link: '/browse?topic=education',
       },
       {
         id: 'topic-004',
@@ -186,7 +186,7 @@ class LandingPageRepositoryImpl extends BaseRepository<LandingPageData> {
         answeredCount: 325,
         pendingCount: 345,
         overdueCount: 178,
-        link: '/topics/water-supply',
+        link: '/browse?topic=water-supply',
       },
       {
         id: 'topic-005',
@@ -204,7 +204,7 @@ class LandingPageRepositoryImpl extends BaseRepository<LandingPageData> {
         answeredCount: 405,
         pendingCount: 298,
         overdueCount: 123,
-        link: '/topics/transport',
+        link: '/browse?topic=transport',
       },
       {
         id: 'topic-006',
@@ -222,7 +222,7 @@ class LandingPageRepositoryImpl extends BaseRepository<LandingPageData> {
         answeredCount: 234,
         pendingCount: 412,
         overdueCount: 189,
-        link: '/topics/municipal-deals',
+        link: '/browse?topic=municipal-deals',
       },
       {
         id: 'topic-007',
@@ -240,7 +240,7 @@ class LandingPageRepositoryImpl extends BaseRepository<LandingPageData> {
         answeredCount: 294,
         pendingCount: 267,
         overdueCount: 98,
-        link: '/topics/electricity',
+        link: '/browse?topic=electricity',
       },
       {
         id: 'topic-008',
@@ -258,7 +258,7 @@ class LandingPageRepositoryImpl extends BaseRepository<LandingPageData> {
         answeredCount: 379,
         pendingCount: 189,
         overdueCount: 67,
-        link: '/topics/revenue',
+        link: '/browse?topic=revenue',
       },
       {
         id: 'topic-009',
@@ -276,7 +276,7 @@ class LandingPageRepositoryImpl extends BaseRepository<LandingPageData> {
         answeredCount: 224,
         pendingCount: 234,
         overdueCount: 112,
-        link: '/topics/environment',
+        link: '/browse?topic=environment',
       },
     ]
   }
