@@ -1,0 +1,202 @@
+/* ============================================
+   COMPONENT: TimelineSection
+   ============================================ */
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* Header */
+.header {
+  margin: 0;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Variants */
+.sidebar {
+  position: sticky;
+  top: calc(var(--spacing-xl) + 20px);
+  align-self: flex-start;
+}
+
+.inline {
+  width: 100%;
+}
+
+/* Events Container */
+.events {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Event Item */
+.event {
+  display: flex;
+  gap: var(--spacing-md);
+  position: relative;
+  padding-bottom: var(--spacing-lg);
+}
+
+.event:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 24px;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--color-border-secondary);
+}
+
+/* Event Dot */
+.dot {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: var(--border-width-medium) solid currentColor;
+  background-color: var(--color-bg-primary);
+  z-index: 1;
+}
+
+/* Dot Colors by Event Type */
+.filed {
+  color: var(--color-accent);
+}
+
+.acknowledged {
+  color: var(--color-text-tertiary);
+}
+
+.transferred {
+  color: var(--color-warning);
+}
+
+.answered {
+  color: var(--color-success);
+}
+
+.appeal {
+  color: var(--color-error);
+}
+
+.reminder {
+  color: var(--color-warning);
+}
+
+/* Event Content */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.dateRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.date {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-tertiary);
+}
+
+.daysFromFiling {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  padding: 2px 6px;
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--border-radius-sm);
+}
+
+.earlyBadge {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+  font-size: var(--font-size-xs);
+}
+
+.lateBadge {
+  font-size: var(--font-size-xs);
+}
+
+.title {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.description {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline {
+    gap: var(--spacing-md);
+  }
+
+  .event {
+    gap: var(--spacing-sm);
+    padding-bottom: var(--spacing-md);
+  }
+
+  .event:not(:last-child)::before {
+    left: 9px;
+  }
+
+  .dot {
+    width: 20px;
+    height: 20px;
+  }
+
+  .content {
+    gap: var(--spacing-2xs);
+  }
+
+  .dateRow {
+    gap: var(--spacing-xs);
+  }
+
+  .date {
+    font-size: 10px;
+  }
+
+  .daysFromFiling {
+    font-size: 10px;
+    padding: 1px 4px;
+  }
+
+  .title {
+    font-size: var(--font-size-xs);
+  }
+
+  .description {
+    font-size: 11px;
+  }
+}
