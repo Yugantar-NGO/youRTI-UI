@@ -11,7 +11,6 @@ import {
   RelatedRTIsSection,
 } from '../molecules'
 import { AnswerSection } from './AnswerSection'
-import { SectionDivider } from '../atoms'
 import styles from './RTIDetailLayout.module.css'
 
 interface RTIDetailLayoutProps extends BaseProps {
@@ -66,8 +65,6 @@ export function RTIDetailLayout({ data, className = '' }: RTIDetailLayoutProps) 
         />
       </section>
 
-      <SectionDivider />
-
       {/* Main Content Area - Two Column on Desktop, Single Column on Mobile */}
       <div className={styles.contentWrapper}>
         {/* Timeline Sidebar - Desktop Left, Mobile Below Main Content */}
@@ -86,22 +83,15 @@ export function RTIDetailLayout({ data, className = '' }: RTIDetailLayoutProps) 
             attachments={data.questionAttachments}
           />
 
-          <SectionDivider />
-
           {/* Answer Section - Dynamic based on responseType */}
           <AnswerSection data={data} />
 
           {/* What We Found Section - Only if entities exist */}
           {hasExtractedEntities && (
-            <>
-              <SectionDivider />
-              <WhatWeFoundSection extractedEntities={data.extractedEntities} />
-            </>
+            <WhatWeFoundSection extractedEntities={data.extractedEntities} />
           )}
         </main>
       </div>
-
-      <SectionDivider />
 
       {/* Related RTIs - Full Width */}
       <section className={styles.related}>
