@@ -30,7 +30,7 @@ export function PeopleAreAsking({ topics, className = '' }: PeopleAreAskingProps
       <div className={styles.header}>
         <h2 className={styles.title}>What India Is Asking About</h2>
         <p className={styles.subtitle}>
-          Real questions from citizens, tracked across {topics.length.toLocaleString()} RTIs
+          Real questions from citizens, tracked across different topics
         </p>
       </div>
 
