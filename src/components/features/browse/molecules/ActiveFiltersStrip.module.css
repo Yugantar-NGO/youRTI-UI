@@ -1,0 +1,112 @@
+/* Active Filters Strip Styling */
+
+.container {
+  background: var(--color-bg-tertiary);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.chipsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+/* Filter chip */
+.chip {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: 9999px;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 150ms;
+}
+
+.chip:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 2px 4px rgba(14, 165, 233, 0.1);
+}
+
+.chipLabel {
+  font-weight: 500;
+}
+
+.chipRemove {
+  background: none;
+  border: none;
+  color: var(--color-text-tertiary);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 150ms;
+  line-height: 1;
+}
+
+.chipRemove:hover {
+  color: #ef4444;
+}
+
+.chipRemove:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 50%;
+}
+
+/* Clear all button */
+.clearAllButton {
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: all 150ms;
+  white-space: nowrap;
+}
+
+.clearAllButton:hover {
+  background: rgba(14, 165, 233, 0.1);
+  color: var(--color-accent-dark);
+  text-decoration: underline;
+}
+
+.clearAllButton:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px 12px;
+  }
+
+  .chip {
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+
+  .clearAllButton {
+    font-size: 13px;
+  }
+}
