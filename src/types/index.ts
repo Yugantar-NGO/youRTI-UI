@@ -18,6 +18,10 @@ export type RTIStatus =
   | 'appealed'
   | 'answered'
   | 'overdue'
+  | 'transferred'
+  | 'not-available'
+  | 'public-domain'
+  | 'third-party'
 
 // RTI Request interface
 export interface RTIRequest {
@@ -92,6 +96,10 @@ export type BadgeVariant =
   | 'answered'
   | 'appealed'
   | 'overdue'
+  | 'transferred'
+  | 'not-available'
+  | 'public-domain'
+  | 'third-party'
 
 // Size variants
 export type Size = 'small' | 'medium' | 'large'
