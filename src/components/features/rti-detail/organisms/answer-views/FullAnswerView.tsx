@@ -50,13 +50,13 @@ export function FullAnswerView({
 
       {/* Response Text */}
       <div className={styles.content}>
-        <Typography variant="body-text" className={styles.responseText}>
+        <div className={styles.responseText}>
           {responseText.split('\n').map((paragraph, index) => (
             <p key={index} className={styles.paragraph}>
               {paragraph}
             </p>
           ))}
-        </Typography>
+        </div>
       </div>
 
       {/* Attachments */}
