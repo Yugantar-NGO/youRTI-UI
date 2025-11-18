@@ -1,0 +1,38 @@
+/* ============================================
+   COMPONENT: SectionDivider
+   ============================================ */
+
+.divider {
+  width: 100%;
+  height: 0;
+  border: none;
+  border-top: var(--border-width-thin) solid var(--color-border-secondary);
+}
+
+/* Spacing variants */
+.sm {
+  margin: var(--spacing-lg) 0;
+}
+
+.md {
+  margin: var(--spacing-xl) 0;
+}
+
+.lg {
+  margin: var(--spacing-2xl) 0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .sm {
+    margin: var(--spacing-md) 0;
+  }
+
+  .md {
+    margin: var(--spacing-lg) 0;
+  }
+
+  .lg {
+    margin: var(--spacing-xl) 0;
+  }
+}

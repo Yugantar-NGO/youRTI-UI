@@ -1,0 +1,67 @@
+/* ============================================
+   COMPONENT: Breadcrumb
+   ============================================ */
+
+.breadcrumb {
+  margin-bottom: var(--spacing-lg);
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-xs);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.link {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.link:hover {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm);
+}
+
+.current {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.separator {
+  color: var(--color-text-tertiary);
+  flex-shrink: 0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .breadcrumb {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .link,
+  .current {
+    font-size: var(--font-size-xs);
+  }
+}

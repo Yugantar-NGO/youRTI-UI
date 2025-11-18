@@ -1,0 +1,118 @@
+/* ============================================
+   COMPONENT: DocumentAttachment
+   ============================================ */
+
+.attachment {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--color-bg-secondary);
+  border: var(--border-width-thin) solid var(--color-border-secondary);
+  border-radius: var(--border-radius);
+  transition: all var(--transition-base);
+}
+
+.attachment:hover {
+  background-color: var(--color-hover-bg);
+  border-color: var(--color-border-primary);
+}
+
+/* Variants */
+.inline {
+  flex-direction: row;
+}
+
+.list {
+  flex-direction: row;
+}
+
+/* Icon wrapper with file type badge */
+.iconWrapper {
+  position: relative;
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+}
+
+.fileIcon {
+  display: block;
+}
+
+.fileType {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  font-family: var(--font-family-mono);
+  font-size: 8px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-inverse);
+  background-color: var(--color-accent);
+  padding: 2px 4px;
+  border-radius: var(--border-radius-sm);
+  line-height: 1;
+}
+
+/* File details */
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xs);
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.fileName {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.fileSize {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+}
+
+/* Download link */
+.downloadLink {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--color-text-secondary);
+  background-color: transparent;
+  border-radius: var(--border-radius);
+  transition: all var(--transition-base);
+  text-decoration: none;
+}
+
+.downloadLink:hover {
+  color: var(--color-accent);
+  background-color: var(--color-bg-primary);
+}
+
+.downloadLink:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .attachment {
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+  }
+
+  .fileName {
+    font-size: var(--font-size-xs);
+  }
+
+  .fileSize {
+    font-size: 10px;
+  }
+}
