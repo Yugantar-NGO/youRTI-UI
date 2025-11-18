@@ -6,6 +6,10 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
+  background: var(--color-bg-primary);
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-card-redesign);
 }
 
 /* Header */
@@ -150,6 +154,10 @@
 
 /* Responsive styles */
 @media (max-width: 1024px) {
+  .timeline {
+    padding: var(--spacing-lg);
+  }
+
   .sidebar {
     position: static;
     width: 100%;
@@ -158,6 +166,7 @@
 
 @media (max-width: 768px) {
   .timeline {
+    padding: var(--spacing-md);
     gap: var(--spacing-md);
   }
 
