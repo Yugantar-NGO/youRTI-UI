@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styles from './FooterSection.module.css'
 
 interface FooterSectionProps {
@@ -18,26 +19,26 @@ export function FooterSection({ className = '' }: FooterSectionProps) {
       <div className={styles.container}>
         {/* Primary Links */}
         <div className={styles.primaryLinks}>
-          <a href="/about" className={styles.link}>About</a>
+          <Link href="/about" className={styles.link}>About</Link>
           <span className={styles.separator}>•</span>
-          <a href="/browse" className={styles.link}>Browse RTIs</a>
+          <Link href="/browse" className={styles.link}>Browse RTIs</Link>
           <span className={styles.separator}>•</span>
-          <a href="/file-rti" className={styles.link}>File RTI</a>
+          <Link href="/file-rti" className={styles.link}>File RTI</Link>
           <span className={styles.separator}>•</span>
-          <a href="/analytics" className={styles.link}>Analytics</a>
+          <Link href="/analytics" className={styles.link}>Analytics</Link>
           <span className={styles.separator}>•</span>
-          <a href="/api" className={styles.link}>API Documentation</a>
+          <Link href="/api" className={styles.link}>API Documentation</Link>
         </div>
 
         {/* Secondary Links */}
         <div className={styles.secondaryLinks}>
-          <a href="/data-policy" className={styles.secondaryLink}>Data Policy</a>
+          <Link href="/data-policy" className={styles.secondaryLink}>Data Policy</Link>
           <span className={styles.separator}>•</span>
-          <a href="/privacy" className={styles.secondaryLink}>Privacy</a>
+          <Link href="/privacy" className={styles.secondaryLink}>Privacy</Link>
           <span className={styles.separator}>•</span>
-          <a href="/terms" className={styles.secondaryLink}>Terms</a>
+          <Link href="/terms" className={styles.secondaryLink}>Terms</Link>
           <span className={styles.separator}>•</span>
-          <a href="/contact" className={styles.secondaryLink}>Contact</a>
+          <Link href="/contact" className={styles.secondaryLink}>Contact</Link>
         </div>
 
         {/* Tagline */}

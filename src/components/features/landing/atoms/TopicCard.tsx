@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { TopicStatistics } from '@/types/dashboard'
 import styles from './TopicCard.module.css'
 
@@ -104,9 +105,9 @@ export function TopicCard({ topic, className = '' }: TopicCardProps) {
       </div>
 
       {/* View All RTIs Button */}
-      <a href={topic.link} className={styles.viewAllButton}>
+      <Link href={topic.link} className={styles.viewAllButton}>
         View All RTIs →
-      </a>
+      </Link>
     </div>
   )
 }
