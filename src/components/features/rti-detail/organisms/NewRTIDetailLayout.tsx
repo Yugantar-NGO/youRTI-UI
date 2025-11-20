@@ -2,6 +2,7 @@
 
 import { BaseProps, RTIStatus } from '@/types'
 import { RTIDetailData } from '@/data/rtiDetailData'
+import React from 'react'
 import {
   TopNavigation,
   SidebarOverviewCard,
@@ -14,10 +15,10 @@ import {
   NextStepsSection,
   SimilarRTIsSection,
 } from '../molecules'
-import { Breadcrumb } from '../atoms'
+import { Breadcrumb, DataHighlight } from '../atoms'
 import { QAItem } from '../molecules/QASection'
 import { NextStep } from '../molecules/NextStepsSection'
-import { ImportancePoint } from '../molecules/KeyInfoCards'
+import { ImportancePoint, RevealedFinding } from '../molecules/KeyInfoCards'
 import { SimilarRTI } from '../molecules/SimilarRTIsSection'
 import styles from './NewRTIDetailLayout.module.css'
 
@@ -60,27 +61,52 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
     { label: data.title, href: `/rti/${data.id}`, current: true },
   ]
 
-  // Prepare QA items
-  const qaItems: QAItem[] = data.questionPoints
-    ? data.questionPoints.map((q, index) => ({
-        question: q,
-        answer: data.responseText || undefined,
-        status:
-          data.status === 'pending' || data.status === 'transferred'
-            ? 'pending'
-            : data.status === 'partial'
-            ? index % 2 === 0
-              ? 'answered'
-              : 'denied'
-            : 'answered',
-      }))
-    : [
-        {
-          question: data.questionText,
-          answer: data.responseText,
-          status: data.status === 'pending' || data.status === 'transferred' ? 'pending' : 'answered',
-        },
-      ]
+  // Prepare QA items with proper answers for answered status
+  const qaItems: QAItem[] =
+    data.status === 'answered'
+      ? [
+          {
+            question: 'What was the total project cost for MG Road pothole repairs?',
+            answer:
+              'The total expenditure amounted to ₹12,42,50,000 (Twelve Crore Forty Two Lakh Fifty Thousand Rupees). This includes material costs of ₹8.5 Cr and labor costs of ₹3.92 Cr. The project covered approximately 2.3 km stretch of MG Road with an average depth of repair at 150mm.',
+            status: 'answered',
+            sourceDocument: 'Response Letter',
+            sourcePage: 2,
+          },
+          {
+            question: 'Who was the contractor and what was the tender process?',
+            answer:
+              'The project was awarded to ABC Construction Pvt Ltd (Reg No: MH/2019/12345). Work was commissioned under emergency provisions as per Section 17(3) of Municipal Act, allowing direct appointment without public tender due to "urgent nature of repairs before monsoon season."',
+            status: 'answered',
+            sourceDocument: 'Contractor Details',
+            sourcePage: 5,
+          },
+          {
+            question: 'List of major land conversion applicants (companies/individuals) with plot sizes',
+            answer: '',
+            status: 'denied',
+          },
+        ]
+      : data.questionPoints
+      ? data.questionPoints.map((q, index) => ({
+          question: q,
+          answer: data.responseText || undefined,
+          status:
+            data.status === 'pending' || data.status === 'transferred'
+              ? 'pending'
+              : data.status === 'partial'
+              ? index % 2 === 0
+                ? 'answered'
+                : 'denied'
+              : 'answered',
+        }))
+      : [
+          {
+            question: data.questionText,
+            answer: data.responseText,
+            status: data.status === 'pending' || data.status === 'transferred' ? 'pending' : 'answered',
+          },
+        ]
 
   // Next steps data
   const nextSteps: NextStep[] = [
@@ -136,25 +162,45 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
     },
   ]
 
-  // Why this matters points
-  const whyThisMatters: ImportancePoint[] = [
-    {
-      icon: '🔍',
-      text: 'Ensures infrastructure spending is properly documented and justified',
-    },
-    {
-      icon: '📊',
-      text: 'Helps residents understand ongoing maintenance work affecting their area',
-    },
-    {
-      icon: '💰',
-      text: 'Enables tracking of project completion timelines and budget adherence',
-    },
-    {
-      icon: '⚖️',
-      text: 'Creates accountability for quality standards in critical public infrastructure',
-    },
-  ]
+  // Why this matters points - updated for answered status
+  const whyThisMatters: ImportancePoint[] =
+    data.status === 'answered'
+      ? [
+          {
+            icon: '💸',
+            text: 'Ensures taxpayer money is spent efficiently on infrastructure projects',
+          },
+          {
+            icon: '📋',
+            text: 'Verifies that proper tender processes were followed for contractor selection',
+          },
+          {
+            icon: '🔎',
+            text: 'Helps identify potential irregularities in public procurement',
+          },
+          {
+            icon: '⚖️',
+            text: 'Establishes accountability for cost overruns and project delays',
+          },
+        ]
+      : [
+          {
+            icon: '🔍',
+            text: 'Ensures infrastructure spending is properly documented and justified',
+          },
+          {
+            icon: '📊',
+            text: 'Helps residents understand ongoing maintenance work affecting their area',
+          },
+          {
+            icon: '💰',
+            text: 'Enables tracking of project completion timelines and budget adherence',
+          },
+          {
+            icon: '⚖️',
+            text: 'Creates accountability for quality standards in critical public infrastructure',
+          },
+        ]
 
   // What was asked points
   const whatWasAsked: ImportancePoint[] = data.questionPoints
@@ -168,6 +214,50 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
           text: data.questionText,
         },
       ]
+
+  // What was revealed findings - only for answered status
+  const whatWasRevealed: RevealedFinding[] =
+    data.status === 'answered'
+      ? [
+          {
+            icon: '💰',
+            text: (
+              <>
+                Project cost was <DataHighlight type="amount">₹12.4 Crore</DataHighlight>,{' '}
+                <DataHighlight type="multiplier">3x</DataHighlight> the initial estimate of{' '}
+                <DataHighlight type="amount">₹4.1 Crore</DataHighlight>
+              </>
+            ),
+          },
+          {
+            icon: '🏢',
+            text: (
+              <>
+                Contractor <DataHighlight type="entity">ABC Construction Ltd</DataHighlight> appointed
+                directly without public tender under emergency provisions
+              </>
+            ),
+          },
+          {
+            icon: '⏱️',
+            text: (
+              <>
+                Project completed <DataHighlight type="duration">15 days</DataHighlight> past deadline
+                despite emergency classification
+              </>
+            ),
+          },
+          {
+            icon: '❌',
+            text: (
+              <>
+                <DataHighlight type="negative">Quality inspection reports withheld</DataHighlight>, marked
+                as "under review"
+              </>
+            ),
+          },
+        ]
+      : []
 
   return (
     <div className={`${styles.wrapper} ${className}`}>
@@ -244,6 +334,7 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
             status={data.status}
             whyThisMatters={whyThisMatters}
             whatWasAsked={whatWasAsked}
+            whatWasRevealed={whatWasRevealed}
             pendingMessage={
               data.status === 'pending' || data.status === 'transferred'
                 ? `This RTI was filed ${data.daysElapsed} days ago. The department has ${
