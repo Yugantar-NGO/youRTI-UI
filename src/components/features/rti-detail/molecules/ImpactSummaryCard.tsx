@@ -1,16 +1,20 @@
 'use client'
 
-import { BaseProps } from '@/types'
+import { BaseProps, RTIStatus } from '@/types'
 import { ImpactMetricData } from '@/data/rtiDetailData'
 import { Card } from '@/components/ui/Card'
 import { Typography } from '@/components/ui/Typography'
 import { Badge } from '@/components/ui/Badge'
-import { Eye } from '@/lib/icons'
+import { Eye, Share2 } from '@/lib/icons'
 import { Icon } from '@/components/ui/Icon'
+import { StatusBanner } from '../atoms'
 import styles from './ImpactSummaryCard.module.css'
 
 interface ImpactSummaryCardProps extends BaseProps {
+  status: RTIStatus
   impactOneLiner: string
+  statusMessage?: string
+  statusDaysInfo?: string
   metrics: ImpactMetricData[]
   badges: string[]
   viewCount: number
@@ -31,7 +35,10 @@ interface ImpactSummaryCardProps extends BaseProps {
  * />
  */
 export function ImpactSummaryCard({
+  status,
   impactOneLiner,
+  statusMessage,
+  statusDaysInfo,
   metrics,
   badges,
   viewCount,
@@ -39,6 +46,16 @@ export function ImpactSummaryCard({
 }: ImpactSummaryCardProps) {
   return (
     <Card variant="bordered" padding="lg" className={`${styles.card} ${className}`}>
+      {/* Status Banner - only show if statusMessage provided */}
+      {statusMessage && (
+        <StatusBanner
+          status={status}
+          message={statusMessage}
+          daysInfo={statusDaysInfo}
+          variant="full"
+        />
+      )}
+
       {/* One-liner */}
       <Typography variant="headline-small" as="h2" className={styles.oneLiner}>
         {impactOneLiner}
@@ -70,12 +87,18 @@ export function ImpactSummaryCard({
         </div>
       )}
 
-      {/* View Count */}
-      <div className={styles.viewCount}>
-        <Icon icon={Eye} size="sm" />
-        <span className={styles.viewCountText}>
-          {viewCount.toLocaleString()} {viewCount === 1 ? 'view' : 'views'}
-        </span>
+      {/* View Count and Share */}
+      <div className={styles.footer}>
+        <div className={styles.viewCount}>
+          <Icon icon={Eye} size="sm" />
+          <span className={styles.viewCountText}>
+            {viewCount.toLocaleString()} {viewCount === 1 ? 'view' : 'views'}
+          </span>
+        </div>
+        <button className={styles.shareButton} aria-label="Share RTI">
+          <Icon icon={Share2} size="sm" />
+          <span>Share</span>
+        </button>
       </div>
     </Card>
   )
