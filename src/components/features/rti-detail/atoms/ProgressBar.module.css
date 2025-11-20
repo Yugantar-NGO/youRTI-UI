@@ -1,0 +1,70 @@
+/* ProgressBar Component Styles */
+
+.progressBarContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.label {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.progressBarWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.progressBar {
+  flex: 1;
+  height: 8px;
+  background-color: var(--color-bg-tertiary);
+  border-radius: var(--border-radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: var(--border-radius-full);
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+/* Variant-specific colors */
+.success .progressFill {
+  background-color: var(--color-success);
+}
+
+.warning .progressFill {
+  background-color: var(--color-warning);
+}
+
+.danger .progressFill {
+  background-color: var(--color-error);
+}
+
+.info .progressFill {
+  background-color: var(--color-info);
+}
+
+.percentage {
+  min-width: 40px;
+  text-align: right;
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .progressBar {
+    height: 6px;
+  }
+
+  .percentage {
+    min-width: 36px;
+    font-size: var(--font-size-xs);
+  }
+}
