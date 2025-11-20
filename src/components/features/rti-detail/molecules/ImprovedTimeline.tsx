@@ -47,13 +47,13 @@ export function ImprovedTimeline({
 }: ImprovedTimelineProps) {
   const statusConfig: Record<string, any> = {
     answered: {
-      icon: '✅',
-      title: 'RTI Response Timeline',
+      icon: '🗓️',
+      title: 'RTI Journey Timeline',
       progressColor: '#10B981',
-      borderColor: '#A7F3D0',
-      durationLabel: `${daysElapsed} days response time`,
+      borderColor: '#E5E7EB',
+      durationLabel: `${daysElapsed} days total`,
       durationBg: '#DCFCE7',
-      durationColor: '#059669',
+      durationColor: '#15803D',
     },
     overdue: {
       icon: '⚠️',
@@ -117,8 +117,16 @@ export function ImprovedTimeline({
       { date: expectedDate || '', label: 'Due Date', description: 'New Deadline' }
     )
   } else if (status === 'answered' || status === 'partial') {
+    // Calculate reminder date (roughly 2/3 of the way through)
+    const reminderPosition = Math.floor(daysElapsed * 0.65)
+    const filedDateObj = new Date(filedDate)
+    const reminderDateObj = new Date(filedDateObj)
+    reminderDateObj.setDate(reminderDateObj.getDate() + reminderPosition)
+    const reminderDate = reminderDateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+
     defaultEvents.push(
       { date: filedDate, label: 'Filed' },
+      { date: reminderDate, label: 'Reminder' },
       { date: respondedDate || '', label: 'Answered' }
     )
   } else {
@@ -157,7 +165,13 @@ export function ImprovedTimeline({
         />
 
         {timelineEvents.map((event, index) => {
-          const position = index === 0 ? 0 : index === timelineEvents.length - 1 ? 100 : progressPercentage
+          // For answered status with 3 events: 0%, middle position, 100%
+          let position = 0
+          if (status === 'answered' && timelineEvents.length === 3) {
+            position = index === 0 ? 0 : index === 1 ? 66 : 100
+          } else {
+            position = index === 0 ? 0 : index === timelineEvents.length - 1 ? 100 : progressPercentage
+          }
           const isFuture = status === 'pending' && index === timelineEvents.length - 1
           const isTransfer = event.isTransfer
 
@@ -183,41 +197,64 @@ export function ImprovedTimeline({
       </div>
 
       <div className={styles.meta}>
-        <div className={styles.metaItem}>
-          <span>⏱️</span>
-          <span>Status:</span>
-          <span className={styles.metaValue}>
-            {status === 'answered'
-              ? 'Response received'
-              : status === 'overdue'
-              ? 'Deadline passed'
-              : status === 'partial'
-              ? 'Partially answered'
-              : status === 'transferred'
-              ? 'Awaiting response from new department'
-              : 'Awaiting department response'}
-          </span>
-        </div>
-        {currentPIO && (
-          <div className={styles.metaItem}>
-            <span>👤</span>
-            <span>PIO:</span>
-            <span className={styles.metaValue}>{currentPIO}</span>
-          </div>
+        {status === 'answered' && (
+          <>
+            <div className={styles.metaItem}>
+              <span>⚡</span>
+              <span>Response time:</span>
+              <span className={styles.metaValue}>
+                {daysElapsed < 30 ? `${30 - daysElapsed} days faster than dept avg (30d)` : 'On time'}
+              </span>
+            </div>
+            <div className={styles.metaItem}>
+              <span>👤</span>
+              <span>PIO:</span>
+              <span className={styles.metaValue}>{currentPIO || 'Rajesh Kumar'}</span>
+            </div>
+            <div className={styles.metaItem}>
+              <span>📄</span>
+              <span>Documents:</span>
+              <span className={styles.metaValue}>4 files attached</span>
+            </div>
+          </>
         )}
-        {daysRemaining !== undefined && daysRemaining > 0 && (
-          <div className={styles.metaItem}>
-            <span>📅</span>
-            <span>Days Remaining:</span>
-            <span className={styles.metaValue}>{daysRemaining} days</span>
-          </div>
-        )}
-        {daysOverdue !== undefined && daysOverdue > 0 && (
-          <div className={styles.metaItem}>
-            <span>⚠️</span>
-            <span>Days Overdue:</span>
-            <span className={styles.metaValue}>{daysOverdue} days</span>
-          </div>
+        {status !== 'answered' && (
+          <>
+            <div className={styles.metaItem}>
+              <span>⏱️</span>
+              <span>Status:</span>
+              <span className={styles.metaValue}>
+                {status === 'overdue'
+                  ? 'Deadline passed'
+                  : status === 'partial'
+                  ? 'Partially answered'
+                  : status === 'transferred'
+                  ? 'Awaiting response from new department'
+                  : 'Awaiting department response'}
+              </span>
+            </div>
+            {currentPIO && (
+              <div className={styles.metaItem}>
+                <span>👤</span>
+                <span>PIO:</span>
+                <span className={styles.metaValue}>{currentPIO}</span>
+              </div>
+            )}
+            {daysRemaining !== undefined && daysRemaining > 0 && (
+              <div className={styles.metaItem}>
+                <span>📅</span>
+                <span>Days Remaining:</span>
+                <span className={styles.metaValue}>{daysRemaining} days</span>
+              </div>
+            )}
+            {daysOverdue !== undefined && daysOverdue > 0 && (
+              <div className={styles.metaItem}>
+                <span>⚠️</span>
+                <span>Days Overdue:</span>
+                <span className={styles.metaValue}>{daysOverdue} days</span>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
