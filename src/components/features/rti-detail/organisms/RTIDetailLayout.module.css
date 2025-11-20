@@ -20,44 +20,72 @@
   width: 100%;
 }
 
-/* Content Wrapper - Two Column Layout */
-.contentWrapper {
+/* At a Glance + Quick Facts - Two Column Layout */
+.glanceFactsWrapper {
   display: grid;
-  grid-template-columns: 320px 1fr;
+  grid-template-columns: 60% 40%;
   gap: var(--spacing-xl);
   align-items: start;
 }
 
-/* Sidebar (Timeline) - Desktop: Left Column, Scrolls with Content */
-.sidebar {
-  position: relative;
+.glanceColumn {
   width: 100%;
 }
 
-.sidebarContent {
+.factsColumn {
   width: 100%;
-  /* Not sticky - scrolls with content as per requirements */
 }
 
-/* Main Content - Desktop: Right Column */
-.mainContent {
+/* The Finding Section - Full Width */
+.findingSection {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem; /* 48px - consistent with layout spacing */
+}
+
+/* Question + Department Profile - Two Column Layout */
+.questionDeptWrapper {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  gap: var(--spacing-xl);
+  align-items: start;
+}
+
+.questionColumn {
+  width: 100%;
+}
+
+.deptColumn {
+  width: 100%;
+}
+
+/* Answer Section - Full Width */
+.answerSection {
+  width: 100%;
+}
+
+/* Documents + What We Found - Two Column Layout */
+.docsFoundWrapper {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: var(--spacing-xl);
+  align-items: start;
+}
+
+.docsColumn {
+  width: 100%;
+}
+
+.foundColumn {
+  width: 100%;
+}
+
+/* Timeline Section - Full Width */
+.timelineSection {
+  width: 100%;
 }
 
 /* Related RTIs - Full Width */
 .related {
   width: 100%;
-}
-
-/* Tablet Breakpoint - Adjust sidebar width */
-@media (max-width: 1200px) {
-  .contentWrapper {
-    grid-template-columns: 280px 1fr;
-    gap: var(--spacing-lg);
-  }
 }
 
 /* Mobile Breakpoint - Single Column Layout */
@@ -67,21 +95,22 @@
     gap: 2rem; /* 32px - tighter spacing on mobile like landing */
   }
 
-  .contentWrapper {
-    /* Single column - Main content first, then timeline */
+  /* Stack At a Glance + Quick Facts */
+  .glanceFactsWrapper {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
 
-  .sidebar {
-    /* Timeline appears after main content on mobile */
-    order: 2;
+  /* Stack Question + Department Profile */
+  .questionDeptWrapper {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 
-  .mainContent {
-    /* Main content appears first on mobile */
-    order: 1;
-    gap: 2rem; /* 32px on mobile */
+  /* Stack Documents + What We Found */
+  .docsFoundWrapper {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 }
 
@@ -92,11 +121,9 @@
     gap: 1.5rem; /* 24px - tightest spacing on small mobile like landing */
   }
 
-  .contentWrapper {
-    gap: 1.5rem;
-  }
-
-  .mainContent {
+  .glanceFactsWrapper,
+  .questionDeptWrapper,
+  .docsFoundWrapper {
     gap: 1.5rem;
   }
 }
