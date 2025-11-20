@@ -17,6 +17,7 @@ export type RTIStatus =
   | 'filed'
   | 'appealed'
   | 'answered'
+  | 'overdue'
 
 // RTI Request interface
 export interface RTIRequest {
@@ -90,6 +91,7 @@ export type BadgeVariant =
   | 'filed'
   | 'answered'
   | 'appealed'
+  | 'overdue'
 
 // Size variants
 export type Size = 'small' | 'medium' | 'large'

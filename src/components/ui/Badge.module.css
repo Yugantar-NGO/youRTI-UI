@@ -22,7 +22,8 @@
   color: var(--color-text-inverse);
 }
 
-.rejected {
+.rejected,
+.overdue {
   background-color: var(--color-status-error);
   border-color: var(--color-status-error);
   color: var(--color-text-inverse);
