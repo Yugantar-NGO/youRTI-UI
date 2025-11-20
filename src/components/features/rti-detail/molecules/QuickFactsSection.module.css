@@ -1,0 +1,73 @@
+.card {
+  background: #F9FAFB;
+  border-radius: var(--radius-lg);
+}
+
+.factItem {
+  margin-bottom: var(--spacing-lg);
+}
+
+.factItem:last-child {
+  margin-bottom: 0;
+}
+
+.factLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-family: var(--font-body);
+  font-size: var(--font-size-label);
+  font-weight: 600;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-xs);
+}
+
+.factIcon {
+  color: var(--color-text-tertiary);
+}
+
+.factValue {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  line-height: 1.6;
+}
+
+.days {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-xs);
+}
+
+.topicBadge {
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: #E0F2FE;
+  color: #0369A1;
+  border: none;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .factItem {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .factLabel {
+    font-size: 11px;
+  }
+
+  .factValue {
+    font-size: var(--font-size-sm);
+  }
+}
