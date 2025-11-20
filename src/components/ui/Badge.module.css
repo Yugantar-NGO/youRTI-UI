@@ -22,7 +22,8 @@
   color: var(--color-text-inverse);
 }
 
-.rejected {
+.rejected,
+.overdue {
   background-color: var(--color-status-error);
   border-color: var(--color-status-error);
   color: var(--color-text-inverse);
@@ -55,12 +56,6 @@
 .appealed {
   background-color: var(--color-status-warning);
   border-color: var(--color-status-warning);
-  color: var(--color-text-inverse);
-}
-
-.overdue {
-  background-color: var(--color-status-error);
-  border-color: var(--color-status-error);
   color: var(--color-text-inverse);
 }
 
