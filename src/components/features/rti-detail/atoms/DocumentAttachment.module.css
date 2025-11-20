@@ -27,6 +27,19 @@
   flex-direction: row;
 }
 
+.card {
+  flex-direction: row;
+  background-color: #F9FAFB;
+  border: 1px solid #E5E7EB;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+}
+
+.card:hover {
+  border-color: #0EA5E9;
+  background-color: #ffffff;
+}
+
 /* Icon wrapper with file type badge */
 .iconWrapper {
   position: relative;
