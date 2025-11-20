@@ -9,6 +9,11 @@ import {
   WhatWeFoundSection,
   TimelineSection,
   RelatedRTIsSection,
+  AtAGlanceSection,
+  QuickFactsSection,
+  TheFindingSection,
+  DepartmentProfileCard,
+  DocumentsSection,
 } from '../molecules'
 import { AnswerSection } from './AnswerSection'
 import styles from './RTIDetailLayout.module.css'
@@ -52,46 +57,113 @@ export function RTIDetailLayout({ data, className = '' }: RTIDetailLayoutProps) 
           state={data.state}
           filedDate={data.filedDate}
           respondedDate={data.respondedDate}
+          daysElapsed={data.daysElapsed}
+          daysRemaining={data.daysRemaining}
+          daysOverdue={data.daysOverdue}
+          transferredTo={data.transferredTo}
         />
       </header>
 
       {/* Impact Summary - Full Width */}
       <section className={styles.impact}>
         <ImpactSummaryCard
+          status={data.status}
           impactOneLiner={data.impactOneLiner}
+          statusMessage={data.statusMessage}
+          statusDaysInfo={data.statusDaysInfo}
           metrics={data.impactMetrics}
           badges={data.impactBadges}
           viewCount={data.viewCount}
         />
       </section>
 
-      {/* Main Content Area - Two Column on Desktop, Single Column on Mobile */}
-      <div className={styles.contentWrapper}>
-        {/* Timeline Sidebar - Desktop Left, Mobile Below Main Content */}
-        <aside className={styles.sidebar}>
-          <div className={styles.sidebarContent}>
-            <TimelineSection events={data.timeline} />
+      {/* At a Glance + Quick Facts - Two Column on Desktop */}
+      <div className={styles.glanceFactsWrapper}>
+        {/* At a Glance - Left Column */}
+        {data.keyFindings && data.keyFindings.length > 0 && (
+          <div className={styles.glanceColumn}>
+            <AtAGlanceSection keyFindings={data.keyFindings} />
           </div>
-        </aside>
+        )}
 
-        {/* Main Content - Desktop Right, Mobile Top */}
-        <main className={styles.mainContent}>
-          {/* Question Section */}
+        {/* Quick Facts - Right Column */}
+        <div className={styles.factsColumn}>
+          <QuickFactsSection
+            department={data.department}
+            location={data.location}
+            state={data.state}
+            filedDate={data.filedDate}
+            respondedDate={data.respondedDate}
+            responseDays={data.responseDays}
+            status={data.status}
+            topics={['Healthcare', 'Data', 'Surprising_Stats', 'Transparency']}
+          />
+        </div>
+      </div>
+
+      {/* The Finding Section - Full Width */}
+      {data.findingData && data.findingData.length > 0 && (
+        <section className={styles.findingSection}>
+          <TheFindingSection
+            title="Bed Occupancy Breakdown (Oct-Dec 2024)"
+            findingData={data.findingData}
+            context={data.findingContext}
+          />
+        </section>
+      )}
+
+      {/* Question + Department Profile - Two Column on Desktop */}
+      <div className={styles.questionDeptWrapper}>
+        {/* Question Section - Left Column */}
+        <div className={styles.questionColumn}>
           <QuestionSection
             questionText={data.questionText}
             questionPoints={data.questionPoints}
             attachments={data.questionAttachments}
           />
+        </div>
 
-          {/* Answer Section - Dynamic based on responseType */}
-          <AnswerSection data={data} />
-
-          {/* What We Found Section - Only if entities exist */}
-          {hasExtractedEntities && (
-            <WhatWeFoundSection extractedEntities={data.extractedEntities} />
-          )}
-        </main>
+        {/* Department Profile - Right Column */}
+        {data.departmentStats && (
+          <div className={styles.deptColumn}>
+            <DepartmentProfileCard department={data.department} stats={data.departmentStats} />
+          </div>
+        )}
       </div>
+
+      {/* Answer Section - Full Width */}
+      <section className={styles.answerSection}>
+        <AnswerSection data={data} />
+      </section>
+
+      {/* Documents + What We Found - Two Column on Desktop */}
+      <div className={styles.docsFoundWrapper}>
+        {/* Documents Section - Left Column */}
+        {data.responseAttachments && data.responseAttachments.length > 0 && (
+          <div className={styles.docsColumn}>
+            <DocumentsSection documents={data.responseAttachments} />
+          </div>
+        )}
+
+        {/* What We Found Section - Right Column */}
+        {hasExtractedEntities && (
+          <div className={styles.foundColumn}>
+            <WhatWeFoundSection extractedEntities={data.extractedEntities} />
+          </div>
+        )}
+      </div>
+
+      {/* Timeline Section - Full Width */}
+      <section className={styles.timelineSection}>
+        <TimelineSection
+          events={data.timeline}
+          status={data.status}
+          daysElapsed={data.daysElapsed}
+          daysTotal={data.deadline ? 30 : undefined}
+          daysRemaining={data.daysRemaining}
+          daysOverdue={data.daysOverdue}
+        />
+      </section>
 
       {/* Related RTIs - Full Width */}
       <section className={styles.related}>
