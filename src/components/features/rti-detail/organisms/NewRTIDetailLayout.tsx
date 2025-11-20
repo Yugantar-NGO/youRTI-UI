@@ -162,7 +162,7 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
     },
   ]
 
-  // Why this matters points - updated for answered status
+  // Why this matters points - exact match from HTML for answered status
   const whyThisMatters: ImportancePoint[] =
     data.status === 'answered'
       ? [
