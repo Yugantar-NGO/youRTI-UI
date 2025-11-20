@@ -2,6 +2,7 @@
    COMPONENT: DocumentAttachment
    ============================================ */
 
+/* Legacy attachment styles (inline/list variants) */
 .attachment {
   display: flex;
   align-items: center;
@@ -27,17 +28,121 @@
   flex-direction: row;
 }
 
-.card {
-  flex-direction: row;
-  background-color: #F9FAFB;
-  border: 1px solid #E5E7EB;
-  border-radius: var(--radius-md);
-  padding: var(--spacing-md);
+/* Document Card - White background like image 2 */
+.documentCard {
+  background: white;
+  border: 2px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 200ms;
+  cursor: pointer;
 }
 
-.card:hover {
+.documentCard:hover {
   border-color: #0EA5E9;
-  background-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.15);
+}
+
+.documentCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.documentIcon {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.iconInside {
+  color: white;
+}
+
+.documentType {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #6B7280;
+  letter-spacing: 0.5px;
+}
+
+.documentName {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.documentMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.documentMetaItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #6B7280;
+}
+
+.documentMetaIcon {
+  font-size: 14px;
+  color: #9CA3AF;
+  flex-shrink: 0;
+}
+
+.documentActions {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #E5E7EB;
+}
+
+.documentActionBtn {
+  flex: 1;
+  padding: 8px 12px;
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition: all 150ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.documentActionBtn:hover {
+  background: #0EA5E9;
+  color: white;
+  border-color: #0EA5E9;
+}
+
+.documentActionBtn.primary {
+  background: linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%);
+  color: white;
+  border: none;
+}
+
+.documentActionBtn.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
 }
 
 /* Icon wrapper with file type badge */
