@@ -9,7 +9,7 @@ import styles from './DocumentAttachment.module.css'
 
 interface DocumentAttachmentProps extends BaseProps {
   document: RTIDocument
-  variant?: 'inline' | 'list'
+  variant?: 'inline' | 'list' | 'card'
 }
 
 /**
