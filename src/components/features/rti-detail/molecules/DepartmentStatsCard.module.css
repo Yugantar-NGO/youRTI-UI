@@ -1,0 +1,94 @@
+.card {
+  border-radius: 20px;
+  padding: 24px;
+  color: white;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.statItem {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.statValue {
+  font-size: 20px;
+  font-weight: 900;
+  font-family: 'IBM Plex Mono', monospace;
+  margin-bottom: 4px;
+}
+
+.statLabel {
+  font-size: 11px;
+  opacity: 0.9;
+  font-weight: 600;
+}
+
+.performanceBar {
+  background: rgba(255, 255, 255, 0.2);
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.performanceFill {
+  height: 100%;
+  background: white;
+  border-radius: 3px;
+  transition: width 300ms ease;
+}
+
+.performanceLabel {
+  font-size: 11px;
+  opacity: 0.9;
+  font-weight: 600;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  margin-top: 16px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: all 150ms;
+}
+
+.link:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
