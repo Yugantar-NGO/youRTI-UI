@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { Search } from 'lucide-react'
 import styles from './TopNavigation.module.css'
 
@@ -29,18 +30,18 @@ export function TopNavigation({ className = '' }: TopNavigationProps) {
 
         {/* Center: Navigation Links */}
         <nav className={styles.navLinks}>
-          <a href="/browse" className={styles.navLink}>
+          <Link href="/browse" className={styles.navLink}>
             Browse
-          </a>
-          <a href="/analytics" className={styles.navLink}>
+          </Link>
+          <Link href="/analytics" className={styles.navLink}>
             Analytics
-          </a>
-          <a href="/file-rti" className={styles.navLink}>
+          </Link>
+          <Link href="/file-rti" className={styles.navLink}>
             File RTI
-          </a>
-          <a href="/about" className={styles.navLink}>
+          </Link>
+          <Link href="/about" className={styles.navLink}>
             About
-          </a>
+          </Link>
         </nav>
 
         {/* Right: Search + Icons */}

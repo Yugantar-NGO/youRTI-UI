@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { TopicStatistics } from '@/types/dashboard'
 import { TopicCard } from '../atoms/TopicCard'
 import styles from './PeopleAreAsking.module.css'
@@ -41,9 +42,9 @@ export function PeopleAreAsking({ topics, className = '' }: PeopleAreAskingProps
       </div>
 
       <div className={styles.footer}>
-        <a href="/browse" className={styles.viewAllLink}>
+        <Link href="/browse" className={styles.viewAllLink}>
           View All RTIs →
-        </a>
+        </Link>
       </div>
     </section>
   )
