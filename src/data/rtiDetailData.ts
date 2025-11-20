@@ -38,6 +38,23 @@ export interface ImpactMetricData {
   label: string
 }
 
+export interface FindingData {
+  label: string
+  value: number // percentage or count
+  total?: number // total for calculating percentage
+  unit?: string // e.g., 'beds', 'hospitals'
+}
+
+export interface DepartmentStats {
+  responseRate: number // percentage
+  totalRTIs: number
+  answeredRTIs: number
+  pendingRTIs: number
+  overdueRTIs: number
+  averageResponseDays: number
+  targetResponseDays: number
+}
+
 export interface RTIDetailData {
   // Basic info
   id: string
@@ -53,11 +70,15 @@ export interface RTIDetailData {
   acknowledgedDate?: string
   respondedDate?: string
   responseDays?: number
+  daysElapsed?: number
+  daysRemaining?: number
   daysOverdue?: number
   deadline?: string
 
   // Impact
   impactOneLiner: string
+  statusMessage?: string
+  statusDaysInfo?: string
   impactMetrics: ImpactMetricData[]
   impactBadges: string[]
   viewCount: number
@@ -100,6 +121,12 @@ export interface RTIDetailData {
   canSendReminder?: boolean
   canFileAppeal?: boolean
   canFileComplaint?: boolean
+
+  // New fields for enhanced detail page
+  keyFindings?: string[] // Bullet points for "At a Glance" section
+  findingData?: FindingData[] // Data for "The Finding" visualization
+  findingContext?: string // "Why This Matters" text
+  departmentStats?: DepartmentStats // Department profile data
 }
 
 export const rtiDetailMockData: Record<string, RTIDetailData> = {
@@ -966,6 +993,31 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
     signedBy: 'Dr. Anjali Sharma',
     signedByDesignation: 'Director, Health Services, Delhi',
     signedDate: '2025-02-03',
+
+    keyFindings: [
+      'Average occupancy only 60%',
+      'Peak reached 78% in Nov during seasonal illness',
+      '2,340 patients referred to other hospitals for ICU beds, no general ward denials',
+      'Real-time bed tracking system now implemented',
+    ],
+
+    findingData: [
+      { label: 'General wards', value: 58, total: 4897, unit: 'beds (4,897 / 6,200)' },
+      { label: 'ICU/Critical', value: 72, total: 1044, unit: 'beds (1,044 / 1,450)' },
+      { label: 'Isolation', value: 35, total: 280, unit: 'beds (280 / 800)' },
+    ],
+
+    findingContext: 'The data contradicts widespread public perception of hospital overcrowding. With 60% average occupancy, the issue appears to be capacity planning and ICU bed distribution rather than overall bed shortage. 2,340 referrals were for specialized ICU beds, not general wards, suggesting targeted infrastructure investment needed.',
+
+    departmentStats: {
+      responseRate: 68,
+      totalRTIs: 1247,
+      answeredRTIs: 847,
+      pendingRTIs: 312,
+      overdueRTIs: 88,
+      averageResponseDays: 23,
+      targetResponseDays: 21,
+    },
 
     extractedEntities: {
       amounts: [],
@@ -1946,6 +1998,174 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
         description: 'Complete vaccination expenditure data',
         daysFromFiling: 8,
         isEarly: true,
+      },
+    ],
+  },
+
+  'rti-hospital-beds': {
+    id: 'rti-hospital-beds',
+    title: 'Only 60% Bed Occupancy Revealed Across 15 Delhi Government Hospitals Despite Public Perception of Overcrowding',
+    status: 'answered',
+    department: 'Health Department, Delhi',
+    location: 'Delhi',
+    state: 'Delhi',
+    topic: 'Healthcare',
+
+    filedDate: '2025-01-20',
+    acknowledgedDate: '2025-01-21',
+    respondedDate: '2025-02-03',
+    responseDays: 14,
+
+    impactOneLiner: 'Reality check: What Delhi\'s hospital data actually shows about bed availability vs. public perception',
+    impactMetrics: [
+      { icon: '🏥', value: '15', label: 'hospitals' },
+      { icon: '🛏️', value: '60%', label: 'occupancy' },
+      { icon: '⏱️', value: '14', label: 'days' },
+      { icon: '📊', value: '8,450', label: 'beds' },
+    ],
+    impactBadges: ['✓ On-time'],
+    viewCount: 423,
+
+    questionText: 'I request information regarding bed availability and occupancy in government hospitals of Delhi for Q4 2024:',
+    questionPoints: [
+      'Hospital-wise total bed capacity and category breakdown (general, ICU, isolation)',
+      'Average monthly occupancy rates with peak occupancy data',
+      'Number of patients turned away due to bed unavailability',
+      'Steps taken to optimize bed utilization and reduce waiting times',
+    ],
+
+    responseType: 'full-answer',
+    responseText: `With reference to your RTI application dated January 20, 2025, the following information is provided:
+
+1️⃣ BED CAPACITY
+
+15 Delhi government hospitals covered in this data - 8,450 total beds
+
+Breakdown by category:
+• General wards: 6,200 beds (73%)
+• ICU/Critical care: 1,450 beds (17%)
+• Isolation wards: 800 beds (10%)
+
+Hospital-wise detailed data is attached in supporting documents.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+2️⃣ OCCUPANCY RATES (OCT-DEC 2024)
+
+Average occupancy: 60%
+Peak occupancy: 78% (November 2024)
+
+Peak reached during seasonal illness surge
+
+Category-wise occupancy breakdown:
+• General wards: 58%
+• ICU/Critical care: 72%
+• Isolation wards: 35%
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+3️⃣ PATIENTS TURNED AWAY
+
+⚠️ 2,340 patients referred
+
+Patients were referred to other hospitals during the quarter due to unavailability of specialized beds (primarily ICU).
+
+✓ No patient was denied admission for general ward beds.
+
+All referrals were managed through inter-hospital coordination protocol.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+4️⃣ OPTIMIZATION MEASURES
+
+Following steps have been implemented to optimize bed utilization:
+
+✓ Real-time bed availability dashboard implemented across all hospitals
+  • Live tracking of bed status by category
+  • Updated every 30 minutes
+
+✓ Inter-hospital patient transfer protocol established
+  • Standardized referral process
+  • Dedicated ambulance coordination
+
+✓ Dedicated helpline launched for bed status queries
+  • 24/7 availability: 1800-XXX-XXXX
+  • Average response time: < 2 minutes`,
+
+    responseAttachments: [
+      { id: 'r1', name: 'hospital_wise_bed_data.xlsx', type: 'xlsx', size: '289 KB' },
+      { id: 'r2', name: 'occupancy_trends_q4_2024.pdf', type: 'pdf', size: '1.4 MB' },
+      { id: 'r3', name: 'referral_statistics.pdf', type: 'pdf', size: '780 KB' },
+      { id: 'r4', name: 'optimization_measures_report.pdf', type: 'pdf', size: '1.1 MB' },
+    ],
+
+    signedBy: 'Dr. Anjali Sharma',
+    signedByDesignation: 'Director, Health Services',
+    signedDate: '2025-02-03',
+
+    keyFindings: [
+      'Average occupancy only 60%',
+      'Peak reached 78% in Nov during seasonal illness',
+      '2,340 patients referred to other hospitals for ICU beds, no general ward denials',
+      'Real-time bed tracking system now implemented',
+    ],
+
+    findingData: [
+      { label: 'General wards', value: 58, total: 4897, unit: 'beds (4,897 / 6,200)' },
+      { label: 'ICU/Critical', value: 72, total: 1044, unit: 'beds (1,044 / 1,450)' },
+      { label: 'Isolation', value: 35, total: 280, unit: 'beds (280 / 800)' },
+    ],
+
+    findingContext: 'The data contradicts widespread public perception of hospital overcrowding. With 60% average occupancy, the issue appears to be capacity planning and ICU bed distribution rather than overall bed shortage. 2,340 referrals were for specialized ICU beds, not general wards, suggesting targeted infrastructure investment needed.',
+
+    departmentStats: {
+      responseRate: 68,
+      totalRTIs: 1247,
+      answeredRTIs: 847,
+      pendingRTIs: 312,
+      overdueRTIs: 88,
+      averageResponseDays: 23,
+      targetResponseDays: 21,
+    },
+
+    extractedEntities: {
+      amounts: [],
+      officials: [
+        { name: 'Dr. Anjali Sharma', designation: 'Director, Health Services' },
+      ],
+      vendors: [],
+      dates: [
+        { date: 'Oct-Dec 2024', description: 'Data reporting period' },
+        { date: 'November 2024', description: 'Peak occupancy month' },
+      ],
+      locations: [
+        { name: 'Delhi (15 government hospitals)', description: '8,450 total beds' },
+      ],
+    },
+
+    timeline: [
+      {
+        id: 't1',
+        type: 'filed',
+        date: '2025-01-20',
+        title: 'RTI Filed',
+        description: 'Application submitted online',
+      },
+      {
+        id: 't2',
+        type: 'acknowledged',
+        date: '2025-01-21',
+        title: 'Acknowledged',
+        description: 'App #: HEALTH/DEL/2025/00567',
+        daysFromFiling: 1,
+      },
+      {
+        id: 't3',
+        type: 'answered',
+        date: '2025-02-03',
+        title: 'Response Received',
+        description: 'Comprehensive data provided',
+        daysFromFiling: 14,
       },
     ],
   },
