@@ -4,6 +4,7 @@
  * Filter and search through all RTI requests with comprehensive filtering options.
  */
 
+import { Suspense } from 'react'
 import { BrowsePage } from '@/components/features/browse/BrowsePage'
 
 export const metadata = {
@@ -12,5 +13,9 @@ export const metadata = {
 }
 
 export default function Browse() {
-  return <BrowsePage />
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <BrowsePage />
+    </Suspense>
+  )
 }
