@@ -32,39 +32,53 @@
 }
 
 .qaItem {
-  border: 3px solid #fef3c7;
-  background: #fffbeb;
+  border: 3px solid #e5e7eb;
   border-radius: 16px;
-  padding: 24px;
+  overflow: hidden;
   transition: all 200ms;
+}
+
+.qaItemanswered {
+  border-color: #10b981;
+  background: #f0fdf4;
+}
+
+.qaItemdenied {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.qaItempending {
+  border-color: #fef3c7;
+  background: #fffbeb;
 }
 
 .qaItem:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.15);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
 }
 
 .questionHeader {
+  padding: 20px 24px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
   gap: 16px;
 }
 
 .questionLeft {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 16px;
   flex: 1;
 }
 
 .number {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   background: #0f172a;
   color: white;
-  border-radius: 10px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,28 +96,72 @@
 }
 
 .statusBadge {
-  padding: 8px 14px;
+  padding: 8px 16px;
   border-radius: 8px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 800;
   text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  gap: 6px;
   flex-shrink: 0;
+}
+
+.statusAnswered {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.statusDenied {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.statusPending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.statusPartial {
+  background: #ffedd5;
+  color: #9a3412;
+}
+
+.answerContent {
+  padding: 24px;
+  border-top: 2px solid #e5e7eb;
+  background: white;
 }
 
 .answerText {
   font-size: 15px;
-  color: #0f172a;
-  line-height: 1.6;
-  padding: 16px;
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 10px;
-  font-weight: 500;
+  color: #475569;
+  line-height: 1.7;
+  margin-bottom: 16px;
 }
 
-.pendingMessage {
+.sourceLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+  transition: all 200ms;
+}
+
+.sourceLink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+}
+
+.pendingContent {
+  padding: 20px 24px;
+  background: rgba(255, 255, 255, 0.5);
+  border-top: 2px solid #e5e7eb;
   color: #78716c;
   font-style: italic;
+  font-size: 15px;
 }

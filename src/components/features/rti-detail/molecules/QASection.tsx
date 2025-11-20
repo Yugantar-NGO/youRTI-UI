@@ -7,6 +7,8 @@ export interface QAItem {
   question: string
   answer?: string
   status?: 'answered' | 'pending' | 'denied' | 'partial'
+  sourceDocument?: string
+  sourcePage?: number
 }
 
 interface QASectionProps extends BaseProps {
@@ -27,34 +29,26 @@ export function QASection({ qaItems, rtiStatus, className = '' }: QASectionProps
   const getStatusBadge = (itemStatus: string = 'answered') => {
     const statusConfig = {
       answered: {
-        label: '✓ Answered',
-        bg: '#D1FAE5',
-        color: '#065F46',
+        label: '✓ ANSWERED',
+        className: styles.statusAnswered,
       },
       pending: {
-        label: '⏳ Pending',
-        bg: '#FEF3C7',
-        color: '#92400E',
+        label: '⏳ PENDING',
+        className: styles.statusPending,
       },
       denied: {
-        label: '✗ Denied',
-        bg: '#FEE2E2',
-        color: '#991B1B',
+        label: '✗ DENIED',
+        className: styles.statusDenied,
       },
       partial: {
-        label: '◐ Partial',
-        bg: '#FFEDD5',
-        color: '#9A3412',
+        label: '◐ PARTIAL',
+        className: styles.statusPartial,
       },
     }
 
     const config = statusConfig[itemStatus as keyof typeof statusConfig] || statusConfig.answered
 
-    return (
-      <div className={styles.statusBadge} style={{ background: config.bg, color: config.color }}>
-        {config.label}
-      </div>
-    )
+    return <div className={`${styles.statusBadge} ${config.className}`}>{config.label}</div>
   }
 
   return (
@@ -67,9 +61,10 @@ export function QASection({ qaItems, rtiStatus, className = '' }: QASectionProps
       <div className={styles.qaList}>
         {qaItems.map((item, index) => {
           const itemStatus = item.status || (item.answer ? 'answered' : 'pending')
+          const showAnswerContent = itemStatus === 'answered' || itemStatus === 'denied'
 
           return (
-            <div key={index} className={styles.qaItem}>
+            <div key={index} className={`${styles.qaItem} ${styles[`qaItem${itemStatus}`]}`}>
               <div className={styles.questionHeader}>
                 <div className={styles.questionLeft}>
                   <div className={styles.number}>{index + 1}</div>
@@ -78,17 +73,32 @@ export function QASection({ qaItems, rtiStatus, className = '' }: QASectionProps
                 {getStatusBadge(itemStatus)}
               </div>
 
-              <div className={styles.answerText}>
-                {item.answer || (
-                  <span className={styles.pendingMessage}>
-                    {rtiStatus === 'pending'
-                      ? `Awaiting response from department. Response expected by deadline.`
-                      : rtiStatus === 'transferred'
-                      ? 'Awaiting response from new department after transfer.'
-                      : 'No answer provided.'}
-                  </span>
-                )}
-              </div>
+              {showAnswerContent && (
+                <div className={styles.answerContent}>
+                  <div className={styles.answerText}>
+                    {item.answer ||
+                      (itemStatus === 'denied'
+                        ? 'Information denied under Section 8(1)(d) - commercial confidence and trade secrets. Disclosure would harm competitive position of third parties.'
+                        : 'No answer provided.')}
+                  </div>
+                  {item.sourceDocument && itemStatus === 'answered' && (
+                    <a href="#" className={styles.sourceLink}>
+                      📄 {item.sourceDocument}
+                      {item.sourcePage && `, Page ${item.sourcePage}`}
+                    </a>
+                  )}
+                </div>
+              )}
+
+              {!showAnswerContent && (
+                <div className={styles.pendingContent}>
+                  {rtiStatus === 'pending'
+                    ? `Awaiting response from department. Response expected by deadline.`
+                    : rtiStatus === 'transferred'
+                    ? 'Awaiting response from new department after transfer.'
+                    : 'Response pending...'}
+                </div>
+              )}
             </div>
           )
         })}
