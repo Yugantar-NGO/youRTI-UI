@@ -5,7 +5,7 @@ import styles from './ActiveFiltersStrip.module.css'
 interface FilterChip {
   id: string
   label: string
-  category: 'topic' | 'state' | 'city' | 'department' | 'status' | 'dateRange'
+  category: 'topics' | 'states' | 'cities' | 'departments' | 'status' | 'dateRange'
 }
 
 interface ActiveFiltersStripProps {

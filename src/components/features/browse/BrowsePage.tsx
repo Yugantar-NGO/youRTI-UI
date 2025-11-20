@@ -84,7 +84,7 @@ export function BrowsePage() {
   // Handle individual filter removal
   const handleRemoveFilter = (
     filterId: string,
-    category: 'topic' | 'state' | 'city' | 'department' | 'status' | 'dateRange'
+    category: 'topics' | 'states' | 'cities' | 'departments' | 'status' | 'dateRange'
   ) => {
     if (category === 'status') {
       setActiveFilters((prev) => ({ ...prev, status: 'all' }))
@@ -322,7 +322,7 @@ function generateFilterChips(filters: ActiveFilters, filterOptions: typeof dummy
   filters.topics.forEach((topicId) => {
     const topic = filterOptions.topics.find((t) => t.id === topicId)
     if (topic) {
-      chips.push({ id: topicId, label: topic.name, category: 'topic' as const })
+      chips.push({ id: topicId, label: topic.name, category: 'topics' as const })
     }
   })
 
@@ -330,7 +330,7 @@ function generateFilterChips(filters: ActiveFilters, filterOptions: typeof dummy
   filters.states.forEach((stateId) => {
     const state = filterOptions.states.find((s) => s.id === stateId)
     if (state) {
-      chips.push({ id: stateId, label: state.name, category: 'state' as const })
+      chips.push({ id: stateId, label: state.name, category: 'states' as const })
     }
   })
 
@@ -338,7 +338,7 @@ function generateFilterChips(filters: ActiveFilters, filterOptions: typeof dummy
   filters.cities.forEach((cityId) => {
     const city = filterOptions.cities.find((c) => c.id === cityId)
     if (city) {
-      chips.push({ id: cityId, label: city.name, category: 'city' as const })
+      chips.push({ id: cityId, label: city.name, category: 'cities' as const })
     }
   })
 
@@ -346,7 +346,7 @@ function generateFilterChips(filters: ActiveFilters, filterOptions: typeof dummy
   filters.departments.forEach((deptId) => {
     const dept = filterOptions.departments.find((d) => d.id === deptId)
     if (dept) {
-      chips.push({ id: deptId, label: dept.code, category: 'department' as const })
+      chips.push({ id: deptId, label: dept.code, category: 'departments' as const })
     }
   })
 
