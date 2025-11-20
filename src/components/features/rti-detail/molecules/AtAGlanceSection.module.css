@@ -1,0 +1,69 @@
+.card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: 0.02em;
+}
+
+.findings {
+  background: #F0FDFA;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+}
+
+.findingsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.findingItem {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  line-height: 1.8;
+  color: var(--color-text-primary);
+  padding-left: var(--spacing-md);
+  position: relative;
+  margin-bottom: var(--spacing-md);
+}
+
+.findingItem:last-child {
+  margin-bottom: 0;
+}
+
+.findingItem::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .findings {
+    padding: var(--spacing-md);
+  }
+
+  .findingItem {
+    font-size: var(--font-size-sm);
+    line-height: 1.7;
+  }
+}
