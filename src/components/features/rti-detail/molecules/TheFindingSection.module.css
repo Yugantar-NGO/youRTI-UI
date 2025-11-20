@@ -1,0 +1,152 @@
+.section {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.icon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.charts {
+  display: grid;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.chartRow {
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+.chartLabel {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.barWrapper {
+  display: grid;
+  gap: var(--spacing-xs);
+}
+
+.barTrack {
+  height: 32px;
+  background: #E5E7EB;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+}
+
+.barFill {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+  border-radius: var(--radius-md);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.barValues {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.percentage {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  min-width: 50px;
+}
+
+.unit {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.context {
+  background: #FEF3C7;
+  border-left: 4px solid #F59E0B;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+}
+
+.contextHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.contextIcon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.contextLabel {
+  font-family: var(--font-body);
+  font-size: var(--font-size-label);
+  font-weight: 700;
+  color: #78350F;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.contextText {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  line-height: 1.6;
+  color: #78350F;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .charts {
+    gap: var(--spacing-md);
+  }
+
+  .barTrack {
+    height: 24px;
+  }
+
+  .percentage {
+    font-size: 16px;
+    min-width: 45px;
+  }
+
+  .unit {
+    font-size: 12px;
+  }
+
+  .context {
+    padding: var(--spacing-md);
+  }
+
+  .contextText {
+    font-size: var(--font-size-sm);
+  }
+}
