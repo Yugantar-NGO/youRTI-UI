@@ -58,6 +58,12 @@
   color: var(--color-text-inverse);
 }
 
+.overdue {
+  background-color: var(--color-status-error);
+  border-color: var(--color-status-error);
+  color: var(--color-text-inverse);
+}
+
 .default {
   background-color: var(--color-bg-elevated);
   border-color: var(--color-border-primary);

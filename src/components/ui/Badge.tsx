@@ -37,6 +37,7 @@ export function Badge({
     filed: FileText,
     answered: MessageSquare,
     appealed: AlertTriangle,
+    overdue: AlertTriangle,
     default: null,
   }
 
@@ -66,6 +67,7 @@ export function StatusBadge({
     filed: 'FILED',
     answered: 'ANSWERED',
     appealed: 'IN APPEAL',
+    overdue: 'OVERDUE',
     default: 'STATUS',
   }
 
