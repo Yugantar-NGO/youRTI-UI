@@ -1,0 +1,163 @@
+.card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+}
+
+.departmentName {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.statSection {
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.statSection:last-of-type {
+  border-bottom: none;
+  margin-bottom: var(--spacing-md);
+}
+
+.statLabel {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--font-size-label);
+  font-weight: 600;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Response Rate */
+.responseRate {
+  display: grid;
+  gap: var(--spacing-xs);
+}
+
+.rateValue {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 700;
+  color: #10b981;
+}
+
+.progressBar {
+  height: 8px;
+  background: #E5E7EB;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+  border-radius: var(--radius-full);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rateDescription {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* Response Time */
+.responseTime {
+  display: grid;
+  gap: var(--spacing-xs);
+}
+
+.timeValue {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.timeComparison {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+}
+
+.aboveTarget {
+  color: #F59E0B;
+}
+
+.belowTarget {
+  color: #10b981;
+}
+
+/* Total RTIs */
+.totalRTIs {
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+.totalValue {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.rtiBreakdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.breakdownBadge {
+  font-size: 12px;
+  padding: 4px 8px;
+}
+
+/* View All Link */
+.viewAllLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: #EA580C;
+  text-decoration: none;
+  padding: var(--spacing-md);
+  margin: 0 calc(var(--spacing-lg) * -1);
+  margin-bottom: calc(var(--spacing-lg) * -1);
+  border-top: 1px solid var(--color-border);
+  transition: background-color 0.2s ease;
+}
+
+.viewAllLink:hover {
+  background-color: #FFF7ED;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .departmentName {
+    font-size: 16px;
+  }
+
+  .rateValue,
+  .timeValue,
+  .totalValue {
+    font-size: 20px;
+  }
+
+  .rtiBreakdown {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .breakdownBadge {
+    font-size: 11px;
+  }
+}
