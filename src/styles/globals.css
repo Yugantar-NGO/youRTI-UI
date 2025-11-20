@@ -76,6 +76,43 @@
   --color-status-pending: var(--color-warning-amber);
   --color-status-partial: var(--color-warning-amber);
 
+  /* Enhanced Status Color System for RTI Detail Page */
+  --color-success: #16A34A;
+  --color-success-bg: #F0FDF4;
+  --color-success-border: #BBF7D0;
+  --color-success-text: #166534;
+
+  --color-warning: #D97706;
+  --color-warning-bg: #FFFBEB;
+  --color-warning-border: #FDE68A;
+  --color-warning-text: #92400E;
+
+  --color-error: #DC2626;
+  --color-error-bg: #FEF2F2;
+  --color-error-border: #FECACA;
+  --color-error-text: #991B1B;
+
+  --color-info: #2563EB;
+  --color-info-bg: #EFF6FF;
+  --color-info-border: #BFDBFE;
+  --color-info-text: #1E40AF;
+
+  --color-purple: #9333EA;
+  --color-purple-bg: #FAF5FF;
+  --color-purple-border: #E9D5FF;
+  --color-purple-text: #6B21A8;
+
+  /* Additional semantic colors */
+  --color-bg-tertiary: #F3F4F6;
+  --color-border-subtle: #E5E7EB;
+  --color-border-default: #D1D5DB;
+  --color-border-strong: #9CA3AF;
+  --color-text-default: var(--color-black);
+  --color-text-muted: var(--color-medium-gray);
+  --color-surface-subtle: var(--color-subtle-gray);
+  --color-hover-bg: var(--color-newsprint);
+  --color-accent: var(--color-info-blue);
+
   /* =================================
      SPACING SYSTEM (8px grid)
      ================================= */
