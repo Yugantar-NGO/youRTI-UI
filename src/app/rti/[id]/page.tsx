@@ -2,8 +2,7 @@ import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import { rtiDetailMockData } from '@/data/rtiDetailData'
 import { rtiStatusExamples } from '@/data/rtiDetailStatusExamples'
-import { RTIDetailLayout } from '@/components/features/rti-detail/organisms'
-import { Breadcrumb } from '@/components/features/rti-detail/atoms'
+import { NewRTIDetailLayout } from '@/components/features/rti-detail/organisms/NewRTIDetailLayout'
 
 interface RTIDetailPageProps {
   params: {
@@ -80,32 +79,7 @@ export default function RTIDetailPage({ params }: RTIDetailPageProps) {
     notFound()
   }
 
-  // Breadcrumb items
-  const breadcrumbItems = [
-    { label: 'Home', href: '/' },
-    { label: 'Browse RTIs', href: '/browse' },
-    { label: data.title, href: `/rti/${params.id}`, current: true },
-  ]
-
-  return (
-    <div style={{
-      minHeight: '100vh',
-      background: 'linear-gradient(135deg, #020617 0%, #0F172A 100%)',
-      paddingBottom: 'var(--spacing-3xl)'
-    }}>
-      {/* Breadcrumb Navigation */}
-      <div style={{
-        padding: 'var(--spacing-lg) var(--spacing-lg)',
-        maxWidth: '1400px',
-        margin: '0 auto'
-      }}>
-        <Breadcrumb items={breadcrumbItems} />
-      </div>
-
-      {/* Main Content */}
-      <RTIDetailLayout data={data} />
-    </div>
-  )
+  return <NewRTIDetailLayout data={data} />
 }
 
 /**
