@@ -8,8 +8,11 @@ import { RTIStatus } from '@/types'
 export interface RTIDocument {
   id: string
   name: string
+  title?: string
   type: 'pdf' | 'xlsx' | 'docx' | 'jpg' | 'png'
   size?: string
+  pages?: number
+  receivedDate?: string
   url?: string
 }
 
@@ -131,20 +134,21 @@ export interface RTIDetailData {
 
 export const rtiDetailMockData: Record<string, RTIDetailData> = {
   'rti-001': {
-    id: 'rti-001',
-    title: 'Details of MG Road Pothole Repair Contract Allocation and Budget Utilization',
+    id: 'RTI/BMC/2024/003847',
+    title: 'MG Road pothole repairs - costs and contractor details',
     status: 'answered',
-    department: 'PWD Maharashtra',
+    department: 'Public Works Dept (MH)',
     location: 'Mumbai',
     state: 'Maharashtra',
     topic: 'Road Construction',
 
-    filedDate: '2025-01-15',
-    acknowledgedDate: '2025-01-16',
-    respondedDate: '2025-01-18',
-    responseDays: 3,
+    filedDate: 'Jan 5, 2024',
+    acknowledgedDate: 'Jan 6, 2024',
+    respondedDate: 'Jan 28, 2024',
+    responseDays: 23,
+    daysElapsed: 23,
 
-    impactOneLiner: '₹2.3 Cr contract details revealed, exposing 45% cost overrun on MG Road repairs',
+    impactOneLiner: 'Project cost was ₹12.4 Crore, 3x the initial estimate of ₹4.1 Crore',
     impactMetrics: [
       { icon: '💰', value: '₹2.3 Cr', label: 'SPENT' },
       { icon: '📊', value: '45%', label: 'OVERRUN' },
@@ -154,25 +158,64 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
     impactBadges: ['🏆 DATA RELEASED', '💰 MONEY TRAIL', '📈 TRENDING'],
     viewCount: 2400,
 
-    questionText: 'I request information regarding MG Road pothole repair contract undertaken between Khar and Bandra stretch (5.2 km):',
+    questionText: 'What was the total project cost for MG Road pothole repairs?',
     questionPoints: [
-      'Total budget allocated for this project',
-      'Name of contractor and tender award details',
-      'Per-kilometer cost breakdown including materials, labor, and supervision',
-      'Quality inspection reports conducted during and after the work',
+      'What was the total project cost for MG Road pothole repairs?',
+      'Who was the contractor and what was the tender process?',
+      'List of major land conversion applicants (companies/individuals) with plot sizes',
     ],
     questionAttachments: [
       { id: 'q1', name: 'location_map.pdf', type: 'pdf', size: '2.3 MB' },
     ],
 
     responseType: 'full-answer',
-    responseText: 'With reference to your RTI application dated January 15, 2025, the following information is provided:\n\n1. Total Budget: ₹2.3 Crore allocated for MG Road repairs from Khar to Bandra (5.2 km stretch)\n\n2. Contractor: M/s ABC Construction Ltd won the tender on November 15, 2023 with a bid of ₹1.6 Crore (subsequently revised to ₹2.3 Crore due to scope changes)\n\n3. Cost breakdown: ₹45 lakhs per kilometer, which includes:\n   - Materials: ₹28 lakhs/km\n   - Labor: ₹12 lakhs/km\n   - Supervision & quality control: ₹5 lakhs/km\n\n4. Quality reports: Three inspection reports are attached, conducted on December 15, 2023, January 5, 2024, and February 1, 2024.',
+    responseText: 'The total expenditure amounted to ₹12,42,50,000 (Twelve Crore Forty Two Lakh Fifty Thousand Rupees). This includes material costs of ₹8.5 Cr and labor costs of ₹3.92 Cr. The project covered approximately 2.3 km stretch of MG Road with an average depth of repair at 150mm.',
     responseAttachments: [
-      { id: 'r1', name: 'budget_allocation.pdf', type: 'pdf', size: '1.2 MB' },
-      { id: 'r2', name: 'tender_details.xlsx', type: 'xlsx', size: '456 KB' },
-      { id: 'r3', name: 'inspection_report_1.pdf', type: 'pdf', size: '3.4 MB' },
-      { id: 'r4', name: 'inspection_report_2.pdf', type: 'pdf', size: '2.8 MB' },
-      { id: 'r5', name: 'inspection_report_3.pdf', type: 'pdf', size: '3.1 MB' },
+      {
+        id: 'r1',
+        name: 'budget_allocation.pdf',
+        title: 'Official Response Letter',
+        type: 'pdf',
+        size: '2.4 MB',
+        pages: 8,
+        receivedDate: 'Jan 28, 2024',
+      },
+      {
+        id: 'r2',
+        name: 'tender_details.xlsx',
+        title: 'Contractor Details & Registration',
+        type: 'pdf',
+        size: '3.1 MB',
+        pages: 12,
+        receivedDate: 'Jan 28, 2024',
+      },
+      {
+        id: 'r3',
+        name: 'project_timeline.pdf',
+        title: 'Project Timeline & Milestones',
+        type: 'pdf',
+        size: '1.8 MB',
+        pages: 5,
+        receivedDate: 'Jan 28, 2024',
+      },
+      {
+        id: 'r4',
+        name: 'budget_breakdown.pdf',
+        title: 'Budget Breakdown & Expenditure',
+        type: 'pdf',
+        size: '2.2 MB',
+        pages: 6,
+        receivedDate: 'Jan 28, 2024',
+      },
+      {
+        id: 'r4',
+        name: 'inspection_report_2.pdf',
+        title: 'Budget Breakdown & Expenditure',
+        type: 'pdf',
+        size: '2.2 MB',
+        pages: 6,
+        receivedDate: 'Jan 28, 2024',
+      },
     ],
     signedBy: 'Rajesh Kumar',
     signedByDesignation: 'Chief Engineer, PWD Maharashtra',
@@ -206,28 +249,38 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
       {
         id: 't1',
         type: 'filed',
-        date: '2025-01-15',
+        date: 'Jan 5, 2024',
         title: 'RTI Filed',
         description: 'Application submitted online',
       },
       {
         id: 't2',
-        type: 'acknowledged',
-        date: '2025-01-16',
-        title: 'Acknowledged',
-        description: 'Application number assigned: PWD/RTI/2025/00142',
-        daysFromFiling: 1,
+        type: 'reminder',
+        date: 'Jan 20, 2024',
+        title: 'Reminder Sent',
+        description: 'Follow-up reminder sent',
+        daysFromFiling: 15,
       },
       {
         id: 't3',
         type: 'answered',
-        date: '2025-01-18',
+        date: 'Jan 28, 2024',
         title: 'Response Received',
         description: 'Full information provided with supporting documents',
-        daysFromFiling: 3,
+        daysFromFiling: 23,
         isEarly: true,
       },
     ],
+
+    departmentStats: {
+      responseRate: 67,
+      totalRTIs: 2847,
+      answeredRTIs: 1907,
+      pendingRTIs: 706,
+      overdueRTIs: 234,
+      averageResponseDays: 28,
+      targetResponseDays: 30,
+    },
   },
 
   'rti-006': {
@@ -478,8 +531,24 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
     ],
 
     responseAttachments: [
-      { id: 'r1', name: 'budget_summary.pdf', type: 'pdf', size: '890 KB' },
-      { id: 'r2', name: 'tree_cutting_approval.pdf', type: 'pdf', size: '1.2 MB' },
+      {
+        id: 'r1',
+        name: 'budget_summary.pdf',
+        title: 'Budget Summary Report',
+        type: 'pdf',
+        size: '890 KB',
+        pages: 4,
+        receivedDate: 'Jan 30, 2024',
+      },
+      {
+        id: 'r2',
+        name: 'tree_cutting_approval.pdf',
+        title: 'Tree Cutting Approval Documents',
+        type: 'pdf',
+        size: '1.2 MB',
+        pages: 7,
+        receivedDate: 'Jan 30, 2024',
+      },
     ],
     signedBy: 'Dr. Anjum Parwez',
     signedByDesignation: 'Managing Director, BMRCL',
@@ -581,7 +650,15 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
     ],
 
     responseAttachments: [
-      { id: 'r1', name: 'fund_allocation_summary.pdf', type: 'pdf', size: '450 KB' },
+      {
+        id: 'r1',
+        name: 'fund_allocation_summary.pdf',
+        title: 'Fund Allocation Summary',
+        type: 'pdf',
+        size: '450 KB',
+        pages: 3,
+        receivedDate: 'Jan 17, 2024',
+      },
     ],
     signedBy: 'Pratibha Pal',
     signedByDesignation: 'Commissioner, IMC',
@@ -803,11 +880,51 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
     responseType: 'full-answer',
     responseText: 'With reference to your RTI application dated January 10, 2025, the following information is provided:\n\n1. Total Toll Revenue (FY 2023-24): ₹450 Crore collected from NH-48 Delhi-Gurgaon toll plaza. Month-wise breakdown and vehicle category data is provided in the attached Excel sheet.\n\n2. Toll Operator: M/s IRB Infrastructure Developers Ltd operates the toll plaza under a 20-year BOT (Build-Operate-Transfer) contract awarded in 2018. Revenue sharing: 60% to NHAI, 40% to operator after deducting maintenance costs.\n\n3. Daily Traffic Volume: Average 2.3 lakh vehicles per day comprising:\n   - Cars/Jeeps: 1.8 lakh (78%)\n   - Light Commercial Vehicles: 35,000 (15%)\n   - Heavy Commercial Vehicles: 15,000 (7%)\n   Peak hours: 8-10 AM and 6-8 PM account for 45% of daily traffic.\n\n4. Exempted Vehicles: Average 12,000 vehicles per day exempted (emergency services, government vehicles, VIPs). Estimated revenue loss: ₹28 Crore annually.',
     responseAttachments: [
-      { id: 'r1', name: 'toll_revenue_monthly_2023-24.xlsx', type: 'xlsx', size: '234 KB' },
-      { id: 'r2', name: 'vehicle_category_breakdown.pdf', type: 'pdf', size: '1.8 MB' },
-      { id: 'r3', name: 'operator_contract_summary.pdf', type: 'pdf', size: '890 KB' },
-      { id: 'r4', name: 'traffic_volume_analysis.pdf', type: 'pdf', size: '2.1 MB' },
-      { id: 'r5', name: 'exemption_data.xlsx', type: 'xlsx', size: '156 KB' },
+      {
+        id: 'r1',
+        name: 'toll_revenue_monthly_2023-24.xlsx',
+        title: 'Toll Revenue Monthly 2023-24',
+        type: 'xlsx',
+        size: '234 KB',
+        pages: 15,
+        receivedDate: 'Jan 25, 2024',
+      },
+      {
+        id: 'r2',
+        name: 'vehicle_category_breakdown.pdf',
+        title: 'Vehicle Category Breakdown',
+        type: 'pdf',
+        size: '1.8 MB',
+        pages: 9,
+        receivedDate: 'Jan 25, 2024',
+      },
+      {
+        id: 'r3',
+        name: 'operator_contract_summary.pdf',
+        title: 'Operator Contract Summary',
+        type: 'pdf',
+        size: '890 KB',
+        pages: 6,
+        receivedDate: 'Jan 25, 2024',
+      },
+      {
+        id: 'r4',
+        name: 'traffic_volume_analysis.pdf',
+        title: 'Traffic Volume Analysis',
+        type: 'pdf',
+        size: '2.1 MB',
+        pages: 11,
+        receivedDate: 'Jan 25, 2024',
+      },
+      {
+        id: 'r5',
+        name: 'exemption_data.xlsx',
+        title: 'Exemption Data',
+        type: 'xlsx',
+        size: '156 KB',
+        pages: 4,
+        receivedDate: 'Jan 25, 2024',
+      },
     ],
     signedBy: 'Ashok Kumar Singh',
     signedByDesignation: 'Regional Officer, NHAI Delhi',
