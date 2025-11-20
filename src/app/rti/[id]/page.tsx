@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import { rtiDetailMockData } from '@/data/rtiDetailData'
+import { rtiStatusExamples } from '@/data/rtiDetailStatusExamples'
 import { RTIDetailLayout } from '@/components/features/rti-detail/organisms'
 import { Breadcrumb } from '@/components/features/rti-detail/atoms'
 
@@ -15,7 +16,7 @@ interface RTIDetailPageProps {
  * Used for SEO and social sharing
  */
 export async function generateMetadata({ params }: RTIDetailPageProps): Promise<Metadata> {
-  const data = rtiDetailMockData[params.id]
+  const data = rtiDetailMockData[params.id] || rtiStatusExamples[params.id]
 
   if (!data) {
     return {
@@ -45,6 +46,7 @@ export async function generateMetadata({ params }: RTIDetailPageProps): Promise<
  * - Delegates layout to RTIDetailLayout organism
  *
  * Available RTI IDs for testing:
+ * Regular examples:
  * - rti-001: Full answer with documents
  * - rti-003: Overdue response
  * - rti-006: Pending response
@@ -54,13 +56,24 @@ export async function generateMetadata({ params }: RTIDetailPageProps): Promise<
  * - rti-022: Referred to public domain
  * - rti-023: Third party notice issued
  *
+ * Status-specific showcase examples:
+ * - status-answered: Complete answered state with full details
+ * - status-pending: Pending state with days remaining
+ * - status-overdue: Overdue state with penalty info
+ * - status-transferred: Transferred to another department
+ * - status-partial: Partial response state
+ * - status-not-available: Info not available state
+ * - status-public-domain: Public domain links provided
+ * - status-third-party: Third party consultation underway
+ *
  * @example
- * URL: /rti/rti-001
- * URL: /rti/rti-020
+ * URL: /rti/status-answered
+ * URL: /rti/status-pending
+ * URL: /rti/status-overdue
  */
 export default function RTIDetailPage({ params }: RTIDetailPageProps) {
-  // Fetch RTI data
-  const data = rtiDetailMockData[params.id]
+  // Fetch RTI data from either regular mock data or status examples
+  const data = rtiDetailMockData[params.id] || rtiStatusExamples[params.id]
 
   // Return 404 if RTI not found
   if (!data) {
@@ -100,7 +113,7 @@ export default function RTIDetailPage({ params }: RTIDetailPageProps) {
  * This enables static generation at build time for better performance
  */
 export function generateStaticParams() {
-  return Object.keys(rtiDetailMockData).map((id) => ({
-    id,
-  }))
+  const regularIds = Object.keys(rtiDetailMockData).map((id) => ({ id }))
+  const statusIds = Object.keys(rtiStatusExamples).map((id) => ({ id }))
+  return [...regularIds, ...statusIds]
 }
