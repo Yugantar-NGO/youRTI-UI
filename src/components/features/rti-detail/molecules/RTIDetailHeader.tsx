@@ -15,6 +15,10 @@ interface RTIDetailHeaderProps extends BaseProps {
   state: string
   filedDate: string
   respondedDate?: string
+  daysElapsed?: number
+  daysRemaining?: number
+  daysOverdue?: number
+  transferredTo?: string
   onDownload?: () => void
   onShare?: () => void
   onReport?: () => void
@@ -48,6 +52,10 @@ export function RTIDetailHeader({
   state,
   filedDate,
   respondedDate,
+  daysElapsed,
+  daysRemaining,
+  daysOverdue,
+  transferredTo,
   onDownload,
   onShare,
   onReport,
@@ -61,6 +69,48 @@ export function RTIDetailHeader({
       day: 'numeric',
     })
   }
+
+  // Get status-specific date label and value
+  const getStatusDateInfo = () => {
+    switch (status) {
+      case 'answered':
+        return respondedDate
+          ? { label: 'Responded', value: formatDate(respondedDate), days: `${daysElapsed}d` }
+          : null
+      case 'pending':
+        return daysRemaining !== undefined
+          ? { label: 'Awaiting Response', value: `${daysElapsed}d elapsed`, days: `${daysRemaining}d remaining` }
+          : null
+      case 'overdue':
+        return daysOverdue !== undefined
+          ? { label: 'Response Overdue', value: `${daysElapsed}d elapsed`, days: `${daysOverdue}d overdue` }
+          : null
+      case 'transferred':
+        return transferredTo
+          ? { label: 'Transferred', value: transferredTo, days: `${daysElapsed}d` }
+          : null
+      case 'partial':
+        return respondedDate
+          ? { label: 'Partial Response', value: formatDate(respondedDate), days: `${daysElapsed}d` }
+          : null
+      case 'not-available':
+        return respondedDate
+          ? { label: 'Info Not Available', value: formatDate(respondedDate), days: `${daysElapsed}d` }
+          : null
+      case 'public-domain':
+        return respondedDate
+          ? { label: 'Public Domain', value: formatDate(respondedDate), days: `${daysElapsed}d` }
+          : null
+      case 'third-party':
+        return daysRemaining !== undefined
+          ? { label: 'Third Party Consult', value: `${daysElapsed}d elapsed`, days: `Extended deadline` }
+          : null
+      default:
+        return null
+    }
+  }
+
+  const statusDateInfo = getStatusDateInfo()
 
   return (
     <header className={`${styles.header} ${className}`}>
@@ -121,11 +171,11 @@ export function RTIDetailHeader({
           value={formatDate(filedDate)}
           layout="horizontal"
         />
-        {respondedDate && (
+        {statusDateInfo && (
           <MetadataItem
             icon={Calendar}
-            label="Responded"
-            value={formatDate(respondedDate)}
+            label={statusDateInfo.label}
+            value={`${statusDateInfo.value} • ${statusDateInfo.days}`}
             layout="horizontal"
           />
         )}
