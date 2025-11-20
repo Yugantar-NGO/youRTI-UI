@@ -39,7 +39,7 @@ export function QuestionSection({
 
       {/* Question Text */}
       <div className={styles.content}>
-        <Typography variant="body-text" className={styles.questionText}>
+        <Typography variant="body-text" as="div" className={styles.questionText}>
           {questionText}
         </Typography>
 
