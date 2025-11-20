@@ -2,7 +2,6 @@
 
 import { BaseProps } from '@/types'
 import { RTIDocument } from '@/data/rtiDetailData'
-import { Card } from '@/components/ui/Card'
 import { Typography } from '@/components/ui/Typography'
 import { DocumentAttachment } from '../atoms'
 import styles from './DocumentsSection.module.css'
@@ -31,19 +30,14 @@ export function DocumentsSection({ documents, className = '' }: DocumentsSection
   }
 
   return (
-    <Card variant="bordered" padding="lg" className={`${styles.section} ${className}`}>
+    <section className={`${styles.section} ${className}`}>
       {/* Section Header */}
       <div className={styles.header}>
-        <span className={styles.icon}>📎</span>
+        <span className={styles.icon}>📁</span>
         <Typography variant="headline-small" as="h2" className={styles.title}>
-          DOCUMENTS PROVIDED
+          Documents & Attachments
         </Typography>
       </div>
-
-      {/* Document Count */}
-      <Typography variant="body-text" className={styles.count}>
-        {documents.length} document{documents.length !== 1 ? 's' : ''} attached
-      </Typography>
 
       {/* Documents List */}
       <div className={styles.documentsList}>
@@ -51,6 +45,6 @@ export function DocumentsSection({ documents, className = '' }: DocumentsSection
           <DocumentAttachment key={document.id} document={document} variant="card" />
         ))}
       </div>
-    </Card>
+    </section>
   )
 }
