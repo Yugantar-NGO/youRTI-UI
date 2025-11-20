@@ -25,42 +25,39 @@ interface NextStepsSectionProps extends BaseProps {
  * <NextStepsSection steps={[...]} />
  */
 export function NextStepsSection({ steps, className = '' }: NextStepsSectionProps) {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(0)
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
 
-  const toggleExpanded = (index: number) => {
+  const toggleStep = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index)
   }
 
   return (
     <div className={`${styles.section} ${className}`}>
       <div className={styles.header}>
-        <div className={styles.icon}>⚖️</div>
+        <div className={styles.headerIcon}>⚖️</div>
         <div className={styles.title}>Next Steps</div>
       </div>
 
       <div className={styles.stepsList}>
         {steps.map((step, index) => {
-          const isExpanded = expandedIndex === index
+          const isOpen = expandedIndex === index
 
           return (
-            <div key={index} className={styles.stepWrapper}>
-              <div
-                className={`${styles.stepCard} ${isExpanded ? styles.expanded : ''}`}
-                onClick={() => toggleExpanded(index)}
-              >
-                <div className={styles.stepIcon}>{step.icon}</div>
+            <div key={index} className={`${styles.stepItem} ${isOpen ? styles.open : ''}`}>
+              <div className={styles.stepHeader} onClick={() => toggleStep(index)}>
+                <div className={styles.stepIconBox}>{step.icon}</div>
                 <div className={styles.stepContent}>
-                  <div className={styles.stepName}>{step.title}</div>
-                  <div className={styles.stepDescription}>{step.description}</div>
+                  <div className={styles.stepTitle}>{step.title}</div>
+                  <div className={styles.stepSubtitle}>{step.description}</div>
                 </div>
-                <div className={styles.stepArrow}>{isExpanded ? '↑' : '↓'}</div>
+                <div className={styles.stepArrow}>→</div>
               </div>
 
-              {isExpanded && (
-                <div className={styles.stepDetails}>
-                  <div className={styles.stepDetailsText}>{step.details}</div>
+              <div className={styles.stepDetails}>
+                <div className={styles.stepDetailsInner}>
+                  <div className={styles.stepDescription}>{step.details}</div>
                 </div>
-              )}
+              </div>
             </div>
           )
         })}
