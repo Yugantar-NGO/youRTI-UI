@@ -1,0 +1,49 @@
+/* Data highlighting styles matching the answered.html design */
+.dataAmount {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  color: #1e40af;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 800;
+  font-family: 'IBM Plex Mono', monospace;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.dataMultiplier {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  color: #92400e;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 800;
+  font-family: 'IBM Plex Mono', monospace;
+  display: inline-block;
+}
+
+.dataEntity {
+  background: #ede9fe;
+  color: #5b21b6;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.dataDuration {
+  background: #fff7ed;
+  color: #9a3412;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-family: 'IBM Plex Mono', monospace;
+  display: inline-block;
+}
+
+.dataNegative {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 800;
+  display: inline-block;
+}
