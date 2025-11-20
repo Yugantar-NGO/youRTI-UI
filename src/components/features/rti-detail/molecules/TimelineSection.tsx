@@ -1,11 +1,17 @@
-import { BaseProps } from '@/types'
+import { BaseProps, RTIStatus } from '@/types'
 import { RTITimelineEvent } from '@/data/rtiDetailData'
 import { Typography } from '@/components/ui/Typography'
 import { Badge } from '@/components/ui/Badge'
+import { ProgressBar } from '../atoms'
 import styles from './TimelineSection.module.css'
 
 interface TimelineSectionProps extends BaseProps {
   events: RTITimelineEvent[]
+  status?: RTIStatus
+  daysElapsed?: number
+  daysTotal?: number
+  daysRemaining?: number
+  daysOverdue?: number
   variant?: 'sidebar' | 'inline'
 }
 
@@ -23,6 +29,11 @@ interface TimelineSectionProps extends BaseProps {
  */
 export function TimelineSection({
   events,
+  status,
+  daysElapsed,
+  daysTotal = 30,
+  daysRemaining,
+  daysOverdue,
   variant = 'inline',
   className = '',
 }: TimelineSectionProps) {
@@ -47,11 +58,73 @@ export function TimelineSection({
     })
   }
 
+  // Get progress bar variant based on status
+  const getProgressVariant = (): 'success' | 'warning' | 'danger' | 'info' => {
+    if (!status) return 'info'
+
+    switch (status) {
+      case 'answered':
+        return 'success'
+      case 'pending':
+        return daysElapsed && daysElapsed > 20 ? 'warning' : 'info'
+      case 'overdue':
+        return 'danger'
+      case 'transferred':
+      case 'third-party':
+        return 'info'
+      default:
+        return 'info'
+    }
+  }
+
+  // Get progress label based on status
+  const getProgressLabel = (): string | undefined => {
+    if (!daysElapsed) return undefined
+
+    switch (status) {
+      case 'pending':
+        return `${daysElapsed} of ${daysTotal} days elapsed (${daysRemaining || 0} days remaining)`
+      case 'overdue':
+        return `${daysElapsed} days elapsed (${daysOverdue || 0} days overdue - ${Math.round((daysElapsed / daysTotal) * 100)}% of deadline)`
+      case 'transferred':
+      case 'third-party':
+        return `${daysElapsed} of ${daysTotal} days elapsed (extended deadline)`
+      case 'answered':
+        return `Response received in ${daysElapsed} days (${daysElapsed <= daysTotal ? 'within' : 'exceeded'} deadline)`
+      default:
+        return undefined
+    }
+  }
+
+  const showProgress = status && ['pending', 'overdue', 'transferred', 'third-party'].includes(status)
+
   return (
     <div className={`${styles.timeline} ${styles[variant]} ${className}`} role="list" aria-label="RTI Timeline">
       <Typography variant="headline-small" as="h2" className={styles.header}>
         TIMELINE
       </Typography>
+
+      {/* Progress Bar for active statuses */}
+      {showProgress && daysElapsed !== undefined && (
+        <div className={styles.progressSection}>
+          <ProgressBar
+            current={status === 'overdue' ? daysTotal : daysElapsed}
+            total={daysTotal}
+            label={getProgressLabel()}
+            variant={getProgressVariant()}
+            showPercentage={false}
+          />
+          {status === 'overdue' && daysOverdue && (
+            <ProgressBar
+              current={daysOverdue}
+              total={daysOverdue + 10}
+              label={`Overdue by ${daysOverdue} days`}
+              variant="danger"
+              showPercentage={false}
+            />
+          )}
+        </div>
+      )}
 
       <div className={styles.events}>
         {events.map((event, index) => (
