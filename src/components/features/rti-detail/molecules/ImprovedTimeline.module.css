@@ -40,8 +40,9 @@
 
 .visual {
   position: relative;
-  height: 100px;
+  height: 120px;
   margin-bottom: 24px;
+  padding: 0 20px;
 }
 
 .line {
@@ -92,6 +93,7 @@
   font-size: 13px;
   color: #0f172a;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .labelDate {
