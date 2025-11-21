@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { BaseProps } from '@/types'
 import styles from './TopNavigation.module.css'
 
@@ -39,19 +40,19 @@ export function TopNavigation({ className = '', onShareClick }: TopNavigationPro
   return (
     <nav className={`${styles.topNav} ${className}`}>
       <div className={styles.navLeft}>
-        <a href="/" className={styles.logo}>
+        <Link href="/" className={styles.logo}>
           yourRTI
-        </a>
+        </Link>
         <div className={styles.navLinks}>
-          <a href="/browse" className={styles.navLink}>
+          <Link href="/browse" className={styles.navLink}>
             Browse
-          </a>
-          <a href="/file-rti" className={styles.navLink}>
+          </Link>
+          <Link href="/file-rti" className={styles.navLink}>
             File RTI
-          </a>
-          <a href="/about" className={styles.navLink}>
+          </Link>
+          <Link href="/about" className={styles.navLink}>
             About
-          </a>
+          </Link>
         </div>
       </div>
       <div className={styles.navRight}>
