@@ -3,12 +3,22 @@
 import { BaseProps, RTIStatus } from '@/types'
 import styles from './StatusBanners.module.css'
 
+interface Transfer {
+  fromDepartment: string
+  toDepartment: string
+  transferDate: string
+  reason: string
+  newPIO?: string
+  newDeadline?: string
+}
+
 interface StatusBannerProps extends BaseProps {
   status: RTIStatus
   message: string
   details?: string
   transferredFrom?: string
   transferredTo?: string
+  transfers?: Transfer[]
 }
 
 /**
@@ -26,8 +36,10 @@ export function StatusBanner({
   details,
   transferredFrom,
   transferredTo,
+  transfers,
   className = '',
 }: StatusBannerProps) {
+  const hasMultipleTransfers = transfers && transfers.length > 1
   if (status === 'answered' || status === 'pending') {
     // No banner needed for these statuses
     return null
@@ -54,7 +66,9 @@ export function StatusBanner({
     },
     transferred: {
       icon: '🔄',
-      title: 'RTI Transferred to Appropriate Authority',
+      title: hasMultipleTransfers
+        ? `RTI Transferred ${transfers?.length} Times`
+        : 'RTI Transferred to Appropriate Authority',
       gradient: 'linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%)',
       border: '#8B5CF6',
       iconBg: '#8B5CF6',
@@ -88,7 +102,21 @@ export function StatusBanner({
             {details}
           </div>
         )}
-        {status === 'transferred' && transferredFrom && transferredTo && (
+        {status === 'transferred' && hasMultipleTransfers && transfers && (
+          <div className={styles.transferChain}>
+            <span className={styles.transferChainDept}>{transfers[0].fromDepartment.split(',')[0]}</span>
+            {transfers.map((transfer, index) => (
+              <span key={index} className={styles.transferChainStep}>
+                <span className={styles.transferChainArrow}>
+                  <span className={styles.transferChainNumber}>{index + 1}</span>
+                  →
+                </span>
+                <span className={styles.transferChainDept}>{transfer.toDepartment.split(',')[0]}</span>
+              </span>
+            ))}
+          </div>
+        )}
+        {status === 'transferred' && !hasMultipleTransfers && transferredFrom && transferredTo && (
           <div className={styles.transferInfo}>
             <span className={styles.transferLabel}>From:</span>
             <span className={styles.transferValue}>{transferredFrom}</span>
