@@ -64,7 +64,7 @@ export function YourAreaTodayCard() {
         )}
 
         <div className={styles.viewAll}>
-          <a href="#" className={styles.viewAllLink}>View all RTIs from your district →</a>
+          <a href="/browse" className={styles.viewAllLink}>View all RTIs from your district →</a>
         </div>
       </CardContent>
     </Card>
