@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { RecentQuestion } from '@/types'
 import { StatusBadge, StatusType } from './StatusBadge'
 import styles from './QuestionListItem.module.css'
@@ -34,7 +35,7 @@ export function QuestionListItem({ question, className = '' }: QuestionListItemP
   }
 
   return (
-    <a href={questionLink} className={`${styles.questionCard} ${className}`}>
+    <Link href={questionLink} className={`${styles.questionCard} ${className}`}>
       <div className={styles.cardHeader}>
         <div className={styles.topicBadge}>
           <svg className={styles.iconTag} width="14" height="14" viewBox="0 0 16 16" fill="none">
@@ -75,6 +76,6 @@ export function QuestionListItem({ question, className = '' }: QuestionListItemP
           <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       </div>
-    </a>
+    </Link>
   )
 }
