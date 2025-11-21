@@ -7,6 +7,11 @@
   box-shadow: 0 10px 40px rgba(15, 23, 42, 0.12);
 }
 
+.sectionOverdue {
+  border-color: #fecaca;
+  box-shadow: 0 10px 40px rgba(239, 68, 68, 0.12);
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -51,6 +56,11 @@
 .qaItempending {
   border-color: #fef3c7;
   background: #fffbeb;
+}
+
+.qaItemoverdue {
+  border-color: #ef4444;
+  background: #fef2f2;
 }
 
 .qaItem:hover {
@@ -124,6 +134,11 @@
   color: #9a3412;
 }
 
+.statusOverdue {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
 .answerContent {
   padding: 24px;
   border-top: 2px solid #e5e7eb;
@@ -172,4 +187,12 @@
   color: #78716c;
   font-style: italic;
   font-size: 15px;
+}
+
+.overdueContent {
+  background: #fef2f2;
+  border-top-color: #fecaca;
+  color: #991b1b;
+  font-weight: 600;
+  font-style: normal;
 }
