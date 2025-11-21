@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { BaseProps } from '@/types'
+import { InfoIcon } from '../atoms'
 import styles from './NextStepsSection.module.css'
 
 export interface NextStep {
@@ -36,6 +37,7 @@ export function NextStepsSection({ steps, className = '' }: NextStepsSectionProp
       <div className={styles.header}>
         <div className={styles.headerIcon}>⚖️</div>
         <div className={styles.title}>Next Steps</div>
+        <InfoIcon tooltip="Recommended actions you can take based on this RTI response—including how to appeal, follow up, or use the information obtained." />
       </div>
 
       <div className={styles.stepsList}>
