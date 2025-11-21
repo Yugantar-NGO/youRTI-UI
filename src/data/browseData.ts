@@ -414,9 +414,6 @@ export const dummyFilterOptions: FilterOptions = {
     { id: 'overdue', label: 'Overdue', count: 4 },
     { id: 'transferred', label: 'Transferred', count: 1 },
     { id: 'partial', label: 'Partial Response', count: 1 },
-    { id: 'not-available', label: 'Info Not Available', count: 1 },
-    { id: 'public-domain', label: 'Public Domain', count: 1 },
-    { id: 'third-party', label: 'Third Party Consult', count: 1 },
   ],
 }
 
