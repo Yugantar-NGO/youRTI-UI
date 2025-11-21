@@ -107,6 +107,15 @@ export interface RTIDetailData {
   transferReason?: string
   transferDate?: string
   newDeadline?: string
+  // Support for multiple transfers
+  transfers?: Array<{
+    fromDepartment: string
+    toDepartment: string
+    transferDate: string
+    reason: string
+    newPIO?: string
+    newDeadline?: string
+  }>
 
   deniedItems?: Array<{ item: string; reason: string; section?: string }>
   providedItems?: Array<{ item: string; summary: string }>
@@ -2617,27 +2626,55 @@ Following steps have been implemented to optimize bed utilization:
     state: 'Maharashtra',
     topic: 'Infrastructure',
 
-    filedDate: '2025-01-15',
-    acknowledgedDate: '2025-01-16',
+    filedDate: '2025-01-05',
+    acknowledgedDate: '2025-01-06',
     transferredFrom: 'NHAI Regional Office, Pune',
-    transferredTo: 'District Collector Office, Pune',
-    transferDate: '2025-01-22',
-    newDeadline: '2025-02-21',
-    daysElapsed: 7,
-    daysRemaining: 14,
-    pioName: 'Shri Ramesh Patil',
+    transferredTo: 'Tehsildar Office, Haveli Taluka',
+    transferDate: '2025-01-25',
+    newDeadline: '2025-02-24',
+    daysElapsed: 20,
+    daysRemaining: 10,
+    pioName: 'Shri Vinay Kulkarni',
 
-    impactOneLiner: 'RTI transferred from NHAI to District Collector — land records fall under Revenue Department jurisdiction',
-    impactMetrics: [
-      { icon: '🔄', value: 'TRANSFER', label: 'STATUS' },
-      { icon: '⏰', value: '7 days', label: 'AT DC' },
-      { icon: '🏛️', value: '2 depts', label: 'INVOLVED' },
-      { icon: '📍', value: 'DC Pune', label: 'CURRENT' },
+    // Multiple transfers tracking
+    transfers: [
+      {
+        fromDepartment: 'NHAI Regional Office, Pune',
+        toDepartment: 'District Collector Office, Pune',
+        transferDate: '2025-01-10',
+        reason: 'Land records maintained by Revenue Department',
+        newPIO: 'Shri Ramesh Patil',
+        newDeadline: '2025-02-09',
+      },
+      {
+        fromDepartment: 'District Collector Office, Pune',
+        toDepartment: 'Sub-Divisional Officer, Haveli',
+        transferDate: '2025-01-18',
+        reason: 'Specific land parcels fall under SDO jurisdiction',
+        newPIO: 'Smt. Anjali Deshmukh',
+        newDeadline: '2025-02-17',
+      },
+      {
+        fromDepartment: 'Sub-Divisional Officer, Haveli',
+        toDepartment: 'Tehsildar Office, Haveli Taluka',
+        transferDate: '2025-01-25',
+        reason: 'Village-level land records maintained at Tehsil office',
+        newPIO: 'Shri Vinay Kulkarni',
+        newDeadline: '2025-02-24',
+      },
     ],
-    impactBadges: ['🔄 JURISDICTION SHIFT', '⏳ NEW TIMELINE'],
-    viewCount: 189,
 
-    whyThisMattersIntro: 'Land acquisition transparency is crucial for ensuring fair compensation to farmers and preventing corruption in infrastructure projects.',
+    impactOneLiner: 'RTI bounced through 4 departments in 20 days — bureaucratic maze reveals gaps in land record digitization',
+    impactMetrics: [
+      { icon: '🔄', value: '3', label: 'TRANSFERS' },
+      { icon: '🏛️', value: '4 depts', label: 'INVOLVED' },
+      { icon: '⏰', value: '20 days', label: 'ELAPSED' },
+      { icon: '📍', value: 'Tehsil', label: 'CURRENT' },
+    ],
+    impactBadges: ['🔄 MULTI-TRANSFER', '⏳ DELAYED', '🏛️ 4 DEPARTMENTS'],
+    viewCount: 312,
+
+    whyThisMattersIntro: 'This RTI exposes the fragmented nature of land records in India. Multiple transfers indicate poor inter-departmental coordination and lack of a single-window system for land-related queries.',
 
     questionText: 'I request information regarding the land acquisition for NH-48 highway expansion near Pune:',
     questionPoints: [
@@ -2648,30 +2685,34 @@ Following steps have been implemented to optimize bed utilization:
     ],
 
     responseType: 'transferred',
-    transferReason: 'Land acquisition records are maintained by the Revenue Department under the District Collector. NHAI does not hold these records directly. Application transferred under Section 6(3) of RTI Act to the appropriate authority.',
+    transferReason: 'Village-level 7/12 extracts and mutation records are maintained at the Tehsildar office. Previous departments do not have direct access to these records. Application transferred under Section 6(3) of RTI Act.',
 
     extractedEntities: {
       amounts: [],
       officials: [
         { name: 'Shri Ramesh Patil', designation: 'PIO, District Collector Office' },
+        { name: 'Smt. Anjali Deshmukh', designation: 'PIO, SDO Haveli' },
+        { name: 'Shri Vinay Kulkarni', designation: 'PIO, Tehsildar Office' },
       ],
       vendors: [],
       dates: [
-        { date: '2025-01-22', description: 'Transfer date' },
-        { date: '2025-02-21', description: 'New deadline' },
+        { date: '2025-01-10', description: 'First transfer' },
+        { date: '2025-01-18', description: 'Second transfer' },
+        { date: '2025-01-25', description: 'Third transfer' },
+        { date: '2025-02-24', description: 'Current deadline' },
       ],
       locations: [
-        { name: 'Pune District', description: 'NH-48 expansion corridor' },
+        { name: 'Haveli Taluka, Pune District', description: 'NH-48 expansion corridor' },
       ],
     },
 
     departmentStats: {
-      responseRate: 72,
-      totalRTIs: 856,
-      answeredRTIs: 612,
-      pendingRTIs: 178,
-      overdueRTIs: 66,
-      averageResponseDays: 26,
+      responseRate: 68,
+      totalRTIs: 423,
+      answeredRTIs: 287,
+      pendingRTIs: 98,
+      overdueRTIs: 38,
+      averageResponseDays: 28,
       targetResponseDays: 30,
     },
 
@@ -2679,24 +2720,40 @@ Following steps have been implemented to optimize bed utilization:
       {
         id: 't1',
         type: 'filed',
-        date: '2025-01-15',
+        date: '2025-01-05',
         title: 'RTI Filed',
         description: 'Submitted to NHAI Regional Office',
       },
       {
         id: 't2',
         type: 'acknowledged',
-        date: '2025-01-16',
+        date: '2025-01-06',
         title: 'Acknowledged by NHAI',
         daysFromFiling: 1,
       },
       {
         id: 't3',
         type: 'transferred',
-        date: '2025-01-22',
-        title: 'Transferred to District Collector',
-        description: 'New timeline starts from transfer date',
-        daysFromFiling: 7,
+        date: '2025-01-10',
+        title: 'Transfer #1: To District Collector',
+        description: 'Land records under Revenue Dept',
+        daysFromFiling: 5,
+      },
+      {
+        id: 't4',
+        type: 'transferred',
+        date: '2025-01-18',
+        title: 'Transfer #2: To SDO Haveli',
+        description: 'Specific parcels under SDO',
+        daysFromFiling: 13,
+      },
+      {
+        id: 't5',
+        type: 'transferred',
+        date: '2025-01-25',
+        title: 'Transfer #3: To Tehsildar',
+        description: 'Village-level records at Tehsil',
+        daysFromFiling: 20,
       },
     ],
   },
