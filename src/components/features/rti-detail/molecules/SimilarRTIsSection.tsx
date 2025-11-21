@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
+import Link from 'next/link'
 import { BaseProps } from '@/types'
 import { InfoIcon } from '../atoms'
 import styles from './SimilarRTIsSection.module.css'
@@ -66,10 +67,10 @@ export function SimilarRTIsSection({
           <InfoIcon tooltip="Related RTI applications on similar topics or from the same department. Explore these to find more information on this subject." />
         </div>
         {totalCount > 0 && (
-          <a href="/browse" className={styles.viewAllLink}>
+          <Link href="/browse" className={styles.viewAllLink}>
             <span>View all {totalCount.toLocaleString()}</span>
             <span>→</span>
-          </a>
+          </Link>
         )}
       </div>
 
