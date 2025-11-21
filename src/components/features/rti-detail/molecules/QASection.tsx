@@ -1,6 +1,7 @@
 'use client'
 
 import { BaseProps, RTIStatus } from '@/types'
+import { InfoIcon } from '../atoms'
 import styles from './QASection.module.css'
 
 export interface QAItem {
@@ -56,6 +57,7 @@ export function QASection({ qaItems, rtiStatus, className = '' }: QASectionProps
       <div className={styles.header}>
         <div className={styles.icon}>❓</div>
         <div className={styles.title}>Questions & Answers</div>
+        <InfoIcon tooltip="Detailed breakdown of each question asked in the RTI and the corresponding response from the department, including status and source documents." />
       </div>
 
       <div className={styles.qaList}>
