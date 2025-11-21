@@ -344,6 +344,7 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
             transferredTo={data.transferredTo}
             transferReason={data.status === 'transferred' ? 'Subject matter jurisdiction' : undefined}
             transferDate={data.transferDate}
+            transfers={data.transfers}
           />
 
           <DepartmentStatsCard
@@ -368,6 +369,7 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
             details={data.statusDaysInfo}
             transferredFrom={data.status === 'transferred' ? data.department : undefined}
             transferredTo={data.transferredTo}
+            transfers={data.transfers}
           />
 
           {/* Timeline */}
