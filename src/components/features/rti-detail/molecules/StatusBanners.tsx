@@ -44,9 +44,9 @@ export function StatusBanner({
       textColor: '#B91C1C',
     },
     partial: {
-      icon: '📋',
+      icon: '⚠️',
       title: 'Partial Response Received',
-      gradient: 'linear-gradient(135deg, #FFEDD5 0%, #FED7AA 100%)',
+      gradient: 'linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%)',
       border: '#F97316',
       iconBg: '#F97316',
       titleColor: '#9A3412',
