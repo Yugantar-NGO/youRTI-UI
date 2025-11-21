@@ -110,13 +110,6 @@ export function SystemPulse({ className = '' }: SystemPulseProps) {
         </div>
       </div>
 
-      {/* Compare All Button */}
-      <div className={styles.compareSection}>
-        <a href="/analytics" className={styles.compareButton}>
-          View Full Analytics →
-        </a>
-      </div>
-
       {/* RTI Journey */}
       <div className={styles.journeyPanel}>
         <div className={styles.journeyHeader}>
@@ -174,9 +167,6 @@ export function SystemPulse({ className = '' }: SystemPulseProps) {
 
           <div className={styles.journeyFooter}>
             <p className={styles.journeyNote}>Top performers in green • Laggards in red</p>
-            <a href="/analytics" className={styles.journeyLink}>
-              Explore Full Analytics →
-            </a>
           </div>
         </div>
       </div>
