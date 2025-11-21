@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 import { BaseProps } from '@/types'
+import { InfoIcon } from '../atoms'
 import styles from './SimilarRTIsSection.module.css'
 
 export interface SimilarRTI {
@@ -62,6 +63,7 @@ export function SimilarRTIsSection({
         <div className={styles.title}>
           <span>🔗</span>
           <span>Similar RTIs</span>
+          <InfoIcon tooltip="Related RTI applications on similar topics or from the same department. Explore these to find more information on this subject." />
         </div>
         {totalCount > 0 && (
           <a href="/browse" className={styles.viewAllLink}>
