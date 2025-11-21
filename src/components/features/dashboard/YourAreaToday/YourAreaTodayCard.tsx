@@ -6,6 +6,7 @@
 
 'use client'
 
+import Link from 'next/link'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card'
 import { DashboardDataRepository } from '@/services/repositories/DashboardDataRepository'
 import { useEditionFilter } from '@/context/EditionContext'
@@ -64,7 +65,7 @@ export function YourAreaTodayCard() {
         )}
 
         <div className={styles.viewAll}>
-          <a href="/browse" className={styles.viewAllLink}>View all RTIs from your district →</a>
+          <Link href="/browse" className={styles.viewAllLink}>View all RTIs from your district →</Link>
         </div>
       </CardContent>
     </Card>
