@@ -143,7 +143,7 @@ export function SidebarOverviewCard({
             </span>
           </div>
         )}
-        {daysElapsed !== undefined && (
+        {daysElapsed !== undefined && status !== 'overdue' && (
           <div className={styles.dateItem}>
             <span>{status === 'pending' ? 'Days Elapsed:' : 'Response Time:'}</span>
             <span className={styles.dateValue}>
