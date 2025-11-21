@@ -259,7 +259,7 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
             text: (
               <>
                 <DataHighlight type="negative">Quality inspection reports withheld</DataHighlight>, marked
-                as "under review"
+                as &quot;under review&quot;
               </>
             ),
           },
