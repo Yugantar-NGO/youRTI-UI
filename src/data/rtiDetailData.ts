@@ -2815,6 +2815,44 @@ Following steps have been implemented to optimize bed utilization:
       'Work orders finally issued after RTI',
     ],
 
+    detailedQA: [
+      {
+        question: 'Total funds allocated for school building repairs in FY 2023-24 and 2024-25',
+        answer: 'Rs 12,00,000 was allocated in FY 2023-24 under the School Infrastructure Improvement Scheme. An additional Rs 3,50,000 was allocated in FY 2024-25 for electrical repairs. Total allocation: Rs 15,50,000.',
+        status: 'answered',
+        sourceDocument: 'Fund Allocation Details',
+        sourcePage: 2,
+      },
+      {
+        question: 'Details of repair work sanctioned vs completed with timeline',
+        answer: 'Sanctioned works include: roof waterproofing (Rs 4.5L), wall repairs (Rs 3L), electrical rewiring (Rs 2.5L), toilet renovation (Rs 2L). As of filing date, 0% work was completed. Work orders have now been issued post-RTI.',
+        status: 'answered',
+        sourceDocument: 'Work Order Copy',
+        sourcePage: 1,
+      },
+      {
+        question: 'Reasons for delay in utilization of allocated funds',
+        answer: 'Delays attributed to: (1) Tender process took 8 months due to re-tendering after initial bids exceeded estimates, (2) Administrative delays in contractor verification, (3) File pending at District Education Officer level for 4 months.',
+        status: 'answered',
+        sourceDocument: 'Official Response Letter',
+        sourcePage: 3,
+      },
+      {
+        question: 'Current structural condition report of the school building',
+        answer: 'Structural audit conducted in March 2023 classified building as "requiring urgent repairs". Issues identified: roof leakage in 4 classrooms, cracks in load-bearing walls, outdated electrical wiring posing fire risk, non-functional toilets.',
+        status: 'answered',
+        sourceDocument: 'Structural Audit Report',
+        sourcePage: 5,
+      },
+      {
+        question: 'List of complaints received regarding building safety',
+        answer: '17 written complaints received between Jan 2023 and Aug 2025. Complainants include: Parent-Teacher Association (8), School Management Committee (4), Individual parents (5). All complaints documented and forwarded to Block Education Officer.',
+        status: 'answered',
+        sourceDocument: 'Official Response Letter',
+        sourcePage: 5,
+      },
+    ],
+
     extractedEntities: {
       amounts: [
         { value: '₹12 Lakh', description: 'Total sanctioned amount' },
@@ -2934,6 +2972,44 @@ Following steps have been implemented to optimize bed utilization:
       '4 shop licenses suspended, FIR registered',
     ],
 
+    detailedQA: [
+      {
+        question: 'Total registered beneficiaries vs actual distribution for last 12 months',
+        answer: 'Total registered beneficiaries: 1,45,000 households. Actual unique distributions recorded: 1,42,000 households. However, 3,000 cards showed distributions without corresponding biometric verification, indicating ghost beneficiaries.',
+        status: 'answered',
+        sourceDocument: 'Beneficiary Distribution Data',
+        sourcePage: 1,
+      },
+      {
+        question: 'Shop-wise monthly allocation and lifting data',
+        answer: 'Complete shop-wise data provided for all 156 FPS in Patna district. 12 shops showed lifting rates exceeding 100% of registered beneficiaries. Average lifting rate across district: 87%. Anomalous shops showed 112-128% lifting.',
+        status: 'answered',
+        sourceDocument: 'Shop-wise Allocation Records',
+        sourcePage: 3,
+      },
+      {
+        question: 'List of beneficiaries who have not collected rations for 6+ months',
+        answer: '8,450 registered beneficiaries have not collected rations for 6+ months. Of these, 3,000 cards showed "collected" status in system despite no physical collection. Database audit reveals systematic manipulation of records.',
+        status: 'answered',
+        sourceDocument: 'Beneficiary Distribution Data',
+        sourcePage: 12,
+      },
+      {
+        question: 'Biometric authentication success/failure rates',
+        answer: 'Overall biometric success rate: 94%. However, 12 identified shops showed 100% success rate with zero failures - statistically improbable. Investigation revealed biometric bypass using stored fingerprint data for ghost distributions.',
+        status: 'answered',
+        sourceDocument: 'Inspection Reports',
+        sourcePage: 8,
+      },
+      {
+        question: 'Details of any discrepancies found in inspections',
+        answer: '23 inspections conducted in FY 2024-25. Major discrepancies: stock register manipulation (12 shops), weight measurement fraud (8 shops), ghost beneficiary entries (12 shops). 4 FIRs registered, 4 licenses suspended, recovery proceedings initiated for Rs 1.8 Cr.',
+        status: 'answered',
+        sourceDocument: 'Inspection Reports',
+        sourcePage: 15,
+      },
+    ],
+
     extractedEntities: {
       amounts: [
         { value: '₹1.8 Crore', description: 'Estimated fraud value' },
@@ -3051,6 +3127,44 @@ Following steps have been implemented to optimize bed utilization:
       'Fake completion certificate submitted',
       '500 homes without water for 6 months',
       'Contractor blacklisted, recovery initiated',
+    ],
+
+    detailedQA: [
+      {
+        question: 'Total project cost and payment details to contractor',
+        answer: 'Contract value: Rs 45,00,000 awarded to M/s Rajasthan Constructions on 15 Jan 2025. Payment schedule: 30% advance (Rs 13.5L), 40% on 50% completion (Rs 18L), 30% on final completion (Rs 13.5L). All payments released by March 2025 despite incomplete work.',
+        status: 'answered',
+        sourceDocument: 'Contract & Payment Details',
+        sourcePage: 2,
+      },
+      {
+        question: 'Completion certificate and quality inspection reports',
+        answer: 'Completion certificate dated 28 Feb 2025 signed by Junior Engineer Shri R.K. Meena. Physical verification on 5 Sep 2025 reveals only 1.2 km of 3 km pipeline laid. Quality inspection not conducted before certificate issuance. Disciplinary action initiated against certifying officer.',
+        status: 'answered',
+        sourceDocument: 'Physical Verification Report',
+        sourcePage: 4,
+      },
+      {
+        question: 'Timeline of work with milestones achieved',
+        answer: 'Work order: 15 Jan 2025. Scheduled completion: 15 Apr 2025. Milestones: Pipeline laying (3 km) - 40% done, Valve installation (12 units) - 3 done, Connection points (500) - 0 done, Testing & commissioning - Not started.',
+        status: 'answered',
+        sourceDocument: 'Physical Verification Report',
+        sourcePage: 6,
+      },
+      {
+        question: 'Complaints received from residents regarding water supply',
+        answer: '347 written complaints received between Feb-Aug 2025. 156 complaints from Mansarovar Extension RWA, 89 individual complaints, 102 complaints via CM Helpline. All complaints documented. No action taken until RTI filed.',
+        status: 'answered',
+        sourceDocument: 'Resident Complaints Register',
+        sourcePage: 1,
+      },
+      {
+        question: 'Action taken against contractor for incomplete work',
+        answer: 'Show cause notice issued on 8 Sep 2025. Bank guarantee of Rs 4.5L encashed. Contractor M/s Rajasthan Constructions blacklisted for 3 years. Recovery proceedings initiated for Rs 27L (overpayment). FIR registered for fraud. Emergency tender floated for remaining work.',
+        status: 'answered',
+        sourceDocument: 'Official Response Letter',
+        sourcePage: 5,
+      },
     ],
 
     extractedEntities: {
@@ -3175,6 +3289,44 @@ Following steps have been implemented to optimize bed utilization:
       'Fast-track recruitment initiated post-RTI',
     ],
 
+    detailedQA: [
+      {
+        question: 'Sanctioned vs filled positions for all categories of doctors',
+        answer: 'Sanctioned: 20 positions (8 General Medicine, 4 Surgery, 3 Pediatrics, 3 Gynecology, 2 Orthopedics). Filled: 5 positions (3 General Medicine, 1 Surgery, 1 Pediatrics). Vacancy rate: 75%. Positions vacant since April 2024.',
+        status: 'answered',
+        sourceDocument: 'Staff Position Statement',
+        sourcePage: 2,
+      },
+      {
+        question: 'Duration of vacancies and reasons for non-recruitment',
+        answer: 'Vacancies persisting since April 2024 (18 months). Reasons: State-wide recruitment freeze (Jan-Aug 2024), delay in UPPSC medical recruitment exam, 3 selected candidates did not join citing poor facilities, budget constraints for contractual hiring.',
+        status: 'answered',
+        sourceDocument: 'Official Response Letter',
+        sourcePage: 3,
+      },
+      {
+        question: 'Patient load and waiting times in OPD and emergency',
+        answer: 'Daily OPD footfall: 850-1000 patients. Average OPD waiting time: 4 hours (national benchmark: 30 mins). Emergency cases: 120-150 daily. Emergency waiting time: 45 mins for non-critical cases. Doctor-patient ratio: 1:200 against recommended 1:25.',
+        status: 'answered',
+        sourceDocument: 'Patient Load Statistics',
+        sourcePage: 1,
+      },
+      {
+        question: 'Deaths due to delayed treatment or doctor unavailability',
+        answer: '23 deaths reported in hospital records where "delay in treatment" was contributing factor in last 12 months. 8 cases specifically mention "specialist unavailable". Mortality review committee reports attached. Medico-legal cases: 4.',
+        status: 'answered',
+        sourceDocument: 'Official Response Letter',
+        sourcePage: 5,
+      },
+      {
+        question: 'Steps taken to fill vacant positions',
+        answer: 'Post-RTI actions: (1) Emergency recruitment through walk-in interviews - 8 doctors joined, (2) Deputation requests sent to medical colleges - 4 approved, (3) Contractual appointments at enhanced pay - 3 hired. Total 15 positions now filled. Remaining 5 through regular UPPSC process.',
+        status: 'answered',
+        sourceDocument: 'Recruitment Status Report',
+        sourcePage: 4,
+      },
+    ],
+
     extractedEntities: {
       amounts: [
         { value: '15', description: 'Doctors recruited' },
@@ -3292,6 +3444,44 @@ Following steps have been implemented to optimize bed utilization:
       'No public auction conducted',
       'Discretionary allotment without proper justification',
       'CBI inquiry ordered, allotment cancelled',
+    ],
+
+    detailedQA: [
+      {
+        question: 'Details of all land allotments made in Whitefield in 2024-25',
+        answer: '12 land parcels allotted in Whitefield area during 2024-25. Total area: 47 acres. 8 allotments through public auction, 4 through discretionary quota. Survey No. 45/2 (5 acres) was largest discretionary allotment. Complete list with survey numbers provided.',
+        status: 'answered',
+        sourceDocument: 'Land Allotment Records',
+        sourcePage: 3,
+      },
+      {
+        question: 'Market valuation vs actual allotment price for each parcel',
+        answer: 'Survey No. 45/2: Circle rate Rs 1.6 Cr/acre, allotted at Rs 10L/acre (94% below market). Other parcels allotted at 85-95% of circle rate through auction. Total loss to exchequer from undervalued allotments: Rs 7.5 Crore.',
+        status: 'answered',
+        sourceDocument: 'Circle Rate Documents',
+        sourcePage: 2,
+      },
+      {
+        question: 'Tender/auction process followed for each allotment',
+        answer: '8 parcels: Open e-auction with minimum 3 bidders. 4 parcels (including Survey 45/2): Discretionary allotment under Section 94 of Land Revenue Act. For Survey 45/2, no auction conducted. File notings show "special case" recommendation without documented justification.',
+        status: 'answered',
+        sourceDocument: 'Approval File Notings',
+        sourcePage: 5,
+      },
+      {
+        question: 'Names of allottees with their application details',
+        answer: 'Survey 45/2 allotted to M/s Whitefield Developers Pvt Ltd (Directors: Shri K. Ramesh, Shri S. Prasad). Application dated 15 Oct 2024. Company incorporated 3 months before application. No prior real estate experience on record. Complete list of all allottees provided.',
+        status: 'answered',
+        sourceDocument: 'Land Allotment Records',
+        sourcePage: 8,
+      },
+      {
+        question: 'Approval authority and date for each allotment',
+        answer: 'Survey 45/2: Approved by then District Collector Shri M.K. Rao on 10 Dec 2024. Cabinet approval not obtained despite value exceeding Rs 1 Cr threshold. File moved directly from application to approval in 56 days (average: 180 days). Matter referred to Lokayukta.',
+        status: 'answered',
+        sourceDocument: 'Approval File Notings',
+        sourcePage: 10,
+      },
     ],
 
     extractedEntities: {
@@ -3414,6 +3604,44 @@ Following steps have been implemented to optimize bed utilization:
       '45 notices issued but only 3 penalties collected',
       '12 factories issued closure notices post-RTI',
       '₹2.5 Crore environmental compensation demanded',
+    ],
+
+    detailedQA: [
+      {
+        question: 'Air and water quality monitoring data for last 3 years',
+        answer: 'Quarterly monitoring data from 2022-2025 provided. Average SOx levels: 180 µg/m³ (limit: 80). NOx levels: 120 µg/m³ (limit: 80). PM10: 250 µg/m³ (limit: 100). Water BOD in nearby Khari River: 45 mg/L (limit: 30). All parameters consistently exceeded safe limits.',
+        status: 'answered',
+        sourceDocument: 'Air Quality Monitoring Data',
+        sourcePage: 1,
+      },
+      {
+        question: 'List of industries exceeding permissible emission limits',
+        answer: '20 units identified with chronic violations. Top violators: Gujarat Chemicals (450% over SOx limit), Vatva Dyes Pvt Ltd (320% over NOx), Ahmedabad Solvents (280% over PM). Complete list with violation percentages and duration provided for all 20 units.',
+        status: 'answered',
+        sourceDocument: 'Violation Records 2022-2025',
+        sourcePage: 4,
+      },
+      {
+        question: 'Penalties imposed and collected for violations',
+        answer: '45 show cause notices issued between 2022-2024. Penalties imposed: Rs 89 Lakh across 8 units. Actually collected: Rs 12 Lakh (3 units only). Recovery rate: 13.5%. Pending penalties: Rs 77 Lakh. No prosecution initiated despite repeated violations.',
+        status: 'answered',
+        sourceDocument: 'Violation Records 2022-2025',
+        sourcePage: 12,
+      },
+      {
+        question: 'Show cause notices issued and their outcomes',
+        answer: '45 notices issued. Outcomes: 8 resulted in penalty orders, 12 closed after unit submissions (no verification), 18 pending for 1+ years, 7 withdrawn citing "technical issues". Post-RTI: 12 closure notices issued, Rs 2.5 Cr environmental compensation demanded.',
+        status: 'answered',
+        sourceDocument: 'Official Response Letter',
+        sourcePage: 5,
+      },
+      {
+        question: 'Health impact assessment studies conducted in the area',
+        answer: 'GPCB-commissioned study (2023) found: 34% higher respiratory illness rate in 2km radius, 28% higher skin disorders, groundwater contamination in 15 borewells. Study not made public until RTI. 50,000+ residents affected. CPCB informed for coordinated action.',
+        status: 'answered',
+        sourceDocument: 'Official Response Letter',
+        sourcePage: 7,
+      },
     ],
 
     extractedEntities: {
