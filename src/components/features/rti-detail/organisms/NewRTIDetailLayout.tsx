@@ -116,8 +116,8 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
           },
         ]
 
-  // Next steps data
-  const nextSteps: NextStep[] = [
+  // Next steps data - use from data if available, otherwise use defaults
+  const nextSteps: NextStep[] = data.nextSteps || [
     {
       icon: '📝',
       title: 'File First Appeal',
@@ -155,8 +155,8 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
     },
   ]
 
-  // Sample similar RTIs
-  const similarRTIs: SimilarRTI[] = [
+  // Similar RTIs - use from data if available, otherwise use defaults
+  const similarRTIs: SimilarRTI[] = data.similarRTIs || [
     {
       id: 'rti-similar-1',
       title: 'Ring Road repair budget allocation and tender process documentation',
@@ -177,7 +177,7 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
     },
   ]
 
-  // Why this matters points - use custom data for partial status, or defaults for other statuses
+  // Why this matters points - use custom data for partial status, overdue status, or defaults for other statuses
   const whyThisMatters: ImportancePoint[] =
     data.status === 'partial' && data.whyThisIsImportant
       ? data.whyThisIsImportant
@@ -198,6 +198,25 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
           {
             icon: '⚖️',
             text: 'Establishes accountability for cost overruns and project delays',
+          },
+        ]
+      : data.status === 'overdue'
+      ? [
+          {
+            icon: '👨‍👩‍👧‍👦',
+            text: 'Teacher shortages directly impact quality of education for thousands of students',
+          },
+          {
+            icon: '📊',
+            text: 'Transparency in recruitment helps identify bottlenecks in hiring processes',
+          },
+          {
+            icon: '⚖️',
+            text: 'Ensures accountability for meeting educational standards and RTE compliance',
+          },
+          {
+            icon: '📈',
+            text: "Helps track government's progress on education sector commitments",
           },
         ]
       : [
@@ -397,7 +416,7 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
           <SimilarRTIsSection rtis={similarRTIs} totalCount={847} />
 
           {/* Next Steps */}
-          <NextStepsSection steps={nextSteps} />
+          <NextStepsSection steps={nextSteps} isOverdue={data.status === 'overdue'} />
         </main>
       </div>
     </div>
