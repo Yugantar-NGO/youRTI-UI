@@ -21,7 +21,7 @@ export const mockWinStories: WinStory[] = [
     department: 'Education Department',
     state: 'Maharashtra',
     date: '2025-11-01',
-    link: '/rtis/win-1'
+    link: '/rti/win-1'
   },
   {
     id: 'win-2',
@@ -39,7 +39,7 @@ export const mockWinStories: WinStory[] = [
     department: 'Food & Civil Supplies',
     state: 'Bihar',
     date: '2025-10-28',
-    link: '/rtis/win-2'
+    link: '/rti/win-2'
   },
   {
     id: 'win-3',
@@ -57,7 +57,7 @@ export const mockWinStories: WinStory[] = [
     department: 'Public Works Department',
     state: 'Rajasthan',
     date: '2025-10-25',
-    link: '/rtis/win-3'
+    link: '/rti/win-3'
   },
   {
     id: 'win-4',
@@ -75,7 +75,7 @@ export const mockWinStories: WinStory[] = [
     department: 'Health Department',
     state: 'Uttar Pradesh',
     date: '2025-10-20',
-    link: '/rtis/win-4'
+    link: '/rti/win-4'
   },
   {
     id: 'win-5',
@@ -93,7 +93,7 @@ export const mockWinStories: WinStory[] = [
     department: 'Revenue Department',
     state: 'Karnataka',
     date: '2025-10-15',
-    link: '/rtis/win-5'
+    link: '/rti/win-5'
   },
   {
     id: 'win-6',
@@ -111,7 +111,7 @@ export const mockWinStories: WinStory[] = [
     department: 'Pollution Control Board',
     state: 'Gujarat',
     date: '2025-10-10',
-    link: '/rtis/win-6'
+    link: '/rti/win-6'
   }
 ]
 
