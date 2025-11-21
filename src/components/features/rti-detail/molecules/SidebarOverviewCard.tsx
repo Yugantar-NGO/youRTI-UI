@@ -14,6 +14,8 @@ interface SidebarOverviewCardProps extends BaseProps {
   daysRemaining?: number
   daysOverdue?: number
   completionPercentage?: number
+  questionsAnswered?: number
+  totalQuestions?: number
   department: string
   location: string
   state: string
@@ -43,6 +45,8 @@ export function SidebarOverviewCard({
   daysRemaining,
   daysOverdue,
   completionPercentage,
+  questionsAnswered,
+  totalQuestions,
   department,
   location,
   state,
@@ -102,6 +106,13 @@ export function SidebarOverviewCard({
 
   const config = statusConfig[status] || statusConfig.answered
 
+  // Format date from ISO to readable format (e.g., "Sep 18, 2024")
+  const formatDate = (dateStr: string) => {
+    if (!dateStr) return ''
+    const date = new Date(dateStr)
+    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+  }
+
   return (
     <div className={`${styles.card} ${className}`} style={{ borderColor: config.color }}>
       <div className={styles.header}>
@@ -116,19 +127,19 @@ export function SidebarOverviewCard({
       <div className={styles.dates} style={{ background: config.datesBg }}>
         <div className={styles.dateItem}>
           <span>Filed:</span>
-          <span className={styles.dateValue}>{filedDate}</span>
+          <span className={styles.dateValue}>{formatDate(filedDate)}</span>
         </div>
         {respondedDate && (
           <div className={styles.dateItem}>
-            <span>{status === 'transferred' ? 'Transferred:' : 'Answered:'}</span>
-            <span className={styles.dateValue}>{respondedDate}</span>
+            <span>{status === 'transferred' ? 'Transferred:' : status === 'partial' ? 'Responded:' : 'Answered:'}</span>
+            <span className={styles.dateValue}>{formatDate(respondedDate)}</span>
           </div>
         )}
         {expectedDate && !respondedDate && (
           <div className={styles.dateItem}>
             <span>{status === 'overdue' ? 'Due Date:' : 'Expected By:'}</span>
             <span className={`${styles.dateValue} ${status === 'overdue' ? styles.danger : styles.warning}`}>
-              {expectedDate}
+              {formatDate(expectedDate)}
             </span>
           </div>
         )}
@@ -159,7 +170,11 @@ export function SidebarOverviewCard({
         <div className={styles.completionBar}>
           <div className={styles.completionLabel}>
             <span className={styles.completionText}>Questions Answered</span>
-            <span className={styles.completionPercent}>{completionPercentage}%</span>
+            <span className={styles.completionPercent}>
+              {questionsAnswered !== undefined && totalQuestions !== undefined
+                ? `${questionsAnswered} of ${totalQuestions} (${completionPercentage}%)`
+                : `${completionPercentage}%`}
+            </span>
           </div>
           <div className={styles.completionProgress}>
             <div
