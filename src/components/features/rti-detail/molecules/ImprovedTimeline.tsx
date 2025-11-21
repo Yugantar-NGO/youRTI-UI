@@ -11,6 +11,15 @@ interface TimelineEvent {
   isTransfer?: boolean
 }
 
+interface Transfer {
+  fromDepartment: string
+  toDepartment: string
+  transferDate: string
+  reason: string
+  newPIO?: string
+  newDeadline?: string
+}
+
 interface ImprovedTimelineProps extends BaseProps {
   status: RTIStatus
   filedDate: string
@@ -26,6 +35,7 @@ interface ImprovedTimelineProps extends BaseProps {
   questionsAnswered?: number
   totalQuestions?: number
   documentsCount?: number
+  transfers?: Transfer[]
 }
 
 /**
@@ -52,8 +62,11 @@ export function ImprovedTimeline({
   questionsAnswered,
   totalQuestions,
   documentsCount,
+  transfers,
   className = '',
 }: ImprovedTimelineProps) {
+  // Check if we have multiple transfers
+  const hasMultipleTransfers = transfers && transfers.length > 1
   const statusConfig: Record<string, any> = {
     answered: {
       icon: '🗓️',
@@ -93,10 +106,12 @@ export function ImprovedTimeline({
     },
     transferred: {
       icon: '🔄',
-      title: 'Transfer Timeline',
+      title: hasMultipleTransfers ? 'Multi-Transfer Timeline' : 'Transfer Timeline',
       progressColor: '#8B5CF6',
       borderColor: '#DDD6FE',
-      durationLabel: `Transferred after ${daysElapsed} days`,
+      durationLabel: hasMultipleTransfers
+        ? `${transfers?.length} transfers in ${daysElapsed} days`
+        : `Transferred after ${daysElapsed} days`,
       durationBg: '#EDE9FE',
       durationColor: '#7C3AED',
     },
@@ -129,11 +144,38 @@ export function ImprovedTimeline({
       return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
     }
 
-    defaultEvents.push(
-      { date: formatDate(filedDate), label: 'Filed', description: 'Original Dept' },
-      { date: formatDate(transferDate || ''), label: 'Transferred', description: 'New Dept', isTransfer: true },
-      { date: formatDate(expectedDate || ''), label: 'Due Date', description: 'New Deadline' }
-    )
+    // Get short department name (last part after comma or full name if no comma)
+    const getShortDept = (dept: string) => {
+      const parts = dept.split(',')
+      return parts.length > 1 ? parts[parts.length - 1].trim() : dept.split(' ').slice(0, 2).join(' ')
+    }
+
+    if (hasMultipleTransfers && transfers) {
+      // Build events from multiple transfers
+      defaultEvents.push(
+        { date: formatDate(filedDate), label: 'Filed', description: getShortDept(transfers[0].fromDepartment) }
+      )
+
+      transfers.forEach((transfer, index) => {
+        defaultEvents.push({
+          date: formatDate(transfer.transferDate),
+          label: `Transfer ${index + 1}`,
+          description: getShortDept(transfer.toDepartment),
+          isTransfer: true,
+        })
+      })
+
+      defaultEvents.push(
+        { date: formatDate(expectedDate || ''), label: 'Due Date', description: 'Current Deadline' }
+      )
+    } else {
+      // Single transfer
+      defaultEvents.push(
+        { date: formatDate(filedDate), label: 'Filed', description: 'Original Dept' },
+        { date: formatDate(transferDate || ''), label: 'Transferred', description: 'New Dept', isTransfer: true },
+        { date: formatDate(expectedDate || ''), label: 'Due Date', description: 'New Deadline' }
+      )
+    }
   } else if (status === 'answered' || status === 'partial') {
     // Format dates consistently for all answered/partial status
     const formatDate = (dateStr: string) => {
@@ -207,81 +249,134 @@ export function ImprovedTimeline({
         </div>
       </div>
 
-      <div className={styles.visual}>
-        <div className={styles.line} />
-        <div
-          className={styles.progress}
-          style={{
-            background: config.progressColor,
-            width: `${progressPercentage}%`,
-          }}
-        />
+      {/* Scrollable timeline for multiple transfers */}
+      {hasMultipleTransfers ? (
+        <div className={styles.scrollContainer}>
+          <div
+            className={styles.scrollContent}
+            style={{ minWidth: `${Math.max(timelineEvents.length * 120, 600)}px` }}
+          >
+            <div className={styles.line} />
+            <div
+              className={styles.progress}
+              style={{
+                background: config.progressColor,
+                width: `${((timelineEvents.length - 1) / timelineEvents.length) * 100}%`,
+              }}
+            />
 
-        {timelineEvents.map((event, index) => {
-          // Calculate position based on status
-          let position = 0
-          if (status === 'answered' && timelineEvents.length === 3) {
-            // For answered status with 3 events: 0%, 43%, 66% (matching HTML exactly)
-            position = index === 0 ? 0 : index === 1 ? 43 : 66
-          } else if (status === 'partial' && timelineEvents.length === 3) {
-            // For partial status with 3 events: 0%, 53%, 73% (matching HTML exactly)
-            position = index === 0 ? 0 : index === 1 ? 53 : 73
-          } else if (status === 'pending' && timelineEvents.length === 3) {
-            // For pending status: Filed at 0%, Today at progress%, Due Date at 100%
-            // Ensure middle point is at least 40% to prevent overlap
-            const middlePosition = Math.max(progressPercentage, 40)
-            position = index === 0 ? 0 : index === 1 ? middlePosition : 100
-          } else if (status === 'overdue' && timelineEvents.length === 3) {
-            // For overdue status: Filed at 0%, Due Date (Missed) at 62%, Today at 100%
-            position = index === 0 ? 0 : index === 1 ? 62 : 100
-          } else if (status === 'transferred' && timelineEvents.length === 3) {
-            // For transferred status: Filed at 0%, Transferred at 50%, Due Date at 100%
-            position = index === 0 ? 0 : index === 1 ? 50 : 100
-          } else {
-            position = index === 0 ? 0 : index === timelineEvents.length - 1 ? 100 : progressPercentage
-          }
-          // For pending: Due Date (last) is future. For overdue: nothing is future (all passed)
-          const isFuture = status === 'pending' && index === timelineEvents.length - 1
-          const isTransfer = event.isTransfer
-          const isLastEvent = index === timelineEvents.length - 1
-          const isFirstEvent = index === 0
+            {timelineEvents.map((event, index) => {
+              // For multiple transfers, distribute events evenly
+              const position = (index / (timelineEvents.length - 1)) * 100
+              const isTransfer = event.isTransfer
+              const isLastEvent = index === timelineEvents.length - 1
+              const isFuture = isLastEvent // Due date is future
 
-          // Determine label alignment for edge cases
-          const labelStyle: React.CSSProperties = {
-            left: `${position}%`,
-          }
-          // Adjust alignment based on position
-          if (isFirstEvent) {
-            labelStyle.transform = 'translateX(0%)'
-            labelStyle.textAlign = 'left'
-          } else if (isLastEvent) {
-            labelStyle.transform = 'translateX(-100%)'
-            labelStyle.textAlign = 'right'
-          } else {
-            labelStyle.transform = 'translateX(-50%)'
-            labelStyle.textAlign = 'center'
-          }
+              return (
+                <div key={index} className={styles.eventNode}>
+                  <div
+                    className={`${styles.dot} ${isFuture ? styles.dotFuture : ''} ${
+                      isTransfer ? styles.dotTransfer : ''
+                    }`}
+                    style={{
+                      left: `${position}%`,
+                      borderColor: isFuture ? '#D1D5DB' : config.progressColor,
+                    }}
+                  />
+                  <div
+                    className={styles.label}
+                    style={{
+                      left: `${position}%`,
+                      transform: index === 0 ? 'translateX(0%)' : isLastEvent ? 'translateX(-100%)' : 'translateX(-50%)',
+                      textAlign: index === 0 ? 'left' : isLastEvent ? 'right' : 'center',
+                    }}
+                  >
+                    <div className={styles.labelDate}>{event.date}</div>
+                    <div className={styles.labelText}>{event.label}</div>
+                    {event.description && <div className={styles.labelDesc}>{event.description}</div>}
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      ) : (
+        <div className={styles.visual}>
+          <div className={styles.line} />
+          <div
+            className={styles.progress}
+            style={{
+              background: config.progressColor,
+              width: `${progressPercentage}%`,
+            }}
+          />
 
-          return (
-            <div key={index}>
-              <div
-                className={`${styles.dot} ${isFuture ? styles.dotFuture : ''} ${
-                  isTransfer ? styles.dotTransfer : ''
-                }`}
-                style={{
-                  left: `${position}%`,
-                  borderColor: isFuture ? '#D1D5DB' : config.progressColor,
-                }}
-              />
-              <div className={styles.label} style={labelStyle}>
-                <div className={styles.labelDate}>{event.date}</div>
-                <div className={styles.labelText}>{event.label}</div>
-                {event.description && <div className={styles.labelDesc}>{event.description}</div>}
+          {timelineEvents.map((event, index) => {
+            // Calculate position based on status
+            let position = 0
+            if (status === 'answered' && timelineEvents.length === 3) {
+              // For answered status with 3 events: 0%, 43%, 66% (matching HTML exactly)
+              position = index === 0 ? 0 : index === 1 ? 43 : 66
+            } else if (status === 'partial' && timelineEvents.length === 3) {
+              // For partial status with 3 events: 0%, 53%, 73% (matching HTML exactly)
+              position = index === 0 ? 0 : index === 1 ? 53 : 73
+            } else if (status === 'pending' && timelineEvents.length === 3) {
+              // For pending status: Filed at 0%, Today at progress%, Due Date at 100%
+              // Ensure middle point is at least 40% to prevent overlap
+              const middlePosition = Math.max(progressPercentage, 40)
+              position = index === 0 ? 0 : index === 1 ? middlePosition : 100
+            } else if (status === 'overdue' && timelineEvents.length === 3) {
+              // For overdue status: Filed at 0%, Due Date (Missed) at 62%, Today at 100%
+              position = index === 0 ? 0 : index === 1 ? 62 : 100
+            } else if (status === 'transferred' && timelineEvents.length === 3) {
+              // For transferred status: Filed at 0%, Transferred at 50%, Due Date at 100%
+              position = index === 0 ? 0 : index === 1 ? 50 : 100
+            } else {
+              position = index === 0 ? 0 : index === timelineEvents.length - 1 ? 100 : progressPercentage
+            }
+            // For pending: Due Date (last) is future. For overdue: nothing is future (all passed)
+            const isFuture = status === 'pending' && index === timelineEvents.length - 1
+            const isTransfer = event.isTransfer
+            const isLastEvent = index === timelineEvents.length - 1
+            const isFirstEvent = index === 0
+
+            // Determine label alignment for edge cases
+            const labelStyle: React.CSSProperties = {
+              left: `${position}%`,
+            }
+            // Adjust alignment based on position
+            if (isFirstEvent) {
+              labelStyle.transform = 'translateX(0%)'
+              labelStyle.textAlign = 'left'
+            } else if (isLastEvent) {
+              labelStyle.transform = 'translateX(-100%)'
+              labelStyle.textAlign = 'right'
+            } else {
+              labelStyle.transform = 'translateX(-50%)'
+              labelStyle.textAlign = 'center'
+            }
+
+            return (
+              <div key={index}>
+                <div
+                  className={`${styles.dot} ${isFuture ? styles.dotFuture : ''} ${
+                    isTransfer ? styles.dotTransfer : ''
+                  }`}
+                  style={{
+                    left: `${position}%`,
+                    borderColor: isFuture ? '#D1D5DB' : config.progressColor,
+                  }}
+                />
+                <div className={styles.label} style={labelStyle}>
+                  <div className={styles.labelDate}>{event.date}</div>
+                  <div className={styles.labelText}>{event.label}</div>
+                  {event.description && <div className={styles.labelDesc}>{event.description}</div>}
+                </div>
               </div>
-            </div>
-          )
-        })}
-      </div>
+            )
+          })}
+        </div>
+      )}
 
       <div className={styles.meta}>
         {status === 'answered' && (
