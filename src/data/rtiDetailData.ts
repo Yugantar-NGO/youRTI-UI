@@ -306,18 +306,25 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
     id: 'rti-006',
     title: 'Medicine Procurement Details for Primary Health Centers',
     status: 'pending',
-    department: 'Health Department, Rajasthan',
+    department: 'Health Department',
     location: 'Jaipur',
     state: 'Rajasthan',
     topic: 'Healthcare',
 
-    filedDate: '2025-01-22',
-    acknowledgedDate: '2025-01-23',
-    deadline: '2025-02-21',
+    filedDate: '2024-11-08',
+    acknowledgedDate: '2024-11-09',
+    deadline: '2024-12-08',
+    daysElapsed: 12,
+    daysRemaining: 18,
+    pioName: 'Dr. Meena Sharma',
+    whyThisMattersIntro: 'Healthcare transparency ensures that essential medicines reach primary health centers and public funds are utilized effectively for citizen welfare.',
+
+    statusMessage: 'Response pending from Health Department, Rajasthan',
+    statusDaysInfo: '18 days remaining before statutory deadline',
 
     impactOneLiner: 'Citizen requests details of ₹12 Cr medicine procurement for 45 primary health centers',
     impactMetrics: [
-      { icon: '⏳', value: '12 days', label: 'PENDING' },
+      { icon: '⏳', value: '12 days', label: 'ELAPSED' },
       { icon: '📍', value: 'Jaipur', label: 'LOCATION' },
       { icon: '🏛️', value: 'Health', label: 'DEPT' },
       { icon: '👁️', value: '247', label: 'VIEWS' },
@@ -337,17 +344,27 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
 
     extractedEntities: {},
 
+    departmentStats: {
+      responseRate: 72,
+      totalRTIs: 1850,
+      answeredRTIs: 1332,
+      pendingRTIs: 220,
+      overdueRTIs: 95,
+      averageResponseDays: 24,
+      targetResponseDays: 30,
+    },
+
     timeline: [
       {
         id: 't1',
         type: 'filed',
-        date: '2025-01-22',
+        date: '2024-11-08',
         title: 'RTI Filed',
       },
       {
         id: 't2',
         type: 'acknowledged',
-        date: '2025-01-23',
+        date: '2024-11-09',
         title: 'Acknowledged',
         daysFromFiling: 1,
       },
@@ -1532,13 +1549,20 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
     state: 'West Bengal',
     topic: 'water-supply',
 
-    filedDate: '2025-01-25',
-    acknowledgedDate: '2025-01-26',
-    deadline: '2025-02-24',
+    filedDate: '2024-11-11',
+    acknowledgedDate: '2024-11-12',
+    deadline: '2024-12-11',
+    daysElapsed: 9,
+    daysRemaining: 21,
+    pioName: 'Anil Banerjee',
+    whyThisMattersIntro: 'Safe drinking water is a fundamental right. Transparent water quality data helps citizens understand public health risks and hold authorities accountable.',
+
+    statusMessage: 'Response pending from Water Supply Department, West Bengal',
+    statusDaysInfo: '21 days remaining before statutory deadline',
 
     impactOneLiner: 'Citizen seeks water quality test reports for 12 municipal wards — response pending for 9 days',
     impactMetrics: [
-      { icon: '⏳', value: '9 days', label: 'PENDING' },
+      { icon: '⏳', value: '9 days', label: 'ELAPSED' },
       { icon: '📍', value: 'Kolkata', label: 'LOCATION' },
       { icon: '🚰', value: '12 wards', label: 'COVERAGE' },
       { icon: '👁️', value: '267', label: 'VIEWS' },
@@ -1558,17 +1582,27 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
 
     extractedEntities: {},
 
+    departmentStats: {
+      responseRate: 58,
+      totalRTIs: 980,
+      answeredRTIs: 568,
+      pendingRTIs: 180,
+      overdueRTIs: 110,
+      averageResponseDays: 26,
+      targetResponseDays: 30,
+    },
+
     timeline: [
       {
         id: 't1',
         type: 'filed',
-        date: '2025-01-25',
+        date: '2024-11-11',
         title: 'RTI Filed',
       },
       {
         id: 't2',
         type: 'acknowledged',
-        date: '2025-01-26',
+        date: '2024-11-12',
         title: 'Acknowledged',
         description: 'Application number: KMC/WS/2025/00189',
         daysFromFiling: 1,
@@ -1845,13 +1879,20 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
     state: 'Maharashtra',
     topic: 'housing',
 
-    filedDate: '2025-01-28',
-    acknowledgedDate: '2025-01-29',
-    deadline: '2025-02-27',
+    filedDate: '2024-11-05',
+    acknowledgedDate: '2024-11-06',
+    deadline: '2024-12-05',
+    daysElapsed: 15,
+    daysRemaining: 15,
+    pioName: 'Suresh Gowda',
+    whyThisMattersIntro: 'Water infrastructure transparency is crucial for ensuring proper maintenance and accountability of public utilities.',
+
+    statusMessage: 'Response pending from Urban Development, Maharashtra',
+    statusDaysInfo: '15 days remaining before statutory deadline',
 
     impactOneLiner: 'Citizen seeks ₹1,200 Cr slum rehabilitation project details affecting 15,000 families — response pending',
     impactMetrics: [
-      { icon: '⏳', value: '6 days', label: 'PENDING' },
+      { icon: '⏳', value: '15 days', label: 'ELAPSED' },
       { icon: '📍', value: 'Mumbai', label: 'LOCATION' },
       { icon: '👨‍👩‍👧‍👦', value: '15K', label: 'FAMILIES' },
       { icon: '👁️', value: '298', label: 'VIEWS' },
@@ -1871,17 +1912,27 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
 
     extractedEntities: {},
 
+    departmentStats: {
+      responseRate: 65,
+      totalRTIs: 1200,
+      answeredRTIs: 780,
+      pendingRTIs: 150,
+      overdueRTIs: 80,
+      averageResponseDays: 28,
+      targetResponseDays: 30,
+    },
+
     timeline: [
       {
         id: 't1',
         type: 'filed',
-        date: '2025-01-28',
+        date: '2024-11-05',
         title: 'RTI Filed',
       },
       {
         id: 't2',
         type: 'acknowledged',
-        date: '2025-01-29',
+        date: '2024-11-06',
         title: 'Acknowledged',
         description: 'Application number: SRA/MH/2025/00234',
         daysFromFiling: 1,
