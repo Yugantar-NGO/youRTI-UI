@@ -217,8 +217,8 @@ export const rtiStatusExamples: Record<string, RTIDetailData> = {
     reminderDate: '2025-02-15',
     whyThisMattersIntro: 'This overdue RTI highlights systemic delays in healthcare transparency, potentially affecting public health planning and accountability.',
 
-    statusMessage: 'Response overdue by 15 days. Department has violated RTI Act statutory deadline. You can file first appeal now.',
-    statusDaysInfo: 'Potential penalty: ₹3,750 (15 days × ₹250)',
+    statusMessage: 'RTI Response Overdue by 15 Days',
+    statusDaysInfo: 'The department has violated the statutory 30-day deadline. Potential penalty: ₹3,750 (15 days × ₹250). File First Appeal now.',
 
     impactOneLiner: 'Department has failed to respond within statutory deadline of 30 days',
     impactMetrics: [
@@ -227,7 +227,7 @@ export const rtiStatusExamples: Record<string, RTIDetailData> = {
       { icon: '⏱️', value: '45d', label: 'ELAPSED' },
       { icon: '🔴', value: '15d', label: 'OVERDUE' },
     ],
-    impactBadges: ['#OVERDUE', '#VIOLATION'],
+    impactBadges: ['⚠️ VIOLATION', '🔥 URGENT', '⚖️ ACTION NEEDED'],
     viewCount: 892,
 
     questionText: 'I request information regarding bed availability and occupancy in government hospitals of Delhi for the quarter October-December 2024:',
@@ -244,6 +244,16 @@ export const rtiStatusExamples: Record<string, RTIDetailData> = {
     canSendReminder: true,
 
     extractedEntities: {},
+
+    departmentStats: {
+      responseRate: 48,
+      totalRTIs: 4200,
+      answeredRTIs: 2016,
+      pendingRTIs: 650,
+      overdueRTIs: 580,
+      averageResponseDays: 36,
+      targetResponseDays: 30,
+    },
 
     timeline: [
       {
@@ -266,7 +276,7 @@ export const rtiStatusExamples: Record<string, RTIDetailData> = {
         type: 'reminder',
         date: '2025-02-19',
         title: 'Deadline Missed',
-        description: 'Statutory deadline expired',
+        description: 'Statutory deadline expired - No response received',
         daysFromFiling: 30,
         isLate: true,
       },
