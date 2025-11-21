@@ -20,6 +20,7 @@ interface ImprovedTimelineProps extends BaseProps {
   daysOverdue?: number
   currentPIO?: string
   transferDate?: string
+  reminderDate?: string
   events?: TimelineEvent[]
 }
 
@@ -42,6 +43,7 @@ export function ImprovedTimeline({
   daysOverdue,
   currentPIO,
   transferDate,
+  reminderDate,
   events,
   className = '',
 }: ImprovedTimelineProps) {
@@ -119,27 +121,31 @@ export function ImprovedTimeline({
       { date: expectedDate || '', label: 'Due Date', description: 'New Deadline' }
     )
   } else if (status === 'answered' || status === 'partial') {
-    // For answered status, use fixed dates matching HTML
-    if (status === 'answered' && filedDate === '2024-01-05') {
-      defaultEvents.push(
-        { date: 'Jan 5', label: 'Filed' },
-        { date: 'Jan 20', label: 'Reminder' },
-        { date: 'Jan 28', label: 'Answered' }
-      )
+    // Format dates consistently for all answered/partial status
+    const formatDate = (dateStr: string) => {
+      if (!dateStr) return ''
+      const date = new Date(dateStr)
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+    }
+
+    // Check if reminderDate is provided in data, otherwise calculate it
+    let reminderDateFormatted = ''
+    if (reminderDate) {
+      reminderDateFormatted = formatDate(reminderDate)
     } else {
       // Calculate reminder date (roughly 2/3 of the way through)
       const reminderPosition = Math.floor(daysElapsed * 0.65)
       const filedDateObj = new Date(filedDate)
       const reminderDateObj = new Date(filedDateObj)
       reminderDateObj.setDate(reminderDateObj.getDate() + reminderPosition)
-      const reminderDate = reminderDateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
-
-      defaultEvents.push(
-        { date: filedDate, label: 'Filed' },
-        { date: reminderDate, label: 'Reminder' },
-        { date: respondedDate || '', label: 'Answered' }
-      )
+      reminderDateFormatted = reminderDateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
     }
+
+    defaultEvents.push(
+      { date: formatDate(filedDate), label: 'Filed' },
+      { date: reminderDateFormatted, label: 'Reminder' },
+      { date: formatDate(respondedDate || ''), label: 'Answered' }
+    )
   } else {
     defaultEvents.push(
       { date: filedDate, label: 'Filed' },

@@ -333,6 +333,7 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
             daysRemaining={data.daysRemaining}
             daysOverdue={data.daysOverdue}
             currentPIO={data.pioName || "Rajesh Kumar"}
+            reminderDate={data.reminderDate}
             transferDate={data.status === 'transferred' ? data.respondedDate : undefined}
           />
 
