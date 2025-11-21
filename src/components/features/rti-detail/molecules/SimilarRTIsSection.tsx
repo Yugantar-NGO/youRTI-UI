@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import Link from 'next/link'
 import { BaseProps } from '@/types'
 import { InfoIcon } from '../atoms'
@@ -25,7 +25,7 @@ interface SimilarRTIsSectionProps extends BaseProps {
  * SimilarRTIsSection Component
  *
  * Displays related RTIs in a horizontal scrolling grid with navigation buttons.
- * Matches the HTML design exactly with smooth scroll behavior.
+ * On mobile, shows one RTI at a time with prev/next navigation.
  *
  * @example
  * <SimilarRTIsSection rtis={[...]} totalCount={847} />
@@ -36,6 +36,7 @@ export function SimilarRTIsSection({
   className = '',
 }: SimilarRTIsSectionProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   const scrollSimilar = (direction: number) => {
     if (!scrollContainerRef.current) return
@@ -44,6 +45,13 @@ export function SimilarRTIsSection({
       left: direction * scrollAmount,
       behavior: 'smooth',
     })
+  }
+
+  const navigateMobile = (direction: number) => {
+    const newIndex = currentIndex + direction
+    if (newIndex >= 0 && newIndex < rtis.length) {
+      setCurrentIndex(newIndex)
+    }
   }
 
   const getStatusBadge = (status: string) => {
@@ -57,6 +65,34 @@ export function SimilarRTIsSection({
 
     return <div className={`${styles.statusMini} ${statusConfig.className}`}>{statusConfig.label}</div>
   }
+
+  const renderCard = (rti: SimilarRTI) => (
+    <div key={rti.id} className={styles.card}>
+      <div className={styles.cardHeader}>
+        {getStatusBadge(rti.status)}
+        <div className={styles.days}>{rti.daysElapsed}d</div>
+      </div>
+
+      <div className={styles.cardTitle}>{rti.title}</div>
+
+      <div className={styles.cardMeta}>
+        <div className={styles.metaItem}>
+          <span className={styles.metaIcon}>🏛️</span>
+          <span>{rti.department}</span>
+        </div>
+        <div className={styles.metaItem}>
+          <span className={styles.metaIcon}>📍</span>
+          <span>{rti.location}</span>
+        </div>
+        {rti.highlight && (
+          <div className={styles.metaItem}>
+            <span className={styles.metaIcon}>💰</span>
+            <span>{rti.highlight}</span>
+          </div>
+        )}
+      </div>
+    </div>
+  )
 
   return (
     <div className={`${styles.section} ${className}`}>
@@ -74,34 +110,9 @@ export function SimilarRTIsSection({
         )}
       </div>
 
+      {/* Desktop: horizontal scroll */}
       <div className={styles.grid} ref={scrollContainerRef}>
-        {rtis.map((rti) => (
-          <div key={rti.id} className={styles.card}>
-            <div className={styles.cardHeader}>
-              {getStatusBadge(rti.status)}
-              <div className={styles.days}>{rti.daysElapsed}d</div>
-            </div>
-
-            <div className={styles.cardTitle}>{rti.title}</div>
-
-            <div className={styles.cardMeta}>
-              <div className={styles.metaItem}>
-                <span className={styles.metaIcon}>🏛️</span>
-                <span>{rti.department}</span>
-              </div>
-              <div className={styles.metaItem}>
-                <span className={styles.metaIcon}>📍</span>
-                <span>{rti.location}</span>
-              </div>
-              {rti.highlight && (
-                <div className={styles.metaItem}>
-                  <span className={styles.metaIcon}>💰</span>
-                  <span>{rti.highlight}</span>
-                </div>
-              )}
-            </div>
-          </div>
-        ))}
+        {rtis.map((rti) => renderCard(rti))}
       </div>
 
       <div className={styles.nav}>
@@ -119,6 +130,33 @@ export function SimilarRTIsSection({
         >
           →
         </button>
+      </div>
+
+      {/* Mobile: single card with navigation */}
+      <div className={styles.mobileContainer}>
+        {rtis.length > 0 && renderCard(rtis[currentIndex])}
+
+        <div className={styles.mobileNav}>
+          <button
+            className={styles.mobileNavBtn}
+            onClick={() => navigateMobile(-1)}
+            disabled={currentIndex === 0}
+            aria-label="Previous RTI"
+          >
+            ← Prev
+          </button>
+          <span className={styles.mobileCounter}>
+            {currentIndex + 1} / {rtis.length}
+          </span>
+          <button
+            className={styles.mobileNavBtn}
+            onClick={() => navigateMobile(1)}
+            disabled={currentIndex === rtis.length - 1}
+            aria-label="Next RTI"
+          >
+            Next →
+          </button>
+        </div>
       </div>
     </div>
   )
