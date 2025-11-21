@@ -69,6 +69,50 @@
   font-weight: 900;
 }
 
+/* Multi-transfer chain styles */
+.transferChain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.transferChainStep {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.transferChainArrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: #8b5cf6;
+  font-weight: 900;
+  font-size: 16px;
+  margin: 0 6px;
+}
+
+.transferChainNumber {
+  background: #8b5cf6;
+  color: white;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.transferChainDept {
+  color: #5b21b6;
+  font-weight: 700;
+}
+
 @media (max-width: 768px) {
   .banner {
     flex-direction: column;
