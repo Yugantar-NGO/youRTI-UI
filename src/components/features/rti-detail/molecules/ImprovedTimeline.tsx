@@ -165,11 +165,21 @@ export function ImprovedTimeline({
     const today = new Date()
     const todayFormatted = today.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
 
-    defaultEvents.push(
-      { date: formatDate(filedDate), label: 'Filed', description: 'Day 0' },
-      { date: todayFormatted, label: 'Today' },
-      { date: formatDate(expectedDate || ''), label: 'Due Date' }
-    )
+    if (status === 'overdue') {
+      // For overdue: Filed, Due Date (Missed), Today
+      defaultEvents.push(
+        { date: formatDate(filedDate), label: 'Filed' },
+        { date: formatDate(expectedDate || ''), label: 'Due Date', description: '(Missed)' },
+        { date: todayFormatted, label: 'Today' }
+      )
+    } else {
+      // For pending: Filed, Today, Due Date
+      defaultEvents.push(
+        { date: formatDate(filedDate), label: 'Filed', description: 'Day 0' },
+        { date: todayFormatted, label: 'Today' },
+        { date: formatDate(expectedDate || ''), label: 'Due Date' }
+      )
+    }
   }
 
   const timelineEvents = events || defaultEvents
@@ -214,10 +224,14 @@ export function ImprovedTimeline({
             // Ensure middle point is at least 40% to prevent overlap
             const middlePosition = Math.max(progressPercentage, 40)
             position = index === 0 ? 0 : index === 1 ? middlePosition : 100
+          } else if (status === 'overdue' && timelineEvents.length === 3) {
+            // For overdue status: Filed at 0%, Due Date (Missed) at 62%, Today at 100%
+            position = index === 0 ? 0 : index === 1 ? 62 : 100
           } else {
             position = index === 0 ? 0 : index === timelineEvents.length - 1 ? 100 : progressPercentage
           }
-          const isFuture = (status === 'pending' || status === 'overdue') && index === timelineEvents.length - 1
+          // For pending: Due Date (last) is future. For overdue: nothing is future (all passed)
+          const isFuture = status === 'pending' && index === timelineEvents.length - 1
           const isTransfer = event.isTransfer
           const isLastEvent = index === timelineEvents.length - 1
           const isFirstEvent = index === 0
