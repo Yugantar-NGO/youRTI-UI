@@ -1,6 +1,7 @@
 'use client'
 
 import { FilterSection } from '../molecules/FilterSection'
+import { TagsFilterSection } from '../molecules/TagsFilterSection'
 import { ActiveFilters, FilterOptions } from '@/types/dashboard'
 import { RTIStatus } from '@/types'
 import styles from './FilterSidebar.module.css'
@@ -66,6 +67,20 @@ export function FilterSidebar({
     })
   }
 
+  const handleTagToggle = (tagId: string) => {
+    const newTags = activeFilters.tags.includes(tagId)
+      ? activeFilters.tags.filter((id) => id !== tagId)
+      : [...activeFilters.tags, tagId]
+
+    onFilterChange({ tags: newTags })
+  }
+
+  const handleAddCustomTag = (tagId: string) => {
+    if (!activeFilters.tags.includes(tagId)) {
+      onFilterChange({ tags: [...activeFilters.tags, tagId] })
+    }
+  }
+
   // Get cities for selected states only
   const availableCities =
     activeFilters.states.length > 0
@@ -92,6 +107,20 @@ export function FilterSidebar({
         selectedValues={activeFilters.topics}
         onToggle={handleTopicToggle}
         showMoreThreshold={5}
+      />
+
+      {/* Tags Filter */}
+      <TagsFilterSection
+        title="TAGS"
+        options={filterOptions.tags.map((t) => ({
+          id: t.id,
+          name: t.name,
+          count: t.count,
+        }))}
+        selectedValues={activeFilters.tags}
+        onToggle={handleTagToggle}
+        onAddCustomTag={handleAddCustomTag}
+        showCount={5}
       />
 
       {/* Location Filter - State */}
