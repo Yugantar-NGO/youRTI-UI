@@ -382,6 +382,7 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
             currentPIO={data.pioName || "Rajesh Kumar"}
             reminderDate={data.reminderDate}
             transferDate={data.transferDate}
+            transfers={data.transfers}
             questionsAnswered={questionsAnswered}
             totalQuestions={totalQuestions}
             documentsCount={data.responseAttachments?.length}
