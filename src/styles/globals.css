@@ -59,9 +59,9 @@
   --color-subtle-gray: #F9FAFB;
 
   /* Semantic Colors */
-  --color-text-primary: var(--color-black);
-  --color-text-secondary: var(--color-charcoal);
-  --color-text-tertiary: var(--color-medium-gray);
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #1F2937;
+  --color-text-tertiary: #6B7280;
   --color-bg-primary: var(--color-white);
   --color-bg-secondary: var(--color-newsprint);
   --color-bg-subtle: var(--color-subtle-gray);
@@ -197,16 +197,14 @@
 }
 
 html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+  /* Remove font smoothing to match reference */
 }
 
 body {
-  font-family: var(--font-body), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-size: var(--font-size-body);
-  line-height: var(--line-height-relaxed);
-  color: var(--color-text-primary);
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: normal;
+  color: #0F172A;
   background-color: var(--color-bg-primary);
   overflow-x: hidden;
 }
