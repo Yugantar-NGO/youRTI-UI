@@ -54,12 +54,13 @@ export function KeyInfoCards({
   // For other statuses, show "Why This Matters" and "What Was Asked"
   const showRevealedSection = status === 'answered' && whatWasRevealed && whatWasRevealed.length > 0
   const showDisclosureSection = status === 'partial' && disclosedItems && withheldItems
+  const isOverdue = status === 'overdue'
 
   return (
     <div className={`${styles.grid} ${className}`}>
       {/* Left Card - Why This Is Important/Matters */}
       {whyThisMatters && whyThisMatters.length > 0 && (
-        <div className={styles.card}>
+        <div className={`${styles.card} ${isOverdue ? styles.cardOverdue : ''}`}>
           <div className={styles.header}>
             <div className={styles.icon}>💡</div>
             <div className={styles.title}>
@@ -76,7 +77,7 @@ export function KeyInfoCards({
 
           <div className={styles.list}>
             {whyThisMatters.map((point, index) => (
-              <div key={index} className={`${styles.item} ${styles.importanceItem}`}>
+              <div key={index} className={`${styles.item} ${isOverdue ? styles.overdueItem : styles.importanceItem}`}>
                 <div className={styles.itemIcon}>{point.icon}</div>
                 <div className={styles.itemText}>{point.text}</div>
               </div>
@@ -86,7 +87,7 @@ export function KeyInfoCards({
       )}
 
       {/* Right Card - What Was Revealed (answered), What Was Disclosed & Withheld (partial), or What Was Asked (other) */}
-      <div className={styles.card}>
+      <div className={`${styles.card} ${isOverdue ? styles.cardOverdue : ''}`}>
         <div className={styles.header}>
           <div className={styles.icon}>
             {showRevealedSection ? '🔍' : showDisclosureSection ? '📊' : '❓'}
@@ -175,7 +176,7 @@ export function KeyInfoCards({
             {/* Questions list */}
             <div className={styles.list}>
               {whatWasAsked.map((point, index) => (
-                <div key={index} className={styles.item}>
+                <div key={index} className={`${styles.item} ${isOverdue ? styles.overdueItem : ''}`}>
                   <div className={styles.itemIcon}>{point.icon}</div>
                   <div className={styles.itemText}>{point.text}</div>
                 </div>
