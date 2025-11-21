@@ -77,6 +77,7 @@ export interface RTIDetailData {
   daysRemaining?: number
   daysOverdue?: number
   deadline?: string
+  reminderDate?: string // Date when reminder was sent
 
   // Impact
   impactOneLiner: string
@@ -98,6 +99,7 @@ export interface RTIDetailData {
   signedBy?: string
   signedByDesignation?: string
   signedDate?: string
+  pioName?: string // Name of the Public Information Officer
 
   // Status-specific data
   transferredTo?: string
@@ -130,6 +132,7 @@ export interface RTIDetailData {
   findingData?: FindingData[] // Data for "The Finding" visualization
   findingContext?: string // "Why This Matters" text
   departmentStats?: DepartmentStats // Department profile data
+  whyThisMattersIntro?: string // Intro paragraph for Why This Matters section
 }
 
 export const rtiDetailMockData: Record<string, RTIDetailData> = {
