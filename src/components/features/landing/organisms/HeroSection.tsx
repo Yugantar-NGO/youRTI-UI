@@ -47,25 +47,27 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
         <div className={styles.heroGrid}>
           {/* Column 1: Big Win of the Week */}
           <BigWinCard
-            title="School Meal Budget Data Released"
-            department="Education Dept"
-            location="Bihar"
+            title="MG Road Pothole Repairs - Costs Revealed"
+            department="Public Works Dept"
+            location="Maharashtra"
             impact={[
-              '₹450 Cr budget data revealed',
-              '45 districts affected',
-              'Led to policy review',
+              '₹12.4 Cr spent (3x initial estimate)',
+              'No tender process followed',
+              'Project delayed 15 days',
             ]}
-            date="3 days ago"
+            date="Jan 28, 2024"
+            href="/rti/status-answered"
           />
 
           {/* Column 2: Most Urgent Unanswered RTI */}
           <UrgentUnansweredCard
-            title="COVID Fund Utilization Details"
-            department="Health Ministry"
-            location="Maharashtra"
-            daysOverdue={47}
-            filedDate="Aug 15"
-            deadline="Sep 15"
+            title="Hospital Bed Availability Data"
+            department="Health Dept"
+            location="Delhi"
+            daysOverdue={15}
+            filedDate="Jan 20"
+            deadline="Feb 19"
+            href="/rti/status-overdue"
           />
 
           {/* Column 3: Live Activity */}
