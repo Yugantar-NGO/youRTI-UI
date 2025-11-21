@@ -55,8 +55,8 @@ export function QASection({ qaItems, rtiStatus, className = '' }: QASectionProps
   return (
     <div className={`${styles.section} ${className}`}>
       <div className={styles.header}>
-        <div className={styles.icon}>❓</div>
-        <div className={styles.title}>Questions & Answers</div>
+        <div className={styles.icon}>📋</div>
+        <div className={styles.title}>Question-by-Question Breakdown</div>
         <InfoIcon tooltip="Detailed breakdown of each question asked in the RTI and the corresponding response from the department, including status and source documents." />
       </div>
 
@@ -77,7 +77,7 @@ export function QASection({ qaItems, rtiStatus, className = '' }: QASectionProps
 
               {showAnswerContent && (
                 <div className={styles.answerContent}>
-                  <div className={styles.answerText}>
+                  <div className={itemStatus === 'denied' ? styles.deniedReason : styles.answerText}>
                     {item.answer ||
                       (itemStatus === 'denied'
                         ? 'Information denied under Section 8(1)(d) - commercial confidence and trade secrets. Disclosure would harm competitive position of third parties.'
@@ -85,8 +85,8 @@ export function QASection({ qaItems, rtiStatus, className = '' }: QASectionProps
                   </div>
                   {item.sourceDocument && itemStatus === 'answered' && (
                     <a href="#" className={styles.sourceLink}>
-                      📄 {item.sourceDocument}
-                      {item.sourcePage && `, Page ${item.sourcePage}`}
+                      <span>📄</span>
+                      <span>{item.sourceDocument}{item.sourcePage && `, Page ${item.sourcePage}`}</span>
                     </a>
                   )}
                 </div>
