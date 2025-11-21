@@ -1,6 +1,9 @@
 /* BigWinCard Molecule - Task 2 Redesign */
 
 .card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
   background: var(--color-bg-primary);
   border-left: 4px solid #14B8A6;
   border-radius: var(--border-radius-xl);
