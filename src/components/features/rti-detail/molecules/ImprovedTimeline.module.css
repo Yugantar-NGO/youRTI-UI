@@ -88,13 +88,10 @@
 
 .label {
   position: absolute;
-  top: 70px;
+  top: 56px;
   font-size: 13px;
   color: #0f172a;
   font-weight: 600;
-  transform: translateX(-50%);
-  text-align: center;
-  white-space: nowrap;
 }
 
 .labelDate {
