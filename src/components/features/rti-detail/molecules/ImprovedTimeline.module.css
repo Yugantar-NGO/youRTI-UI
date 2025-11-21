@@ -45,6 +45,43 @@
   padding: 0 20px;
 }
 
+/* Scrollable container for multiple transfers */
+.scrollContainer {
+  overflow-x: auto;
+  margin-bottom: 24px;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: #c4b5fd #f5f3ff;
+}
+
+.scrollContainer::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scrollContainer::-webkit-scrollbar-track {
+  background: #f5f3ff;
+  border-radius: 4px;
+}
+
+.scrollContainer::-webkit-scrollbar-thumb {
+  background: #c4b5fd;
+  border-radius: 4px;
+}
+
+.scrollContainer::-webkit-scrollbar-thumb:hover {
+  background: #a78bfa;
+}
+
+.scrollContent {
+  position: relative;
+  height: 120px;
+  padding: 0 20px;
+}
+
+.eventNode {
+  position: relative;
+}
+
 .line {
   position: absolute;
   top: 40px;
