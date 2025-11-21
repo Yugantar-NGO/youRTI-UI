@@ -69,7 +69,7 @@ export function ImprovedTimeline({
       title: 'RTI Timeline - Overdue',
       progressColor: '#EF4444',
       borderColor: '#FECACA',
-      durationLabel: `${daysOverdue} days overdue`,
+      durationLabel: `${daysElapsed} days total`,
       durationBg: '#FEE2E2',
       durationColor: '#DC2626',
     },
