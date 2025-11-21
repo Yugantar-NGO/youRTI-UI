@@ -396,7 +396,7 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
     id: 'rti-003',
     title: 'Pending Road Widening Project Status in Koramangala',
     status: 'overdue',
-    department: 'BBMP (Bruhat Bengaluru Mahanagara Palike)',
+    department: 'BBMP',
     location: 'Bangalore',
     state: 'Karnataka',
     topic: 'Road Construction',
@@ -404,7 +404,15 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
     filedDate: '2024-10-02',
     acknowledgedDate: '2024-10-03',
     deadline: '2024-11-01',
+    daysElapsed: 77,
     daysOverdue: 47,
+    pioName: 'Ramesh Kumar',
+    reminderDate: '2024-10-28',
+
+    statusMessage: 'RTI Response Overdue by 47 Days',
+    statusDaysInfo: 'The department has grossly violated the statutory 30-day deadline. File First Appeal immediately or escalate to Karnataka Information Commission.',
+
+    whyThisMattersIntro: 'Road infrastructure projects directly impact daily commute and safety of thousands of residents in Koramangala.',
 
     impactOneLiner: 'BBMP ignoring ₹45 Cr infrastructure project query for 47 days — violation of RTI Act',
     impactMetrics: [
@@ -428,33 +436,40 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
 
     extractedEntities: {},
 
+    departmentStats: {
+      responseRate: 42,
+      totalRTIs: 2850,
+      answeredRTIs: 1197,
+      pendingRTIs: 380,
+      overdueRTIs: 520,
+      averageResponseDays: 38,
+      targetResponseDays: 30,
+    },
+
     timeline: [
       {
         id: 't1',
         type: 'filed',
         date: '2024-10-02',
         title: 'RTI Filed',
+        description: 'Application submitted online',
       },
       {
         id: 't2',
         type: 'acknowledged',
         date: '2024-10-03',
         title: 'Acknowledged',
+        description: 'Application number: BBMP/RTI/2024/03847',
         daysFromFiling: 1,
       },
       {
         id: 't3',
         type: 'reminder',
-        date: '2024-11-15',
-        title: 'First Reminder Sent',
-        daysFromFiling: 44,
-      },
-      {
-        id: 't4',
-        type: 'reminder',
-        date: '2024-12-03',
-        title: 'Second Reminder Sent',
-        daysFromFiling: 62,
+        date: '2024-11-01',
+        title: 'Deadline Missed',
+        description: 'Statutory deadline expired - No response received',
+        daysFromFiling: 30,
+        isLate: true,
       },
     ],
 
@@ -1817,7 +1832,15 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
     filedDate: '2024-11-15',
     acknowledgedDate: '2024-11-16',
     deadline: '2024-12-15',
+    daysElapsed: 65,
     daysOverdue: 35,
+    pioName: 'Priya Patel',
+    reminderDate: '2024-12-10',
+
+    statusMessage: 'RTI Response Overdue by 35 Days',
+    statusDaysInfo: 'The department has violated the statutory 30-day deadline. You can file a First Appeal or escalate to Gujarat Information Commission.',
+
+    whyThisMattersIntro: 'Solar subsidy transparency affects thousands of homeowners waiting to adopt renewable energy.',
 
     impactOneLiner: 'Renewable Energy Dept violating RTI for 35 days — solar subsidy applicants left in dark',
     impactMetrics: [
@@ -1841,12 +1864,23 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
 
     extractedEntities: {},
 
+    departmentStats: {
+      responseRate: 55,
+      totalRTIs: 1420,
+      answeredRTIs: 781,
+      pendingRTIs: 245,
+      overdueRTIs: 180,
+      averageResponseDays: 34,
+      targetResponseDays: 30,
+    },
+
     timeline: [
       {
         id: 't1',
         type: 'filed',
         date: '2024-11-15',
         title: 'RTI Filed',
+        description: 'Application submitted online',
       },
       {
         id: 't2',
@@ -1859,18 +1893,11 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
       {
         id: 't3',
         type: 'reminder',
-        date: '2024-12-20',
-        title: 'First Reminder Sent',
-        description: 'Reminder sent via email and portal',
-        daysFromFiling: 35,
-      },
-      {
-        id: 't4',
-        type: 'reminder',
-        date: '2025-01-08',
-        title: 'Second Reminder Sent',
-        description: 'Final reminder before filing appeal',
-        daysFromFiling: 54,
+        date: '2024-12-15',
+        title: 'Deadline Missed',
+        description: 'Statutory deadline expired - No response received',
+        daysFromFiling: 30,
+        isLate: true,
       },
     ],
 
@@ -2237,7 +2264,15 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
     filedDate: '2024-12-10',
     acknowledgedDate: '2024-12-11',
     deadline: '2025-01-09',
+    daysElapsed: 39,
     daysOverdue: 9,
+    pioName: 'Vikram Singh',
+    reminderDate: '2025-01-05',
+
+    statusMessage: 'RTI Response Overdue by 9 Days',
+    statusDaysInfo: 'The department has missed the statutory 30-day deadline. File First Appeal to expedite the response.',
+
+    whyThisMattersIntro: 'Heritage restoration transparency ensures proper conservation of culturally significant monuments for future generations.',
 
     impactOneLiner: 'Tourism Dept ignoring RTI on heritage restoration for 9 days — ₹15 Cr project in limbo',
     impactMetrics: [
@@ -2261,12 +2296,23 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
 
     extractedEntities: {},
 
+    departmentStats: {
+      responseRate: 62,
+      totalRTIs: 890,
+      answeredRTIs: 552,
+      pendingRTIs: 120,
+      overdueRTIs: 85,
+      averageResponseDays: 32,
+      targetResponseDays: 30,
+    },
+
     timeline: [
       {
         id: 't1',
         type: 'filed',
         date: '2024-12-10',
         title: 'RTI Filed',
+        description: 'Application submitted online',
       },
       {
         id: 't2',
@@ -2279,10 +2325,11 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
       {
         id: 't3',
         type: 'reminder',
-        date: '2025-01-15',
-        title: 'First Reminder Sent',
-        description: 'Reminder sent via email',
-        daysFromFiling: 36,
+        date: '2025-01-09',
+        title: 'Deadline Missed',
+        description: 'Statutory deadline expired - No response received',
+        daysFromFiling: 30,
+        isLate: true,
       },
     ],
 
