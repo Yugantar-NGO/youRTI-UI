@@ -1,12 +1,12 @@
 .wrapper {
   min-height: 100vh;
-  background: #f9fafb;
+  background: var(--color-bg-secondary);
 }
 
 .breadcrumbsWrapper {
-  background: white;
+  background: #020617;
   padding: 12px 28px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: var(--border-width-thin) solid rgba(255, 255, 255, 0.1);
 }
 
 .container {
@@ -45,6 +45,10 @@
 @media (max-width: 768px) {
   .container {
     padding: 20px 16px;
+  }
+
+  .breadcrumbsWrapper {
+    padding: 12px 16px;
   }
 
   .sidebar {
