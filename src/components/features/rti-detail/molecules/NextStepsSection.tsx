@@ -14,6 +14,7 @@ export interface NextStep {
 
 interface NextStepsSectionProps extends BaseProps {
   steps: NextStep[]
+  isOverdue?: boolean
 }
 
 /**
@@ -25,7 +26,7 @@ interface NextStepsSectionProps extends BaseProps {
  * @example
  * <NextStepsSection steps={[...]} />
  */
-export function NextStepsSection({ steps, className = '' }: NextStepsSectionProps) {
+export function NextStepsSection({ steps, isOverdue = false, className = '' }: NextStepsSectionProps) {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
 
   const toggleStep = (index: number) => {
@@ -33,7 +34,7 @@ export function NextStepsSection({ steps, className = '' }: NextStepsSectionProp
   }
 
   return (
-    <div className={`${styles.section} ${className}`}>
+    <div className={`${styles.section} ${isOverdue ? styles.sectionOverdue : ''} ${className}`}>
       <div className={styles.header}>
         <div className={styles.headerIcon}>⚖️</div>
         <div className={styles.title}>Next Steps</div>
@@ -45,14 +46,14 @@ export function NextStepsSection({ steps, className = '' }: NextStepsSectionProp
           const isOpen = expandedIndex === index
 
           return (
-            <div key={index} className={`${styles.stepItem} ${isOpen ? styles.open : ''}`}>
+            <div key={index} className={`${styles.stepItem} ${isOverdue ? styles.stepItemOverdue : ''} ${isOpen ? styles.open : ''}`}>
               <div className={styles.stepHeader} onClick={() => toggleStep(index)}>
-                <div className={styles.stepIconBox}>{step.icon}</div>
+                <div className={`${styles.stepIconBox} ${isOverdue ? styles.stepIconBoxOverdue : ''}`}>{step.icon}</div>
                 <div className={styles.stepContent}>
                   <div className={styles.stepTitle}>{step.title}</div>
                   <div className={styles.stepSubtitle}>{step.description}</div>
                 </div>
-                <div className={styles.stepArrow}>→</div>
+                <div className={`${styles.stepArrow} ${isOverdue ? styles.stepArrowOverdue : ''}`}>→</div>
               </div>
 
               <div className={styles.stepDetails}>
