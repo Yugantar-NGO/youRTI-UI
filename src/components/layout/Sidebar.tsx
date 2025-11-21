@@ -1,6 +1,7 @@
 'use client'
 
 import { ReactNode } from 'react'
+import Link from 'next/link'
 import { Icon } from '@/components/ui/Icon'
 import {
   Home,
@@ -102,13 +103,13 @@ function SidebarItem({ item }: { item: NavItem }) {
   const { label, icon, active, badge } = item
 
   return (
-    <a
-      href={item.href || '#'}
+    <Link
+      href={item.href || '/'}
       className={`${styles.navItem} ${active ? styles.active : ''}`}
     >
       <Icon icon={icon} size="base" />
       <span className={styles.navLabel}>{label}</span>
       {badge && <span className={styles.badge}>{badge}</span>}
-    </a>
+    </Link>
   )
 }
