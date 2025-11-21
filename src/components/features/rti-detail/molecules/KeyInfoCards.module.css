@@ -112,6 +112,23 @@
   transform: translateX(4px);
 }
 
+/* Overdue card styling */
+.cardOverdue {
+  border-color: #fecaca;
+}
+
+/* Overdue items styling - red theme */
+.overdueItem {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.overdueItem:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  transform: translateX(4px);
+}
+
 /* Findings section styles */
 .findingsList {
   gap: 16px;
