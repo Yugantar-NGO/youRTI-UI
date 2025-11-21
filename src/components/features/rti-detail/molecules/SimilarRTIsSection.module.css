@@ -185,8 +185,165 @@
   transform: scale(1);
 }
 
+/* Mobile container - hidden on desktop */
+.mobileContainer {
+  display: none;
+}
+
 @media (max-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr;
+  .section {
+    padding: 20px 16px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    border-width: 2px;
+  }
+
+  .header {
+    margin-bottom: 16px;
+    gap: 12px;
+  }
+
+  .title {
+    font-size: 18px;
+    gap: 10px;
+  }
+
+  .viewAllLink {
+    font-size: 13px;
+  }
+
+  /* Hide desktop grid and nav on mobile */
+  .grid,
+  .nav {
+    display: none;
+  }
+
+  /* Show mobile container */
+  .mobileContainer {
+    display: block;
+  }
+
+  .mobileContainer .card {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .mobileNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    gap: 12px;
+  }
+
+  .mobileNavBtn {
+    padding: 10px 16px;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #0ea5e9;
+    cursor: pointer;
+    transition: all 200ms;
+  }
+
+  .mobileNavBtn:hover:not(:disabled) {
+    background: #0ea5e9;
+    color: white;
+    border-color: #0ea5e9;
+  }
+
+  .mobileNavBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .mobileCounter {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7280;
+  }
+
+  .card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .cardHeader {
+    margin-bottom: 12px;
+  }
+
+  .cardTitle {
+    font-size: 14px;
+    margin-bottom: 12px;
+    min-height: unset;
+    -webkit-line-clamp: 4;
+  }
+
+  .cardMeta {
+    gap: 6px;
+  }
+
+  .metaItem {
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  .metaIcon {
+    font-size: 12px;
+  }
+
+  .statusMini {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+
+  .days {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 16px 12px;
+    border-radius: 12px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .title {
+    font-size: 16px;
+    gap: 8px;
+  }
+
+  .viewAllLink {
+    font-size: 12px;
+  }
+
+  .mobileNavBtn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .mobileCounter {
+    font-size: 12px;
+  }
+
+  .card {
+    padding: 14px 12px;
+  }
+
+  .cardTitle {
+    font-size: 13px;
+  }
+
+  .metaItem {
+    font-size: 11px;
   }
 }
