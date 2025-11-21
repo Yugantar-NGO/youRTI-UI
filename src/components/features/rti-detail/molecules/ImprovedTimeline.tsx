@@ -154,10 +154,21 @@ export function ImprovedTimeline({
       { date: formatDate(respondedDate || ''), label: status === 'partial' ? 'Partial Response' : 'Answered' }
     )
   } else {
+    // Format dates consistently for pending/overdue status
+    const formatDate = (dateStr: string) => {
+      if (!dateStr) return ''
+      const date = new Date(dateStr)
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+    }
+
+    // Get today's date formatted
+    const today = new Date()
+    const todayFormatted = today.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+
     defaultEvents.push(
-      { date: filedDate, label: 'Filed' },
-      { date: 'Today', label: 'Today', description: `Day ${daysElapsed}` },
-      { date: expectedDate || '', label: status === 'overdue' ? 'Due Date' : 'Due Date' }
+      { date: formatDate(filedDate), label: 'Filed', description: 'Day 0' },
+      { date: todayFormatted, label: 'Today' },
+      { date: formatDate(expectedDate || ''), label: 'Due Date' }
     )
   }
 
@@ -198,20 +209,33 @@ export function ImprovedTimeline({
           } else if (status === 'partial' && timelineEvents.length === 3) {
             // For partial status with 3 events: 0%, 53%, 73% (matching HTML exactly)
             position = index === 0 ? 0 : index === 1 ? 53 : 73
+          } else if (status === 'pending' && timelineEvents.length === 3) {
+            // For pending status: Filed at 0%, Today at progress%, Due Date at 100%
+            // Ensure middle point is at least 40% to prevent overlap
+            const middlePosition = Math.max(progressPercentage, 40)
+            position = index === 0 ? 0 : index === 1 ? middlePosition : 100
           } else {
             position = index === 0 ? 0 : index === timelineEvents.length - 1 ? 100 : progressPercentage
           }
-          const isFuture = status === 'pending' && index === timelineEvents.length - 1
+          const isFuture = (status === 'pending' || status === 'overdue') && index === timelineEvents.length - 1
           const isTransfer = event.isTransfer
           const isLastEvent = index === timelineEvents.length - 1
+          const isFirstEvent = index === 0
 
           // Determine label alignment for edge cases
           const labelStyle: React.CSSProperties = {
             left: `${position}%`,
           }
-          // For partial status last event, adjust to not go off screen
-          if (isLastEvent && position > 50) {
+          // Adjust alignment based on position
+          if (isFirstEvent) {
+            labelStyle.transform = 'translateX(0%)'
+            labelStyle.textAlign = 'left'
+          } else if (isLastEvent) {
+            labelStyle.transform = 'translateX(-100%)'
+            labelStyle.textAlign = 'right'
+          } else {
             labelStyle.transform = 'translateX(-50%)'
+            labelStyle.textAlign = 'center'
           }
 
           return (
@@ -300,13 +324,6 @@ export function ImprovedTimeline({
                 <span>👤</span>
                 <span>PIO:</span>
                 <span className={styles.metaValue}>{currentPIO}</span>
-              </div>
-            )}
-            {daysRemaining !== undefined && daysRemaining > 0 && (
-              <div className={styles.metaItem}>
-                <span>📅</span>
-                <span>Days Remaining:</span>
-                <span className={styles.metaValue}>{daysRemaining} days</span>
               </div>
             )}
             {daysOverdue !== undefined && daysOverdue > 0 && (
