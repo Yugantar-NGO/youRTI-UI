@@ -149,6 +149,16 @@
   gap: 8px;
 }
 
+.transferDate {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 600;
+  color: #7c3aed;
+  background: #ddd6fe;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
 .transferDetails {
   display: flex;
   flex-direction: column;
