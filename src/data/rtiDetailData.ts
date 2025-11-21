@@ -493,6 +493,9 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
     transferredTo: 'Western Railway, Mumbai Division',
     transferDate: '2025-01-25',
     newDeadline: '2025-02-24',
+    daysElapsed: 5,
+    daysRemaining: 7,
+    pioName: 'Dr. Kavita Reddy',
 
     impactOneLiner: 'RTI bounced from Central Railway to Western Railway — now awaiting response from correct division',
     impactMetrics: [
