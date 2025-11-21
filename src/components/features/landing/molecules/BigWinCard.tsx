@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { ICON_SIZES } from '@/constants/dashboard.constants'
 import styles from './BigWinCard.module.css'
 
@@ -7,6 +8,7 @@ interface BigWinCardProps {
   location: string
   impact: string[]
   date: string
+  href: string
   className?: string
 }
 
@@ -31,6 +33,7 @@ export function BigWinCard({
   location,
   impact,
   date,
+  href,
   className = '',
 }: BigWinCardProps) {
   return (
@@ -70,9 +73,9 @@ export function BigWinCard({
         </ul>
       </div>
 
-      <button className={styles.readMore} aria-label="Read more about this win">
+      <Link href={href} className={styles.readMore} aria-label="Read more about this win">
         Read Full Story →
-      </button>
+      </Link>
     </article>
   )
 }
