@@ -17,6 +17,7 @@ interface UrgentUnansweredCardProps {
  *
  * Displays the "Most Urgent Unanswered RTI" with red accent border,
  * overdue timeline, and department/location context.
+ * Entire card is clickable and links to the RTI detail page.
  *
  * @example
  * <UrgentUnansweredCard
@@ -26,6 +27,7 @@ interface UrgentUnansweredCardProps {
  *   daysOverdue={47}
  *   filedDate="Aug 15, 2024"
  *   deadline="Sep 15, 2024"
+ *   href="/rti/rti-001"
  * />
  */
 export function UrgentUnansweredCard({
@@ -39,7 +41,7 @@ export function UrgentUnansweredCard({
   className = '',
 }: UrgentUnansweredCardProps) {
   return (
-    <article className={`${styles.card} ${className}`}>
+    <Link href={href} className={`${styles.card} ${className}`}>
       <div className={styles.header}>
         <span className={styles.badge}>Most Urgent</span>
         <span className={styles.overdueBadge}>{daysOverdue} days overdue</span>
@@ -91,9 +93,9 @@ export function UrgentUnansweredCard({
         </div>
       </div>
 
-      <Link href={href} className={styles.actionButton} aria-label="Track this RTI">
+      <span className={styles.actionButton}>
         Track This RTI →
-      </Link>
-    </article>
+      </span>
+    </Link>
   )
 }
