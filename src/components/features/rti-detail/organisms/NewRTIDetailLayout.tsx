@@ -18,7 +18,7 @@ import {
 import { Breadcrumb, DataHighlight } from '../atoms'
 import { QAItem } from '../molecules/QASection'
 import { NextStep } from '../molecules/NextStepsSection'
-import { ImportancePoint, RevealedFinding } from '../molecules/KeyInfoCards'
+import { ImportancePoint, RevealedFinding, DisclosureItem } from '../molecules/KeyInfoCards'
 import { SimilarRTI } from '../molecules/SimilarRTIsSection'
 import styles from './NewRTIDetailLayout.module.css'
 
@@ -61,7 +61,7 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
     { label: data.title, href: `/rti/${data.id}`, current: true },
   ]
 
-  // Prepare QA items with proper answers for answered status
+  // Prepare QA items with proper answers based on status
   const qaItems: QAItem[] =
     data.status === 'answered'
       ? [
@@ -87,6 +87,14 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
             status: 'denied',
           },
         ]
+      : data.status === 'partial' && data.detailedQA
+      ? data.detailedQA.map((qa) => ({
+          question: qa.question,
+          answer: qa.status === 'denied' ? qa.denialReason : qa.answer,
+          status: qa.status,
+          sourceDocument: qa.sourceDocument,
+          sourcePage: qa.sourcePage,
+        }))
       : data.questionPoints
       ? data.questionPoints.map((q, index) => ({
           question: q,
@@ -169,9 +177,11 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
     },
   ]
 
-  // Why this matters points - exact match from HTML for answered status
+  // Why this matters points - use custom data for partial status, or defaults for other statuses
   const whyThisMatters: ImportancePoint[] =
-    data.status === 'answered'
+    data.status === 'partial' && data.whyThisIsImportant
+      ? data.whyThisIsImportant
+      : data.status === 'answered'
       ? [
           {
             icon: '💸',
@@ -208,6 +218,16 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
             text: 'Creates accountability for quality standards in critical public infrastructure',
           },
         ]
+
+  // Disclosed and withheld items for partial status
+  const disclosedItems: DisclosureItem[] | undefined = data.disclosedItems
+  const withheldItems: DisclosureItem[] | undefined = data.withheldItems
+
+  // Calculate questions answered for partial status
+  const questionsAnswered = data.detailedQA
+    ? data.detailedQA.filter((qa) => qa.status === 'answered').length
+    : undefined
+  const totalQuestions = data.detailedQA?.length || data.questionPoints?.length
 
   // What was asked points
   const whatWasAsked: ImportancePoint[] = data.questionPoints
@@ -290,7 +310,13 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
             daysElapsed={data.daysElapsed}
             daysRemaining={data.daysRemaining}
             daysOverdue={data.daysOverdue}
-            completionPercentage={data.status === 'partial' ? 60 : undefined}
+            completionPercentage={
+              data.status === 'partial' && questionsAnswered !== undefined && totalQuestions
+                ? Math.round((questionsAnswered / totalQuestions) * 100)
+                : undefined
+            }
+            questionsAnswered={questionsAnswered}
+            totalQuestions={totalQuestions}
             department={data.department}
             location={data.location}
             state={data.state}
@@ -307,6 +333,7 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
               onTimeRate: data.departmentStats?.responseRate || 65,
               totalRTIs: data.departmentStats?.totalRTIs || 1200,
               pendingCount: data.departmentStats?.pendingRTIs || 150,
+              partialResponseRate: data.departmentStats?.partialResponseRate,
             }}
             status={data.status}
           />
@@ -335,6 +362,9 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
             currentPIO={data.pioName || "Rajesh Kumar"}
             reminderDate={data.reminderDate}
             transferDate={data.status === 'transferred' ? data.respondedDate : undefined}
+            questionsAnswered={questionsAnswered}
+            totalQuestions={totalQuestions}
+            documentsCount={data.responseAttachments?.length}
           />
 
           {/* Key Info Cards */}
@@ -351,6 +381,8 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
                   } more days to respond under the RTI Act.`
                 : undefined
             }
+            disclosedItems={disclosedItems}
+            withheldItems={withheldItems}
           />
 
           {/* Q&A Section */}
