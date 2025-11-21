@@ -174,18 +174,113 @@
 }
 
 @media (max-width: 768px) {
+  .section {
+    padding: 20px 16px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+  }
+
+  .header {
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .duration {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .visual {
+    height: 140px;
+    padding: 0 10px;
+    margin-bottom: 20px;
+  }
+
+  .scrollContent {
+    height: 140px;
+    padding: 0 10px;
+  }
+
   .meta {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
+    font-size: 13px;
   }
 
   .label {
     font-size: 11px;
-    max-width: 90px;
+    max-width: 70px;
+    white-space: normal;
+    text-align: center;
+    transform: translateX(-50%);
+    left: 50%;
+  }
+
+  .labelDate {
+    font-size: 12px;
   }
 
   .labelText {
+    font-size: 9px;
+    line-height: 1.2;
+  }
+
+  .labelDesc {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 16px 12px;
+    border-radius: 12px;
+    border-width: 2px;
+  }
+
+  .title {
+    font-size: 16px;
+    gap: 8px;
+  }
+
+  .duration {
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+
+  .visual {
+    height: 130px;
+    padding: 0 5px;
+  }
+
+  .scrollContent {
+    height: 130px;
+    padding: 0 5px;
+  }
+
+  .label {
     font-size: 10px;
+    max-width: 60px;
+  }
+
+  .labelDate {
+    font-size: 11px;
+  }
+
+  .labelText {
+    font-size: 8px;
+  }
+
+  .meta {
+    font-size: 12px;
+    gap: 8px;
+    padding-top: 16px;
+  }
+
+  .metaItem {
+    gap: 6px;
   }
 }
