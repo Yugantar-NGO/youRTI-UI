@@ -23,6 +23,9 @@ interface ImprovedTimelineProps extends BaseProps {
   transferDate?: string
   reminderDate?: string
   events?: TimelineEvent[]
+  questionsAnswered?: number
+  totalQuestions?: number
+  documentsCount?: number
 }
 
 /**
@@ -46,6 +49,9 @@ export function ImprovedTimeline({
   transferDate,
   reminderDate,
   events,
+  questionsAnswered,
+  totalQuestions,
+  documentsCount,
   className = '',
 }: ImprovedTimelineProps) {
   const statusConfig: Record<string, any> = {
@@ -103,7 +109,7 @@ export function ImprovedTimeline({
   if (status === 'answered') {
     progressPercentage = 66 // Match HTML exactly for answered status
   } else if (status === 'partial') {
-    progressPercentage = 100
+    progressPercentage = 73 // Match HTML - partial response at 73%
   } else if (status === 'overdue') {
     progressPercentage = 100
   } else if (status === 'pending') {
@@ -144,8 +150,8 @@ export function ImprovedTimeline({
 
     defaultEvents.push(
       { date: formatDate(filedDate), label: 'Filed' },
-      { date: reminderDateFormatted, label: 'Reminder' },
-      { date: formatDate(respondedDate || ''), label: 'Answered' }
+      { date: reminderDateFormatted, label: 'Reminder Sent' },
+      { date: formatDate(respondedDate || ''), label: status === 'partial' ? 'Partial Response' : 'Answered' }
     )
   } else {
     defaultEvents.push(
@@ -184,15 +190,29 @@ export function ImprovedTimeline({
         />
 
         {timelineEvents.map((event, index) => {
-          // For answered status with 3 events: 0%, 43%, 66% (matching HTML exactly)
+          // Calculate position based on status
           let position = 0
           if (status === 'answered' && timelineEvents.length === 3) {
+            // For answered status with 3 events: 0%, 43%, 66% (matching HTML exactly)
             position = index === 0 ? 0 : index === 1 ? 43 : 66
+          } else if (status === 'partial' && timelineEvents.length === 3) {
+            // For partial status with 3 events: 0%, 53%, 73% (matching HTML exactly)
+            position = index === 0 ? 0 : index === 1 ? 53 : 73
           } else {
             position = index === 0 ? 0 : index === timelineEvents.length - 1 ? 100 : progressPercentage
           }
           const isFuture = status === 'pending' && index === timelineEvents.length - 1
           const isTransfer = event.isTransfer
+          const isLastEvent = index === timelineEvents.length - 1
+
+          // Determine label alignment for edge cases
+          const labelStyle: React.CSSProperties = {
+            left: `${position}%`,
+          }
+          // For partial status last event, adjust to not go off screen
+          if (isLastEvent && position > 50) {
+            labelStyle.transform = 'translateX(-50%)'
+          }
 
           return (
             <div key={index}>
@@ -205,7 +225,7 @@ export function ImprovedTimeline({
                   borderColor: isFuture ? '#D1D5DB' : config.progressColor,
                 }}
               />
-              <div className={styles.label} style={{ left: `${position}%` }}>
+              <div className={styles.label} style={labelStyle}>
                 <div className={styles.labelDate}>{event.date}</div>
                 <div className={styles.labelText}>{event.label}</div>
                 {event.description && <div className={styles.labelDesc}>{event.description}</div>}
@@ -237,7 +257,32 @@ export function ImprovedTimeline({
             </div>
           </>
         )}
-        {status !== 'answered' && (
+        {status === 'partial' && (
+          <>
+            <div className={styles.metaItem}>
+              <span>📋</span>
+              <span>Completion:</span>
+              <span className={styles.metaValue}>
+                {questionsAnswered !== undefined && totalQuestions !== undefined
+                  ? `${Math.round((questionsAnswered / totalQuestions) * 100)}% of questions answered`
+                  : 'Partially answered'}
+              </span>
+            </div>
+            {currentPIO && (
+              <div className={styles.metaItem}>
+                <span>👤</span>
+                <span>PIO:</span>
+                <span className={styles.metaValue}>{currentPIO}</span>
+              </div>
+            )}
+            <div className={styles.metaItem}>
+              <span>📄</span>
+              <span>Documents:</span>
+              <span className={styles.metaValue}>{documentsCount || 3} files provided</span>
+            </div>
+          </>
+        )}
+        {status !== 'answered' && status !== 'partial' && (
           <>
             <div className={styles.metaItem}>
               <span>⏱️</span>
@@ -245,8 +290,6 @@ export function ImprovedTimeline({
               <span className={styles.metaValue}>
                 {status === 'overdue'
                   ? 'Deadline passed'
-                  : status === 'partial'
-                  ? 'Partially answered'
                   : status === 'transferred'
                   ? 'Awaiting response from new department'
                   : 'Awaiting department response'}
