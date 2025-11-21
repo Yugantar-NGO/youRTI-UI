@@ -1,6 +1,7 @@
 'use client'
 
 import { BaseProps, RTIStatus } from '@/types'
+import { InfoIcon } from '../atoms'
 import styles from './KeyInfoCards.module.css'
 
 export interface ImportancePoint {
@@ -54,6 +55,7 @@ export function KeyInfoCards({
             <div className={styles.title}>
               {status === 'answered' ? 'Why This Is Important' : 'Why This Matters'}
             </div>
+            <InfoIcon tooltip="Understand the broader significance of this RTI request—why it matters for transparency, accountability, and public interest." />
           </div>
 
           {status === 'answered' && whyThisMattersIntro && (
@@ -78,6 +80,10 @@ export function KeyInfoCards({
         <div className={styles.header}>
           <div className={styles.icon}>{showRevealedSection ? '🔍' : '❓'}</div>
           <div className={styles.title}>{showRevealedSection ? 'What Was Revealed' : 'What Was Asked'}</div>
+          <InfoIcon tooltip={showRevealedSection
+            ? "Key findings and data disclosed through this RTI response—the facts and figures that came to light."
+            : "The specific questions submitted in this RTI application that the department is required to answer."}
+          />
         </div>
 
         {/* Show revealed findings for answered status */}
