@@ -146,6 +146,25 @@ export interface RTIDetailData {
     sourcePage?: number
     denialReason?: string
   }> // Detailed Q&A for partial status
+
+  // Similar RTIs section
+  similarRTIs?: Array<{
+    id: string
+    title: string
+    status: 'answered' | 'pending' | 'overdue'
+    department: string
+    location: string
+    daysElapsed: number
+    highlight?: string
+  }>
+
+  // Next steps section (for overdue/pending statuses)
+  nextSteps?: Array<{
+    icon: string
+    title: string
+    description: string
+    details: string
+  }>
 }
 
 export const rtiDetailMockData: Record<string, RTIDetailData> = {
@@ -1291,17 +1310,25 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
 
   'rti-007': {
     id: 'rti-007',
-    title: 'School Teacher Appointment Details and Vacancies',
+    title: 'Teacher Recruitment Details and Vacancy Positions in Government Schools',
     status: 'overdue',
-    department: 'Education',
-    location: 'Lucknow',
-    state: 'Uttar Pradesh',
+    department: 'Education Department',
+    location: 'Delhi',
+    state: 'Delhi',
     topic: 'education',
 
-    filedDate: '2024-12-01',
-    acknowledgedDate: '2024-12-02',
-    deadline: '2024-12-31',
+    filedDate: '2024-10-03',
+    acknowledgedDate: '2024-10-04',
+    deadline: '2024-11-02',
+    daysElapsed: 48,
     daysOverdue: 18,
+    pioName: 'Dr. Anita Sharma',
+    reminderDate: '2024-10-28',
+
+    statusMessage: 'RTI Response Overdue by 18 Days',
+    statusDaysInfo: 'The department has missed the statutory 30-day deadline. You can now file a First Appeal with the Appellate Authority or escalate to the State Information Commission.',
+
+    whyThisMattersIntro: 'Teacher shortages directly impact the quality of education for thousands of students across Delhi government schools.',
 
     impactOneLiner: 'Education department ignoring RTI on 12,000 teacher vacancies for 18 days — students suffering',
     impactMetrics: [
@@ -1313,40 +1340,115 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
     impactBadges: ['⚠️ VIOLATION', '🔥 URGENT', '⚖️ ACTION NEEDED'],
     viewCount: 678,
 
-    questionText: 'I request information regarding teacher appointments and vacancies in government schools across Uttar Pradesh:',
+    questionText: 'I request information regarding teacher appointments and vacancies in government schools across Delhi:',
     questionPoints: [
-      'Total sanctioned positions and current vacancies district-wise',
-      'Details of teacher recruitment drives conducted in last 3 years',
-      'Reasons for delay in filling vacant positions',
-      'Timeline for upcoming recruitment and appointment process',
+      'Total number of sanctioned teacher positions vs. filled positions in Delhi govt schools (2023-24)',
+      'Details of recruitment drives conducted in last 2 years with number of hires',
+      'Subject-wise vacancy breakup (Math, Science, English, Hindi, Social Science)',
+      'Student-teacher ratio in each district and comparison with national standards',
     ],
 
     responseType: 'overdue',
 
     extractedEntities: {},
 
+    departmentStats: {
+      responseRate: 35,
+      totalRTIs: 3245,
+      answeredRTIs: 1135,
+      pendingRTIs: 520,
+      overdueRTIs: 412,
+      averageResponseDays: 42,
+      targetResponseDays: 30,
+    },
+
+    similarRTIs: [
+      {
+        id: 'similar-1',
+        title: 'Ring Road repair budget allocation and tender process documentation',
+        status: 'answered',
+        department: 'PWD Maharashtra',
+        location: 'Mumbai',
+        daysElapsed: 18,
+        highlight: '₹8.7 Cr disclosed',
+      },
+      {
+        id: 'similar-2',
+        title: 'Contractor quality inspection reports for infrastructure projects',
+        status: 'answered',
+        department: 'PWD Maharashtra',
+        location: 'Pune',
+        daysElapsed: 22,
+        highlight: '12 projects reviewed',
+      },
+      {
+        id: 'similar-3',
+        title: 'Teacher appointment process and selection criteria documentation',
+        status: 'answered',
+        department: 'Education Dept',
+        location: 'Karnataka',
+        daysElapsed: 28,
+        highlight: '2,400 positions',
+      },
+    ],
+
+    nextSteps: [
+      {
+        icon: '📝',
+        title: 'File First Appeal',
+        description: 'Appeal to Appellate Authority within 30 days of deadline',
+        details: 'The First Appeal is your statutory right when the PIO fails to respond within 30 days. You must file within 30 days of the deadline (by Dec 2, 2024). Address your appeal to the First Appellate Authority of the Education Department. Include your original RTI application, proof of filing, and details of non-compliance. The Appellate Authority has 45 days to decide on your appeal and can impose penalties on the PIO for the delay.',
+      },
+      {
+        icon: '⚖️',
+        title: 'Escalate to SIC',
+        description: 'Complaint to State Information Commission for non-compliance',
+        details: 'If the First Appeal doesn\'t yield results within 45 days, you can file a Second Appeal directly with the Delhi State Information Commission (SIC). The SIC has the power to impose penalties up to ₹25,000 on the defaulting PIO and can order disciplinary action for repeated violations. File your complaint online through the SIC portal with all relevant documentation and correspondence history.',
+      },
+      {
+        icon: '📧',
+        title: 'Email Department Head',
+        description: 'Send formal complaint to Secretary, Education Department',
+        details: 'Draft a formal complaint to the Secretary of the Education Department highlighting the violation of the RTI Act and the impact of delayed response. Mark copies to the Chief Information Commissioner and include details of the overdue RTI with reference numbers and dates. Request immediate action and compliance, mentioning that you\'re prepared to escalate to the Information Commission if necessary.',
+      },
+      {
+        icon: '👥',
+        title: 'Rally Community Support',
+        description: 'Share this RTI to build pressure for response',
+        details: 'Public pressure can be effective in getting delayed RTIs answered. Share your RTI details on social media and RTI advocacy platforms. Tag the Education Department\'s official handles and relevant ministers to increase visibility and accountability. Connect with parent associations and education advocacy groups who can amplify your request for transparency on teacher recruitment.',
+      },
+      {
+        icon: '💰',
+        title: 'Claim Daily Penalty',
+        description: 'Department liable for ₹250/day penalty for delay',
+        details: 'Under Section 7(6) of the RTI Act, you can claim compensation of ₹250 per day for the delay beyond 30 days, up to a maximum of ₹25,000. For 18 days of delay, you\'re entitled to ₹4,500 in compensation. Include this claim in your First Appeal or complaint to the SIC. The penalty is meant to be paid from the salary of the defaulting PIO, creating personal accountability for the delay.',
+      },
+    ],
+
     timeline: [
       {
         id: 't1',
         type: 'filed',
-        date: '2024-12-01',
+        date: '2024-10-03',
         title: 'RTI Filed',
+        description: 'Application submitted online',
       },
       {
         id: 't2',
         type: 'acknowledged',
-        date: '2024-12-02',
+        date: '2024-10-04',
         title: 'Acknowledged',
-        description: 'Application number: EDU/UP/2024/01234',
+        description: 'Application number: RTI/DOE/2024/005612',
         daysFromFiling: 1,
       },
       {
         id: 't3',
         type: 'reminder',
-        date: '2025-01-05',
-        title: 'First Reminder Sent',
-        description: 'Reminder sent via online portal',
-        daysFromFiling: 35,
+        date: '2024-11-02',
+        title: 'Deadline Missed',
+        description: 'Statutory deadline expired - No response received',
+        daysFromFiling: 30,
+        isLate: true,
       },
     ],
 
