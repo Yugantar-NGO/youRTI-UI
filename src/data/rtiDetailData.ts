@@ -131,8 +131,21 @@ export interface RTIDetailData {
   keyFindings?: string[] // Bullet points for "At a Glance" section
   findingData?: FindingData[] // Data for "The Finding" visualization
   findingContext?: string // "Why This Matters" text
-  departmentStats?: DepartmentStats // Department profile data
+  departmentStats?: DepartmentStats & { partialResponseRate?: number } // Department profile data
   whyThisMattersIntro?: string // Intro paragraph for Why This Matters section
+
+  // Partial status specific fields
+  disclosedItems?: Array<{ text: string }> // Items disclosed in partial response
+  withheldItems?: Array<{ text: string }> // Items withheld in partial response
+  whyThisIsImportant?: Array<{ icon: string; text: string }> // Custom importance points
+  detailedQA?: Array<{
+    question: string
+    answer: string
+    status: 'answered' | 'denied' | 'pending'
+    sourceDocument?: string
+    sourcePage?: number
+    denialReason?: string
+  }> // Detailed Q&A for partial status
 }
 
 export const rtiDetailMockData: Record<string, RTIDetailData> = {
@@ -490,6 +503,11 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
     acknowledgedDate: '2025-01-13',
     respondedDate: '2025-01-30',
     responseDays: 18,
+    daysElapsed: 18,
+    pioName: 'Dr. Anjum Parwez',
+    whyThisMattersIntro: 'This RTI reveals significant gaps in transparency around metro infrastructure development, environmental compliance, and contractor accountability.',
+
+    statusMessage: 'The department answered 2 out of 4 questions. Two questions were denied citing exemptions under Section 8(1)(d) of the RTI Act. You have the right to file a First Appeal within 30 days.',
 
     impactOneLiner: '₹450 Cr budget revealed but environmental assessment details denied — "commercial confidence" claimed',
     impactMetrics: [
@@ -536,6 +554,55 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
       },
     ],
 
+    // Disclosed and withheld items for KeyInfoCards
+    disclosedItems: [
+      { text: 'Total project budget of ₹450 Crore with detailed fund allocation breakdown' },
+      { text: 'Tree cutting permissions and compensatory plantation plans (340 trees, 1:10 ratio)' },
+    ],
+
+    withheldItems: [
+      { text: 'Environmental Impact Assessment report citing commercial confidence' },
+      { text: 'Contractor agreement penalty clauses citing competitive position concerns' },
+    ],
+
+    // Why This Is Important points
+    whyThisIsImportant: [
+      { icon: '🌳', text: 'Environmental impact of metro construction affecting 340+ trees requires public scrutiny' },
+      { icon: '💰', text: '₹450 Crore public investment demands complete transparency in spending' },
+      { icon: '📋', text: 'Contractor accountability is crucial for quality infrastructure delivery' },
+      { icon: '⚖️', text: 'Commercial confidence exemptions may be overused to avoid accountability' },
+    ],
+
+    // Detailed Q&A for partial status
+    detailedQA: [
+      {
+        question: 'Total project budget and fund allocation details',
+        answer: '₹450 Crore allocated for ORR-Airport corridor (14.5 km). Detailed breakdown: ₹320 Cr for civil work, ₹80 Cr for electrification, ₹50 Cr for signaling and station facilities.',
+        status: 'answered',
+        sourceDocument: 'Budget Summary Report',
+        sourcePage: 2,
+      },
+      {
+        question: 'Environmental Impact Assessment report',
+        answer: '',
+        denialReason: 'The complete EIA report contains commercially sensitive technical data and proprietary assessment methodologies developed by the consulting firm, which would harm their competitive position if disclosed. (Section 8(1)(d) - Commercial confidence)',
+        status: 'denied',
+      },
+      {
+        question: 'Tree cutting permissions and compensatory plantation details',
+        answer: 'Permission obtained from Forest Department for felling 340 trees along the corridor. Compensatory plantation of 3,400 trees (1:10 ratio) planned across 3 locations in Whitefield, Marathahalli, and Electronic City.',
+        status: 'answered',
+        sourceDocument: 'Tree Cutting Approval',
+        sourcePage: 3,
+      },
+      {
+        question: 'Contractor agreement terms and penalty clauses',
+        answer: '',
+        denialReason: 'Detailed penalty terms and commercial clauses are part of confidential contractor agreement. Disclosure would prejudice competitive position of the contractor in future tenders. (Section 8(1)(d) - Commercial confidence)',
+        status: 'denied',
+      },
+    ],
+
     responseAttachments: [
       {
         id: 'r1',
@@ -544,7 +611,7 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
         type: 'pdf',
         size: '890 KB',
         pages: 4,
-        receivedDate: 'Jan 30, 2024',
+        receivedDate: 'Jan 30, 2025',
       },
       {
         id: 'r2',
@@ -553,12 +620,23 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
         type: 'pdf',
         size: '1.2 MB',
         pages: 7,
-        receivedDate: 'Jan 30, 2024',
+        receivedDate: 'Jan 30, 2025',
       },
     ],
     signedBy: 'Dr. Anjum Parwez',
     signedByDesignation: 'Managing Director, BMRCL',
     signedDate: '2025-01-30',
+
+    departmentStats: {
+      responseRate: 72,
+      totalRTIs: 1245,
+      answeredRTIs: 897,
+      pendingRTIs: 198,
+      overdueRTIs: 150,
+      averageResponseDays: 22,
+      targetResponseDays: 30,
+      partialResponseRate: 15,
+    },
 
     extractedEntities: {
       amounts: [
