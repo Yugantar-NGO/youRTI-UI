@@ -330,7 +330,30 @@ export function ImprovedTimeline({
             </div>
           </>
         )}
-        {status !== 'answered' && status !== 'partial' && (
+        {status === 'transferred' && (
+          <>
+            <div className={styles.metaItem}>
+              <span>⏱️</span>
+              <span>Status:</span>
+              <span className={styles.metaValue}>Awaiting response from new department</span>
+            </div>
+            {currentPIO && (
+              <div className={styles.metaItem}>
+                <span>👤</span>
+                <span>New PIO:</span>
+                <span className={styles.metaValue}>{currentPIO}</span>
+              </div>
+            )}
+            {daysRemaining !== undefined && (
+              <div className={styles.metaItem}>
+                <span>📅</span>
+                <span>Days Remaining:</span>
+                <span className={styles.metaValue}>{daysRemaining} days</span>
+              </div>
+            )}
+          </>
+        )}
+        {status !== 'answered' && status !== 'partial' && status !== 'transferred' && (
           <>
             <div className={styles.metaItem}>
               <span>⏱️</span>
@@ -338,8 +361,6 @@ export function ImprovedTimeline({
               <span className={styles.metaValue}>
                 {status === 'overdue'
                   ? 'Deadline passed'
-                  : status === 'transferred'
-                  ? 'Awaiting response from new department'
                   : 'Awaiting department response'}
               </span>
             </div>
