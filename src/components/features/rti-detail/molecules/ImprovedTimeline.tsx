@@ -115,17 +115,24 @@ export function ImprovedTimeline({
   } else if (status === 'pending') {
     progressPercentage = (daysElapsed / 30) * 100
   } else if (status === 'transferred' && transferDate) {
-    progressPercentage = 45 // Example transfer point
+    progressPercentage = 50 // Transfer point at center
   }
 
   // Default timeline events
   const defaultEvents: TimelineEvent[] = []
 
   if (status === 'transferred') {
+    // Format dates for transferred status
+    const formatDate = (dateStr: string) => {
+      if (!dateStr) return ''
+      const date = new Date(dateStr)
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+    }
+
     defaultEvents.push(
-      { date: filedDate, label: 'Filed', description: 'Original Dept' },
-      { date: transferDate || '', label: 'Transferred', description: 'New Dept', isTransfer: true },
-      { date: expectedDate || '', label: 'Due Date', description: 'New Deadline' }
+      { date: formatDate(filedDate), label: 'Filed', description: 'Original Dept' },
+      { date: formatDate(transferDate || ''), label: 'Transferred', description: 'New Dept', isTransfer: true },
+      { date: formatDate(expectedDate || ''), label: 'Due Date', description: 'New Deadline' }
     )
   } else if (status === 'answered' || status === 'partial') {
     // Format dates consistently for all answered/partial status
@@ -227,6 +234,9 @@ export function ImprovedTimeline({
           } else if (status === 'overdue' && timelineEvents.length === 3) {
             // For overdue status: Filed at 0%, Due Date (Missed) at 62%, Today at 100%
             position = index === 0 ? 0 : index === 1 ? 62 : 100
+          } else if (status === 'transferred' && timelineEvents.length === 3) {
+            // For transferred status: Filed at 0%, Transferred at 50%, Due Date at 100%
+            position = index === 0 ? 0 : index === 1 ? 50 : 100
           } else {
             position = index === 0 ? 0 : index === timelineEvents.length - 1 ? 100 : progressPercentage
           }
