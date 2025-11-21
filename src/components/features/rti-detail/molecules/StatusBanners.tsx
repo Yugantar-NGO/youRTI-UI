@@ -40,6 +40,23 @@ export function StatusBanner({
   className = '',
 }: StatusBannerProps) {
   const hasMultipleTransfers = transfers && transfers.length > 1
+
+  // Format date helper
+  const formatDate = (dateStr: string) => {
+    if (!dateStr) return ''
+    const date = new Date(dateStr)
+    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+  }
+
+  // Generate summary message for multiple transfers
+  const getMultiTransferMessage = () => {
+    if (!transfers || transfers.length === 0) return message
+    const lastTransfer = transfers[transfers.length - 1]
+    const currentDept = lastTransfer.toDepartment
+    const expectedDate = lastTransfer.newDeadline ? formatDate(lastTransfer.newDeadline) : 'TBD'
+    return `Your RTI has been transferred ${transfers.length} times and is now with ${currentDept}. Response expected by ${expectedDate}.`
+  }
+
   if (status === 'answered' || status === 'pending') {
     // No banner needed for these statuses
     return null
@@ -66,9 +83,7 @@ export function StatusBanner({
     },
     transferred: {
       icon: '🔄',
-      title: hasMultipleTransfers
-        ? `RTI Transferred ${transfers?.length} Times`
-        : 'RTI Transferred to Appropriate Authority',
+      title: 'RTI Transferred to Appropriate Authority',
       gradient: 'linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%)',
       border: '#8B5CF6',
       iconBg: '#8B5CF6',
@@ -95,25 +110,11 @@ export function StatusBanner({
           {config.title}
         </div>
         <div className={styles.text} style={{ color: config.textColor }}>
-          {message}
+          {status === 'transferred' && hasMultipleTransfers ? getMultiTransferMessage() : message}
         </div>
-        {details && (
+        {details && !hasMultipleTransfers && (
           <div className={styles.details} style={{ color: config.textColor }}>
             {details}
-          </div>
-        )}
-        {status === 'transferred' && hasMultipleTransfers && transfers && (
-          <div className={styles.transferChain}>
-            <span className={styles.transferChainDept}>{transfers[0].fromDepartment.split(',')[0]}</span>
-            {transfers.map((transfer, index) => (
-              <span key={index} className={styles.transferChainStep}>
-                <span className={styles.transferChainArrow}>
-                  <span className={styles.transferChainNumber}>{index + 1}</span>
-                  →
-                </span>
-                <span className={styles.transferChainDept}>{transfer.toDepartment.split(',')[0]}</span>
-              </span>
-            ))}
           </div>
         )}
         {status === 'transferred' && !hasMultipleTransfers && transferredFrom && transferredTo && (
