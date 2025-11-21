@@ -132,8 +132,16 @@
 
 .answerText {
   font-size: 15px;
-  color: #475569;
+  color: #1f2937;
   line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.deniedReason {
+  font-size: 15px;
+  color: #991b1b;
+  line-height: 1.7;
+  font-weight: 600;
   margin-bottom: 16px;
 }
 
