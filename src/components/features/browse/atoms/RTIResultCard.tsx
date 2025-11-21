@@ -46,34 +46,82 @@ export function RTIResultCard({ rti, className = '' }: RTIResultCardProps) {
               : `${Math.floor(diffInDays / 365)} years ago`
 
   // Status badge styling
-  const statusClass =
-    rti.status === 'answered'
-      ? styles.statusAnswered
-      : rti.status === 'pending'
-        ? styles.statusPending
-        : styles.statusOverdue
+  const getStatusClass = () => {
+    switch (rti.status) {
+      case 'answered':
+        return styles.statusAnswered
+      case 'pending':
+        return styles.statusPending
+      case 'overdue':
+        return styles.statusOverdue
+      case 'transferred':
+        return styles.statusTransferred
+      case 'partial':
+        return styles.statusPartial
+      default:
+        return styles.statusPending
+    }
+  }
 
-  const statusLabel =
-    rti.status === 'answered'
-      ? 'Answered'
-      : rti.status === 'pending'
-        ? 'Pending'
-        : 'Overdue'
+  const getStatusLabel = () => {
+    switch (rti.status) {
+      case 'answered':
+        return 'Answered'
+      case 'pending':
+        return 'Pending'
+      case 'overdue':
+        return 'Overdue'
+      case 'transferred':
+        return 'Transferred'
+      case 'partial':
+        return 'Partial'
+      default:
+        return 'Pending'
+    }
+  }
+
+  const statusClass = getStatusClass()
+  const statusLabel = getStatusLabel()
 
   // Timeline text
-  const timelineText =
-    rti.status === 'answered' && rti.responseDays
-      ? `Filed: ${filedDateFormatted} • Responded: ${respondedDateFormatted} (${rti.responseDays} days)`
-      : rti.status === 'overdue' && rti.daysOverdue
-        ? `Filed: ${filedDateFormatted} • Still pending (${rti.daysOverdue} days late)`
-        : `Filed: ${filedDateFormatted} • Still pending`
+  const getTimelineText = () => {
+    switch (rti.status) {
+      case 'answered':
+        return rti.responseDays
+          ? `Filed: ${filedDateFormatted} • Responded: ${respondedDateFormatted} (${rti.responseDays} days)`
+          : `Filed: ${filedDateFormatted} • Responded: ${respondedDateFormatted}`
+      case 'overdue':
+        return rti.daysOverdue
+          ? `Filed: ${filedDateFormatted} • Still pending (${rti.daysOverdue} days late)`
+          : `Filed: ${filedDateFormatted} • Still pending`
+      case 'transferred':
+        return `Filed: ${filedDateFormatted} • Transferred to new dept`
+      case 'partial':
+        return rti.responseDays
+          ? `Filed: ${filedDateFormatted} • Partial response (${rti.responseDays} days)`
+          : `Filed: ${filedDateFormatted} • Partial response received`
+      default:
+        return `Filed: ${filedDateFormatted} • Still pending`
+    }
+  }
 
-  const ctaText =
-    rti.status === 'answered'
-      ? 'Read Full RTI →'
-      : rti.status === 'overdue'
-        ? 'Track This RTI →'
-        : 'View Details →'
+  const getCtaText = () => {
+    switch (rti.status) {
+      case 'answered':
+        return 'Read Full RTI →'
+      case 'overdue':
+        return 'Track This RTI →'
+      case 'transferred':
+        return 'Track Transfer →'
+      case 'partial':
+        return 'View Response →'
+      default:
+        return 'View Details →'
+    }
+  }
+
+  const timelineText = getTimelineText()
+  const ctaText = getCtaText()
 
   return (
     <Link href={rti.link} className={`${styles.card} ${className}`}>
