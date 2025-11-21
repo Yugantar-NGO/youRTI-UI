@@ -8,6 +8,7 @@ interface DepartmentStats {
   onTimeRate: number
   totalRTIs: number
   pendingCount: number
+  partialResponseRate?: number
 }
 
 interface DepartmentStatsCardProps extends BaseProps {
@@ -66,15 +67,23 @@ export function DepartmentStatsCard({
           <div className={styles.statLabel}>Total RTIs</div>
         </div>
         <div className={styles.statItem}>
-          <div className={styles.statValue}>{stats.pendingCount}</div>
-          <div className={styles.statLabel}>Pending Now</div>
+          <div className={styles.statValue}>
+            {status === 'partial' && stats.partialResponseRate !== undefined
+              ? `${stats.partialResponseRate}%`
+              : stats.pendingCount}
+          </div>
+          <div className={styles.statLabel}>
+            {status === 'partial' ? 'Partial Response Rate' : 'Pending Now'}
+          </div>
         </div>
       </div>
 
       <div className={styles.performanceBar}>
         <div className={styles.performanceFill} style={{ width: `${stats.onTimeRate}%` }} />
       </div>
-      <div className={styles.performanceLabel}>{stats.onTimeRate}% answered on time</div>
+      <div className={styles.performanceLabel}>
+        {status === 'partial' ? `${stats.onTimeRate}% complete responses` : `${stats.onTimeRate}% answered on time`}
+      </div>
 
       <a href="#" className={styles.link}>
         <span>View Department Profile</span>
