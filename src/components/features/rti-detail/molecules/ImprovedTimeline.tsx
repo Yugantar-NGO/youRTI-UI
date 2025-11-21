@@ -120,7 +120,7 @@ export function ImprovedTimeline({
     )
   } else if (status === 'answered' || status === 'partial') {
     // For answered status, use fixed dates matching HTML
-    if (status === 'answered' && filedDate === 'Jan 5, 2024') {
+    if (status === 'answered' && filedDate === '2024-01-05') {
       defaultEvents.push(
         { date: 'Jan 5', label: 'Filed' },
         { date: 'Jan 20', label: 'Reminder' },
