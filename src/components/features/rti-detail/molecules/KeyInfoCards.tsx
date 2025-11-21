@@ -68,7 +68,7 @@ export function KeyInfoCards({
             <InfoIcon tooltip="Understand the broader significance of this RTI request—why it matters for transparency, accountability, and public interest." />
           </div>
 
-          {status === 'answered' && whyThisMattersIntro && (
+          {whyThisMattersIntro && (
             <div className={styles.intro}>
               {whyThisMattersIntro}
             </div>
