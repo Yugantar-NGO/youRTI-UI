@@ -23,6 +23,7 @@ interface SidebarOverviewCardProps extends BaseProps {
   transferredFrom?: string
   transferredTo?: string
   transferReason?: string
+  transferDate?: string
 }
 
 /**
@@ -54,6 +55,7 @@ export function SidebarOverviewCard({
   transferredFrom,
   transferredTo,
   transferReason,
+  transferDate,
   className = '',
 }: SidebarOverviewCardProps) {
   const statusConfig: Record<string, any> = {
@@ -185,6 +187,9 @@ export function SidebarOverviewCard({
           <div className={styles.transferHeader}>
             <span>🔄</span>
             <span>Transfer Details</span>
+            {transferDate && (
+              <span className={styles.transferDate}>{formatDate(transferDate)}</span>
+            )}
           </div>
           <div className={styles.transferDetails}>
             <div className={styles.transferRow}>
