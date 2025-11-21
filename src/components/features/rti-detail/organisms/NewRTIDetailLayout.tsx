@@ -343,6 +343,7 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
             transferredFrom={data.status === 'transferred' ? data.department : undefined}
             transferredTo={data.transferredTo}
             transferReason={data.status === 'transferred' ? 'Subject matter jurisdiction' : undefined}
+            transferDate={data.transferDate}
           />
 
           <DepartmentStatsCard
