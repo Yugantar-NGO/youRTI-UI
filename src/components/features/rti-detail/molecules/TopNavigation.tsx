@@ -46,9 +46,6 @@ export function TopNavigation({ className = '', onShareClick }: TopNavigationPro
           <a href="/browse" className={styles.navLink}>
             Browse
           </a>
-          <a href="/analytics" className={styles.navLink}>
-            Analytics
-          </a>
           <a href="/file-rti" className={styles.navLink}>
             File RTI
           </a>
