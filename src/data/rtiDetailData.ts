@@ -105,6 +105,7 @@ export interface RTIDetailData {
   transferredTo?: string
   transferredFrom?: string
   transferReason?: string
+  transferDate?: string
   newDeadline?: string
 
   deniedItems?: Array<{ item: string; reason: string; section?: string }>
@@ -490,6 +491,7 @@ export const rtiDetailMockData: Record<string, RTIDetailData> = {
     acknowledgedDate: '2025-01-21',
     transferredFrom: 'Central Railway, Mumbai',
     transferredTo: 'Western Railway, Mumbai Division',
+    transferDate: '2025-01-25',
     newDeadline: '2025-02-24',
 
     impactOneLiner: 'RTI bounced from Central Railway to Western Railway — now awaiting response from correct division',
