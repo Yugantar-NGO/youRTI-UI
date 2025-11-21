@@ -40,8 +40,8 @@
 }
 
 .stepItem:hover {
-  border-color: #ef4444;
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.1);
+  border-color: #2563eb;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
 }
 
 .stepHeader {
@@ -54,13 +54,13 @@
 }
 
 .stepHeader:hover {
-  background: #fef2f2;
+  background: #eff6ff;
 }
 
 .stepIconBox {
   width: 48px;
   height: 48px;
-  background: #ef4444;
+  background: #2563eb;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -88,7 +88,7 @@
 }
 
 .stepArrow {
-  color: #ef4444;
+  color: #2563eb;
   font-size: 20px;
   font-weight: 900;
   transition: transform 200ms;
