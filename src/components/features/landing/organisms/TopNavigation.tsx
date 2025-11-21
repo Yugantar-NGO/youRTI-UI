@@ -33,9 +33,6 @@ export function TopNavigation({ className = '' }: TopNavigationProps) {
           <Link href="/browse" className={styles.navLink}>
             Browse
           </Link>
-          <Link href="/analytics" className={styles.navLink}>
-            Analytics
-          </Link>
           <Link href="/file-rti" className={styles.navLink}>
             File RTI
           </Link>
