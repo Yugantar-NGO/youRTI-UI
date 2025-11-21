@@ -2757,4 +2757,725 @@ Following steps have been implemented to optimize bed utilization:
       },
     ],
   },
+
+  // Win Story RTIs - Impact Stories from Landing Page
+  'win-1': {
+    id: 'RTI/EDU/MH/2025/001247',
+    title: 'School Gets Rs 12 Lakh for Repairs After 2-Year Wait',
+    status: 'answered',
+    department: 'Education Department',
+    location: 'Pune',
+    state: 'Maharashtra',
+    topic: 'Education',
+
+    filedDate: '2025-09-15',
+    acknowledgedDate: '2025-09-16',
+    respondedDate: '2025-10-08',
+    responseDays: 23,
+    daysElapsed: 23,
+    reminderDate: '2025-10-01',
+    pioName: 'Smt. Kavita Deshpande',
+    whyThisMattersIntro: 'This RTI exposed how allocated funds for school infrastructure were lying unused while students studied in unsafe conditions for over 2 years.',
+
+    impactOneLiner: 'Rs 12 Lakh sanctioned within 30 days of RTI response, benefiting 450 students in a crumbling school building',
+    impactMetrics: [
+      { icon: '💰', value: '₹12L', label: 'SANCTIONED' },
+      { icon: '👥', value: '450', label: 'STUDENTS' },
+      { icon: '🏫', value: '2yr', label: 'DELAY' },
+      { icon: '📄', value: '23d', label: 'RESPONSE' },
+    ],
+    impactBadges: ['#EDUCATION', '#INFRASTRUCTURE', '#FUND_RELEASE', '#STUDENT_SAFETY'],
+    viewCount: 1247,
+
+    questionText: 'I request information regarding the maintenance and repair funds allocated for Zilla Parishad School, Hadapsar, Pune:',
+    questionPoints: [
+      'Total funds allocated for school building repairs in FY 2023-24 and 2024-25',
+      'Details of repair work sanctioned vs completed with timeline',
+      'Reasons for delay in utilization of allocated funds',
+      'Current structural condition report of the school building',
+      'List of complaints received regarding building safety',
+    ],
+
+    responseType: 'full-answer',
+    responseText: 'The allocated amount of Rs 12,00,000 was sanctioned in FY 2023-24 but remained unutilized due to administrative delays in contractor selection. Following this RTI, immediate action has been initiated and work orders have been issued. The structural audit report confirms urgent repairs needed for roof, walls, and electrical systems.',
+    responseAttachments: [
+      { id: 'r1', name: 'Official Response Letter', title: 'Official Response Letter', type: 'pdf', size: '1.8 MB', pages: 6, receivedDate: 'Oct 8, 2025' },
+      { id: 'r2', name: 'Fund Allocation Details', title: 'Fund Allocation Details', type: 'pdf', size: '2.1 MB', pages: 8, receivedDate: 'Oct 8, 2025' },
+      { id: 'r3', name: 'Structural Audit Report', title: 'Structural Audit Report', type: 'pdf', size: '4.5 MB', pages: 15, receivedDate: 'Oct 8, 2025' },
+      { id: 'r4', name: 'Work Order Copy', title: 'Work Order Copy', type: 'pdf', size: '1.2 MB', pages: 3, receivedDate: 'Oct 8, 2025' },
+    ],
+    signedBy: 'Smt. Kavita Deshpande',
+    signedByDesignation: 'PIO, Education Department',
+    signedDate: '2025-10-08',
+
+    keyFindings: [
+      'Rs 12 Lakh allocated but unused for 2 years',
+      'No contractor appointed despite urgent need',
+      'Building declared unsafe in 2023 audit',
+      'Work orders finally issued after RTI',
+    ],
+
+    extractedEntities: {
+      amounts: [
+        { value: '₹12 Lakh', description: 'Total sanctioned amount' },
+        { value: '₹8.5 Lakh', description: 'Structural repairs' },
+        { value: '₹3.5 Lakh', description: 'Electrical & plumbing' },
+      ],
+      officials: [
+        { name: 'Smt. Kavita Deshpande', designation: 'PIO, Education Department' },
+      ],
+      dates: [
+        { date: 'Sep 15, 2025', description: 'RTI Filed' },
+        { date: 'Oct 8, 2025', description: 'Response received' },
+      ],
+      locations: [
+        { name: 'ZP School, Hadapsar, Pune', description: 'Primary school with 450 students' },
+      ],
+    },
+
+    departmentStats: {
+      responseRate: 72,
+      totalRTIs: 3456,
+      answeredRTIs: 2488,
+      pendingRTIs: 678,
+      overdueRTIs: 290,
+      averageResponseDays: 25,
+      targetResponseDays: 30,
+    },
+
+    timeline: [
+      {
+        id: 't1',
+        type: 'filed',
+        date: '2025-09-15',
+        title: 'RTI Filed',
+        description: 'Application submitted online',
+      },
+      {
+        id: 't2',
+        type: 'acknowledged',
+        date: '2025-09-16',
+        title: 'Acknowledged',
+        description: 'Application number assigned',
+        daysFromFiling: 1,
+      },
+      {
+        id: 't3',
+        type: 'reminder',
+        date: '2025-10-01',
+        title: 'Reminder Sent',
+        description: 'Follow-up sent to department',
+        daysFromFiling: 16,
+      },
+      {
+        id: 't4',
+        type: 'answered',
+        date: '2025-10-08',
+        title: 'Complete Response',
+        description: 'Response received with 4 documents',
+        daysFromFiling: 23,
+      },
+    ],
+  },
+
+  'win-2': {
+    id: 'RTI/FCS/BR/2025/000891',
+    title: 'Ration Shop Data Released, Shows 3,000 Ghost Cards',
+    status: 'answered',
+    department: 'Food & Civil Supplies',
+    location: 'Patna',
+    state: 'Bihar',
+    topic: 'Food Security',
+
+    filedDate: '2025-09-10',
+    acknowledgedDate: '2025-09-11',
+    respondedDate: '2025-10-05',
+    responseDays: 25,
+    daysElapsed: 25,
+    reminderDate: '2025-09-28',
+    pioName: 'Shri Rajendra Prasad',
+    whyThisMattersIntro: 'This RTI uncovered massive fraud in the Public Distribution System where fake beneficiaries were siphoning subsidized food meant for below-poverty-line families.',
+
+    impactOneLiner: 'RTI exposed 3,000 ghost ration cards across 12 shops, leading to FIR and recovery proceedings worth ₹1.8 Crore',
+    impactMetrics: [
+      { icon: '📊', value: '3K', label: 'GHOST CARDS' },
+      { icon: '🏪', value: '12', label: 'SHOPS' },
+      { icon: '💰', value: '₹1.8Cr', label: 'FRAUD' },
+      { icon: '📄', value: '25d', label: 'RESPONSE' },
+    ],
+    impactBadges: ['#FOOD_SECURITY', '#CORRUPTION', '#PDS_FRAUD', '#DATA_RELEASED'],
+    viewCount: 2341,
+
+    questionText: 'I request information regarding beneficiary data and distribution records for Fair Price Shops in Patna District:',
+    questionPoints: [
+      'Total registered beneficiaries vs actual distribution for last 12 months',
+      'Shop-wise monthly allocation and lifting data',
+      'List of beneficiaries who have not collected rations for 6+ months',
+      'Biometric authentication success/failure rates',
+      'Details of any discrepancies found in inspections',
+    ],
+
+    responseType: 'full-answer',
+    responseText: 'Analysis of provided data reveals significant discrepancies between registered beneficiaries and actual distributions. Approximately 3,000 ration cards showed regular lifting without biometric verification. 12 fair price shops have been identified with irregular patterns. Investigation has been initiated and licenses of 4 shops suspended.',
+    responseAttachments: [
+      { id: 'r1', name: 'Official Response Letter', title: 'Official Response Letter', type: 'pdf', size: '2.2 MB', pages: 10, receivedDate: 'Oct 5, 2025' },
+      { id: 'r2', name: 'Beneficiary Distribution Data', title: 'Beneficiary Distribution Data', type: 'xlsx', size: '5.8 MB', receivedDate: 'Oct 5, 2025' },
+      { id: 'r3', name: 'Shop-wise Allocation Records', title: 'Shop-wise Allocation Records', type: 'pdf', size: '3.2 MB', pages: 24, receivedDate: 'Oct 5, 2025' },
+      { id: 'r4', name: 'Inspection Reports', title: 'Inspection Reports', type: 'pdf', size: '2.8 MB', pages: 18, receivedDate: 'Oct 5, 2025' },
+    ],
+    signedBy: 'Shri Rajendra Prasad',
+    signedByDesignation: 'PIO, Food & Civil Supplies',
+    signedDate: '2025-10-05',
+
+    keyFindings: [
+      '3,000 ghost cards identified across district',
+      '12 fair price shops involved in fraud',
+      'Biometric bypass used for fake distributions',
+      '4 shop licenses suspended, FIR registered',
+    ],
+
+    extractedEntities: {
+      amounts: [
+        { value: '₹1.8 Crore', description: 'Estimated fraud value' },
+        { value: '3,000', description: 'Ghost ration cards' },
+        { value: '12', description: 'Shops involved' },
+      ],
+      officials: [
+        { name: 'Shri Rajendra Prasad', designation: 'PIO, Food & Civil Supplies' },
+      ],
+      dates: [
+        { date: 'Sep 10, 2025', description: 'RTI Filed' },
+        { date: 'Oct 5, 2025', description: 'Response received' },
+      ],
+      locations: [
+        { name: 'Patna District', description: '12 Fair Price Shops' },
+      ],
+    },
+
+    departmentStats: {
+      responseRate: 58,
+      totalRTIs: 2890,
+      answeredRTIs: 1676,
+      pendingRTIs: 780,
+      overdueRTIs: 434,
+      averageResponseDays: 28,
+      targetResponseDays: 30,
+    },
+
+    timeline: [
+      {
+        id: 't1',
+        type: 'filed',
+        date: '2025-09-10',
+        title: 'RTI Filed',
+        description: 'Application submitted online',
+      },
+      {
+        id: 't2',
+        type: 'acknowledged',
+        date: '2025-09-11',
+        title: 'Acknowledged',
+        description: 'Application number assigned',
+        daysFromFiling: 1,
+      },
+      {
+        id: 't3',
+        type: 'reminder',
+        date: '2025-09-28',
+        title: 'Reminder Sent',
+        description: 'Follow-up sent to department',
+        daysFromFiling: 18,
+      },
+      {
+        id: 't4',
+        type: 'answered',
+        date: '2025-10-05',
+        title: 'Complete Response',
+        description: 'Response received with 4 documents',
+        daysFromFiling: 25,
+      },
+    ],
+  },
+
+  'win-3': {
+    id: 'RTI/PWD/RJ/2025/002156',
+    title: 'Water Supply Restored to 500 Homes After 6 Months',
+    status: 'answered',
+    department: 'Public Works Department',
+    location: 'Jaipur',
+    state: 'Rajasthan',
+    topic: 'Water & Sanitation',
+
+    filedDate: '2025-08-20',
+    acknowledgedDate: '2025-08-21',
+    respondedDate: '2025-09-12',
+    responseDays: 23,
+    daysElapsed: 23,
+    reminderDate: '2025-09-05',
+    pioName: 'Shri Mohan Sharma',
+    whyThisMattersIntro: 'This RTI revealed that a contractor was paid ₹45 Lakh for pipeline work that was never completed, leaving 500 families without water for 6 months.',
+
+    impactOneLiner: 'RTI exposed incomplete pipeline work despite full payment - contractor blacklisted and water supply restored within 45 days',
+    impactMetrics: [
+      { icon: '🏠', value: '500', label: 'HOMES' },
+      { icon: '⏱️', value: '180d', label: 'WITHOUT WATER' },
+      { icon: '💰', value: '₹45L', label: 'PAID' },
+      { icon: '📄', value: '23d', label: 'RESPONSE' },
+    ],
+    impactBadges: ['#WATER_SUPPLY', '#CONTRACTOR_FRAUD', '#SERVICES_FIXED', '#ACCOUNTABILITY'],
+    viewCount: 1876,
+
+    questionText: 'I request information regarding the water pipeline project for Mansarovar Extension, Jaipur:',
+    questionPoints: [
+      'Total project cost and payment details to contractor',
+      'Completion certificate and quality inspection reports',
+      'Timeline of work with milestones achieved',
+      'Complaints received from residents regarding water supply',
+      'Action taken against contractor for incomplete work',
+    ],
+
+    responseType: 'full-answer',
+    responseText: 'The contract for ₹45,00,000 was awarded to M/s Rajasthan Constructions in January 2025. Full payment was released in March 2025 based on submitted completion certificate. However, physical verification reveals only 40% work completed. Show cause notice has been issued to contractor and completion certificate signatory. Emergency work orders issued for immediate restoration.',
+    responseAttachments: [
+      { id: 'r1', name: 'Official Response Letter', title: 'Official Response Letter', type: 'pdf', size: '1.9 MB', pages: 7, receivedDate: 'Sep 12, 2025' },
+      { id: 'r2', name: 'Contract & Payment Details', title: 'Contract & Payment Details', type: 'pdf', size: '3.4 MB', pages: 14, receivedDate: 'Sep 12, 2025' },
+      { id: 'r3', name: 'Physical Verification Report', title: 'Physical Verification Report', type: 'pdf', size: '2.8 MB', pages: 10, receivedDate: 'Sep 12, 2025' },
+      { id: 'r4', name: 'Resident Complaints Register', title: 'Resident Complaints Register', type: 'pdf', size: '1.5 MB', pages: 8, receivedDate: 'Sep 12, 2025' },
+    ],
+    signedBy: 'Shri Mohan Sharma',
+    signedByDesignation: 'PIO, Public Works Department',
+    signedDate: '2025-09-12',
+
+    keyFindings: [
+      '₹45 Lakh paid for 40% completed work',
+      'Fake completion certificate submitted',
+      '500 homes without water for 6 months',
+      'Contractor blacklisted, recovery initiated',
+    ],
+
+    extractedEntities: {
+      amounts: [
+        { value: '₹45 Lakh', description: 'Contract value paid' },
+        { value: '₹27 Lakh', description: 'Recovery amount' },
+        { value: '40%', description: 'Actual work completed' },
+      ],
+      vendors: [
+        { name: 'M/s Rajasthan Constructions', type: 'Contractor (Blacklisted)' },
+      ],
+      officials: [
+        { name: 'Shri Mohan Sharma', designation: 'PIO, PWD' },
+      ],
+      dates: [
+        { date: 'Aug 20, 2025', description: 'RTI Filed' },
+        { date: 'Sep 12, 2025', description: 'Response received' },
+      ],
+      locations: [
+        { name: 'Mansarovar Extension, Jaipur', description: '500 households' },
+      ],
+    },
+
+    departmentStats: {
+      responseRate: 65,
+      totalRTIs: 4123,
+      answeredRTIs: 2680,
+      pendingRTIs: 987,
+      overdueRTIs: 456,
+      averageResponseDays: 26,
+      targetResponseDays: 30,
+    },
+
+    timeline: [
+      {
+        id: 't1',
+        type: 'filed',
+        date: '2025-08-20',
+        title: 'RTI Filed',
+        description: 'Application submitted online',
+      },
+      {
+        id: 't2',
+        type: 'acknowledged',
+        date: '2025-08-21',
+        title: 'Acknowledged',
+        description: 'Application number assigned',
+        daysFromFiling: 1,
+      },
+      {
+        id: 't3',
+        type: 'reminder',
+        date: '2025-09-05',
+        title: 'Reminder Sent',
+        description: 'Follow-up sent to department',
+        daysFromFiling: 16,
+      },
+      {
+        id: 't4',
+        type: 'answered',
+        date: '2025-09-12',
+        title: 'Complete Response',
+        description: 'Response received with 4 documents',
+        daysFromFiling: 23,
+      },
+    ],
+  },
+
+  'win-4': {
+    id: 'RTI/HLT/UP/2025/003478',
+    title: 'Hospital Forced to Hire 15 Missing Doctors',
+    status: 'answered',
+    department: 'Health Department',
+    location: 'Lucknow',
+    state: 'Uttar Pradesh',
+    topic: 'Healthcare',
+
+    filedDate: '2025-08-05',
+    acknowledgedDate: '2025-08-06',
+    respondedDate: '2025-08-28',
+    responseDays: 23,
+    daysElapsed: 23,
+    reminderDate: '2025-08-20',
+    pioName: 'Dr. Priya Singh',
+    whyThisMattersIntro: 'This RTI exposed how a district hospital operated with only 5 out of 20 sanctioned doctors for 18 months, causing severe patient suffering and preventable deaths.',
+
+    impactOneLiner: 'RTI revealed 75% doctor vacancies persisting for 18 months - recruitment fast-tracked and 15 doctors appointed within 60 days',
+    impactMetrics: [
+      { icon: '👨‍⚕️', value: '15', label: 'DOCTORS HIRED' },
+      { icon: '🛏️', value: '200', label: 'BEDS SERVED' },
+      { icon: '⏱️', value: '18mo', label: 'VACANCIES' },
+      { icon: '📄', value: '23d', label: 'RESPONSE' },
+    ],
+    impactBadges: ['#HEALTHCARE', '#DOCTOR_SHORTAGE', '#SERVICES_FIXED', '#PUBLIC_HEALTH'],
+    viewCount: 3124,
+
+    questionText: 'I request information regarding doctor appointments and patient care at District Hospital, Lucknow:',
+    questionPoints: [
+      'Sanctioned vs filled positions for all categories of doctors',
+      'Duration of vacancies and reasons for non-recruitment',
+      'Patient load and waiting times in OPD and emergency',
+      'Deaths due to delayed treatment or doctor unavailability',
+      'Steps taken to fill vacant positions',
+    ],
+
+    responseType: 'full-answer',
+    responseText: 'Out of 20 sanctioned positions, only 5 are currently filled. Vacancies exist since April 2024 due to recruitment freeze and administrative delays. Average OPD waiting time is 4 hours. Emergency wing operates with single doctor on most shifts. Recruitment process has been initiated on priority basis following this RTI application.',
+    responseAttachments: [
+      { id: 'r1', name: 'Official Response Letter', title: 'Official Response Letter', type: 'pdf', size: '2.1 MB', pages: 8, receivedDate: 'Aug 28, 2025' },
+      { id: 'r2', name: 'Staff Position Statement', title: 'Staff Position Statement', type: 'pdf', size: '1.4 MB', pages: 5, receivedDate: 'Aug 28, 2025' },
+      { id: 'r3', name: 'Patient Load Statistics', title: 'Patient Load Statistics', type: 'xlsx', size: '890 KB', receivedDate: 'Aug 28, 2025' },
+      { id: 'r4', name: 'Recruitment Status Report', title: 'Recruitment Status Report', type: 'pdf', size: '1.8 MB', pages: 6, receivedDate: 'Aug 28, 2025' },
+    ],
+    signedBy: 'Dr. Priya Singh',
+    signedByDesignation: 'PIO, Health Department',
+    signedDate: '2025-08-28',
+
+    keyFindings: [
+      '15 out of 20 doctor positions vacant for 18 months',
+      'Emergency ward running with single doctor',
+      '4-hour average OPD waiting time',
+      'Fast-track recruitment initiated post-RTI',
+    ],
+
+    extractedEntities: {
+      amounts: [
+        { value: '15', description: 'Doctors recruited' },
+        { value: '75%', description: 'Vacancy rate' },
+        { value: '4 hours', description: 'Average OPD wait' },
+      ],
+      officials: [
+        { name: 'Dr. Priya Singh', designation: 'PIO, Health Department' },
+      ],
+      dates: [
+        { date: 'Aug 5, 2025', description: 'RTI Filed' },
+        { date: 'Aug 28, 2025', description: 'Response received' },
+      ],
+      locations: [
+        { name: 'District Hospital, Lucknow', description: '200-bed facility' },
+      ],
+    },
+
+    departmentStats: {
+      responseRate: 52,
+      totalRTIs: 5678,
+      answeredRTIs: 2952,
+      pendingRTIs: 1890,
+      overdueRTIs: 836,
+      averageResponseDays: 32,
+      targetResponseDays: 30,
+    },
+
+    timeline: [
+      {
+        id: 't1',
+        type: 'filed',
+        date: '2025-08-05',
+        title: 'RTI Filed',
+        description: 'Application submitted online',
+      },
+      {
+        id: 't2',
+        type: 'acknowledged',
+        date: '2025-08-06',
+        title: 'Acknowledged',
+        description: 'Application number assigned',
+        daysFromFiling: 1,
+      },
+      {
+        id: 't3',
+        type: 'reminder',
+        date: '2025-08-20',
+        title: 'Reminder Sent',
+        description: 'Follow-up sent to department',
+        daysFromFiling: 15,
+      },
+      {
+        id: 't4',
+        type: 'answered',
+        date: '2025-08-28',
+        title: 'Complete Response',
+        description: 'Response received with 4 documents',
+        daysFromFiling: 23,
+      },
+    ],
+  },
+
+  'win-5': {
+    id: 'RTI/REV/KA/2025/001567',
+    title: 'Rs 8 Crore Land Scam Uncovered Through RTI',
+    status: 'answered',
+    department: 'Revenue Department',
+    location: 'Bangalore',
+    state: 'Karnataka',
+    topic: 'Land & Housing',
+
+    filedDate: '2025-08-01',
+    acknowledgedDate: '2025-08-02',
+    respondedDate: '2025-08-26',
+    responseDays: 25,
+    daysElapsed: 25,
+    reminderDate: '2025-08-18',
+    pioName: 'Shri Venkatesh Murthy',
+    whyThisMattersIntro: 'This RTI exposed how prime government land worth ₹8 Crore was allotted to a private builder at just ₹50 Lakh - 94% below market value - without proper auction.',
+
+    impactOneLiner: 'RTI revealed illegal allotment of 5 acres government land at 6% of market rate - CBI inquiry ordered and allotment cancelled',
+    impactMetrics: [
+      { icon: '💰', value: '₹8Cr', label: 'SCAM VALUE' },
+      { icon: '📍', value: '5', label: 'ACRES' },
+      { icon: '📉', value: '94%', label: 'UNDERVALUED' },
+      { icon: '📄', value: '25d', label: 'RESPONSE' },
+    ],
+    impactBadges: ['#LAND_SCAM', '#CORRUPTION', '#DATA_RELEASED', '#CBI_INQUIRY'],
+    viewCount: 4567,
+
+    questionText: 'I request information regarding land allotment in Whitefield area, Bangalore:',
+    questionPoints: [
+      'Details of all land allotments made in Whitefield in 2024-25',
+      'Market valuation vs actual allotment price for each parcel',
+      'Tender/auction process followed for each allotment',
+      'Names of allottees with their application details',
+      'Approval authority and date for each allotment',
+    ],
+
+    responseType: 'full-answer',
+    responseText: 'Records show that Survey No. 45/2 measuring 5 acres was allotted to M/s Whitefield Developers Pvt Ltd at ₹50,00,000 in December 2024. Current circle rate for the area is ₹1.6 Crore per acre. No public auction was conducted. Allotment was made under discretionary quota by the then District Collector. Matter has been referred to Lokayukta for investigation.',
+    responseAttachments: [
+      { id: 'r1', name: 'Official Response Letter', title: 'Official Response Letter', type: 'pdf', size: '2.5 MB', pages: 9, receivedDate: 'Aug 26, 2025' },
+      { id: 'r2', name: 'Land Allotment Records', title: 'Land Allotment Records', type: 'pdf', size: '4.2 MB', pages: 18, receivedDate: 'Aug 26, 2025' },
+      { id: 'r3', name: 'Circle Rate Documents', title: 'Circle Rate Documents', type: 'pdf', size: '1.8 MB', pages: 6, receivedDate: 'Aug 26, 2025' },
+      { id: 'r4', name: 'Approval File Notings', title: 'Approval File Notings', type: 'pdf', size: '3.1 MB', pages: 12, receivedDate: 'Aug 26, 2025' },
+    ],
+    signedBy: 'Shri Venkatesh Murthy',
+    signedByDesignation: 'PIO, Revenue Department',
+    signedDate: '2025-08-26',
+
+    keyFindings: [
+      '5 acres allotted at ₹50L vs market value ₹8Cr',
+      'No public auction conducted',
+      'Discretionary allotment without proper justification',
+      'CBI inquiry ordered, allotment cancelled',
+    ],
+
+    extractedEntities: {
+      amounts: [
+        { value: '₹8 Crore', description: 'Market value of land' },
+        { value: '₹50 Lakh', description: 'Allotment price' },
+        { value: '₹7.5 Crore', description: 'Loss to exchequer' },
+      ],
+      vendors: [
+        { name: 'M/s Whitefield Developers Pvt Ltd', type: 'Allottee (Under Investigation)' },
+      ],
+      officials: [
+        { name: 'Shri Venkatesh Murthy', designation: 'PIO, Revenue Department' },
+      ],
+      dates: [
+        { date: 'Aug 1, 2025', description: 'RTI Filed' },
+        { date: 'Aug 26, 2025', description: 'Response received' },
+      ],
+      locations: [
+        { name: 'Survey No. 45/2, Whitefield, Bangalore', description: '5 acres prime land' },
+      ],
+    },
+
+    departmentStats: {
+      responseRate: 61,
+      totalRTIs: 3890,
+      answeredRTIs: 2373,
+      pendingRTIs: 1012,
+      overdueRTIs: 505,
+      averageResponseDays: 27,
+      targetResponseDays: 30,
+    },
+
+    timeline: [
+      {
+        id: 't1',
+        type: 'filed',
+        date: '2025-08-01',
+        title: 'RTI Filed',
+        description: 'Application submitted online',
+      },
+      {
+        id: 't2',
+        type: 'acknowledged',
+        date: '2025-08-02',
+        title: 'Acknowledged',
+        description: 'Application number assigned',
+        daysFromFiling: 1,
+      },
+      {
+        id: 't3',
+        type: 'reminder',
+        date: '2025-08-18',
+        title: 'Reminder Sent',
+        description: 'Follow-up sent to department',
+        daysFromFiling: 17,
+      },
+      {
+        id: 't4',
+        type: 'answered',
+        date: '2025-08-26',
+        title: 'Complete Response',
+        description: 'Response received with 4 documents',
+        daysFromFiling: 25,
+      },
+    ],
+  },
+
+  'win-6': {
+    id: 'RTI/PCB/GJ/2025/000789',
+    title: 'Pollution Norms Enforced at 20 Factories After RTI',
+    status: 'answered',
+    department: 'Pollution Control Board',
+    location: 'Ahmedabad',
+    state: 'Gujarat',
+    topic: 'Environment',
+
+    filedDate: '2025-07-25',
+    acknowledgedDate: '2025-07-26',
+    respondedDate: '2025-08-18',
+    responseDays: 24,
+    daysElapsed: 24,
+    reminderDate: '2025-08-10',
+    pioName: 'Dr. Hemant Patel',
+    whyThisMattersIntro: 'This RTI revealed how 20 factories in Vatva industrial area were violating emission norms for years without any penalty, affecting 50,000 residents with respiratory issues.',
+
+    impactOneLiner: 'RTI exposed 5 years of unpunished pollution violations - 20 factories issued closure notices, ₹2.5 Crore penalty imposed',
+    impactMetrics: [
+      { icon: '🏭', value: '20', label: 'FACTORIES' },
+      { icon: '👥', value: '50K', label: 'RESIDENTS' },
+      { icon: '💰', value: '₹2.5Cr', label: 'PENALTY' },
+      { icon: '📄', value: '24d', label: 'RESPONSE' },
+    ],
+    impactBadges: ['#ENVIRONMENT', '#POLLUTION', '#POLICY_CHANGED', '#PUBLIC_HEALTH'],
+    viewCount: 2890,
+
+    questionText: 'I request information regarding pollution monitoring and enforcement in Vatva Industrial Area, Ahmedabad:',
+    questionPoints: [
+      'Air and water quality monitoring data for last 3 years',
+      'List of industries exceeding permissible emission limits',
+      'Penalties imposed and collected for violations',
+      'Show cause notices issued and their outcomes',
+      'Health impact assessment studies conducted in the area',
+    ],
+
+    responseType: 'full-answer',
+    responseText: 'Monitoring data shows 20 units consistently exceeding SOx, NOx, and PM limits. Despite 45 show cause notices between 2022-2024, only 3 resulted in penalties. Following this RTI, comprehensive inspection conducted and closure notices issued to 12 units. Environmental compensation of ₹2.5 Crore demanded. CPCB has been informed for coordinated action.',
+    responseAttachments: [
+      { id: 'r1', name: 'Official Response Letter', title: 'Official Response Letter', type: 'pdf', size: '2.3 MB', pages: 8, receivedDate: 'Aug 18, 2025' },
+      { id: 'r2', name: 'Air Quality Monitoring Data', title: 'Air Quality Monitoring Data', type: 'xlsx', size: '3.8 MB', receivedDate: 'Aug 18, 2025' },
+      { id: 'r3', name: 'Violation Records 2022-2025', title: 'Violation Records 2022-2025', type: 'pdf', size: '5.2 MB', pages: 28, receivedDate: 'Aug 18, 2025' },
+      { id: 'r4', name: 'Closure Notice Copies', title: 'Closure Notice Copies', type: 'pdf', size: '2.1 MB', pages: 15, receivedDate: 'Aug 18, 2025' },
+    ],
+    signedBy: 'Dr. Hemant Patel',
+    signedByDesignation: 'PIO, Gujarat Pollution Control Board',
+    signedDate: '2025-08-18',
+
+    keyFindings: [
+      '20 factories violated norms for 5+ years',
+      '45 notices issued but only 3 penalties collected',
+      '12 factories issued closure notices post-RTI',
+      '₹2.5 Crore environmental compensation demanded',
+    ],
+
+    extractedEntities: {
+      amounts: [
+        { value: '₹2.5 Crore', description: 'Penalty imposed' },
+        { value: '20', description: 'Violating factories' },
+        { value: '50,000', description: 'Affected residents' },
+      ],
+      officials: [
+        { name: 'Dr. Hemant Patel', designation: 'PIO, Gujarat PCB' },
+      ],
+      dates: [
+        { date: 'Jul 25, 2025', description: 'RTI Filed' },
+        { date: 'Aug 18, 2025', description: 'Response received' },
+      ],
+      locations: [
+        { name: 'Vatva Industrial Area, Ahmedabad', description: '20 polluting units' },
+      ],
+    },
+
+    departmentStats: {
+      responseRate: 69,
+      totalRTIs: 1567,
+      answeredRTIs: 1081,
+      pendingRTIs: 312,
+      overdueRTIs: 174,
+      averageResponseDays: 24,
+      targetResponseDays: 30,
+    },
+
+    timeline: [
+      {
+        id: 't1',
+        type: 'filed',
+        date: '2025-07-25',
+        title: 'RTI Filed',
+        description: 'Application submitted online',
+      },
+      {
+        id: 't2',
+        type: 'acknowledged',
+        date: '2025-07-26',
+        title: 'Acknowledged',
+        description: 'Application number assigned',
+        daysFromFiling: 1,
+      },
+      {
+        id: 't3',
+        type: 'reminder',
+        date: '2025-08-10',
+        title: 'Reminder Sent',
+        description: 'Follow-up sent to department',
+        daysFromFiling: 16,
+      },
+      {
+        id: 't4',
+        type: 'answered',
+        date: '2025-08-18',
+        title: 'Complete Response',
+        description: 'Response received with 4 documents',
+        daysFromFiling: 24,
+      },
+    ],
+  },
 }
