@@ -339,106 +339,187 @@ export const rtiStatusExamples: Record<string, RTIDetailData> = {
 
   // 5. PARTIAL RESPONSE STATE
   'status-partial': {
-    id: 'status-partial',
-    title: 'Hospital Bed Availability in Government Hospitals',
+    id: 'RTI/CR/2024/004156',
+    title: 'Revenue records and land conversion applications for IT corridor zones',
     status: 'partial',
-    department: 'Health',
-    location: 'Delhi',
-    state: 'Delhi',
-    topic: 'Healthcare',
+    department: 'Revenue Dept (TN)',
+    location: 'Chennai',
+    state: 'Tamil Nadu',
+    topic: 'Land Records',
 
-    filedDate: '2025-01-20',
-    acknowledgedDate: '2025-01-21',
-    respondedDate: '2025-02-03',
-    daysElapsed: 14,
-    pioName: 'Dr. Anjali Sharma',
-    whyThisMattersIntro: 'Partial disclosure of hospital data reveals gaps in departmental record-keeping and highlights areas where healthcare transparency needs improvement.',
+    filedDate: '2024-09-18',
+    acknowledgedDate: '2024-09-19',
+    respondedDate: '2024-10-14',
+    responseDays: 26,
+    daysElapsed: 26,
+    reminderDate: '2024-10-11',
+    pioName: 'K. Jayaraman',
+    whyThisMattersIntro: 'This RTI exposes critical gaps in land conversion transparency in Chennai\'s IT corridor development, affecting urban planning and public accountability.',
 
-    statusMessage: 'Department provided partial information. 2 of 4 questions answered. You can file first appeal for complete response',
+    statusMessage: 'The department answered 3 out of 5 questions. Two questions were denied citing exemptions under Section 8(1)(d) and 8(1)(j) of the RTI Act. You have the right to file a First Appeal within 30 days.',
 
-    impactOneLiner: 'Partial data provided - hospital capacity disclosed but patient referral data withheld',
+    impactOneLiner: 'Partial data provided - application statistics disclosed but applicant identities and investigation details withheld',
     impactMetrics: [
-      { icon: '🏛️', value: 'Health', label: 'DEPT' },
-      { icon: '📍', value: 'Delhi', label: 'LOCATION' },
-      { icon: '⏱️', value: '14d', label: 'RESPONSE' },
-      { icon: '⚠️', value: '2/4', label: 'ANSWERED' },
+      { icon: '🏛️', value: 'Revenue', label: 'DEPT' },
+      { icon: '📍', value: 'Chennai', label: 'LOCATION' },
+      { icon: '⏱️', value: '26d', label: 'RESPONSE' },
+      { icon: '⚠️', value: '3/5', label: 'ANSWERED' },
     ],
-    impactBadges: ['#PARTIAL', '#INCOMPLETE'],
+    impactBadges: ['#PARTIAL', '#LAND_RECORDS', '#URBAN_PLANNING'],
     viewCount: 567,
 
-    questionText: 'I request information regarding bed availability and occupancy in government hospitals of Delhi for the quarter October-December 2024:',
+    questionText: 'I request information regarding land conversion applications in IT corridor zones of Chennai for the period 2023-2024:',
     questionPoints: [
-      'Hospital-wise total bed capacity and category breakdown',
-      'Average monthly occupancy rates with peak occupancy data',
-      'Number of patients turned away due to bed unavailability',
-      'Steps taken to optimize bed utilization and reduce waiting times',
+      'Total number of land conversion applications received zone-wise',
+      'Approval and rejection rates for these applications with reasons',
+      'List of major land conversion applicants (companies/individuals) with plot sizes',
+      'Average processing time from application to approval/rejection',
+      'Details of any irregularities or complaints filed regarding these conversions',
     ],
 
     responseType: 'partial',
-    responseText: 'With reference to your RTI application dated January 20, 2025, the following information is provided for points 1 and 2. Information for points 3 and 4 requires compilation from multiple divisions and is not readily available.',
+    responseText: 'With reference to your RTI application dated September 18, 2024, the following information is provided for points 1, 2 and 4. Information for points 3 and 5 cannot be disclosed under Sections 8(1)(d) and 8(1)(j) of the RTI Act.',
 
     providedItems: [
       {
-        item: 'Hospital-wise bed capacity',
-        summary: 'Full breakdown provided: 15 hospitals, 8,450 beds - General: 6,200 (73%), ICU: 1,450 (17%), Isolation: 800 (10%)',
+        item: 'Application volumes',
+        summary: 'Total 847 applications received across IT zones with geographic distribution',
       },
       {
-        item: 'Occupancy rates',
-        summary: 'Average: 60% - General: 58%, ICU: 72%, Isolation: 35%, Peak: 78% in November',
+        item: 'Approval/rejection statistics',
+        summary: '512 approved (60.4%), 189 rejected (22.3%), 146 pending (17.3%)',
+      },
+      {
+        item: 'Processing timelines',
+        summary: 'Average 127 days for approvals, 89 days for rejections (statutory: 60 days)',
       },
     ],
 
     deniedItems: [
       {
-        item: 'Patient referrals data',
-        reason: 'Information not compiled in requested format',
+        item: 'Applicant identities',
+        reason: 'Section 8(1)(d) - commercial confidence and trade secrets',
       },
       {
-        item: 'Optimization measures',
-        reason: 'Information requires compilation from multiple divisions',
+        item: 'Irregularities/complaints',
+        reason: 'Section 8(1)(j) - personal information, ongoing investigations',
       },
+    ],
+
+    // Disclosed and withheld items for KeyInfoCards
+    disclosedItems: [
+      { text: 'Total application volumes and geographic distribution across IT zones' },
+      { text: 'Approval and rejection statistics with categorical breakdown of reasons' },
+      { text: 'Processing timelines revealing significant delays beyond statutory limits' },
+    ],
+
+    withheldItems: [
+      { text: 'Identity of major applicants citing commercial confidentiality concerns' },
+      { text: 'Details of irregularities and complaints under active investigation' },
+      { text: 'These exemptions can be challenged through First Appeal process' },
     ],
 
     responseAttachments: [
-      { id: 'r1', name: 'bed_capacity_data.xlsx', type: 'xlsx', size: '289 KB' },
-      { id: 'r2', name: 'occupancy_trends.pdf', type: 'pdf', size: '1.4 MB' },
+      { id: 'r1', name: 'Official Response Letter', title: 'Official Response Letter', type: 'pdf', size: '2.4 MB', pages: 8, receivedDate: 'Oct 14, 2024' },
+      { id: 'r2', name: 'Contractor Details & Registration', title: 'Contractor Details & Registration', type: 'pdf', size: '3.1 MB', pages: 12, receivedDate: 'Oct 14, 2024' },
+      { id: 'r3', name: 'Project Timeline & Milestones', title: 'Project Timeline & Milestones', type: 'pdf', size: '1.8 MB', pages: 5, receivedDate: 'Oct 14, 2024' },
     ],
 
-    signedBy: 'Dr. Anjali Sharma',
-    signedByDesignation: 'Director, Health Services',
-    signedDate: '2025-02-03',
+    signedBy: 'K. Jayaraman',
+    signedByDesignation: 'PIO, Revenue Department',
+    signedDate: '2024-10-14',
     canFileAppeal: true,
+
+    // Why This Is Important points matching HTML
+    whyThisIsImportant: [
+      { icon: '🏙️', text: 'Reveals transparency gaps in Chennai\'s IT corridor development worth hundreds of crores' },
+      { icon: '⚖️', text: 'Exposes significant delays in statutory processing timelines affecting urban planning' },
+      { icon: '🔍', text: 'Highlights potential irregularities under investigation in high-value land conversions' },
+      { icon: '👥', text: 'Demonstrates how commercial interests may be shielded from public accountability' },
+    ],
+
+    // Detailed Q&A for partial status
+    detailedQA: [
+      {
+        question: 'Total number of land conversion applications received zone-wise',
+        answer: '847 applications received across IT corridor zones. Siruseri: 312, OMR: 256, Sholinganallur: 189, Others: 90. Peak filing period was Q2 2024 with 287 applications.',
+        status: 'answered',
+        sourceDocument: 'Response Letter',
+        sourcePage: 2,
+      },
+      {
+        question: 'Approval and rejection rates for these applications with reasons',
+        answer: 'Out of 847 applications: 512 approved (60.4%), 189 rejected (22.3%), 146 pending (17.3%). Main rejection reasons: zoning violations (45%), incomplete documentation (32%), environmental clearance issues (23%).',
+        status: 'answered',
+        sourceDocument: 'Response Letter',
+        sourcePage: 4,
+      },
+      {
+        question: 'List of major land conversion applicants (companies/individuals) with plot sizes',
+        answer: '',
+        denialReason: 'Information denied under Section 8(1)(d) - commercial confidence and trade secrets. Disclosure would harm competitive position of third parties.',
+        status: 'denied',
+      },
+      {
+        question: 'Average processing time from application to approval/rejection',
+        answer: 'Average processing time is 127 days for approvals and 89 days for rejections. Statutory timeline is 60 days as per Tamil Nadu Land Reforms Act. Delays primarily due to inter-departmental coordination requirements.',
+        status: 'answered',
+        sourceDocument: 'Response Letter',
+        sourcePage: 6,
+      },
+      {
+        question: 'Details of any irregularities or complaints filed regarding these conversions',
+        answer: '',
+        denialReason: 'Information denied under Section 8(1)(j) - personal information and ongoing investigations. Several complaints under active investigation by vigilance department.',
+        status: 'denied',
+      },
+    ],
 
     extractedEntities: {
       amounts: [
-        { value: '8,450', description: 'Total beds' },
+        { value: '847', description: 'Total applications' },
+        { value: '512', description: 'Approved applications' },
+        { value: '127 days', description: 'Avg processing time' },
       ],
       officials: [
-        { name: 'Dr. Anjali Sharma', designation: 'Director, Health Services' },
+        { name: 'K. Jayaraman', designation: 'PIO, Revenue Department' },
       ],
+    },
+
+    departmentStats: {
+      responseRate: 58,
+      totalRTIs: 2678,
+      answeredRTIs: 1553,
+      pendingRTIs: 480,
+      overdueRTIs: 180,
+      averageResponseDays: 29,
+      targetResponseDays: 30,
+      partialResponseRate: 18,
     },
 
     timeline: [
       {
         id: 't1',
         type: 'filed',
-        date: '2025-01-20',
+        date: '2024-09-18',
         title: 'RTI Filed',
+        description: 'Application submitted online',
       },
       {
         id: 't2',
-        type: 'acknowledged',
-        date: '2025-01-21',
-        title: 'Acknowledged',
-        daysFromFiling: 1,
+        type: 'reminder',
+        date: '2024-10-11',
+        title: 'Reminder Sent',
+        description: 'Follow-up sent to department',
+        daysFromFiling: 23,
       },
       {
         id: 't3',
         type: 'answered',
-        date: '2025-02-03',
+        date: '2024-10-14',
         title: 'Partial Response',
-        description: '2 of 4 questions answered',
-        daysFromFiling: 14,
+        description: '3 of 5 questions answered',
+        daysFromFiling: 26,
       },
     ],
   },
