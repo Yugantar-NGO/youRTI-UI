@@ -375,13 +375,13 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
             status={data.status}
             filedDate={data.filedDate}
             respondedDate={data.respondedDate}
-            expectedDate={data.deadline}
+            expectedDate={data.status === 'transferred' ? data.newDeadline : data.deadline}
             daysElapsed={data.daysElapsed}
             daysRemaining={data.daysRemaining}
             daysOverdue={data.daysOverdue}
             currentPIO={data.pioName || "Rajesh Kumar"}
             reminderDate={data.reminderDate}
-            transferDate={data.status === 'transferred' ? data.respondedDate : undefined}
+            transferDate={data.transferDate}
             questionsAnswered={questionsAnswered}
             totalQuestions={totalQuestions}
             documentsCount={data.responseAttachments?.length}
