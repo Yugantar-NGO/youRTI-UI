@@ -2607,4 +2607,97 @@ Following steps have been implemented to optimize bed utilization:
       },
     ],
   },
+
+  'rti-025': {
+    id: 'rti-025',
+    title: 'Land Acquisition Records for Highway Expansion Project',
+    status: 'transferred',
+    department: 'National Highways Authority of India',
+    location: 'Pune',
+    state: 'Maharashtra',
+    topic: 'Infrastructure',
+
+    filedDate: '2025-01-15',
+    acknowledgedDate: '2025-01-16',
+    transferredFrom: 'NHAI Regional Office, Pune',
+    transferredTo: 'District Collector Office, Pune',
+    transferDate: '2025-01-22',
+    newDeadline: '2025-02-21',
+    daysElapsed: 7,
+    daysRemaining: 14,
+    pioName: 'Shri Ramesh Patil',
+
+    impactOneLiner: 'RTI transferred from NHAI to District Collector — land records fall under Revenue Department jurisdiction',
+    impactMetrics: [
+      { icon: '🔄', value: 'TRANSFER', label: 'STATUS' },
+      { icon: '⏰', value: '7 days', label: 'AT DC' },
+      { icon: '🏛️', value: '2 depts', label: 'INVOLVED' },
+      { icon: '📍', value: 'DC Pune', label: 'CURRENT' },
+    ],
+    impactBadges: ['🔄 JURISDICTION SHIFT', '⏳ NEW TIMELINE'],
+    viewCount: 189,
+
+    whyThisMattersIntro: 'Land acquisition transparency is crucial for ensuring fair compensation to farmers and preventing corruption in infrastructure projects.',
+
+    questionText: 'I request information regarding the land acquisition for NH-48 highway expansion near Pune:',
+    questionPoints: [
+      'List of survey numbers and villages where land is being acquired',
+      'Compensation rates offered to landowners',
+      'Social Impact Assessment report',
+      'Details of rehabilitation and resettlement plan',
+    ],
+
+    responseType: 'transferred',
+    transferReason: 'Land acquisition records are maintained by the Revenue Department under the District Collector. NHAI does not hold these records directly. Application transferred under Section 6(3) of RTI Act to the appropriate authority.',
+
+    extractedEntities: {
+      amounts: [],
+      officials: [
+        { name: 'Shri Ramesh Patil', designation: 'PIO, District Collector Office' },
+      ],
+      vendors: [],
+      dates: [
+        { date: '2025-01-22', description: 'Transfer date' },
+        { date: '2025-02-21', description: 'New deadline' },
+      ],
+      locations: [
+        { name: 'Pune District', description: 'NH-48 expansion corridor' },
+      ],
+    },
+
+    departmentStats: {
+      responseRate: 72,
+      totalRTIs: 856,
+      answeredRTIs: 612,
+      pendingRTIs: 178,
+      overdueRTIs: 66,
+      averageResponseDays: 26,
+      targetResponseDays: 30,
+    },
+
+    timeline: [
+      {
+        id: 't1',
+        type: 'filed',
+        date: '2025-01-15',
+        title: 'RTI Filed',
+        description: 'Submitted to NHAI Regional Office',
+      },
+      {
+        id: 't2',
+        type: 'acknowledged',
+        date: '2025-01-16',
+        title: 'Acknowledged by NHAI',
+        daysFromFiling: 1,
+      },
+      {
+        id: 't3',
+        type: 'transferred',
+        date: '2025-01-22',
+        title: 'Transferred to District Collector',
+        description: 'New timeline starts from transfer date',
+        daysFromFiling: 7,
+      },
+    ],
+  },
 }
