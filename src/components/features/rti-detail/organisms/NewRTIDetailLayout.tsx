@@ -122,21 +122,28 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
       title: 'Escalate to Information Commission',
       description: 'Complaint to State Information Commission for non-compliance',
       details:
-        "If your first appeal is rejected or you don't receive a satisfactory response, you can escalate to the State Information Commission. File a second appeal within 90 days of the first appeal decision. The Commission has the power to impose penalties and enforce compliance.",
+        "If the first appeal doesn't resolve the issue, you can approach the State Information Commission (SIC). File a second appeal or complaint within 90 days of the first appeal decision. The SIC has the power to impose penalties on erring officials and can direct the disclosure of information.",
     },
     {
-      icon: '✉️',
+      icon: '📧',
       title: 'Contact Department Head',
       description: 'Send formal complaint to Secretary or Department Head',
       details:
-        'Write a formal letter to the Department Head or Secretary explaining the delay and requesting immediate action. Include your RTI reference number, filing date, and a copy of the original application. This often expedites the response process.',
+        'Sometimes a direct complaint to the department head can expedite action. Draft a formal letter outlining the RTI history, delays, and your concerns. Send it via email and registered post to maintain a paper trail. Include references to relevant RTI sections and penalties for non-compliance.',
     },
     {
       icon: '👥',
       title: 'Rally Community Support',
       description: 'Share this RTI to build pressure for response',
       details:
-        'Public attention can be a powerful tool. Share your RTI on social media and community forums to create awareness about the delay. When more citizens track and support your RTI, departments are more likely to respond promptly.',
+        'Public pressure can be effective. Share this RTI on social media, tag relevant authorities, and connect with RTI activists or civil society organizations. Collective action often prompts faster responses and demonstrates public interest in transparency and accountability.',
+    },
+    {
+      icon: '💰',
+      title: 'Claim Daily Penalty',
+      description: 'Department liable for ₹250/day penalty for delay',
+      details:
+        'Under Section 20 of the RTI Act, if information is not provided within the prescribed time limit without reasonable cause, the Information Commission can impose a penalty of up to ₹250 per day on the concerned PIO. You can claim compensation for the delay when filing a complaint with the Information Commission.',
     },
   ]
 
@@ -325,7 +332,7 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
             daysElapsed={data.daysElapsed}
             daysRemaining={data.daysRemaining}
             daysOverdue={data.daysOverdue}
-            currentPIO="Suresh Gowda"
+            currentPIO={data.pioName || "Rajesh Kumar"}
             transferDate={data.status === 'transferred' ? data.respondedDate : undefined}
           />
 
@@ -333,6 +340,7 @@ export function NewRTIDetailLayout({ data, className = '' }: NewRTIDetailLayoutP
           <KeyInfoCards
             status={data.status}
             whyThisMatters={whyThisMatters}
+            whyThisMattersIntro={data.whyThisMattersIntro}
             whatWasAsked={whatWasAsked}
             whatWasRevealed={whatWasRevealed}
             pendingMessage={
