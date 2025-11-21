@@ -460,6 +460,7 @@ export interface RTIResultItem {
   responseDays?: number // days to respond (if answered)
   daysOverdue?: number // days overdue (if pending/overdue)
   topic: string
+  tags?: string[] // Optional tags for filtering
   teaserText?: string // Optional hook/teaser
   viewCount?: number
   link: string
@@ -475,6 +476,7 @@ export interface FilterOptions {
   cities: Array<{ id: string; name: string; count: number; stateId: string }>
   departments: Array<{ id: string; name: string; code: string; count: number }>
   statuses: Array<{ id: RTIStatus; label: string; count: number }>
+  tags: Array<{ id: string; name: string; count: number }>
 }
 
 /**
@@ -486,6 +488,7 @@ export interface ActiveFilters {
   states: string[]
   cities: string[]
   departments: string[]
+  tags: string[]
   status: RTIStatus | 'all'
   dateRange: 'all' | 'last-7-days' | 'last-30-days' | 'last-90-days' | 'last-year'
   searchQuery?: string
