@@ -21,6 +21,9 @@ export const rtiStatusExamples: Record<string, RTIDetailData> = {
     respondedDate: '2024-01-28',
     responseDays: 23,
     daysElapsed: 23,
+    reminderDate: '2024-01-20',
+    pioName: 'Rajesh Kumar',
+    whyThisMattersIntro: 'This RTI exposes critical gaps in infrastructure spending accountability and contractor selection processes for public road repairs.',
 
     impactOneLiner: 'Project cost was ₹12.4 Crore, 3x the initial estimate of ₹4.1 Crore with contractor appointed directly without tender',
     impactMetrics: [
@@ -137,6 +140,8 @@ export const rtiStatusExamples: Record<string, RTIDetailData> = {
     deadline: '2025-02-19',
     daysElapsed: 12,
     daysRemaining: 18,
+    pioName: 'Dr. Anjali Sharma',
+    whyThisMattersIntro: 'Understanding hospital bed availability is crucial for healthcare planning and ensures transparency in resource allocation across government hospitals.',
 
     statusMessage: 'Response pending from Health Department, Delhi',
     statusDaysInfo: '18 days remaining before statutory deadline',
@@ -198,6 +203,9 @@ export const rtiStatusExamples: Record<string, RTIDetailData> = {
     deadline: '2025-02-19',
     daysElapsed: 45,
     daysOverdue: 15,
+    pioName: 'Dr. Anjali Sharma',
+    reminderDate: '2025-02-15',
+    whyThisMattersIntro: 'This overdue RTI highlights systemic delays in healthcare transparency, potentially affecting public health planning and accountability.',
 
     statusMessage: 'Response overdue by 15 days. Department has violated RTI Act statutory deadline. You can file first appeal now.',
     statusDaysInfo: 'Potential penalty: ₹3,750 (15 days × ₹250)',
@@ -274,6 +282,8 @@ export const rtiStatusExamples: Record<string, RTIDetailData> = {
     transferredFrom: 'Health Department, Delhi',
     transferredTo: 'Public Works Department, Delhi',
     transferReason: 'Request pertains to hospital construction data under PWD',
+    pioName: 'Ravi Shankar',
+    whyThisMattersIntro: 'Transfer of this RTI to PWD indicates infrastructure-related aspects of hospital capacity, revealing cross-departmental healthcare planning challenges.',
 
     statusMessage: 'Transferred to Public Works Department on 5 Feb 2025',
     statusDaysInfo: 'New department has 30 days to respond from transfer date',
@@ -341,6 +351,8 @@ export const rtiStatusExamples: Record<string, RTIDetailData> = {
     acknowledgedDate: '2025-01-21',
     respondedDate: '2025-02-03',
     daysElapsed: 14,
+    pioName: 'Dr. Anjali Sharma',
+    whyThisMattersIntro: 'Partial disclosure of hospital data reveals gaps in departmental record-keeping and highlights areas where healthcare transparency needs improvement.',
 
     statusMessage: 'Department provided partial information. 2 of 4 questions answered. You can file first appeal for complete response',
 
