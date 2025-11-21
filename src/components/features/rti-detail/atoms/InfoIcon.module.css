@@ -1,0 +1,89 @@
+.container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.iconButton:hover {
+  background: #d1d5db;
+}
+
+.iconButton:focus {
+  outline: 2px solid #0ea5e9;
+  outline-offset: 2px;
+}
+
+.icon {
+  font-size: 11px;
+  font-weight: 700;
+  color: #6b7280;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-style: italic;
+  line-height: 1;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  min-width: 220px;
+  max-width: 300px;
+}
+
+.tooltipContent {
+  background: #0f172a;
+  color: white;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  font-family: 'Inter', -apple-system, sans-serif;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.25);
+}
+
+.tooltipContent::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #0f172a;
+}
+
+@media (max-width: 768px) {
+  .tooltip {
+    min-width: 180px;
+    max-width: 250px;
+    left: auto;
+    right: 0;
+    transform: none;
+  }
+
+  .tooltipContent::after {
+    left: auto;
+    right: 12px;
+    transform: none;
+  }
+}
