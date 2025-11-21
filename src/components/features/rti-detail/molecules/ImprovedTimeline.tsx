@@ -1,6 +1,7 @@
 'use client'
 
 import { BaseProps, RTIStatus } from '@/types'
+import { InfoIcon } from '../atoms'
 import styles from './ImprovedTimeline.module.css'
 
 interface TimelineEvent {
@@ -162,6 +163,7 @@ export function ImprovedTimeline({
         <div className={styles.title}>
           <span>{config.icon}</span>
           <span>{config.title}</span>
+          <InfoIcon tooltip="Track your RTI application's progress from filing to response. This timeline shows key dates, current status, and how long the process has taken." />
         </div>
         <div
           className={styles.duration}
