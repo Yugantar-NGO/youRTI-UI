@@ -196,3 +196,163 @@
   font-weight: 600;
   font-style: normal;
 }
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .section {
+    padding: 20px 16px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    border-width: 2px;
+  }
+
+  .header {
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .icon {
+    font-size: 24px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .qaList {
+    gap: 16px;
+  }
+
+  .qaItem {
+    border-radius: 12px;
+    border-width: 2px;
+  }
+
+  .questionHeader {
+    padding: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .questionLeft {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .number {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    border-radius: 10px;
+  }
+
+  .questionText {
+    font-size: 15px;
+    line-height: 1.5;
+    width: 100%;
+  }
+
+  .statusBadge {
+    padding: 6px 12px;
+    font-size: 11px;
+    align-self: flex-start;
+  }
+
+  .answerContent {
+    padding: 16px;
+  }
+
+  .answerText {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+
+  .deniedReason {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .sourceLink {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  .pendingContent {
+    padding: 16px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 16px 12px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+
+  .header {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .icon {
+    font-size: 20px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .qaList {
+    gap: 12px;
+  }
+
+  .questionHeader {
+    padding: 14px 12px;
+    gap: 10px;
+  }
+
+  .questionLeft {
+    gap: 10px;
+  }
+
+  .number {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  .questionText {
+    font-size: 14px;
+  }
+
+  .statusBadge {
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+
+  .answerContent {
+    padding: 14px 12px;
+  }
+
+  .answerText {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  .sourceLink {
+    padding: 8px 12px;
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  .pendingContent {
+    padding: 14px 12px;
+    font-size: 13px;
+  }
+}
