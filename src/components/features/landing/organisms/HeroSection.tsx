@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { BigWinCard } from '../molecules/BigWinCard'
 import { UrgentUnansweredCard } from '../molecules/UrgentUnansweredCard'
 import { DASHBOARD_STATS, INDIA_STATS } from '@/constants/dashboard.constants'
@@ -110,9 +111,9 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
             </div>
 
             <div className={styles.contextFooter}>
-              <a href="/analytics" className={styles.viewDashboardLink}>
+              <Link href="/analytics" className={styles.viewDashboardLink}>
                 View Dashboard →
-              </a>
+              </Link>
             </div>
           </div>
         </div>
