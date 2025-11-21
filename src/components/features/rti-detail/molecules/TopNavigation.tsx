@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { Search } from 'lucide-react'
 import { BaseProps } from '@/types'
 import styles from './TopNavigation.module.css'
 
@@ -12,7 +13,7 @@ interface TopNavigationProps extends BaseProps {
  * TopNavigation Component
  *
  * Sticky top navigation bar with logo, links, search, and share button.
- * Matches the new RTI detail page design.
+ * Uses dark theme consistent with landing and browse pages.
  *
  * @example
  * <TopNavigation />
@@ -39,11 +40,15 @@ export function TopNavigation({ className = '', onShareClick }: TopNavigationPro
 
   return (
     <nav className={`${styles.topNav} ${className}`}>
-      <div className={styles.navLeft}>
-        <Link href="/" className={styles.logo}>
-          yourRTI
+      <div className={styles.container}>
+        {/* Left: Logo + Wordmark */}
+        <Link href="/" className={styles.brand}>
+          <div className={styles.logo}>RTI</div>
+          <span className={styles.wordmark}>RTI Transparency Dashboard</span>
         </Link>
-        <div className={styles.navLinks}>
+
+        {/* Center: Navigation Links */}
+        <nav className={styles.navLinks}>
           <Link href="/browse" className={styles.navLink}>
             Browse
           </Link>
@@ -53,18 +58,32 @@ export function TopNavigation({ className = '', onShareClick }: TopNavigationPro
           <Link href="/about" className={styles.navLink}>
             About
           </Link>
+        </nav>
+
+        {/* Right: Search + Actions */}
+        <div className={styles.actions}>
+          <div className={styles.searchBar}>
+            <Search className={styles.searchIcon} size={18} />
+            <input
+              type="search"
+              placeholder="Search RTIs, topics, departments…"
+              className={styles.searchInput}
+            />
+          </div>
+
+          <div className={styles.iconButtons}>
+            <button className={styles.shareBtn} onClick={handleShare} aria-label="Share this RTI">
+              <span>↗</span>
+              <span>Share</span>
+            </button>
+            <button className={styles.iconButton} aria-label="Switch language">
+              <span>EN</span>
+            </button>
+            <button className={styles.iconButton} aria-label="Help">
+              <span>?</span>
+            </button>
+          </div>
         </div>
-      </div>
-      <div className={styles.navRight}>
-        <input
-          type="text"
-          className={styles.searchInput}
-          placeholder="Search RTIs..."
-        />
-        <button className={styles.shareBtn} onClick={handleShare}>
-          <span>↗</span>
-          <span>Share</span>
-        </button>
       </div>
     </nav>
   )
