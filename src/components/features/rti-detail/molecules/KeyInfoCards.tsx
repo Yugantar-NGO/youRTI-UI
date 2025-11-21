@@ -16,6 +16,7 @@ export interface RevealedFinding {
 interface KeyInfoCardsProps extends BaseProps {
   status: RTIStatus
   whyThisMatters?: ImportancePoint[]
+  whyThisMattersIntro?: string
   whatWasAsked: ImportancePoint[]
   whatWasRevealed?: RevealedFinding[]
   pendingMessage?: string
@@ -33,6 +34,7 @@ interface KeyInfoCardsProps extends BaseProps {
 export function KeyInfoCards({
   status,
   whyThisMatters,
+  whyThisMattersIntro,
   whatWasAsked,
   whatWasRevealed,
   pendingMessage,
@@ -54,9 +56,9 @@ export function KeyInfoCards({
             </div>
           </div>
 
-          {status === 'answered' && (
+          {status === 'answered' && whyThisMattersIntro && (
             <div className={styles.intro}>
-              This RTI exposes critical gaps in infrastructure spending accountability and contractor selection processes for public road repairs.
+              {whyThisMattersIntro}
             </div>
           )}
 
