@@ -26,10 +26,11 @@ export function BrowsePage() {
     const states = searchParams.get('state')?.split(',').filter(Boolean) || []
     const cities = searchParams.get('city')?.split(',').filter(Boolean) || []
     const departments = searchParams.get('department')?.split(',').filter(Boolean) || []
+    const tags = searchParams.get('tag')?.split(',').filter(Boolean) || []
     const status = (searchParams.get('status') as ActiveFilters['status']) || 'all'
     const dateRange = (searchParams.get('dateRange') as ActiveFilters['dateRange']) || 'all'
 
-    return { topics, states, cities, departments, status, dateRange }
+    return { topics, states, cities, departments, tags, status, dateRange }
   })
 
   const [sortOption, setSortOption] = useState<SortOption>('most-recent')
@@ -64,6 +65,9 @@ export function BrowsePage() {
     if (activeFilters.departments.length > 0) {
       params.set('department', activeFilters.departments.join(','))
     }
+    if (activeFilters.tags.length > 0) {
+      params.set('tag', activeFilters.tags.join(','))
+    }
     if (activeFilters.status !== 'all') {
       params.set('status', activeFilters.status)
     }
@@ -84,7 +88,7 @@ export function BrowsePage() {
   // Handle individual filter removal
   const handleRemoveFilter = (
     filterId: string,
-    category: 'topics' | 'states' | 'cities' | 'departments' | 'status' | 'dateRange'
+    category: 'topics' | 'states' | 'cities' | 'departments' | 'tags' | 'status' | 'dateRange'
   ) => {
     // Map singular to plural for state keys
     const categoryMap: Record<string, keyof ActiveFilters> = {
@@ -92,6 +96,8 @@ export function BrowsePage() {
       state: 'states',
       city: 'cities',
       department: 'departments',
+      tag: 'tags',
+      tags: 'tags',
       status: 'status',
       dateRange: 'dateRange',
     }
@@ -117,6 +123,7 @@ export function BrowsePage() {
       states: [],
       cities: [],
       departments: [],
+      tags: [],
       status: 'all',
       dateRange: 'all',
     })
@@ -275,6 +282,17 @@ function filterRTIResults(results: RTIResultItem[], filters: ActiveFilters): RTI
       return false
     }
 
+    // Tags filter (AND logic - RTI must have ALL selected tags)
+    if (filters.tags.length > 0) {
+      const rtiTags = rti.tags || []
+      const hasAllTags = filters.tags.every((filterTag) =>
+        rtiTags.some((rtiTag) => rtiTag.toLowerCase() === filterTag.toLowerCase())
+      )
+      if (!hasAllTags) {
+        return false
+      }
+    }
+
     // Status filter
     if (filters.status !== 'all' && rti.status !== filters.status) {
       return false
@@ -360,6 +378,14 @@ function generateFilterChips(filters: ActiveFilters, filterOptions: typeof dummy
     if (dept) {
       chips.push({ id: deptId, label: dept.code, category: 'departments' as const })
     }
+  })
+
+  // Tag chips
+  filters.tags.forEach((tagId) => {
+    const tag = filterOptions.tags.find((t) => t.id === tagId)
+    // Use tag name if found in options, otherwise capitalize the tagId
+    const displayName = tag ? tag.name : tagId.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
+    chips.push({ id: tagId, label: displayName, category: 'tags' as const })
   })
 
   // Status chip
