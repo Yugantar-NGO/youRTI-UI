@@ -203,6 +203,10 @@
   .brand {
     gap: var(--spacing-sm);
   }
+
+  .actions {
+    gap: var(--spacing-sm);
+  }
 }
 
 @media (max-width: 640px) {
@@ -210,17 +214,32 @@
     height: 56px;
   }
 
+  .container {
+    padding: 0 var(--spacing-sm);
+    gap: var(--spacing-sm);
+  }
+
+  .logo {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+  }
+
   .iconButtons {
-    gap: var(--spacing-xs);
+    gap: 6px;
   }
 
   .iconButton {
     width: 32px;
     height: 32px;
+    font-size: 12px;
   }
 
   .shareBtn {
-    padding: var(--spacing-xs) var(--spacing-sm);
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: var(--border-radius-md);
   }
 
   .shareBtn span:last-child {
