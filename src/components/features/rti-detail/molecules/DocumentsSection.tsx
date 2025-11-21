@@ -3,7 +3,7 @@
 import { BaseProps } from '@/types'
 import { RTIDocument } from '@/data/rtiDetailData'
 import { Typography } from '@/components/ui/Typography'
-import { DocumentAttachment } from '../atoms'
+import { DocumentAttachment, InfoIcon } from '../atoms'
 import styles from './DocumentsSection.module.css'
 
 interface DocumentsSectionProps extends BaseProps {
@@ -37,6 +37,7 @@ export function DocumentsSection({ documents, className = '' }: DocumentsSection
         <Typography variant="headline-small" as="h2" className={styles.title}>
           Documents & Attachments
         </Typography>
+        <InfoIcon tooltip="Official documents provided as part of the RTI response. Download these files to view the complete information disclosed by the department." />
       </div>
 
       {/* Documents List */}
