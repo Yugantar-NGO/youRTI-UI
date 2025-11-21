@@ -17,6 +17,7 @@ interface BigWinCardProps {
  *
  * Displays the "Big Win of the Week" with teal accent border,
  * impact metrics, and department/location context.
+ * Entire card is clickable and links to the RTI detail page.
  *
  * @example
  * <BigWinCard
@@ -25,6 +26,7 @@ interface BigWinCardProps {
  *   location="Bihar"
  *   impact={["₹450 Cr budget data revealed", "45 districts affected"]}
  *   date="3 days ago"
+ *   href="/rti/rti-001"
  * />
  */
 export function BigWinCard({
@@ -37,7 +39,7 @@ export function BigWinCard({
   className = '',
 }: BigWinCardProps) {
   return (
-    <article className={`${styles.card} ${className}`}>
+    <Link href={href} className={`${styles.card} ${className}`}>
       <div className={styles.header}>
         <span className={styles.badge}>Big Win of the Week</span>
         <span className={styles.date}>{date}</span>
@@ -73,9 +75,9 @@ export function BigWinCard({
         </ul>
       </div>
 
-      <Link href={href} className={styles.readMore} aria-label="Read more about this win">
+      <span className={styles.readMore}>
         Read Full Story →
-      </Link>
-    </article>
+      </span>
+    </Link>
   )
 }
