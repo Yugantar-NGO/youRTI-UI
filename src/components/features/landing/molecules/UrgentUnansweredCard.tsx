@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styles from './UrgentUnansweredCard.module.css'
 
 interface UrgentUnansweredCardProps {
@@ -7,6 +8,7 @@ interface UrgentUnansweredCardProps {
   daysOverdue: number
   filedDate: string
   deadline: string
+  href: string
   className?: string
 }
 
@@ -33,6 +35,7 @@ export function UrgentUnansweredCard({
   daysOverdue,
   filedDate,
   deadline,
+  href,
   className = '',
 }: UrgentUnansweredCardProps) {
   return (
@@ -88,9 +91,9 @@ export function UrgentUnansweredCard({
         </div>
       </div>
 
-      <button className={styles.actionButton} aria-label="Track this RTI">
+      <Link href={href} className={styles.actionButton} aria-label="Track this RTI">
         Track This RTI →
-      </button>
+      </Link>
     </article>
   )
 }
