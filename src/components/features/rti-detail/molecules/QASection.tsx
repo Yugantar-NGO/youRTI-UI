@@ -21,13 +21,20 @@ interface QASectionProps extends BaseProps {
  * QASection Component
  *
  * Displays questions and answers in a clean numbered format.
- * Shows different states: answered, pending, denied, partial.
+ * Shows different states: answered, pending, denied, partial, overdue.
  *
  * @example
  * <QASection qaItems={[...]} rtiStatus="answered" />
  */
 export function QASection({ qaItems, rtiStatus, className = '' }: QASectionProps) {
+  const isOverdue = rtiStatus === 'overdue'
+
   const getStatusBadge = (itemStatus: string = 'answered') => {
+    // For overdue RTIs, show overdue badge instead of answered/pending
+    if (isOverdue && (itemStatus === 'pending' || itemStatus === 'answered')) {
+      return <div className={`${styles.statusBadge} ${styles.statusOverdue}`}>⚠️ OVERDUE</div>
+    }
+
     const statusConfig = {
       answered: {
         label: '✓ ANSWERED',
@@ -45,6 +52,10 @@ export function QASection({ qaItems, rtiStatus, className = '' }: QASectionProps
         label: '◐ PARTIAL',
         className: styles.statusPartial,
       },
+      overdue: {
+        label: '⚠️ OVERDUE',
+        className: styles.statusOverdue,
+      },
     }
 
     const config = statusConfig[itemStatus as keyof typeof statusConfig] || statusConfig.answered
@@ -53,7 +64,7 @@ export function QASection({ qaItems, rtiStatus, className = '' }: QASectionProps
   }
 
   return (
-    <div className={`${styles.section} ${className}`}>
+    <div className={`${styles.section} ${isOverdue ? styles.sectionOverdue : ''} ${className}`}>
       <div className={styles.header}>
         <div className={styles.icon}>📋</div>
         <div className={styles.title}>Question-by-Question Breakdown</div>
@@ -63,10 +74,10 @@ export function QASection({ qaItems, rtiStatus, className = '' }: QASectionProps
       <div className={styles.qaList}>
         {qaItems.map((item, index) => {
           const itemStatus = item.status || (item.answer ? 'answered' : 'pending')
-          const showAnswerContent = itemStatus === 'answered' || itemStatus === 'denied'
+          const showAnswerContent = !isOverdue && (itemStatus === 'answered' || itemStatus === 'denied')
 
           return (
-            <div key={index} className={`${styles.qaItem} ${styles[`qaItem${itemStatus}`]}`}>
+            <div key={index} className={`${styles.qaItem} ${isOverdue ? styles.qaItemoverdue : styles[`qaItem${itemStatus}`]}`}>
               <div className={styles.questionHeader}>
                 <div className={styles.questionLeft}>
                   <div className={styles.number}>{index + 1}</div>
@@ -93,8 +104,10 @@ export function QASection({ qaItems, rtiStatus, className = '' }: QASectionProps
               )}
 
               {!showAnswerContent && (
-                <div className={styles.pendingContent}>
-                  {rtiStatus === 'pending'
+                <div className={`${styles.pendingContent} ${isOverdue ? styles.overdueContent : ''}`}>
+                  {isOverdue
+                    ? 'Response not received. The department has violated the statutory 30-day deadline under the RTI Act.'
+                    : rtiStatus === 'pending'
                     ? `Awaiting response from department. Response expected by deadline.`
                     : rtiStatus === 'transferred'
                     ? 'Awaiting response from new department after transfer.'
