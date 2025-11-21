@@ -3,6 +3,15 @@
 import { BaseProps, RTIStatus } from '@/types'
 import styles from './SidebarOverviewCard.module.css'
 
+interface Transfer {
+  fromDepartment: string
+  toDepartment: string
+  transferDate: string
+  reason: string
+  newPIO?: string
+  newDeadline?: string
+}
+
 interface SidebarOverviewCardProps extends BaseProps {
   status: RTIStatus
   referenceId: string
@@ -24,6 +33,7 @@ interface SidebarOverviewCardProps extends BaseProps {
   transferredTo?: string
   transferReason?: string
   transferDate?: string
+  transfers?: Transfer[]
 }
 
 /**
@@ -56,8 +66,10 @@ export function SidebarOverviewCard({
   transferredTo,
   transferReason,
   transferDate,
+  transfers,
   className = '',
 }: SidebarOverviewCardProps) {
+  const hasMultipleTransfers = transfers && transfers.length > 1
   const statusConfig: Record<string, any> = {
     answered: {
       badge: '✅ Answered',
@@ -181,8 +193,43 @@ export function SidebarOverviewCard({
         </div>
       )}
 
-      {/* Transfer info for transferred status */}
-      {status === 'transferred' && transferredFrom && transferredTo && (
+      {/* Transfer info for transferred status - Multiple transfers */}
+      {status === 'transferred' && hasMultipleTransfers && transfers && (
+        <div className={styles.transferStack}>
+          <div className={styles.transferStackHeader}>
+            <span>🔄</span>
+            <span>Transfer History ({transfers.length})</span>
+          </div>
+          {transfers.map((transfer, index) => (
+            <div key={index} className={styles.transferCard}>
+              <div className={styles.transferCardHeader}>
+                <span className={styles.transferCardNumber}>{index + 1}</span>
+                <span className={styles.transferCardTitle}>Transfer {index + 1}</span>
+                <span className={styles.transferDate}>{formatDate(transfer.transferDate)}</span>
+              </div>
+              <div className={styles.transferDetails}>
+                <div className={styles.transferRow}>
+                  <span className={styles.transferLabel}>From:</span>
+                  <span className={styles.transferValue}>{transfer.fromDepartment}</span>
+                </div>
+                <div className={styles.transferRow}>
+                  <span className={styles.transferLabel}>To:</span>
+                  <span className={styles.transferValue}>{transfer.toDepartment}</span>
+                </div>
+                {transfer.newPIO && (
+                  <div className={styles.transferRow}>
+                    <span className={styles.transferLabel}>New PIO:</span>
+                    <span className={styles.transferValue}>{transfer.newPIO}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Transfer info for transferred status - Single transfer */}
+      {status === 'transferred' && !hasMultipleTransfers && transferredFrom && transferredTo && (
         <div className={styles.transferInfo}>
           <div className={styles.transferHeader}>
             <span>🔄</span>
