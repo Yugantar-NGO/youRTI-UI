@@ -157,12 +157,6 @@ export function SidebarOverviewCard({
             <span className={`${styles.dateValue} ${styles.danger}`}>{daysOverdue} days</span>
           </div>
         )}
-        {daysRemaining !== undefined && daysRemaining > 0 && (
-          <div className={styles.dateItem}>
-            <span>Days Remaining:</span>
-            <span className={styles.dateValue}>{daysRemaining} days</span>
-          </div>
-        )}
       </div>
 
       {/* Completion bar for partial status */}
